@@ -59,7 +59,7 @@ editor: visual
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
@@ -67,7 +67,7 @@ print(list1)
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
@@ -82,7 +82,7 @@ sum(list1)
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 max(list1)
 ```
 
@@ -96,7 +96,7 @@ max(list1)
 
 ```{python}
 #| echo: true
-tuple1 = (float1, float2, float3, text1, text2)
+tuple1 = (3.5, 4.6, 5.7, "111", "222")
 print(tuple1)
 ```
 
@@ -162,7 +162,7 @@ for i in r3:
 
 ```{python}
 #| echo: true
-dist1 = {"id":1, "name":"Ryan", "School":"CGU"}
+dist1 = {"id":1, "name":"Ryan", "School":"NYCU"}
 print(dist1)
 ```
 
@@ -180,7 +180,7 @@ print(dist1)
 ::: {.column width="60%"}
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
@@ -211,7 +211,7 @@ r2[5]
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
@@ -720,3 +720,12 @@ type(dist1)
     -   pandas 資料框
 :::
 :::::
+
+
+
+## References
+
+-   [Python for Everybody](https://www.py4e.com/)
+-   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+
+# Questions?
