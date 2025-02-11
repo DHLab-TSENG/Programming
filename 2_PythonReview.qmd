@@ -22,7 +22,9 @@ editor: visual
 -   Use `=` to assign variables
 -   Assignment Statements: **Variable name** `=` **Value** (Fix value/Constants, other variables)
 
-![](https://miro.medium.com/v2/resize:fit:524/format:webp/0*16wn36oYFyUAsFOA.gif) [Source](https://wakeupcoders.medium.com/the-beginners-guide-to-python-variables-896ee1a95cc7)
+![](https://miro.medium.com/v2/resize:fit:524/format:webp/0*16wn36oYFyUAsFOA.gif)
+
+[Source](https://wakeupcoders.medium.com/the-beginners-guide-to-python-variables-896ee1a95cc7)
 
 ## Variable Assignment
 
@@ -31,8 +33,20 @@ editor: visual
 var1 = "test" #Assignment statement
 var2, var3 = "test2","test3"
 print(var1) #Print statement
+```
+
+```{python}
+#| echo: true
 print(var2)
+```
+
+```{python}
+#| echo: true
 print(var3)
+```
+
+```{python}
+#| echo: true
 print(var2+var3)
 ```
 
@@ -190,7 +204,7 @@ print(today.month)
 
 -   `datetime.date(年,月,日)`
 -   `datetime.datetime(年,月,日,時,分,秒)`
--   時分秒不指定會直接使用預設值
+-   時分秒不指定會直接使用預設值 (0時0分0秒)
 
 ```{python}
 #| echo: true
@@ -234,13 +248,15 @@ int2 = int(5)
 print([int1, int2])
 ```
 
+Numeric Expressions
+
 ::::: columns
 ::: column
 `+`加
 
 ```{python}
 #| echo: true
-int1 + int2 #Numeric Expressions
+int1 + int2
 ```
 
 `-`減
@@ -352,11 +368,11 @@ int1 != int2
 ## if
 
 ::::: columns
-::: column
+::: {.column width="40%"}
 ![](figures/if.png)
 :::
 
-::: column
+::: {.column width="60%"}
 ```{python}
 #| echo: true
 x = 50
@@ -365,8 +381,8 @@ if x < 60:
 if x > 80:
     print('Great')
 
-print('Learner') #decrease to indicate end of block
-
+#decrease to indicate end of block
+print('Learner') 
 ```
 :::
 :::::
@@ -428,18 +444,35 @@ print('Learner')
 
 ## if & else
 
-![](figures/else.png)
-
+::::: columns
+::: column
 ```{python}
 #| echo: true
 x = 4
 if x > 2 :
     print('Bigger')
 else :
-    print('Smaller')
+    print('Not bigger')
 
-print('All done') #decrease to indicate end of block
+print('All Done')
 ```
+:::
+
+::: column
+```{python}
+#| echo: true
+x = 1
+if x > 2 :
+    print('Bigger')
+else :
+    print('Not bigger')
+
+print('All Done')
+```
+:::
+:::::
+
+![](figures/else.png)
 
 ## try except
 
@@ -457,13 +490,15 @@ print('All done') #decrease to indicate end of block
 ::: column
 ```{python}
 #| echo: true
-astr = 'Hello Bob'
+astr = 'Bob'
 try:
+    print('Hello')
     istr = int(astr)
+    print('There')
 except:
     istr = -1
 
-print('First', istr)
+print('Done', istr)
 ```
 :::
 
@@ -472,11 +507,13 @@ print('First', istr)
 #| echo: true
 astr = '123'
 try:
+    print('Hello')
     istr = int(astr)
+    print('There')
 except:
     istr = -1
 
-print('Second', istr)
+print('Done', istr)
 ```
 :::
 :::::
@@ -521,7 +558,8 @@ Stored and reused steps!
 
 ## Function 函數使用
 
-`Function name`(`Argument`)，如`print`(`variable` or "value")
+-   `Function_name`(`Argument`)
+    -   `print`(`variable` or "value")
 
 ```{python}
 #| echo: true
@@ -529,13 +567,21 @@ var1 = "test"
 print(var1)
 ```
 
-`function name`(`Argument 1`,`Argument 2`,...)，多個參數用`,`分隔
+-   `function_name`(`Argument 1`,`Argument 2`,...)
+    -   多個參數用`,`分隔
 
 ## Function Definition 設計函數
 
 We define a function using the `def` reserved word
 
-`def` `function name`(`arguments`)`:` statement 1 statement 1
+```{python}
+#| echo: true
+#| eval: false
+def function_name(arguments):
+  statement 1
+  statement 2
+  ...
+```
 
 ## Function Definition 設計函數
 
@@ -588,8 +634,8 @@ def grade_ret(score):
 ```{python}
 #| echo: true
 this_exam = 85
-finel_grade = grade_ret(this_exam)
-print(finel_grade)
+r_grade = grade_ret(this_exam)
+print(r_grade)
 ```
 :::
 :::::
@@ -598,19 +644,150 @@ print(finel_grade)
 
 Rewrite your pay computation with time-and-a-half for overtime and create a function called `computepay` which takes two parameters ( hours and rate).
 
-Enter Hours: 45 
+Enter Hours: 45
 
 Enter Rate: 10
 
 Pay: 475.0 (475 = 40 \* 10 + 5 \* 15)
 
+## Function - Recap
+
+-   `Function_name`(`Argument`)
+-   `def` `function name`(`arguments`)`:`
+
+```{python}
+#| echo: true
+#| eval: false
+def function_name(arguments):
+  statement 1
+  statement 2
+  ...
+```
+
 # Iteration (PY4E Ch5)
 
-## for loop
+## Repeated Steps
+
+-   Loops (repeated steps) have **iteration variables** that change each time through a loop.
+    -   Often these **iteration variables** go through **a sequence of numbers**.
+
+![](figures/while.png)
 
 ## while
 
-## Function 函數使用
+::::: columns
+::: column
+```{python}
+#| echo: true
+n = 5
+while n > 0 :
+    print(n)
+    n = n - 1
+print('Blastoff!')
+print(n)
+```
+:::
+
+::: column
+![](figures/while.png)
+:::
+:::::
+
+## for loop
+
+::::: columns
+::: column
+```{python}
+#| echo: true
+for i in [5, 4, 3, 2, 1]:
+    print(i)
+print('Blastoff!')
+```
+:::
+
+::: column
+![](figures/for.png)
+:::
+:::::
+
+## break
+
+The `break` statement ends the current loop and jumps to the statement immediately following the loop
+
+::::: columns
+::: {.column width="70%"}
+```{python}
+#| echo: true
+i = 0
+while i < 5:
+    if i == 3:
+        break
+        # Exit the loop when i is 3
+    print(i)
+    i += 1
+```
+:::
+
+::: {.column width="30%"}
+`print(0)`
+
+`print(1)`
+
+`print(2)`
+
+`break`!
+:::
+:::::
+
+## continue
+
+The `continue` statement ends the current iteration and jumps to the top of the loop and starts the next iteration
+
+::::: columns
+::: {.column width="70%"}
+```{python}
+#| echo: true
+for i in range(5):
+    if i == 3:
+        continue  
+        # Skip the rest of the code for i = 3
+    print(i)
+```
+:::
+
+::: {.column width="30%"}
+`print(0)`
+
+`print(1)`
+
+`print(2)`
+
+`continue`!
+
+`print(4)`
+
+`print(5)`
+:::
+:::::
+
+## Hands-on
+
+Print the following pattern
+
+```         
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5
+```
+
+## Iteration - Recap
+
+-   while
+-   for
+-   break
+-   continue
 
 ## References
 
@@ -618,3 +795,4 @@ Pay: 475.0 (475 = 40 \* 10 + 5 \* 15)
 -   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 # Questions?
+
