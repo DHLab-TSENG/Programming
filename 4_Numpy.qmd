@@ -1,0 +1,9 @@
+---
+title: "4. Numpy"
+author: "Yi-Ju Tseng"
+format:
+  revealjs:
+    slide-number: c/t
+    show-slide-number: all
+editor: visual
+---
