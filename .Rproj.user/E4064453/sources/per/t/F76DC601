@@ -1,9 +1,9 @@
 {
     "id": "F76DC601",
-    "path": "H:/我的雲端硬碟/NYCU/程式設計-中醫系/Slides/4_Numpy.qmd",
+    "path": "H:/我的雲端硬碟/NYCU/程式設計-中醫系/Programming/4_Numpy.qmd",
     "project_path": "4_Numpy.qmd",
     "type": "quarto_markdown",
-    "hash": "1636015208",
+    "hash": "3193866805",
     "contents": "",
     "dirty": false,
     "created": 1738732856653.0,
@@ -17,16 +17,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "0,3",
+        "cursorPosition": "17,0",
         "scrollLine": "0",
         "rmdVisualModeLocation": "2:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1738732886,
+    "lastKnownWriteTime": 1739411480,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1738732886721,
+    "last_content_update": 1739411480738,
     "read_only": false,
     "read_only_alternatives": []
 }

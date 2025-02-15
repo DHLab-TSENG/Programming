@@ -127,7 +127,7 @@ print([float1, float2, float3])
 
 `True` or `False`
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -143,7 +143,7 @@ b = 1 < 2
 print(b)
 ```
 :::
-:::::
+:::
 
 ## 日期 (date)
 
@@ -250,7 +250,7 @@ print([int1, int2])
 
 Numeric Expressions
 
-::::: columns
+::: columns
 ::: column
 `+`加
 
@@ -282,7 +282,7 @@ int1 * int2
 int1 / int2
 ```
 :::
-:::::
+:::
 
 ## \>大於 / \<小於 / ==等於 / !=不等於
 
@@ -293,7 +293,7 @@ int2 = int(5)
 print([int1, int2])
 ```
 
-::::: columns
+::: columns
 ::: column
 `>`大於
 
@@ -325,11 +325,11 @@ int1 == int2
 int1 != int2
 ```
 :::
-:::::
+:::
 
 ## and / or
 
-::::: columns
+::: columns
 ::: column
 `and`且
 
@@ -357,7 +357,7 @@ int1 != int2
 10>5 or 1>5
 ```
 :::
-:::::
+:::
 
 ## Hands-on
 
@@ -367,7 +367,7 @@ int1 != int2
 
 ## if
 
-::::: columns
+::: columns
 ::: {.column width="40%"}
 ![](figures/if.png)
 :::
@@ -385,11 +385,11 @@ if x > 80:
 print('Learner') 
 ```
 :::
-:::::
+:::
 
 ## if & else if (elif)
 
-::::: columns
+::: columns
 ::: column
 ![](figures/ifelse.png)
 :::
@@ -406,11 +406,11 @@ elif x > 80:
 print('Learner')
 ```
 :::
-:::::
+:::
 
 ## if & if vs. if & else if (elif)
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -440,11 +440,11 @@ print('Learner')
 
 ![](figures/ifcomp.png){width="200"}
 :::
-:::::
+:::
 
 ## if & else
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -470,7 +470,7 @@ else :
 print('All Done')
 ```
 :::
-:::::
+:::
 
 ![](figures/else.png)
 
@@ -486,7 +486,7 @@ print('All Done')
 
 ## try except
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -516,7 +516,7 @@ except:
 print('Done', istr)
 ```
 :::
-:::::
+:::
 
 ![](figures/try.png)
 
@@ -585,7 +585,7 @@ def function_name(arguments):
 
 ## Function Definition 設計函數
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -608,11 +608,11 @@ this_exam = 80
 grade(this_exam)
 ```
 :::
-:::::
+:::
 
 ## Function return value
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -638,7 +638,7 @@ r_grade = grade_ret(this_exam)
 print(r_grade)
 ```
 :::
-:::::
+:::
 
 ## Hands-on
 
@@ -675,7 +675,7 @@ def function_name(arguments):
 
 ## while
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -691,11 +691,11 @@ print(n)
 ::: column
 ![](figures/while.png)
 :::
-:::::
+:::
 
 ## for loop
 
-::::: columns
+::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -708,13 +708,13 @@ print('Blastoff!')
 ::: column
 ![](figures/for.png)
 :::
-:::::
+:::
 
 ## break
 
 The `break` statement ends the current loop and jumps to the statement immediately following the loop
 
-::::: columns
+::: columns
 ::: {.column width="70%"}
 ```{python}
 #| echo: true
@@ -737,13 +737,13 @@ while i < 5:
 
 `break`!
 :::
-:::::
+:::
 
 ## continue
 
 The `continue` statement ends the current iteration and jumps to the top of the loop and starts the next iteration
 
-::::: columns
+::: columns
 ::: {.column width="70%"}
 ```{python}
 #| echo: true
@@ -768,7 +768,7 @@ for i in range(5):
 
 `print(5)`
 :::
-:::::
+:::
 
 ## Hands-on
 
@@ -792,7 +792,7 @@ Print the following pattern
 ## References
 
 -   [Python for Everybody](https://www.py4e.com/)
+    -   Some contents are from Python for Everybody, and these contents are Copyright 2010- Charles R. Severance (www.dr-chuck.com) of the University of Michigan School of Information and open.umich.edu and made available under a Creative Commons Attribution 4.0 License.
 -   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 # Questions?
-

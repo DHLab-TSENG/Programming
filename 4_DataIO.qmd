@@ -1,5 +1,5 @@
 ---
-title: "3. Data I/O"
+title: "4. Data I/O"
 author: "Yi-Ju Tseng"
 format:
   revealjs:
@@ -15,13 +15,14 @@ editor: visual
 -   資料分析
 -   資料呈現與視覺化
 
-## 資料匯入與匯出
+## Data input and output
 
--   從檔案匯入
--   從Google drive匯入
--   從API匯入
--   網頁爬蟲
--   資料匯出
+-   Data input
+    -   From file
+    -   From google drive
+    -   From API
+    -   Webscrapping
+-   Data output
 
 ## 前置作業
 
@@ -145,6 +146,28 @@ f = open("output_write.txt")
 print(f.readline())
 print(f.readline())
 f.close()
+```
+
+## dist + for + open
+```{python}
+#| echo: true
+name = 'trump.txt'
+handle = open(name)
+
+counts = dict()
+for line in handle:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word,0) + 1
+
+bigcount = None
+bigword = None
+for word,count in counts.items():
+    if bigcount is None or count > bigcount:
+        bigword = word
+        bigcount = count
+
+print(bigword, bigcount)
 ```
 
 ## 其他格式

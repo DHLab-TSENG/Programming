@@ -10,7 +10,9 @@ editor: visual
 
 ## Common Data Structure 資料結構
 
-::: columns
+A particular way of organizing data in a computer
+
+::::: columns
 ::: {.column width="50%"}
 -   序列 (sequence)
     -   表 (list)
@@ -27,11 +29,11 @@ editor: visual
 -   資料框 (data frame)
     -   pandas 資料框
 :::
-:::
+:::::
 
 ## Common Data Structure 資料結構
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   **序列 (sequence)**
     -   表 (list)
@@ -48,57 +50,77 @@ editor: visual
 -   資料框 (data frame)
     -   pandas 資料框
 :::
-:::
+:::::
+
+# 序列 (sequence)
 
 ## 表 (list)
 
--   使用方括號 `[ ]`宣告
--   內容以`,`分隔
--   內容的資料型態一定要相同
+A collection allows us to put many values in a single “variable”
+
+-   surrounded by square brackets`[ ]`
+-   separated by commas`,`
+-   element can be *any* Python object 
+-   can be empty
 -   可作運算
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
-## list的運算功能
+## list and for loop
+
+A collection allows us to put many values in a single “variable”
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
-print(list1)
+friends = ['Joseph', 'Glenn', 'Sally']
+for x in friends:
+    print('Happy New Year:',  x)
+print('Done!')
 ```
 
-`sum(`list物件名稱`)` 物件加總
+## list 取值
+```{python}
+#| echo: true
+print(friends)
+```
+```{python}
+#| echo: true
+print(friends[0])
+```
+```{python}
+#| echo: true
+print(friends[1])
+```
+```{python}
+#| echo: true
+print(friends[2])
+```
+
+## list 取值 - slice
+
+`start`:`up to but not including`
 
 ```{python}
 #| echo: true
-sum(list1)
+print(friends)
 ```
-
-`max(`list物件名稱`)` 物件最大值
-
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
-max(list1)
+print(friends[1:2])
 ```
-
-可參考[文件](https://docs.python.org/zh-cn/3/library/functions.html)
-
-## 定值表 (tuple)
-
--   使用小括號 `( )`宣告
--   內容以`,`分隔
--   內容的資料型態可以不同
-
 ```{python}
 #| echo: true
-tuple1 = (float1, float2, float3, text1, text2)
-print(tuple1)
+print(friends[:2])
 ```
+```{python}
+#| echo: true
+print(friends[:1])
+```
+
 
 ## 範圍 (range)
 
@@ -110,12 +132,20 @@ print(tuple1)
 ```{python}
 #| echo: true
 r1 = range(10)
+print(r1)
+```
+```{python}
+#| echo: true
 r2 = range(10,20)
+print(r2)
+```
+```{python}
+#| echo: true
 r3 = range(10,20,2)
-print([r1,r2,r3])
+print(r3)
 ```
 
-::: columns
+::::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -131,11 +161,133 @@ for i in r3:
   print(i)
 ```
 :::
+:::::
+
+
+## list and for loop - range
+
+```{python}
+#| echo: true
+friends = ['Joseph', 'Glenn', 'Sally']
+print(len(friends))
+```
+```{python}
+#| echo: true
+print(range(len(friends)))
+```
+
+::::: columns
+::: column
+```{python}
+#| echo: true
+for x in friends:
+    print('Happy New Year:',  x)
+print('Done!')
+```
 :::
+::: column
+```{python}
+#| echo: true
+for i in range(len(friends)) :
+    friend = friends[i]
+print('Done!')
+```
+:::
+:::::
+
+## list 新增修改
+
+-   Lists are “mutable”
+    -   we can change an element of a list using the index operator
+
+```{python}
+#| echo: true
+print(friends)
+```
+```{python}
+#| echo: true
+friends[0]='new friend'
+print(friends)
+```
+
+## list 新增修改 +
+
+We can create a new list by adding `+` two existing lists together
+
+
+```{python}
+#| echo: true
+friend_cs = ['Joseph', 'Glenn', 'Sally']
+friend_md = ['Alex', 'John', 'Ray']
+print(friend_cs+friend_md)
+```
+
+## list 新增修改 append
+
+We can create an empty list and then add elements using the `append` method
+```{python}
+#| echo: true
+print(friend_cs)
+```
+
+```{python}
+#| echo: true
+friend_cs.append('Megan')
+print(friend_cs)
+```
+
+## list的運算功能
+
+```{python}
+#| echo: true
+list1 = [3.5, 4.6, 5.7]
+print(list1)
+```
+
+`sum(`list物件名稱`)` 物件加總
+
+```{python}
+#| echo: true
+sum(list1)
+```
+
+`max(`list物件名稱`)` 物件最大值
+
+```{python}
+#| echo: true
+list1 = [3.5, 4.6, 5.7]
+max(list1)
+```
+
+可參考[文件](https://docs.python.org/zh-cn/3/library/functions.html)
+
+## 定值表 (tuple)
+
+-   Like list...
+-   surrounded by square brackets`( )`
+-   separated by commas`,`
+-   Tuples are “immutable” --> *More Efficient*
+    -   No `.append()`, `.sort()`, etc
+
+```{python}
+#| echo: true
+tuple1 = (3.5, 4.6, 5.7, "111", "222")
+print(tuple1)
+```
+
+## 定值表 (tuple) assignment
+
+We can also put a tuple on the left-hand side of an assignment statement
+
+```{python}
+#| echo: true
+(x, y) = (4, 'fred')
+print(y)
+```
 
 ## Common Data Structure 資料結構
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   序列 (sequence)
     -   表 (list)
@@ -152,7 +304,9 @@ for i in r3:
 -   資料框 (data frame)
     -   pandas 資料框
 :::
-:::
+:::::
+
+# 映射 (mapping)
 
 ## 字典 (dist)
 
@@ -162,7 +316,7 @@ for i in r3:
 
 ```{python}
 #| echo: true
-dist1 = {"id":1, "name":"Ryan", "School":"CGU"}
+dist1 = {"id":1, "name":"Ryan", "School":"NYCU"}
 print(dist1)
 ```
 
@@ -176,11 +330,11 @@ print(dist1)
 |:-----:|:---:|:---:|:---:|:---:|:---:|
 | index |  0  |  1  |  2  |  3  | ... |
 
-::: columns
+::::: columns
 ::: {.column width="60%"}
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
@@ -202,7 +356,7 @@ print(r2)
 r2[5]
 ```
 :::
-:::
+:::::
 
 ## sequence 新增修改
 
@@ -211,7 +365,7 @@ r2[5]
 
 ```{python}
 #| echo: true
-list1 = [float1, float2, float3]
+list1 = [3.5, 4.6, 5.7]
 print(list1)
 ```
 
@@ -263,7 +417,7 @@ sequence結構（list, tuple, range）和mapping結構（dist）均可作為迴�
 
 `縮排` 執行內容
 
-::: columns
+::::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -278,7 +432,7 @@ for i in list1:
   print(i)
 ```
 :::
-:::
+:::::
 
 依序將list結構的內容取出，設定為i，並印出來
 
@@ -292,7 +446,7 @@ for i in list1:
 print(dist1)
 ```
 
-::: columns
+::::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -308,7 +462,7 @@ for i in dist1.values():
   print(i)
 ```
 :::
-:::
+:::::
 
 ## Hands-on
 
@@ -328,7 +482,7 @@ dist1 = {"id":[1,2,3,4], "name":["Ryan","Tom","Emma","Amy"], "School":"CGU"}
 
 ## Common Data Structure 資料結構
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   序列 (sequence)
     -   表 (list)
@@ -345,7 +499,9 @@ dist1 = {"id":[1,2,3,4], "name":["Ryan","Tom","Emma","Amy"], "School":"CGU"}
 -   資料框 (data frame)
     -   pandas 資料框
 :::
-:::
+:::::
+
+# 矩陣 (matrix, array)
 
 ## 一般矩陣 (matrix, array)
 
@@ -358,7 +514,7 @@ dist1 = {"id":[1,2,3,4], "name":["Ryan","Tom","Emma","Amy"], "School":"CGU"}
 |  1   |  2   |  3   |
 |  4   |  5   |  6   |
 
-::: columns
+::::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -377,7 +533,7 @@ matrix2 = [row1, row2]
 print(matrix2)
 ```
 :::
-:::
+:::::
 
 ## numpy矩陣 - 1維
 
@@ -419,7 +575,7 @@ print(tow_d)
 print(tow_d)
 ```
 
-::: columns
+::::: columns
 ::: column
 -   使用中括號`[`index`]`取值
 -   可用slice功能，`1:`為從1開始到最後，`:2`為從0開始2到2（不包括2）
@@ -444,7 +600,7 @@ print(tow_d[:2])
 print(tow_d[1][2])
 ```
 :::
-:::
+:::::
 
 ## numpy矩陣 - 新增修改
 
@@ -480,7 +636,7 @@ np.column_stack([np1,np2])
 
 `sum()`、`mean()`、`std()`、`cumsum()`、`max()`、`min()`、`count()`
 
-::: columns
+::::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -534,7 +690,7 @@ print(tow_d.std())
 print(tow_d.cumsum()) 
 ```
 :::
-:::
+:::::
 
 ## numpy矩陣 - 計算功能
 
@@ -542,7 +698,7 @@ print(tow_d.cumsum())
 
 `axis`= 0 BY COLUMN, 1 BY ROW
 
-::: columns
+::::: columns
 ::: column
 ```{python}
 #| echo: true
@@ -571,11 +727,11 @@ print(tow_d.mean(axis=0))
 print(tow_d.mean(axis=1))
 ```
 :::
-:::
+:::::
 
 ## Common Data Structure 資料結構
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   序列 (sequence)
     -   表 (list)
@@ -592,7 +748,7 @@ print(tow_d.mean(axis=1))
 -   **資料框 (data frame)**
     -   pandas 資料框
 :::
-:::
+:::::
 
 ## pandas 資料框
 
@@ -702,7 +858,7 @@ type(dist1)
 
 ## Common Data Structure 資料結構 - Recap
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   序列 (sequence)
     -   表 (list) `[]`
@@ -719,4 +875,15 @@ type(dist1)
 -   資料框 (data frame)
     -   pandas 資料框
 :::
-:::
+:::::
+
+
+
+## References
+
+-   [Python for Everybody](https://www.py4e.com/)
+    -   Some contents are from Python for Everybody, and these contents are Copyright 2010- Charles R. Severance (www.dr-chuck.com) of the University of Michigan School of Information and open.umich.edu and made available under a Creative Commons Attribution 4.0 License.
+-   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+
+# Questions?
+
