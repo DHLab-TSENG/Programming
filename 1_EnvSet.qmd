@@ -132,6 +132,7 @@ You can install python in different way. For someone who are not familiar with p
 -   Download python **3.12** \@ <https://www.python.org/downloads/>
 -   Install it by double click the installer
 -   Check if the installation success by typing `python3` in **CMD** (Windows) or **terminal** (Mac or Linux)
+-   If the Microsoft Shop is opened when typing `python3` in CMD, check this [solution](https://stackoverflow.com/questions/58754860/cmd-opens-windows-store-when-i-type-python)
 
 ![](figures/checkjupyter.png)
 
@@ -183,7 +184,7 @@ Click **trust** and add the folder with codes in the trust [workspace](https://c
 
 ## 5. Create a Jupyter Notebook
 
--   by running the **Create: New Jupyter Notebook** command from the Command Palette (⇧⌘P)
+-   by running the `>Create: New Jupyter Notebook` command from the Command Palette (⇧⌘P)
 -   by creating a new **.ipynb** file in your workspace
 
 ![](figures/newfile.png)

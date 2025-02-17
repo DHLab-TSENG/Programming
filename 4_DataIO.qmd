@@ -8,13 +8,6 @@ format:
 editor: visual
 ---
 
-## 資料分析步驟
-
--   **資料匯入與匯出**
--   資料清洗處理
--   資料分析
--   資料呈現與視覺化
-
 ## Data input and output
 
 -   Data input
@@ -34,13 +27,22 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 ```
 
-# 從檔案匯入
+## Data input and output
 
-## 從檔案匯入
+-   Data input
+    -   **From file**
+    -   From google drive
+    -   From API
+    -   Webscrapping
+-   Data output
+
+# From File
+
+## From File
 
 -   .csv 逗號分隔格式檔案
 -   .xls Excel格式檔案
--   純文字資料 (無分隔)
+-   純文字資料
 -   其他格式
 
 ## .csv 逗號分隔格式檔案
@@ -185,7 +187,7 @@ print(bigword, bigcount)
 #| echo: true
 import matplotlib
 import matplotlib.pyplot as plt
-im = plt.imread('figures/cgu_logo.png') 
+im = plt.imread('figures/nycu_logo.png') 
 print(im)
 plt.imshow(im, 'gray')
 plt.show()
@@ -202,6 +204,15 @@ plt.imshow(im, 'gray')
 plt.show()
 ```
 
+## Data input and output
+
+-   Data input
+    -   From file
+    -   **From google drive**
+    -   From API
+    -   Webscrapping
+-   Data output
+
 # 從Google drive匯入
 
 ## 從Google drive匯入 - google 試算表
@@ -213,7 +224,7 @@ plt.show()
 
 ```{python}
 #| echo: true
-link="https://docs.google.com/spreadsheets/d/1B7tTfBZ6DKIV-OH6rQEz3J1Poh928r08WqAqiIdVeqM"
+link="https://docs.google.com/spreadsheets/d/1WqkYGfZZinxqhyqnbHIDC4NrHXbApfm8m8EvFR4SPAU"
 csv_link="/export?format=csv"
 pd.read_csv(link+csv_link)
 ```
@@ -231,9 +242,18 @@ pd.read_csv(link+csv_link)
 -   用pandas 的 `pd.read_csv()`函數將檔案匯入
 -   匯入後印出第Home State column
 
-# 從API匯入
+## Data input and output
 
-## 從API匯入
+-   Data input
+    -   From file
+    -   From google drive
+    -   **From API**
+    -   Webscrapping
+-   Data output
+
+# From API
+
+## From API
 
 -   Open Data
 -   API (Application programming interfaces)
@@ -253,6 +273,7 @@ pd.read_csv(link+csv_link)
 -   [政府資料開放平台](https://data.gov.tw/)
 -   [台北市資料大平台](https://data.taipei/)
 -   [桃園開放資料](https://data.tycg.gov.tw/)
+-   [新竹市政府資料開放平臺](https://opendata.hccg.gov.tw/)
 
 ## API
 
@@ -282,7 +303,7 @@ pd.read_csv(link+csv_link)
 :::
 :::::
 
-## JSON格式檔案
+## JSON format
 
 -   JSON (**J**ava**s**cript **O**bject **N**otation)
 -   輕量級的資料交換語言
@@ -314,13 +335,13 @@ import json, requests
 -   API網址參考[臺中市公共自行車(YouBike2.0)](https://opendata.taichung.gov.tw/search/6e38eb56-0e9a-4b9e-806d-23cd35d44d6b)
 -   點選API獲取相關資訊
 -   使用`requests`套件的`get(網址)`擷取資料
--   本API好像會檔短時間內擷取多次，因此放入`params = {'param':'1'}`以及`headers = {'Connection':'close'}`設定
+-   此API好像會檔短時間內擷取多次，因此放入`params = {'param':'1'}`以及`headers = {'Connection':'close'}`設定
 -   最後將使用`回傳結果.json()`，將檔案轉成JSON格式
 
 ```{python}
 #| echo: true
 #| cache: true
-url="https://datacenter.taichung.gov.tw/swagger/OpenData/86dfad5c-540c-4479-bb7d-d7439d34eeb1"
+url="https://datacenter.taichung.gov.tw/swagger/OpenData/34a848ab-eeb3-44fd-a842-a09cb3209a7d"
 response = requests.get(url, params = {'param':'1'}, headers = {'Connection':'close'})
 data = response.json()  # Convert the response to JSON
 ```
@@ -370,16 +391,25 @@ data["retVal"][0]
     -   提示：設定url
 -   找到資料的儲存處，並將答案print出
 
-## 從API匯入 - Recap
+## From API - Recap
 
 -   Open Data
 -   API (Application programming interfaces)
 -   JSON格式檔案 `requests.get()`下載，`.json`轉型
 -   用`type()`查看資料類別，`keys()`查看資料擷取方法，並印出來試試看
 
-# 網頁爬蟲 Webscraping
+## Data input and output
 
-## 網頁爬蟲 Webscraping
+-   Data input
+    -   From file
+    -   From google drive
+    -   From API
+    -   **Webscrapping** (FYR)
+-   Data output
+
+# 網頁爬蟲 Webscraping (FYR)
+
+## 網頁爬蟲 Webscraping (FYR)
 
 -   不是每個網站都提供API
 -   人工複製貼上?!
@@ -394,7 +424,7 @@ data["retVal"][0]
 ```{python}
 #| echo: true
 #| eval: false
-!pip3 install beautifulsoup4
+!pip3 install beautifulsoup4 requests
 ```
 
 -   擷取條件的撰寫會因網頁語法不同而有差異
@@ -406,8 +436,8 @@ data["retVal"][0]
 
 ## 即時股價爬取
 
--   [Yahoo 股市](https://tw.stock.yahoo.com/)
--   [Yahoo 股市 - 台積電](https://tw.stock.yahoo.com/quote/2330)
+-   [台灣股市資訊網](https://tw.stock.yahoo.com/)
+-   [台灣股市資訊網 - 台積電](https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=2330)
 
 ```{python}
 #| echo: true
@@ -514,35 +544,6 @@ for price in price_detail:
   print(price.get_text())
 ```
 
-## 即時股價爬取 - 搜尋所需節點 -3
-
-範例：class 包含 `StretchedBox`
-
--   `select()`: 取得所有符合CSS條件的節點 (`class` or `id`等屬性)
-
-```{python}
-#| echo: true
-soup = BeautifulSoup(res.text, "html.parser")
-news = soup.select(".mega-item-header-link")
-news
-```
-
-## 即時股價爬取 - 取出需要的資料 -3
-
--   `.get_text()`可抓取節點內文字
--   `.get("屬性名稱")`可抓取屬性內容
-
-```{python}
-#| echo: true
-len(news)
-```
-
-```{python}
-#| echo: true
-for title_click in news:
-  print(title_click.get_text())
-```
-
 ## Hands-on 爬蟲練習
 
 -   [Ptt Tech_Job 版](https://www.ptt.cc/bbs/Tech_Job/index.html)
@@ -553,96 +554,6 @@ for title_click in news:
     -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`\
     -   搜尋所需節點 `find(節點)`, `select(css條件)`
     -   取出需要的資料 `get_text()`, `get(屬性名稱)`
-
-## 即時股價爬取 - 取出需要的資料 -4
-
--   `.get_text()`可抓取節點內文字
--   `.get("屬性名稱")`可抓取屬性內容
-
-```{python}
-#| echo: true
-for title_click in news:
-  print(title_click.get("href"))
-```
-
-## 即時股價爬取 - 爬連結內的新聞
-
--   得到連結後，重複上述步驟
-    -   下載html `requests.get(網址)`
-    -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`\
-    -   搜尋所需節點 `find(節點)`, `select(css條件)`
-    -   取出需要的資料 `get_text()`, `get(屬性名稱)`
-
-## 即時股價爬取 - 爬連結內的新聞
-
-首先取得連結list。
-
-補充內容：
-
--   `sequence物件.append()`可新增內容至sequence中
-
-```{python}
-#| echo: true
-url_list = []
-title_list = []
-for title_click in news:
-  url_list.append(title_click.get("href"))
-  title_list.append(title_click.get_text())
-print(url_list)
-```
-
-## 即時股價爬取 - 爬連結內的新聞
-
-以第一個新聞連結為例，下載html後，重複步驟，取得本文
-
-```{python}
-#| echo: true
-res = requests.get(url_list[0])
-soup = BeautifulSoup(res.text, "html.parser")
-news_full = soup.select_one(".caas-body")
-print("標題: "+title_list[0] +", 內文:" + news_full.get_text())
-```
-
-## 即時股價爬取 - 爬連結內的新聞
-
-用`for`迴圈一次做完所有連結
-
-```{python}
-#| echo: true
-for title_click in news:
-  title = title_click.get_text()
-  url = title_click.get("href")
-  res = requests.get(url)
-  soup = BeautifulSoup(res.text, "html.parser")
-  news_full = soup.select_one(".caas-body")
-  print("標題: "+title +", 內文:" + news_full.get_text())
-```
-
-## 即時股價爬取 - 爬連結內的新聞
-
-用`for`迴圈一次做完所有連結，並轉成pandas data frame
-
-```{python}
-#| echo: true
-newdf = []
-for title_click in news:
-  title = title_click.get_text()
-  url = title_click.get("href")
-  res = requests.get(url)
-  soup = BeautifulSoup(res.text, "html.parser")
-  news_full = soup.select_one(".caas-body")
-  add_news = pd.DataFrame({"title":[title],"content":[news_full.get_text()]})
-  newdf.append(add_news)
-
-newdf_pd=pd.concat(newdf)
-newdf_pd
-```
-
-## 即時股價爬取 - 爬連結內的新聞
-
-```{python}
-newdf_pd
-```
 
 ## Hands-on 爬蟲練習
 
@@ -673,6 +584,15 @@ newdf_pd
 -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`
 -   搜尋所需節點 `find(節點)`, `select(css條件)`
 -   取出需要的資料 `get_text()`, `get(屬性名稱)`
+
+## Data input and output
+
+-   Data input
+    -   From file
+    -   From google drive
+    -   From API
+    -   Webscrapping
+-   **Data output**
 
 # 資料匯出
 
@@ -743,9 +663,29 @@ newdf_pd
 ## Hands-on 資料匯出
 
 -   [Ptt Tech_Job 版](https://www.ptt.cc/bbs/Tech_Job/index.html)
--   試著爬出最新一頁的所有**標題**
+-   試著爬出最新一頁的所有**標題** (Hint!)
 -   將標題存成一個資料框
 -   儲存標題資料框，檔名為ptt.csv
+
+## Hands-on 資料匯出
+
+```{python}
+#| echo: true
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+# step 1 download url
+res = requests.get("https://www.ptt.cc/bbs/Tech_Job/index.html")
+# step 2 parse html
+soup = BeautifulSoup(res.text, "html.parser")
+# step 3 select tags/css
+title_tags = soup.select(".title a")
+print(title_tags)
+# step 4 get the data
+title_list=[] 
+for title in title_tags:
+  title_list.append(title.get_text())
+```
 
 ## 資料匯出 - Recap
 
