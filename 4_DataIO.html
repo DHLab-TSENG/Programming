@@ -413,6 +413,7 @@ Yi-Ju Tseng
 <li>From file</li>
 <li>From google drive</li>
 <li>From API</li>
+<li>From database</li>
 <li>Webscrapping</li>
 </ul></li>
 <li>Data output</li>
@@ -421,7 +422,7 @@ Yi-Ju Tseng
 <section id="前置作業" class="slide level2">
 <h2>前置作業</h2>
 <p>為了成功從https (加密封包傳輸)下載資料，首先取消證書驗證</p>
-<div id="ac880797" class="cell" data-execution_count="1">
+<div id="559b0371" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> ssl</span>
 <span id="cb1-2"><a href=""></a>ssl._create_default_https_context <span class="op">=</span> ssl._create_unverified_context</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -434,6 +435,7 @@ Yi-Ju Tseng
 <li><strong>From file</strong></li>
 <li>From google drive</li>
 <li>From API</li>
+<li>From database</li>
 <li>Webscrapping</li>
 </ul></li>
 <li>Data output</li>
@@ -460,12 +462,12 @@ Yi-Ju Tseng
 <li><code>pandas</code>的<code>read_csv(路徑)</code>，將檔案匯入</li>
 <li>路徑可以是<em>本機端路徑</em>，也可以是<em>網址</em></li>
 </ul>
-<div id="7adb6745" class="cell" data-execution_count="2">
+<div id="0ddfdca2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href=""></a>url <span class="op">=</span> <span class="st">"https://quality.data.gov.tw//dq_download_csv.php?nid=102775&amp;md5_url=ea56d6e1f2642b2c5c44f9e8b6185d54"</span></span>
 <span id="cb2-3"><a href=""></a>df_csv <span class="op">=</span> pd.read_csv(url)</span>
 <span id="cb2-4"><a href=""></a>df_csv.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -620,8 +622,8 @@ Yi-Ju Tseng
 </section>
 <section id="csv-逗號分隔格式檔案-1" class="slide level2">
 <h2>.csv 逗號分隔格式檔案</h2>
-<div id="3888611f" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div id="c25b96df" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -789,7 +791,7 @@ Yi-Ju Tseng
 <ul>
 <li>需要安裝<code>openpyxl</code>和<code>xlrd</code>套件</li>
 </ul>
-<div id="ed1abce4" class="cell" data-execution_count="4">
+<div id="0575087e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="op">!</span>pip3 install openpyxl xlrd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -800,11 +802,11 @@ Yi-Ju Tseng
 <li>路徑可以是<em>本機端路徑</em>，也可以是<em>網址</em></li>
 <li>可設定<code>sheet_name</code>參數指定<em>工作表名稱</em></li>
 </ul>
-<div id="f792b38c" class="cell" data-execution_count="5">
+<div id="6821e3b8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>url <span class="op">=</span> <span class="st">'https://github.com/CGUIM-BigDataAnalysis/BigDataCGUIM/raw/master/EMBA_BigData/Data/</span><span class="sc">%E</span><span class="st">6</span><span class="sc">%96%</span><span class="st">B0</span><span class="sc">%E</span><span class="st">7%AB%B9</span><span class="sc">%E</span><span class="st">4%B8%8D</span><span class="sc">%E</span><span class="st">5%8B</span><span class="sc">%95%</span><span class="st">E7</span><span class="sc">%94%</span><span class="st">A2.xls'</span></span>
 <span id="cb4-2"><a href=""></a>house <span class="op">=</span> pd.read_excel(url,sheet_name <span class="op">=</span> <span class="st">"不動產買賣"</span>)  </span>
 <span id="cb4-3"><a href=""></a>house.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -978,8 +980,8 @@ Yi-Ju Tseng
 </section>
 <section id="xls-excel格式檔案-2" class="slide level2">
 <h2>.xls Excel格式檔案</h2>
-<div id="c01114e8" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div id="071e953f" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1163,11 +1165,14 @@ Yi-Ju Tseng
 <section id="純文字資料" class="slide level2">
 <h2>純文字資料</h2>
 <ul>
-<li>使用<code>oepn(檔名)</code>開啟檔案</li>
+<li>使用<code>oepn(檔名)</code>開啟檔案
+<ul>
+<li>以sequence形式儲存</li>
+</ul></li>
 <li>使用<code>檔案物件.read()</code>讀取內容。<strong>一次取全部</strong></li>
 <li>讀取完畢後，使用<code>檔案物件.close()</code>關閉檔案</li>
 </ul>
-<div id="c1486e9c" class="cell" data-execution_count="7">
+<div id="14f60b78" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"output_write.txt"</span>)</span>
 <span id="cb5-2"><a href=""></a><span class="bu">print</span>(f.read())</span>
 <span id="cb5-3"><a href=""></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1187,7 +1192,7 @@ Yi-Ju Tseng
 <li>使用<code>檔案物件.readlines()</code>讀取內容。<strong>一次取全部，分行存成list</strong></li>
 <li>讀取完畢後，使用<code>檔案物件.close()</code>關閉檔案</li>
 </ul>
-<div id="15e50b78" class="cell" data-execution_count="8">
+<div id="129af8ee" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"output_write.txt"</span>)</span>
 <span id="cb7-2"><a href=""></a><span class="bu">print</span>(f.readlines())</span>
 <span id="cb7-3"><a href=""></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1203,7 +1208,7 @@ Yi-Ju Tseng
 <li>使用<code>檔案物件.readline()</code>讀取內容。<strong>逐行讀</strong></li>
 <li>讀取完畢後，使用<code>檔案物件.close()</code>關閉檔案</li>
 </ul>
-<div id="66f804ec" class="cell" data-execution_count="9">
+<div id="45efe953" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"output_write.txt"</span>)</span>
 <span id="cb9-2"><a href=""></a><span class="bu">print</span>(f.readline())</span>
 <span id="cb9-3"><a href=""></a><span class="bu">print</span>(f.readline())</span>
@@ -1218,7 +1223,7 @@ Yi-Ju Tseng
 </section>
 <section id="dist-for-open" class="slide level2">
 <h2>dist + for + open</h2>
-<div id="3e8534dc" class="cell" data-execution_count="10">
+<div id="c5fa82dd" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>name <span class="op">=</span> <span class="st">'trump.txt'</span></span>
 <span id="cb11-2"><a href=""></a>handle <span class="op">=</span> <span class="bu">open</span>(name)</span>
 <span id="cb11-3"><a href=""></a></span>
@@ -1247,10 +1252,10 @@ Yi-Ju Tseng
 <li>以圖片為例，需安裝並載入繪圖用套件<code>matplotlib</code></li>
 <li>使用<code>plt.imread(路徑)</code>載入圖片，為RGB向量</li>
 </ul>
-<div id="6d08b480" class="cell" data-execution_count="11">
+<div id="481a9f94" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="op">!</span>pip3 install matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6643b4db" class="cell" data-execution_count="12">
+<div id="8f853454" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="im">import</span> matplotlib</span>
 <span id="cb14-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href=""></a>im <span class="op">=</span> plt.imread(<span class="st">'figures/nycu_logo.png'</span>) </span>
@@ -1323,7 +1328,7 @@ Yi-Ju Tseng
 <li>使用<code>plt.imshow(向量)</code>呈現圖片</li>
 <li><code>plt.show()</code>在視窗中呈現圖片內容</li>
 </ul>
-<div id="fdc14745" class="cell" data-execution_count="13">
+<div id="3ed9d239" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a>plt.imshow(im, <span class="st">'gray'</span>)</span>
 <span id="cb16-2"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1343,6 +1348,7 @@ Yi-Ju Tseng
 <li>From file</li>
 <li><strong>From google drive</strong></li>
 <li>From API</li>
+<li>From database</li>
 <li>Webscrapping</li>
 </ul></li>
 <li>Data output</li>
@@ -1367,11 +1373,11 @@ Yi-Ju Tseng
 <li>參考<code>google-api-python-client</code>套件</li>
 </ul></li>
 </ul>
-<div id="f4f51127" class="cell" data-execution_count="14">
+<div id="3fa4bf03" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>link<span class="op">=</span><span class="st">"https://docs.google.com/spreadsheets/d/1WqkYGfZZinxqhyqnbHIDC4NrHXbApfm8m8EvFR4SPAU"</span></span>
 <span id="cb17-2"><a href=""></a>csv_link<span class="op">=</span><span class="st">"/export?format=csv"</span></span>
 <span id="cb17-3"><a href=""></a>pd.read_csv(link<span class="op">+</span>csv_link)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
+<div class="cell-output cell-output-display" data-execution_count="62">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1689,8 +1695,8 @@ Yi-Ju Tseng
 </section>
 <section id="從google-drive匯入---google-試算表-1" class="slide level2">
 <h2>從Google drive匯入 - google 試算表</h2>
-<div id="2ee330ed" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div id="c91655a1" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="63">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2023,6 +2029,7 @@ Yi-Ju Tseng
 <li>From file</li>
 <li>From google drive</li>
 <li><strong>From API</strong></li>
+<li>From database</li>
 <li>Webscrapping</li>
 </ul></li>
 <li>Data output</li>
@@ -2104,10 +2111,10 @@ Yi-Ju Tseng
 <li>從網路載資料，需要安裝<code>requests</code>套件</li>
 <li>處理json資料，需要安裝與載入<code>json</code>套件</li>
 </ul>
-<div id="f8c7195f" class="cell" data-execution_count="16">
+<div id="56e99612" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="op">!</span>pip3 install json requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="adf30874" class="cell" data-execution_count="17">
+<div id="150332c0" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="im">import</span> json, requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -2120,7 +2127,7 @@ Yi-Ju Tseng
 <li>此API會檔短時間內擷取多次的要求，因此放入<code>params = {'param':'1'}</code>以及<code>headers = {'Connection':'close'}</code>設定</li>
 <li>最後將使用<code>回傳結果.json()</code>，將檔案轉成JSON格式</li>
 </ul>
-<div id="9db768a8" class="cell" data-cache="true" data-execution_count="18">
+<div id="95b74957" class="cell" data-cache="true" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a>url<span class="op">=</span><span class="st">"https://datacenter.taichung.gov.tw/swagger/OpenData/34a848ab-eeb3-44fd-a842-a09cb3209a7d"</span></span>
 <span id="cb20-2"><a href=""></a>response <span class="op">=</span> requests.get(url, params <span class="op">=</span> {<span class="st">'param'</span>:<span class="st">'1'</span>}, headers <span class="op">=</span> {<span class="st">'Connection'</span>:<span class="st">'close'</span>})</span>
 <span id="cb20-3"><a href=""></a>data <span class="op">=</span> response.json()  <span class="co"># Convert the response to JSON</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2129,21 +2136,21 @@ Yi-Ju Tseng
 <section id="json檔案匯入-2" class="slide level2">
 <h2>JSON檔案匯入</h2>
 <p>探索資料，使用<code>.keys()</code>查看keys</p>
-<div id="836bb152" class="cell" data-execution_count="19">
+<div id="9d21e48c" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="58">
+<div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>dict</code></pre>
 </div>
 </div>
-<div id="3e4036ea" class="cell" data-execution_count="20">
+<div id="c8d25434" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a>data.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>dict_keys(['retCode', 'updated_at', 'retVal'])</code></pre>
 </div>
 </div>
-<div id="4763b5a1" class="cell" data-execution_count="21">
+<div id="87885dad" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href=""></a><span class="bu">type</span>(data[<span class="st">"retVal"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>list</code></pre>
 </div>
 </div>
@@ -2151,9 +2158,9 @@ Yi-Ju Tseng
 <section id="json檔案匯入-3" class="slide level2">
 <h2>JSON檔案匯入</h2>
 <p>探索資料，發現是dist (data)中retVal key儲存含有資料的list</p>
-<div id="b64903f2" class="cell" data-execution_count="22">
+<div id="4a319b37" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a>data[<span class="st">"retVal"</span>][<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>[{'scity': '台中市',
   'scityen': 'Taichung City',
   'sna': 'YouBike2.0_綠川東中山路口',
@@ -2164,13 +2171,13 @@ Yi-Ju Tseng
   'aren': 'Luchuan E. St. &amp; Zhongshan Rd. Intersection (East)',
   'sno': '500601001',
   'tot': '16',
-  'sbi': '7',
-  'mday': '20250220121216',
+  'sbi': '5',
+  'mday': '20250220165216',
   'lat': '24.13785',
   'lng': '120.68337',
-  'bemp': '9',
+  'bemp': '11',
   'act': 1,
-  'sbi_detail': {'yb2': '7', 'eyb': '0'}},
+  'sbi_detail': {'yb2': '5', 'eyb': '0'}},
  {'scity': '台中市',
   'scityen': 'Taichung City',
   'sna': 'YouBike2.0_繼光光復路口',
@@ -2181,22 +2188,22 @@ Yi-Ju Tseng
   'aren': 'No.166, Jiguang St. (Opposite)',
   'sno': '500601002',
   'tot': '18',
-  'sbi': '7',
-  'mday': '20250220120917',
+  'sbi': '6',
+  'mday': '20250220165216',
   'lat': '24.1411',
   'lng': '120.68474',
-  'bemp': '10',
+  'bemp': '11',
   'act': 1,
-  'sbi_detail': {'yb2': '5', 'eyb': '2'}}]</code></pre>
+  'sbi_detail': {'yb2': '6', 'eyb': '0'}}]</code></pre>
 </div>
 </div>
 </section>
 <section id="json檔案匯入-4" class="slide level2">
 <h2>JSON檔案匯入</h2>
 <p>探索資料，發現是dist (data)中retVal key儲存含有資料的list</p>
-<div id="460ff9e7" class="cell" data-execution_count="23">
+<div id="ffd5955e" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a>data[<span class="st">"retVal"</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>{'scity': '台中市',
  'scityen': 'Taichung City',
  'sna': 'YouBike2.0_綠川東中山路口',
@@ -2207,13 +2214,13 @@ Yi-Ju Tseng
  'aren': 'Luchuan E. St. &amp; Zhongshan Rd. Intersection (East)',
  'sno': '500601001',
  'tot': '16',
- 'sbi': '7',
- 'mday': '20250220121216',
+ 'sbi': '5',
+ 'mday': '20250220165216',
  'lat': '24.13785',
  'lng': '120.68337',
- 'bemp': '9',
+ 'bemp': '11',
  'act': 1,
- 'sbi_detail': {'yb2': '7', 'eyb': '0'}}</code></pre>
+ 'sbi_detail': {'yb2': '5', 'eyb': '0'}}</code></pre>
 </div>
 </div>
 </section>
@@ -2247,6 +2254,683 @@ Yi-Ju Tseng
 <li>From file</li>
 <li>From google drive</li>
 <li>From API</li>
+<li><strong>From database</strong></li>
+<li>Webscrapping</li>
+</ul></li>
+<li>Data output</li>
+</ul>
+</section></section>
+<section>
+<section id="from-database" class="title-slide slide level1 center">
+<h1>From database</h1>
+
+</section>
+<section id="from-database-1" class="slide level2">
+<h2>From database</h2>
+<ul>
+<li>Database access
+<ul>
+<li>File system: SQLite</li>
+<li>Database system: MySQL, MS SQL Server, …etc</li>
+</ul></li>
+<li>DuckDB
+<ul>
+<li>Using file system</li>
+<li>select data with SQL and pandas!</li>
+</ul></li>
+</ul>
+</section>
+<section id="databases-access---sqlite" class="slide level2">
+<h2>Databases access - SQLite</h2>
+<p>File system以SQLite為例，需要先安裝<code>sqlite3</code>套件</p>
+<div id="285a1c0e" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a><span class="op">!</span>pip3 install sqlite3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="databases-access---sqlite-1" class="slide level2">
+<h2>Databases access - SQLite</h2>
+<ul>
+<li><code>dbfile</code> local path for db file or url</li>
+<li><code>sqlite3.connect(dbfile)</code> connect to the db file
+<ul>
+<li><code>dbfile</code> can be local path or url</li>
+</ul></li>
+<li><code>conn.execute("SQL")</code> execute <code>SQL</code></li>
+<li><code>pd.read_sql_query("SQL")</code> retrieve data with <code>SQL</code> and save as dataframe</li>
+<li><code>conn.close()</code> close the connection</li>
+</ul>
+<div id="2f7ac9e4" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="im">import</span> sqlite3</span>
+<span id="cb32-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-3"><a href=""></a>dbfile <span class="op">=</span> <span class="st">"chinook.db"</span></span>
+<span id="cb32-4"><a href=""></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(dbfile)</span>
+<span id="cb32-5"><a href=""></a>df <span class="op">=</span> pd.read_sql_query(<span class="st">"select * from artists"</span>, conn)</span>
+<span id="cb32-6"><a href=""></a>conn.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="databases-access---sqlite-2" class="slide level2">
+<h2>Databases access - SQLite</h2>
+<div id="87d6ad7d" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ArtistId</th>
+<th data-quarto-table-cell-role="th">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>AC/DC</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Accept</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Aerosmith</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>Alanis Morissette</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Alice In Chains</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">270</td>
+<td>271</td>
+<td>Mela Tenenbaum, Pro Musica Prague &amp; Richard Kapp</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">271</td>
+<td>272</td>
+<td>Emerson String Quartet</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">272</td>
+<td>273</td>
+<td>C. Monteverdi, Nigel Rogers - Chiaroscuro; Lon...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">273</td>
+<td>274</td>
+<td>Nash Ensemble</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">274</td>
+<td>275</td>
+<td>Philip Glass Ensemble</td>
+</tr>
+</tbody>
+</table>
+
+<p>275 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="databases-access---mysql-fyr" class="slide level2">
+<h2>Databases access - MySQL (FYR)</h2>
+<p>以MySQL為例，需要先安裝<code>mysql-connector-python</code>套件</p>
+<div id="8cdf8fb0" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a><span class="op">!</span>pip3 install mysql<span class="op">-</span>connector<span class="op">-</span>python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="databases-access---mysql-fyr-1" class="slide level2">
+<h2>Databases access - MySQL (FYR)</h2>
+<div id="18f093d3" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a><span class="im">import</span> mysql.connector</span>
+<span id="cb35-2"><a href=""></a>mydb <span class="op">=</span> mysql.connector.<span class="ex">connect</span>(</span>
+<span id="cb35-3"><a href=""></a>  host<span class="op">=</span><span class="st">"localhost"</span>,</span>
+<span id="cb35-4"><a href=""></a>  user<span class="op">=</span><span class="st">"yourusername"</span>,</span>
+<span id="cb35-5"><a href=""></a>  password<span class="op">=</span><span class="st">"yourpassword"</span>,</span>
+<span id="cb35-6"><a href=""></a>  database<span class="op">=</span><span class="st">"mydatabase"</span></span>
+<span id="cb35-7"><a href=""></a>)</span>
+<span id="cb35-8"><a href=""></a>mycursor <span class="op">=</span> mydb.cursor()</span>
+<span id="cb35-9"><a href=""></a>mycursor.execute(<span class="st">"SELECT name, address FROM table_name"</span>)</span>
+<span id="cb35-10"><a href=""></a>myresult <span class="op">=</span> mycursor.fetchall()</span>
+<span id="cb35-11"><a href=""></a>df <span class="op">=</span> pd.DataFrame(myresult)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="duckdb" class="slide level2">
+<h2>DuckDB</h2>
+<ul>
+<li>https://duckdb.org/</li>
+<li>an open-source column-oriented relational database management system</li>
+<li>Unlike other embedded databases (SQLite) DuckDB is not focusing on transactional (OLTP) applications and instead is specialized for online analytical processing (OLAP) workloads</li>
+<li>需要先安裝<code>pandas</code>和<code>duckdb</code>套件</li>
+</ul>
+<div id="56f07cbd" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="op">!</span>pip3 install pandas duckdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="duckdb-1" class="slide level2">
+<h2>DuckDB</h2>
+<ul>
+<li>Load any file with DuckDB</li>
+<li>Use <code>.csv</code> as an example
+<ul>
+<li>TSMC stock price</li>
+<li>Download from <a href="https://www.marketwatch.com/investing/stock/2330/download-data?startDate=2/1/2022&amp;endDate=2/18/2025&amp;countryCode=tw">MarketWatch</a></li>
+</ul></li>
+<li><code>file_path</code> can be <code>local file path</code> or <code>url</code></li>
+</ul>
+<div id="066656a1" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb37-2"><a href=""></a><span class="im">import</span> duckdb</span>
+<span id="cb37-3"><a href=""></a>file_path <span class="op">=</span> <span class="st">"STOCK_TW_XTAI_2330.csv"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="duckdb-2" class="slide level2">
+<h2>DuckDB</h2>
+<ul>
+<li><code>duckdb.connect(database=':memory:')</code> open the connection</li>
+<li><code>conn.execute(SQL)</code> execute <code>SQL</code>
+<ul>
+<li><code>CREATE</code>, <code>SELECT</code>, etc</li>
+</ul></li>
+<li><code>conn.close()</code> close the connection</li>
+</ul>
+<div id="dad361ec" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>conn <span class="op">=</span> duckdb.<span class="ex">connect</span>(database<span class="op">=</span><span class="st">':memory:'</span>)   </span>
+<span id="cb38-2"><a href=""></a>conn.execute(<span class="ss">f"""</span></span>
+<span id="cb38-3"><a href=""></a><span class="ss">    CREATE TABLE TSMC_stock AS </span></span>
+<span id="cb38-4"><a href=""></a><span class="ss">    SELECT *</span></span>
+<span id="cb38-5"><a href=""></a><span class="ss">    FROM read_csv_auto('</span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss">')</span></span>
+<span id="cb38-6"><a href=""></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<pre><code>&lt;duckdb.duckdb.DuckDBPyConnection at 0x11a1feab0&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="duckdb-3" class="slide level2">
+<h2>DuckDB</h2>
+<ul>
+<li><code>conn.execute(SQL)</code> execute <code>SQL</code>
+<ul>
+<li><code>CREATE</code>, <code>SELECT</code>, etc</li>
+<li><code>SELECT</code> retrieval can be stored in dataframe</li>
+</ul></li>
+<li><code>conn.close()</code> close the connection</li>
+<li>We need more than a <code>*</code>…. for data preprocessing</li>
+</ul>
+<div id="73974db6" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a>df_duckdb <span class="op">=</span> conn.execute(<span class="st">"SELECT * FROM TSMC_stock"</span>).fetchdf()</span>
+<span id="cb40-2"><a href=""></a>conn.close()     </span>
+<span id="cb40-3"><a href=""></a>df_duckdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Open</th>
+<th data-quarto-table-cell-role="th">High</th>
+<th data-quarto-table-cell-role="th">Low</th>
+<th data-quarto-table-cell-role="th">Close</th>
+<th data-quarto-table-cell-role="th">Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2025-02-18</td>
+<td>1,085.00</td>
+<td>1,100.00</td>
+<td>1,080.00</td>
+<td>1,100.00</td>
+<td>22,357,939</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2025-02-17</td>
+<td>1,065.00</td>
+<td>1,085.00</td>
+<td>1,065.00</td>
+<td>1,085.00</td>
+<td>36,903,859</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2025-02-14</td>
+<td>1,065.00</td>
+<td>1,070.00</td>
+<td>1,060.00</td>
+<td>1,060.00</td>
+<td>70,775,922</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2025-02-13</td>
+<td>1,090.00</td>
+<td>1,095.00</td>
+<td>1,080.00</td>
+<td>1,090.00</td>
+<td>34,840,520</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2025-02-12</td>
+<td>1,110.00</td>
+<td>1,115.00</td>
+<td>1,100.00</td>
+<td>1,100.00</td>
+<td>24,977,391</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">237</td>
+<td>2024-02-23</td>
+<td>701.00</td>
+<td>703.00</td>
+<td>696.00</td>
+<td>697.00</td>
+<td>47,810,473</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">238</td>
+<td>2024-02-22</td>
+<td>695.00</td>
+<td>695.00</td>
+<td>685.00</td>
+<td>692.00</td>
+<td>34,122,391</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">239</td>
+<td>2024-02-21</td>
+<td>678.00</td>
+<td>683.00</td>
+<td>678.00</td>
+<td>681.00</td>
+<td>31,417,539</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">240</td>
+<td>2024-02-20</td>
+<td>675.00</td>
+<td>688.00</td>
+<td>675.00</td>
+<td>687.00</td>
+<td>30,897,730</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">241</td>
+<td>2024-02-19</td>
+<td>674.00</td>
+<td>682.00</td>
+<td>674.00</td>
+<td>678.00</td>
+<td>35,158,832</td>
+</tr>
+</tbody>
+</table>
+
+<p>242 rows × 6 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="duckdb-4" class="slide level2">
+<h2>DuckDB</h2>
+<p>We need more than a <code>*</code>…. for data preprocessing</p>
+<div id="c9822361" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a>conn <span class="op">=</span> duckdb.<span class="ex">connect</span>(database<span class="op">=</span><span class="st">':memory:'</span>)   </span>
+<span id="cb41-2"><a href=""></a>conn.execute(<span class="ss">f"""</span></span>
+<span id="cb41-3"><a href=""></a><span class="ss">    CREATE TABLE TSMC_stock AS </span></span>
+<span id="cb41-4"><a href=""></a><span class="ss">    SELECT </span></span>
+<span id="cb41-5"><a href=""></a><span class="ss">        Date,  -- Keep the Date column unchanged</span></span>
+<span id="cb41-6"><a href=""></a><span class="ss">        CAST(REPLACE(Open, ',', '') AS DOUBLE) AS Open,</span></span>
+<span id="cb41-7"><a href=""></a><span class="ss">        CAST(REPLACE(High, ',', '') AS DOUBLE) AS High,</span></span>
+<span id="cb41-8"><a href=""></a><span class="ss">        CAST(REPLACE(Low, ',', '') AS DOUBLE) AS Low,</span></span>
+<span id="cb41-9"><a href=""></a><span class="ss">        CAST(REPLACE(Close, ',', '') AS DOUBLE) AS Close,</span></span>
+<span id="cb41-10"><a href=""></a><span class="ss">        CAST(REPLACE(Volume, ',', '') AS BIGINT) AS Volume</span></span>
+<span id="cb41-11"><a href=""></a><span class="ss">    FROM read_csv_auto('</span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss">')</span></span>
+<span id="cb41-12"><a href=""></a><span class="ss">"""</span>)</span>
+<span id="cb41-13"><a href=""></a>df_duckdb <span class="op">=</span> conn.execute(<span class="st">"SELECT * FROM TSMC_stock"</span>).fetchdf()</span>
+<span id="cb41-14"><a href=""></a>conn.close()     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="duckdb-5" class="slide level2">
+<h2>DuckDB</h2>
+<div id="2714c373" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>df_duckdb   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Open</th>
+<th data-quarto-table-cell-role="th">High</th>
+<th data-quarto-table-cell-role="th">Low</th>
+<th data-quarto-table-cell-role="th">Close</th>
+<th data-quarto-table-cell-role="th">Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2025-02-18</td>
+<td>1085.0</td>
+<td>1100.0</td>
+<td>1080.0</td>
+<td>1100.0</td>
+<td>22357939</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2025-02-17</td>
+<td>1065.0</td>
+<td>1085.0</td>
+<td>1065.0</td>
+<td>1085.0</td>
+<td>36903859</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2025-02-14</td>
+<td>1065.0</td>
+<td>1070.0</td>
+<td>1060.0</td>
+<td>1060.0</td>
+<td>70775922</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2025-02-13</td>
+<td>1090.0</td>
+<td>1095.0</td>
+<td>1080.0</td>
+<td>1090.0</td>
+<td>34840520</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2025-02-12</td>
+<td>1110.0</td>
+<td>1115.0</td>
+<td>1100.0</td>
+<td>1100.0</td>
+<td>24977391</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">237</td>
+<td>2024-02-23</td>
+<td>701.0</td>
+<td>703.0</td>
+<td>696.0</td>
+<td>697.0</td>
+<td>47810473</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">238</td>
+<td>2024-02-22</td>
+<td>695.0</td>
+<td>695.0</td>
+<td>685.0</td>
+<td>692.0</td>
+<td>34122391</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">239</td>
+<td>2024-02-21</td>
+<td>678.0</td>
+<td>683.0</td>
+<td>678.0</td>
+<td>681.0</td>
+<td>31417539</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">240</td>
+<td>2024-02-20</td>
+<td>675.0</td>
+<td>688.0</td>
+<td>675.0</td>
+<td>687.0</td>
+<td>30897730</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">241</td>
+<td>2024-02-19</td>
+<td>674.0</td>
+<td>682.0</td>
+<td>674.0</td>
+<td>678.0</td>
+<td>35158832</td>
+</tr>
+</tbody>
+</table>
+
+<p>242 rows × 6 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="duckdb-6" class="slide level2">
+<h2>DuckDB</h2>
+<p>You can also use <code>duckdb.query(SQL).to_df()</code> for data retrieval</p>
+<div id="4c64aebd" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a>Query <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb43-2"><a href=""></a><span class="st">SELECT YEAR(Date) AS Year, MONTH(Date) AS Month, AVG(Open) as avg_price, COUNT(Open) AS count </span></span>
+<span id="cb43-3"><a href=""></a><span class="st">FROM df_duckdb </span></span>
+<span id="cb43-4"><a href=""></a><span class="st">GROUP BY Year, Month</span></span>
+<span id="cb43-5"><a href=""></a><span class="st">ORDER BY avg_price DESC</span></span>
+<span id="cb43-6"><a href=""></a><span class="st">'''</span></span>
+<span id="cb43-7"><a href=""></a>df_duckdb2 <span class="op">=</span> duckdb.query(Query).to_df()</span>
+<span id="cb43-8"><a href=""></a>df_duckdb2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">avg_price</th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2025</td>
+<td>1</td>
+<td>1106.000000</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2025</td>
+<td>2</td>
+<td>1095.000000</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2024</td>
+<td>12</td>
+<td>1070.681818</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2024</td>
+<td>10</td>
+<td>1041.105263</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2024</td>
+<td>11</td>
+<td>1034.571429</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2024</td>
+<td>7</td>
+<td>990.476190</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2024</td>
+<td>9</td>
+<td>948.850000</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2024</td>
+<td>8</td>
+<td>937.454545</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2024</td>
+<td>6</td>
+<td>916.000000</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2024</td>
+<td>5</td>
+<td>829.909091</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>2024</td>
+<td>4</td>
+<td>788.400000</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>2024</td>
+<td>3</td>
+<td>762.380952</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>2024</td>
+<td>2</td>
+<td>689.250000</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="data-input-and-output-5" class="slide level2">
+<h2>Data input and output</h2>
+<ul>
+<li><strong>Data input</strong>
+<ul>
+<li>From file</li>
+<li>From google drive</li>
+<li>From API</li>
+<li>From database</li>
 <li><strong>Webscrapping</strong></li>
 </ul></li>
 <li>Data output</li>
@@ -2270,8 +2954,8 @@ Yi-Ju Tseng
 <section id="網頁爬蟲-webscraping-beautifulsoup4" class="slide level2">
 <h2>網頁爬蟲 Webscraping-beautifulsoup4</h2>
 <p>需要先安裝<code>beautifulsoup4</code>以及<code>requests</code>套件。</p>
-<div id="84cb3595" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a><span class="op">!</span>pip3 install beautifulsoup4 requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c97b6859" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="op">!</span>pip3 install beautifulsoup4 requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>擷取條件的撰寫會因網頁語法不同而有差異</li>
@@ -2292,18 +2976,18 @@ Yi-Ju Tseng
 <li><a href="ttps://www.google.com/finance/">Google 財經</a></li>
 <li><a href="https://www.google.com/finance/quote/2330:TPE?hl=zh-TW">Google 財經 - 台積電</a></li>
 </ul>
-<div id="b45b43c9" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
-<span id="cb32-2"><a href=""></a><span class="im">import</span> requests</span>
-<span id="cb32-3"><a href=""></a>StockUrl <span class="op">=</span> <span class="st">"https://www.google.com/finance/quote/2330:TPE?hl=zh-TW"</span></span>
-<span id="cb32-4"><a href=""></a>res <span class="op">=</span> requests.get(StockUrl)</span>
-<span id="cb32-5"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e402b8ce" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb45-2"><a href=""></a><span class="im">import</span> requests</span>
+<span id="cb45-3"><a href=""></a>StockUrl <span class="op">=</span> <span class="st">"https://www.google.com/finance/quote/2330:TPE?hl=zh-TW"</span></span>
+<span id="cb45-4"><a href=""></a>res <span class="op">=</span> requests.get(StockUrl)</span>
+<span id="cb45-5"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="17fc2247" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a>price <span class="op">=</span> soup.select(<span class="st">".fxKbKc"</span>)</span>
-<span id="cb33-2"><a href=""></a>price[<span class="dv">0</span>].get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
-<pre><code>'$1,085.00'</code></pre>
+<div id="4d6589eb" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a>price <span class="op">=</span> soup.select(<span class="st">".fxKbKc"</span>)</span>
+<span id="cb46-2"><a href=""></a>price[<span class="dv">0</span>].get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>'$1,080.00'</code></pre>
 </div>
 </div>
 </section>
@@ -2313,12 +2997,12 @@ Yi-Ju Tseng
 <li>使用<code>requests</code>套件的<code>get(網址)</code>函數，輸入網址，將網頁載入python分析環境。</li>
 <li>成功載入網頁後，針對該物件，使用<code>.text</code>取得網頁原始碼 (.html)</li>
 </ul>
-<div id="cd707645" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>StockUrl <span class="op">=</span> <span class="st">"https://www.google.com/finance/quote/2330:TPE?hl=zh-TW"</span></span>
-<span id="cb35-2"><a href=""></a>res <span class="op">=</span> requests.get(StockUrl)</span>
-<span id="cb35-3"><a href=""></a>res.text[<span class="dv">0</span>:<span class="dv">1000</span>] <span class="co">## print first 1000 chars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
-<pre><code>'&lt;!doctype html&gt;&lt;html lang="zh-TW" dir="ltr"&gt;&lt;head&gt;&lt;base href="https://www.google.com/finance/"&gt;&lt;link rel="preconnect" href="//www.gstatic.com"&gt;&lt;meta name="referrer" content="origin"&gt;&lt;script nonce="H2d7gNGV-tjarhXn2zMPeQ"&gt;window[\'ppConfig\'] = {productName: \'GoogleFinanceUi\', deleteIsEnforced:  true , sealIsEnforced:  true , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){\'use strict\';function k(a){var b=0;return function(){return b&lt;a.length?{done:!1,value:a[b++]}:{done:!0}}}var l=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};\nfunction m(a){a=["object"==typeof globalThis&amp;&amp;globalThis,a,"object"==typeof window&amp;&amp;window,"object"==typeof self&amp;&amp;self,"object"==typeof global&amp;&amp;global];for(var b=0;b&lt;a.length;++b){var c=a[b];if(c&amp;&amp;c.Math==Math)return c}throw Error("Cannot find global object");}var n=m(this);function p(a,b){if(b)a:{var '</code></pre>
+<div id="5d10d251" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>StockUrl <span class="op">=</span> <span class="st">"https://www.google.com/finance/quote/2330:TPE?hl=zh-TW"</span></span>
+<span id="cb48-2"><a href=""></a>res <span class="op">=</span> requests.get(StockUrl)</span>
+<span id="cb48-3"><a href=""></a>res.text[<span class="dv">0</span>:<span class="dv">1000</span>] <span class="co">## print first 1000 chars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<pre><code>'&lt;!doctype html&gt;&lt;html lang="zh-TW" dir="ltr"&gt;&lt;head&gt;&lt;base href="https://www.google.com/finance/"&gt;&lt;link rel="preconnect" href="//www.gstatic.com"&gt;&lt;meta name="referrer" content="origin"&gt;&lt;script nonce="tdE0ct1g8N4C-zo57UqKdQ"&gt;window[\'ppConfig\'] = {productName: \'GoogleFinanceUi\', deleteIsEnforced:  true , sealIsEnforced:  true , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){\'use strict\';function k(a){var b=0;return function(){return b&lt;a.length?{done:!1,value:a[b++]}:{done:!0}}}var l=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};\nfunction m(a){a=["object"==typeof globalThis&amp;&amp;globalThis,a,"object"==typeof window&amp;&amp;window,"object"==typeof self&amp;&amp;self,"object"==typeof global&amp;&amp;global];for(var b=0;b&lt;a.length;++b){var c=a[b];if(c&amp;&amp;c.Math==Math)return c}throw Error("Cannot find global object");}var n=m(this);function p(a,b){if(b)a:{var '</code></pre>
 </div>
 </div>
 </section>
@@ -2331,8 +3015,8 @@ Yi-Ju Tseng
 </ul></li>
 <li>解析後可使用<code>解析後內容.prettify</code>取得排版後的網頁原始碼</li>
 </ul>
-<div id="4237284f" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4c3135d7" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="即時股價爬取---搜尋所需節點--1" class="slide level2">
@@ -2367,12 +3051,12 @@ Yi-Ju Tseng
 <li><code>class=</code>可用<code>.</code>代表</li>
 <li><code>id=</code>可用<code>#</code>代表</li>
 </ul>
-<div id="077cefeb" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb38-2"><a href=""></a>price <span class="op">=</span> soup.select(<span class="st">".fxKbKc"</span>)</span>
-<span id="cb38-3"><a href=""></a>price</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
-<pre><code>[&lt;div class="YMlKec fxKbKc"&gt;$1,085.00&lt;/div&gt;]</code></pre>
+<div id="e2a164d8" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb51-2"><a href=""></a>price <span class="op">=</span> soup.select(<span class="st">".fxKbKc"</span>)</span>
+<span id="cb51-3"><a href=""></a>price</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>[&lt;div class="YMlKec fxKbKc"&gt;$1,080.00&lt;/div&gt;]</code></pre>
 </div>
 </div>
 </section>
@@ -2382,10 +3066,10 @@ Yi-Ju Tseng
 <li><code>.get_text()</code>可抓取節點內文字</li>
 <li><code>.get("屬性名稱")</code>可抓取屬性內容</li>
 </ul>
-<div id="fd0ba2f5" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a>price[<span class="dv">0</span>].get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<pre><code>'$1,085.00'</code></pre>
+<div id="8e3e55b9" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href=""></a>price[<span class="dv">0</span>].get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>'$1,080.00'</code></pre>
 </div>
 </div>
 </section>
@@ -2398,23 +3082,23 @@ Yi-Ju Tseng
 <li>取得所有符合CSS條件的節點 (<code>class</code> or <code>id</code>等屬性)</li>
 </ul></li>
 </ul>
-<div id="d3092eb9" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb42-2"><a href=""></a>price_detail <span class="op">=</span> soup.select(<span class="st">".gyFHrc"</span>)</span>
-<span id="cb42-3"><a href=""></a>price_detail</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div id="404a20a4" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb55-2"><a href=""></a>price_detail <span class="op">=</span> soup.select(<span class="st">".gyFHrc"</span>)</span>
+<span id="cb55-3"><a href=""></a>price_detail</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>[&lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i15" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;前次收盤價&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i15" role="tooltip"&gt;最後收盤價&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;$1,090.00&lt;/div&gt;&lt;/div&gt;,
  &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i16" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;單日股價範圍&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i16" role="tooltip"&gt;過去一天內最高價與最低價之間的價格範圍&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;$1,070.00 - $1,085.00&lt;/div&gt;&lt;/div&gt;,
  &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i17" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;一年股價範圍&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i17" role="tooltip"&gt;過去 52 週內最高價與最低價之間的價格範圍&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;$675.00 - $1,160.00&lt;/div&gt;&lt;/div&gt;,
- &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i18" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;總市值&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i18" role="tooltip"&gt;一種估價方法，將公司股價乘以在外流通總股數。&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;28.14兆 TWD&lt;/div&gt;&lt;/div&gt;,
+ &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i18" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;總市值&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i18" role="tooltip"&gt;一種估價方法，將公司股價乘以在外流通總股數。&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;28.01兆 TWD&lt;/div&gt;&lt;/div&gt;,
  &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i19" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;平均交易量&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i19" role="tooltip"&gt;過去 30 天內平均每天的成交股數&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;4051.10萬&lt;/div&gt;&lt;/div&gt;,
- &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i20" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;本益比&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i20" role="tooltip"&gt;目前股價與過去十二個月每股盈餘總和兩者之間的比率，這個比率可反映某檔股票的價格相較於其他股票是高還低&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;23.98&lt;/div&gt;&lt;/div&gt;,
- &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i21" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;股利收益率&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i21" role="tooltip"&gt;年股利與目前股價兩者之間的比率，這個比率可用於估計某檔股票的股利報酬率&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;1.47%&lt;/div&gt;&lt;/div&gt;,
+ &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i20" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;本益比&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i20" role="tooltip"&gt;目前股價與過去十二個月每股盈餘總和兩者之間的比率，這個比率可反映某檔股票的價格相較於其他股票是高還低&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;23.87&lt;/div&gt;&lt;/div&gt;,
+ &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i21" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;股利收益率&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i21" role="tooltip"&gt;年股利與目前股價兩者之間的比率，這個比率可用於估計某檔股票的股利報酬率&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;1.48%&lt;/div&gt;&lt;/div&gt;,
  &lt;div class="gyFHrc"&gt;&lt;span data-is-tooltip-wrapper="true"&gt;&lt;div aria-describedby="i22" class="mfs7Fc" data-tooltip-anchor-boundary-type="2" data-tooltip-x-position="2" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" jscontroller="e2jnoe"&gt;主要交易所&lt;/div&gt;&lt;div aria-hidden="true" class="EY8ABd-OWXEXe-TAWMXe" id="i22" role="tooltip"&gt;這檔證券的上市交易所&lt;/div&gt;&lt;/span&gt;&lt;div class="P6K39c"&gt;TPE&lt;/div&gt;&lt;/div&gt;,
- &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 9c2.7 0 5.8 1.29 6 2v1H6v-.99c.2-.72 3.3-2.01 6-2.01m0-11C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;執行長&lt;/div&gt;&lt;div class="P6K39c"&gt;&lt;ul class="OEHt4c"&gt;&lt;li&gt;&lt;a class="tBHE4e" href="https://www.google.com/search?q=%E9%AD%8F%E5%93%B2%E5%AE%B6&amp;amp;hl=zh-TW" jslog="166166;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQlpIKegQIAhBc;track:click" target="_blank"&gt;魏哲家&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;,
+ &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 9c2.7 0 5.8 1.29 6 2v1H6v-.99c.2-.72 3.3-2.01 6-2.01m0-11C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;執行長&lt;/div&gt;&lt;div class="P6K39c"&gt;&lt;ul class="OEHt4c"&gt;&lt;li&gt;&lt;a class="tBHE4e" href="https://www.google.com/search?q=%E9%AD%8F%E5%93%B2%E5%AE%B6&amp;amp;hl=zh-TW" jslog="166166;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQlpIKegQIAhBc;track:click" target="_blank"&gt;魏哲家&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;,
  &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"&gt;&lt;/path&gt;&lt;path d="M14.5 13a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;成立時間&lt;/div&gt;&lt;div class="P6K39c"&gt;1987年2月21日&lt;/div&gt;&lt;/div&gt;,
- &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"&gt;&lt;/path&gt;&lt;circle cx="12" cy="9" r="2.5"&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;/span&gt;總部&lt;/div&gt;&lt;div class="P6K39c"&gt;&lt;a class="tBHE4e" href="https://www.google.com/maps/place/8%2C%20Li-Hsin%20Rd.%206%2C%20%E6%96%B0%E7%AB%B9%2C%20%E8%87%BA%E7%81%A3%E7%9C%81%2C%20%E5%8F%B0%E7%81%A3?hl=zh-TW" jslog="166166;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQlpIKegQIAhBc;track:click" target="_blank"&gt;臺灣省新竹&lt;br/&gt;台灣&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;,
- &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16c1.1 0 2-.9 2-2V6a2 2 0 0 0-2-2zm0 14H4V8h16v10z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;網站&lt;/div&gt;&lt;div class="P6K39c"&gt;&lt;a class="tBHE4e" href="http://www.tsmc.com/" jslog="166166;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQlpIKegQIAhBc;track:click" rel="noopener noreferrer" target="_blank"&gt;tsmc.com&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;,
+ &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"&gt;&lt;/path&gt;&lt;circle cx="12" cy="9" r="2.5"&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;/span&gt;總部&lt;/div&gt;&lt;div class="P6K39c"&gt;&lt;a class="tBHE4e" href="https://www.google.com/maps/place/8%2C%20Li-Hsin%20Rd.%206%2C%20%E6%96%B0%E7%AB%B9%2C%20%E8%87%BA%E7%81%A3%E7%9C%81%2C%20%E5%8F%B0%E7%81%A3?hl=zh-TW" jslog="166166;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQlpIKegQIAhBc;track:click" target="_blank"&gt;臺灣省新竹&lt;br/&gt;台灣&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;,
+ &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16c1.1 0 2-.9 2-2V6a2 2 0 0 0-2-2zm0 14H4V8h16v10z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;網站&lt;/div&gt;&lt;div class="P6K39c"&gt;&lt;a class="tBHE4e" href="http://www.tsmc.com/" jslog="166166;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQlpIKegQIAhBc;track:click" rel="noopener noreferrer" target="_blank"&gt;tsmc.com&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;,
  &lt;div class="gyFHrc"&gt;&lt;div class="mfs7Fc"&gt;&lt;span aria-hidden="true" class="notranslate gnzz8b"&gt;&lt;svg class="NMm5M" focusable="false" height="14" viewbox="0 0 24 24" width="14"&gt;&lt;path d="M15 8c0-1.42-.5-2.73-1.33-3.76.42-.14.86-.24 1.33-.24 2.21 0 4 1.79 4 4s-1.79 4-4 4c-.43 0-.84-.09-1.23-.21-.03-.01-.06-.02-.1-.03A5.98 5.98 0 0 0 15 8zm1.66 5.13C18.03 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.58-3.47-6.34-3.87zM9 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 9c-2.7 0-5.8 1.29-6 2.01V18h12v-1c-.2-.71-3.3-2-6-2M9 4c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm0 9c2.67 0 8 1.34 8 4v3H1v-3c0-2.66 5.33-4 8-4z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;員工數&lt;/div&gt;&lt;div class="P6K39c"&gt;65,152&lt;/div&gt;&lt;/div&gt;]</code></pre>
 </div>
 </div>
@@ -2425,23 +3109,23 @@ Yi-Ju Tseng
 <li><code>.get_text()</code>可抓取節點內文字</li>
 <li><code>.get("屬性名稱")</code>可抓取屬性內容</li>
 </ul>
-<div id="c9d8806e" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="bu">len</span>(price_detail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
+<div id="ee478a95" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href=""></a><span class="bu">len</span>(price_detail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
 <pre><code>13</code></pre>
 </div>
 </div>
-<div id="bff951cd" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a><span class="cf">for</span> price <span class="kw">in</span> price_detail:</span>
-<span id="cb46-2"><a href=""></a>  <span class="bu">print</span>(price.get_text())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bdfb6f4c" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href=""></a><span class="cf">for</span> price <span class="kw">in</span> price_detail:</span>
+<span id="cb59-2"><a href=""></a>  <span class="bu">print</span>(price.get_text())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>前次收盤價最後收盤價$1,090.00
 單日股價範圍過去一天內最高價與最低價之間的價格範圍$1,070.00 - $1,085.00
 一年股價範圍過去 52 週內最高價與最低價之間的價格範圍$675.00 - $1,160.00
-總市值一種估價方法，將公司股價乘以在外流通總股數。28.14兆 TWD
+總市值一種估價方法，將公司股價乘以在外流通總股數。28.01兆 TWD
 平均交易量過去 30 天內平均每天的成交股數4051.10萬
-本益比目前股價與過去十二個月每股盈餘總和兩者之間的比率，這個比率可反映某檔股票的價格相較於其他股票是高還低23.98
-股利收益率年股利與目前股價兩者之間的比率，這個比率可用於估計某檔股票的股利報酬率1.47%
+本益比目前股價與過去十二個月每股盈餘總和兩者之間的比率，這個比率可反映某檔股票的價格相較於其他股票是高還低23.87
+股利收益率年股利與目前股價兩者之間的比率，這個比率可用於估計某檔股票的股利報酬率1.48%
 主要交易所這檔證券的上市交易所TPE
 執行長魏哲家
 成立時間1987年2月21日
@@ -2457,17 +3141,17 @@ Yi-Ju Tseng
 <ul>
 <li><code>select()</code>: 取得所有符合CSS條件的節點 (<code>class</code> or <code>id</code>等屬性)</li>
 </ul>
-<div id="431a2961" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb48-2"><a href=""></a>news <span class="op">=</span> soup.select(<span class="st">".z4rs2b"</span>)</span>
-<span id="cb48-3"><a href=""></a>news</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
-<pre><code>[&lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhAx" href="https://www.ctee.com.tw/news/20250219700737-430201" jslog="106424;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhAx;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;工商時報&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;1 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;這家台積電轉投資公司大跳水「這原因」拖垮股價逼近跌停- 證券&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
- &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhAz" href="https://tw.stock.yahoo.com/news/%E4%BC%81%E6%A5%AD%E5%AF%B5%E5%93%A1%E5%B7%A5%E7%84%A1%E6%A5%B5%E9%99%90%EF%BC%81%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%93%A1%E5%B7%A5%E7%A6%8F%E5%88%A9%E4%B9%9F%E6%AF%94%E4%B8%8D%E4%B8%8A%E5%AE%83%E8%B2%BC%E5%BF%83%E3%80%8C%E9%80%99%E9%96%93%E3%80%8D%E7%AB%9F%E7%9B%B4%E6%8E%A5%E8%93%8B%E6%88%BF%E8%AE%93%E5%93%A1%E5%B7%A5%E6%92%BF%E4%BE%BF%E5%AE%9C%EF%BD%9C%E6%88%BF%E5%B8%82%E8%A7%80%E9%BB%9E-011739672.html" jslog="106424;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhAz;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;奇摩股市&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;3 小時前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便宜｜房市觀點&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
- &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA1" href="https://udn.com/news/story/7240/8559373" jslog="106424;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA1;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;聯合新聞網&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;6 小時前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
- &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA5" href="https://www.moneydj.com/funddj/ya/yp050000.djhtm?a=CE121E8D-E134-4A82-A638-036D9EFAB953" jslog="106424;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA5;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;MoneyDJ&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;1 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;外媒：台積是憑企業文化拿下領先 難跟Intel兼容-新聞內容-基金&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
- &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA9" href="https://www.businesstoday.com.tw/article/category/183008/post/202502190008/" jslog="106424;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA9;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;今周刊&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;1 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;大成鋼漲不停、台塑谷底翻身，都因「美國製造」…台積電、環球晶超前佈署，這2家準備加碼投資美國&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
- &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA_" href="https://news.tvbs.com.tw/politics/2783650" jslog="106424;ved:2ahUKEwjLoq3YstGLAxW6grkFHcFcGnYQuL8GegQIAhA_;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;TVBS新聞網&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;1 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;]</code></pre>
+<div id="dcc239d5" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb61-2"><a href=""></a>news <span class="op">=</span> soup.select(<span class="st">".z4rs2b"</span>)</span>
+<span id="cb61-3"><a href=""></a>news</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>[&lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhAx" href="https://www.ctee.com.tw/news/20250219700737-430201" jslog="106424;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhAx;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;工商時報&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;1 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;這家台積電轉投資公司大跳水「這原因」拖垮股價逼近跌停- 證券&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
+ &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhAz" href="https://tw.stock.yahoo.com/news/%E4%BC%81%E6%A5%AD%E5%AF%B5%E5%93%A1%E5%B7%A5%E7%84%A1%E6%A5%B5%E9%99%90%EF%BC%81%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%93%A1%E5%B7%A5%E7%A6%8F%E5%88%A9%E4%B9%9F%E6%AF%94%E4%B8%8D%E4%B8%8A%E5%AE%83%E8%B2%BC%E5%BF%83%E3%80%8C%E9%80%99%E9%96%93%E3%80%8D%E7%AB%9F%E7%9B%B4%E6%8E%A5%E8%93%8B%E6%88%BF%E8%AE%93%E5%93%A1%E5%B7%A5%E6%92%BF%E4%BE%BF%E5%AE%9C%EF%BD%9C%E6%88%BF%E5%B8%82%E8%A7%80%E9%BB%9E-011739672.html" jslog="106424;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhAz;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;奇摩股市&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;7 小時前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便宜｜房市觀點&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
+ &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA1" href="https://udn.com/news/story/7240/8559373" jslog="106424;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA1;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;聯合新聞網&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;10 小時前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
+ &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA5" href="https://www.businesstoday.com.tw/article/category/183015/post/202502200013/" jslog="106424;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA5;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;今周刊&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;5 小時前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;從商業模式、政府出資到合作夥伴，處處以台積電為師，連英文簡稱都差一個字，張幼翔要如何帶領TBMC站上國際舞台&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
+ &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA9" href="https://news.tvbs.com.tw/politics/2783650" jslog="106424;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA9;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;TVBS新聞網&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;1 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;,
+ &lt;div class="z4rs2b"&gt;&lt;a data-ved="2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA_" href="https://www.ftnn.com.tw/news/390414" jslog="106424;ved:2ahUKEwjH54eF8NGLAxVu5kwCHeLXBXsQuL8GegQIAhA_;track:click" rel="noopener noreferrer" target="_blank"&gt;&lt;div class="Tfehrf"&gt;&lt;div class="nkXTJ W8knGc" jsname="GvmPSb"&gt;&lt;div class="sfyJob"&gt;FTNN 新聞網&lt;/div&gt;&lt;div class="cCEUJe"&gt;&lt;div class="Adak"&gt;2 天前&lt;/div&gt;&lt;div class="hVmHve" jsname="iwaAEc"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="Yfwt5"&gt;被倒1萬張照鎖？「它」今年股價飆漲46％…成交額飆93億 網驚：衝破壓力區後狂噴&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;]</code></pre>
 </div>
 </div>
 </section>
@@ -2477,22 +3161,22 @@ Yi-Ju Tseng
 <li><code>.get_text()</code>可抓取節點內文字</li>
 <li><code>.get("屬性名稱")</code>可抓取屬性內容</li>
 </ul>
-<div id="052a147b" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a><span class="bu">len</span>(news)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="73">
+<div id="d48556e3" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href=""></a><span class="bu">len</span>(news)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div id="d2dd92d6" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
-<span id="cb52-2"><a href=""></a>  <span class="bu">print</span>(title_click.get_text())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d9bba006" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
+<span id="cb65-2"><a href=""></a>  <span class="bu">print</span>(title_click.get_text())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>工商時報1 天前這家台積電轉投資公司大跳水「這原因」拖垮股價逼近跌停- 證券
-奇摩股市3 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便宜｜房市觀點
-聯合新聞網6 小時前台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮
-MoneyDJ1 天前外媒：台積是憑企業文化拿下領先 難跟Intel兼容-新聞內容-基金
-今周刊1 天前大成鋼漲不停、台塑谷底翻身，都因「美國製造」…台積電、環球晶超前佈署，這2家準備加碼投資美國
-TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關</code></pre>
+奇摩股市7 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便宜｜房市觀點
+聯合新聞網10 小時前台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮
+今周刊5 小時前從商業模式、政府出資到合作夥伴，處處以台積電為師，連英文簡稱都差一個字，張幼翔要如何帶領TBMC站上國際舞台
+TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關
+FTNN 新聞網2 天前被倒1萬張照鎖？「它」今年股價飆漲46％…成交額飆93億 網驚：衝破壓力區後狂噴</code></pre>
 </div>
 </div>
 </section>
@@ -2518,16 +3202,16 @@ TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電
 <li><code>.get_text()</code>可抓取節點內文字</li>
 <li><code>.get("屬性名稱")</code>可抓取屬性內容</li>
 </ul>
-<div id="37ee7015" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
-<span id="cb54-2"><a href=""></a>  <span class="bu">print</span>(title_click.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="13f08fcb" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
+<span id="cb67-2"><a href=""></a>  <span class="bu">print</span>(title_click.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>https://www.ctee.com.tw/news/20250219700737-430201
 https://tw.stock.yahoo.com/news/%E4%BC%81%E6%A5%AD%E5%AF%B5%E5%93%A1%E5%B7%A5%E7%84%A1%E6%A5%B5%E9%99%90%EF%BC%81%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%93%A1%E5%B7%A5%E7%A6%8F%E5%88%A9%E4%B9%9F%E6%AF%94%E4%B8%8D%E4%B8%8A%E5%AE%83%E8%B2%BC%E5%BF%83%E3%80%8C%E9%80%99%E9%96%93%E3%80%8D%E7%AB%9F%E7%9B%B4%E6%8E%A5%E8%93%8B%E6%88%BF%E8%AE%93%E5%93%A1%E5%B7%A5%E6%92%BF%E4%BE%BF%E5%AE%9C%EF%BD%9C%E6%88%BF%E5%B8%82%E8%A7%80%E9%BB%9E-011739672.html
 https://udn.com/news/story/7240/8559373
-https://www.moneydj.com/funddj/ya/yp050000.djhtm?a=CE121E8D-E134-4A82-A638-036D9EFAB953
-https://www.businesstoday.com.tw/article/category/183008/post/202502190008/
-https://news.tvbs.com.tw/politics/2783650</code></pre>
+https://www.businesstoday.com.tw/article/category/183015/post/202502200013/
+https://news.tvbs.com.tw/politics/2783650
+https://www.ftnn.com.tw/news/390414</code></pre>
 </div>
 </div>
 </section>
@@ -2551,54 +3235,54 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 <ul>
 <li><code>sequence物件.append()</code>可新增內容至sequence中</li>
 </ul>
-<div id="8fe30226" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href=""></a>url_list <span class="op">=</span> []</span>
-<span id="cb56-2"><a href=""></a>title_list <span class="op">=</span> []</span>
-<span id="cb56-3"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
-<span id="cb56-4"><a href=""></a>  url_list.append(title_click.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>))</span>
-<span id="cb56-5"><a href=""></a>  title_list.append(title_click.get_text())</span>
-<span id="cb56-6"><a href=""></a><span class="bu">print</span>(url_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="84b72da3" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href=""></a>url_list <span class="op">=</span> []</span>
+<span id="cb69-2"><a href=""></a>title_list <span class="op">=</span> []</span>
+<span id="cb69-3"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
+<span id="cb69-4"><a href=""></a>  url_list.append(title_click.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>))</span>
+<span id="cb69-5"><a href=""></a>  title_list.append(title_click.get_text())</span>
+<span id="cb69-6"><a href=""></a><span class="bu">print</span>(url_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['https://www.ctee.com.tw/news/20250219700737-430201', 'https://tw.stock.yahoo.com/news/%E4%BC%81%E6%A5%AD%E5%AF%B5%E5%93%A1%E5%B7%A5%E7%84%A1%E6%A5%B5%E9%99%90%EF%BC%81%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%93%A1%E5%B7%A5%E7%A6%8F%E5%88%A9%E4%B9%9F%E6%AF%94%E4%B8%8D%E4%B8%8A%E5%AE%83%E8%B2%BC%E5%BF%83%E3%80%8C%E9%80%99%E9%96%93%E3%80%8D%E7%AB%9F%E7%9B%B4%E6%8E%A5%E8%93%8B%E6%88%BF%E8%AE%93%E5%93%A1%E5%B7%A5%E6%92%BF%E4%BE%BF%E5%AE%9C%EF%BD%9C%E6%88%BF%E5%B8%82%E8%A7%80%E9%BB%9E-011739672.html', 'https://udn.com/news/story/7240/8559373', 'https://www.moneydj.com/funddj/ya/yp050000.djhtm?a=CE121E8D-E134-4A82-A638-036D9EFAB953', 'https://www.businesstoday.com.tw/article/category/183008/post/202502190008/', 'https://news.tvbs.com.tw/politics/2783650']</code></pre>
+<pre><code>['https://www.ctee.com.tw/news/20250219700737-430201', 'https://tw.stock.yahoo.com/news/%E4%BC%81%E6%A5%AD%E5%AF%B5%E5%93%A1%E5%B7%A5%E7%84%A1%E6%A5%B5%E9%99%90%EF%BC%81%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%93%A1%E5%B7%A5%E7%A6%8F%E5%88%A9%E4%B9%9F%E6%AF%94%E4%B8%8D%E4%B8%8A%E5%AE%83%E8%B2%BC%E5%BF%83%E3%80%8C%E9%80%99%E9%96%93%E3%80%8D%E7%AB%9F%E7%9B%B4%E6%8E%A5%E8%93%8B%E6%88%BF%E8%AE%93%E5%93%A1%E5%B7%A5%E6%92%BF%E4%BE%BF%E5%AE%9C%EF%BD%9C%E6%88%BF%E5%B8%82%E8%A7%80%E9%BB%9E-011739672.html', 'https://udn.com/news/story/7240/8559373', 'https://www.businesstoday.com.tw/article/category/183015/post/202502200013/', 'https://news.tvbs.com.tw/politics/2783650', 'https://www.ftnn.com.tw/news/390414']</code></pre>
 </div>
 </div>
 </section>
 <section id="即時股價爬取---爬連結內的新聞-2" class="slide level2">
 <h2>即時股價爬取 - 爬連結內的新聞</h2>
 <p>以第一個新聞連結為例，下載html後，重複步驟，取得本文</p>
-<div id="8406d3e2" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href=""></a>res <span class="op">=</span> requests.get(url_list[<span class="dv">1</span>])</span>
-<span id="cb58-2"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb58-3"><a href=""></a>news_full <span class="op">=</span> soup.select(<span class="st">"p"</span>)</span>
-<span id="cb58-4"><a href=""></a>full_text <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb58-5"><a href=""></a><span class="cf">for</span> news_para <span class="kw">in</span> news_full:</span>
-<span id="cb58-6"><a href=""></a>  full_text <span class="op">=</span> full_text <span class="op">+</span> news_para.get_text()</span>
-<span id="cb58-7"><a href=""></a><span class="bu">print</span>(<span class="st">"標題: "</span><span class="op">+</span>title_list[<span class="dv">1</span>] <span class="op">+</span><span class="st">", 內文:"</span> <span class="op">+</span> full_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1d0a7561" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href=""></a>res <span class="op">=</span> requests.get(url_list[<span class="dv">1</span>])</span>
+<span id="cb71-2"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb71-3"><a href=""></a>news_full <span class="op">=</span> soup.select(<span class="st">"p"</span>)</span>
+<span id="cb71-4"><a href=""></a>full_text <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb71-5"><a href=""></a><span class="cf">for</span> news_para <span class="kw">in</span> news_full:</span>
+<span id="cb71-6"><a href=""></a>  full_text <span class="op">=</span> full_text <span class="op">+</span> news_para.get_text()</span>
+<span id="cb71-7"><a href=""></a><span class="bu">print</span>(<span class="st">"標題: "</span><span class="op">+</span>title_list[<span class="dv">1</span>] <span class="op">+</span><span class="st">", 內文:"</span> <span class="op">+</span> full_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>標題: 奇摩股市3 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便宜｜房市觀點, 內文:Yahoo房市觀察員/ Sam（地產秘密客版主）哪一種員工福利最吸引人？前陣子有人力銀行進行網路統計，發現上班族最喜歡的公司福利前五名分別是尾牙年終獎金、薪水高於平均、分紅認股績效獎勵、免費健康檢查以及育兒教育補助。看起來實質上的金錢福利，果然還是上班族的最愛！不過你知道嗎？台灣居然有企業福利為員工蓋房，讓員工可以用甜甜價幸福成家，就連護國神山台積電也沒它貼心，可以說是最讓人羨慕的一款員工福利了！去年最讓我印象深刻的就是一個在龜山A7的預售案，這個建案地主是一間上市電子公司，他們找來建設公司合建，蓋好後電子公司可以分回約四百多戶。公司高層後來決議把分回來的房子部分做員工宿舍，部分用跟市價有落差的甜價賣給員工，不過為了避免員工變身投資客，一買到馬上轉手套利，公司據說有綁定一個「六年不得轉售」的條款。另一個有名的實例則是今年尾牙剛歡慶營收破千億的全球電子零組件大廠群光電子，根據媒體報導，這間電子公司不但給員工的薪資阿莎力，公司大樓內還有五星級健身房、露天游泳池、三溫暖跟烤箱，而且還在新北市三重幫員工蓋了一棟價格優惠的住宅大樓「群光之星」。從實價登錄上的資料來看，「群光之星」135戶的總戶數中，有118筆的特殊交易，應該就是屬於員工的內部購買。價格的部分，最便宜的一筆是2019年成交的48坪房屋加一個坡平車位，換算下來單價30.47萬，總價1602萬！（同時期鄰近預售案相近樓層的成交價是單價42萬元）上面這兩個案例，員工的住宅大樓距離公司大約都是步行４分鐘左右的距離，雖然房價真的跟市價有差，但跟公司近成這樣，不知道算優點嗎？除此之外，整棟樓都同事，用公設大概會有一種在茶水間的錯覺吧！另外，像這種很多公司同事一起進駐的社區也是有一些潛規則，有聽過購買的樓層跟職階有相對關係的，比如說總經理住18樓 ，那董事長就可能是20樓，經理在12樓這樣，樓層要是買錯一不小心「越界」那就尷尬了。無論如何，可以員工價買房終究還是幸福的，真心希望台灣更多像這樣照顧員工的幸福企業～◎本文章內容僅反映作者個人意見，不代表Yahoo奇摩立場。國內最低工資和基本時薪最近連年調漲，不過有人力銀行調查發現，超過6成上班族3年沒調過薪；其中，甚至還有12%的人高達10年都沒被加薪。而勞工評估自我的薪資滿意度，2025年更降到36.4分，創近12年來新低。有螺絲螺帽生產業者透露，自從疫情爆發加上大環境不景氣，訂單銳減收入減少，想為員工加薪是心有餘而力不足，目前薪資已經凍漲4年。鮮奶脆皮甜甜圈店被指控騙薪之外，前員工也指控休假日也宛如奴隸，比如每個月都要到老闆的別墅幫打掃、運動、玩遊戲到深夜。還有人要幫忙裝太陽能板、甚至要求女員工穿短褲去、還要學游泳才能去員工旅遊。老闆則反駁，沒有要求員工一定要穿短褲，至於玩遊戲是尾牙沒有強迫參加。勞動局表示，休假加班打掃需要付加班費，至於要求員工穿短褲，可能涉及性騷。IC設計大廠聯發科將於2月底發放2024年下半年員工分紅，外界估算，此次分紅總金額近110億元，大約是去年8月底發放去年...領完年終再找工作的情況，近年來出現變化。根據人力銀行數據顯示，今年農曆年前一個月找工作人數，比去年同期成長3.1%，大環境缺工下，求職者更勇於在年前轉職，期盼爭取更優渥薪資。不過專家也強調，想轉職獲取高薪，學經歷、專業技能、語言能力和表達力，都相當重要。在 iPhone 以動作按鈕取代傳統的靜音撥桿後，越來越多廠商也開始為單一按鍵賦予更多功能，預載 One UI 7 的 Galaxy S25 系列便是其中之一。開學季想換新筆電卻不知道怎麼選？找高CP值的Acer筆電、桌機或電競筆電推薦，Yahoo的Acer品牌日會是最佳下單日！集結AI PC、電競筆電，甚至還有不到8千元的高性價比文書筆電，讓你省錢升級不是夢。期間限定使用聯名款最高還有6%回饋，加碼送上超贈點讓你買的超划算！[FTNN新聞網]記者莊蕙如／綜合報導台灣高鐵(2633)公布2024年財報，全年營收達531.85億元，較前一年成長6.8%，營業毛利為233.56億元，稅後淨利64.51億元，較20...電電公會理事長李詩欽今 (18) 日指出，美國總統川普上任後，供應鏈因應地緣政治赴美設廠，尤其 AI 成未來趨勢，伺服器領域成市場焦點，他進一步透露，今年 5 月、川普上任約 100 天，將有伺服器大廠宣布至美國德州擴大投資。[FTNN新聞網]記者林廷宇／綜合報導光通訊廠波若威（3163）日前搭上矽光子熱潮股價不斷攀漲，因短線漲多應主管機關要求公布最新財務數字，1月營收僅1.59億元，...安瑞攜樺漢、Google Cloud 合作智能資安防護應用MoneyDJ新聞 2025-02-19 12:45:33 記者 林昕潔 報導俄烏有望和談，預期將帶來戰後重建需求，使塑化族群後市動能備受關注，台塑四寶1月營收雖受到年節長假影響表現降溫，但多數看好2、3月市場氛圍將轉樂觀，營收動能有望往上。 法人表示，中國於元宵後拉升下游加工廠開工率，確實有提振塑化產品需求，但報價方面，目前看來變化不大，主要受供給端產能仍大於需求，目前廠商多數調降開工率、以減產保價，市場仍觀望後續需求提升幅度及力道。 不過，法人分析，目前台塑(1301)、南亞(1303)、台化(1326)股價皆低於淨值，且股價淨值比落在0.5~0.7倍，已是過往歷史最低水位，預期下檔風險有限，但後續仍須觀察油價走勢及塑化產品利差表現。 (圖片來源:資料庫)延伸閱讀：台化看2、3月氛圍漸樂觀；苯/PX利差料回升台塑四寶1月營收 僅台塑化年月雙增 資料來源-MoneyDJ理財網大學開學「燒錢」季來了！您的花費爆表了嗎？學雜費、學習用品、筆電平板一樣都不能少，荷包壓力瞬間飆升。元大金（2885）旗下元大銀行「神救援」在63間大學間7-ELEVEN推出最高20%回饋幫您省更大。透過悠遊付連結繳學雜費也有5%回饋，減輕家長負擔。股東會旺季將至，「徵求股權委託書」的戰火再度升溫！過去市場曾傳出，一張委託書可喊破千元，然而在法規明令禁止「收購」後，市場風向轉變，如今不少徵求者改以發放紀念品等方式進行拉攏，但專家提醒， 簽下委託書之前，務必先搞清楚三大關鍵。[FTNN新聞網]記者洪宗荃／台北報導台股今（20）日以下跌73.11點開低後，指數下滑後走低，目前跌幅持續縮小當中，最低下跌174.26點，來到23203.33點。而近期受...[FTNN新聞網]記者莊蕙如／綜合報導台灣證券交易所表示，自今年1月6日取消創新板「合格投資人限制」以來，市場交易熱度大幅提升。近一個月內，創新板總成交金...董監改選行情發酵中！每年3到4月是改選董監事持股比例和股價的最後防守，「改選行情」也在股市中應運而生。董監改選時常伴隨經營權爭奪的場面，不少投資人會趁此時抓緊題材賺上一筆。不過，市面上可能改選公司高達上百家，眼花好撩亂到底要怎麼選？《Yahoo奇摩財經》請股市名師統一投顧董事長黎方國篩出可成（2474）等15檔潛力股供投資人參考。記憶體大廠華邦電（2344）連6日漲幅高達34%，然而昨（19）日開完法說會，今（20）日盤中股價卻一度重摔7.8％，截止上午10時40分，股價落在18.15元。對此，摩爾投顧分析師鐘崑禎指出，因股價連續性跌深反彈，套牢壓力重，再加上法說會卻沒出現驚喜，短線操作上不建議今日買進。睽違三年，台灣好市多再度調薪！美式賣場好市多近日發出內部通知，台灣區將自4月1日起調薪，助理員最低時薪自新台幣243元調高至253元，月薪可達4萬3769元，其他級數時薪人員平均加薪約4%，其中最高級數服務員時薪來到384元，換算月薪突破6.6萬元。[FTNN新聞網]記者曾奕語／綜合報導有「國民ETF」之稱的國泰永續高股息（00878）今天（20日）除息，開盤微揚0.05元至22.51元開出，盤中一度陷入貼息態勢，約上...[FTNN新聞網]記者蔡昀庭／台北報導財信傳媒董事長謝金河昨（19日）晚在臉書發文，台灣精銳（4583）從他點名後，股價在一年多內從不到200元漲到975元，並且認...抽不到興櫃小巨人印能沒關係！光焱科技（7728）近期辦理初次上櫃公開申購，抽中一張有望賺逾16萬元，報酬率飆破七成，比印能還高。綠能環保族群今（20）日成焦點之一，除上櫃股綠電（8440）直飆漲停，雲豹能源（6869）、森崴能源（6806）分別漲近3%，率領上市櫃31檔綠能個股中有27檔上漲。大華投顧分析師林睿閎表示，綠能環保股今日相對大盤穩健強勢，相對於受關稅陰霾籠罩的大型股，一些內需為主的綠能概念股反而可以趁低布局。美俄元首通話為俄烏停戰帶來轉機，水泥產業有望迎來戰後重建需求，今日（20）盤中相關指數上漲2.4%，領漲指標股台泥（1101）因在土耳其OYAK的轉投資具有地利優勢，一度飆漲3.93%，也引發網友討論「台泥現在買還來得及嗎？」對此，顧德投顧分析師何文高表示，若烏克蘭重建商機的題材未能有效發酵，台泥的股價可能仍將呈現區間震盪。每年春季都有大批旅客前往日本賞櫻，不過，最近日圓強升，今（20）日兌美元升破150大關， 台銀匯價也來到0.22字頭，近4個月新高，拿10萬台幣換，少換2.2萬日圓，等於少吃22碗一蘭拉麵。在AI、HPC新應用推動下，先進封裝商機持續噴發，也為設備廠商創造絕佳機會。其中，先進製程解決方案大廠印能科技(7734)即將掛牌上櫃，這家公司以半導體「封裝製程氣泡解決方案」聞名，他們如何看待後市?未來營運展望又是如何呢?MoneyDJ TV帶您一探究竟。 #印能 #CoWoS #FOPLP #CPO #先進封裝 #半導體設備 #IC封測 #台積電 #翹曲 #除泡機川普(Donald Trump)預告最快4月2日對半導體、汽車、藥品課徵25%以上關稅。學者今天(20日)指出，台灣出口這3類產品皆屬中間財，影響有限，即便是半導體，台積電先進製程仍有議價能力，不過川普尚未使出殺手鐧，未來台積電仍有赴美壓力。另一名學者則說，台積電中長期對美投資比重升高，帶動供應鏈投資移轉，將衝擊台灣民間投資，不利經濟發展。 美國總統川普日前指出，預計對進口汽車、藥品和半導體徵收25％關稅，且稅率還會再增加，最快4月2日上路，他並透露，目前已有晶片與汽車大廠表達要回美投資意願，近幾週將會宣布。 東海大學經濟系兼任教授、亞太商工總會執行長邱達生20日分析，以實際面來說，汽車、半導體、藥品都不適合在美國投資，主要是美國生產成本及工資高昂，又有工會強勢的問題，即便外資礙於關稅壓力宣布赴美，也可能以拖待變，甚至在川普卸任後撤資。 至於對台灣的影響，邱達生認為，台灣出口這三類產品皆為中間財，衝擊並不大。其中，台灣汽車零組件廠商可能會受到客戶要求，分擔部分關稅；半導體方面，台積電先進製程無人能敵，可順利轉嫁關稅，成熟製程業者壓力會比較大。 邱達生指出，川普目前仍未真的對台積電動用殺【時報記者王逸芯台北報導】合勤控（3704）旗下兆勤科技（Zyxel Networks）宣布，蔡明見將於2025年2月起正式接任總經理一職。 自2019年從合勤科技分拆成立以來，兆勤科技專注於中小企業的網路通訊市場，並透過自有品牌Zyxel Networks及其核心的Nebula雲端網路管理平台與資安解決方案，成功在市場中建立了明確的區隔與競爭力。蔡明見先生的上任，將為兆勤科技帶來更多創新思維和市場洞察，進一步加速公司在全球市場的成長。 蔡明見表示：「兆勤科技自成立以來，一直致力於為中小企業提供卓越的網路解決方案。我們透過Nebula雲端管理平台和資安解決方案，成功將自主研發技術推向國際市場，並建立穩固的商業模式。未來，我們將以此為基礎，穩健前行。我深感使命重大，並將全力以赴，帶領兆勤科技持續成長與創新。」 蔡明見在合勤集團擁有19年的服務經歷，曾在多個關鍵策略營運與產品管理單位擔任要職，包括Gateway事業總處、管理中心、全球人資處及營運支援中心。他擁有豐富的品牌經營、市場開拓及客戶體驗經驗，並曾駐歐洲市場多年，成功帶領跨部門及跨文化團隊實現業務目標，這些經驗將為兆勤科技未來的發展【財訊快報／記者劉居全報導】玉山金控(2884)旗下玉山銀行打造永續轉型平台，結合專家團隊提供企業客製化永續金融服務方案，提升永續生態圈韌性，協助企業面對淨零轉型的挑戰。此次攜手宏于電機、金屬中心共同推動重電產業綠色供應鏈，於昨（19）日共同簽署永續合作意向書（MOU）。玉山銀行表示，此次三方合作簽署MOU，玉山將透過永續金融結合金屬中心以大帶小的政府資源，協助宏于電機推動低碳產品及綠色供應鏈、系統化進行範疇三管理、導入輔導資源等項目，與供應商一同朝淨零碳排目標邁進，創造社會共好、企業永續的未來。宏于電機面對全球氣候變遷和碳排減量的挑戰，持續開發低碳產品及創新能源解決方案，總經理詹家榮宣布以「能源轉型，碳排淨零」為行動目標，將自家工廠打造為微電網示範基地，建構智慧微電網，整合創能、儲能、充電樁及能源管理系統，啟動「微電網X能源轉型計畫」，透過創能與儲能技術有效降低能源消耗，實現更高效的能源利用。金屬中心積極推動淨零碳排政策，支持國內產業實現永續發展目標，更運用專業知識與技術，協助大型企業梳理產品全生命週期中的碳排放熱點，並透過帶動供應鏈中的中小型企業同步進行碳排放管理，結合政府政策與企【時報-台北電】南亞科(2408)與華邦電(2344)19日股價表現強勢，成為市場矚目焦點，今早開盤多方續強，南亞科直接跳空站上40元之上，然而大盤表現不佳，投資人不敢任性追價，反而在高檔引爆獲利了結賣壓，南亞科直接翻黑下探到37.6元。華邦電遭外資四賣達7.54萬張，投信、自營商亦站空方，在法人無情砍殺之下，盤中下挫逾半根跌停板，18元不保。相對於昨日煙花四射的表現，今日熱情冷卻，形成兩樣情。 目前台DRAM廠受到利基型DRAM需求尚未明顯回升，短期營運仍面臨壓力，不過，業界傳出記憶體三大原廠三星、SK海力士與美光將陸續停止生產DDR3、DDR4，最快夏季後市場可能出現供應缺口，南亞科、華邦電有機會受惠。由於兩檔個股都在相對便宜水位，資金積極搶短，19日點火一日行情。 南亞科於日前的法說會上提到2025年DRAM供給增加，新增產能持續提高HBM與DDR5占比。而常規DRAM產品的庫存將持續去化。且需求方面，AI伺服器及一般伺服器需求都持續正面成長，而手機業者庫存逐步回到正常水位，上半年有機會改善供需平衡。盤中股價重跌逾3%，但仍高於5日線上。 華邦電展望今年Nor Flash上半年供彩券開獎要等30分 網疑在作弊？ 台彩主持人全說了【財訊快報／記者張家瑋報導】住展雜誌統計排行北台灣2024年十大代銷在住宅產品接案狀況（不含商辦、廠辦建案），依接案量統計依序為海悅(2348)、新聯陽、甲山林、新理想、創意家、新高創、信義(9940)、聯鑫、漢華、甲桂林，接案量介於248至1694億元，總接案量來到6523.3億元，相比2023年增27.2%。住展雜誌發言人陳炳辰指出，2024年上半年房市一片欣欣向榮，推案都走順銷，創造量體，雖然下半年的銀行貸款滿水位危機、央行新一波打炒房政策，逆轉市場信心，但早已承接規劃的新案難以說停就停，持續累積案量，此次奪下冠亞軍的海悅、新聯陽指標案不乏在冷氣團中登場，展現接案實力。2024年十大代銷之首的海悅，總接案量1694億元，10多年以來的統計資料年年居冠，去年接下兩、300億元案量的新北市淡海新市鎮的「新海城」，與中和區捷運宅「大同新紀元」，還有各達百億元量體的「METRO PARK」、「META PARK」，其中「大同新紀元」在房市寒冬中仍傳買氣。居2、3名的新聯陽、甲山林與去年名次相同，新聯陽接案量來到1410.4億元，承接總銷600億元台北市文山區指標大案「元利四季莊園」成為最</code></pre>
+<pre><code>標題: 奇摩股市7 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便宜｜房市觀點, 內文:Yahoo房市觀察員/ Sam（地產秘密客版主）哪一種員工福利最吸引人？前陣子有人力銀行進行網路統計，發現上班族最喜歡的公司福利前五名分別是尾牙年終獎金、薪水高於平均、分紅認股績效獎勵、免費健康檢查以及育兒教育補助。看起來實質上的金錢福利，果然還是上班族的最愛！不過你知道嗎？台灣居然有企業福利為員工蓋房，讓員工可以用甜甜價幸福成家，就連護國神山台積電也沒它貼心，可以說是最讓人羨慕的一款員工福利了！去年最讓我印象深刻的就是一個在龜山A7的預售案，這個建案地主是一間上市電子公司，他們找來建設公司合建，蓋好後電子公司可以分回約四百多戶。公司高層後來決議把分回來的房子部分做員工宿舍，部分用跟市價有落差的甜價賣給員工，不過為了避免員工變身投資客，一買到馬上轉手套利，公司據說有綁定一個「六年不得轉售」的條款。另一個有名的實例則是今年尾牙剛歡慶營收破千億的全球電子零組件大廠群光電子，根據媒體報導，這間電子公司不但給員工的薪資阿莎力，公司大樓內還有五星級健身房、露天游泳池、三溫暖跟烤箱，而且還在新北市三重幫員工蓋了一棟價格優惠的住宅大樓「群光之星」。從實價登錄上的資料來看，「群光之星」135戶的總戶數中，有118筆的特殊交易，應該就是屬於員工的內部購買。價格的部分，最便宜的一筆是2019年成交的48坪房屋加一個坡平車位，換算下來單價30.47萬，總價1602萬！（同時期鄰近預售案相近樓層的成交價是單價42萬元）上面這兩個案例，員工的住宅大樓距離公司大約都是步行４分鐘左右的距離，雖然房價真的跟市價有差，但跟公司近成這樣，不知道算優點嗎？除此之外，整棟樓都同事，用公設大概會有一種在茶水間的錯覺吧！另外，像這種很多公司同事一起進駐的社區也是有一些潛規則，有聽過購買的樓層跟職階有相對關係的，比如說總經理住18樓 ，那董事長就可能是20樓，經理在12樓這樣，樓層要是買錯一不小心「越界」那就尷尬了。無論如何，可以員工價買房終究還是幸福的，真心希望台灣更多像這樣照顧員工的幸福企業～◎本文章內容僅反映作者個人意見，不代表Yahoo奇摩立場。國內最低工資和基本時薪最近連年調漲，不過有人力銀行調查發現，超過6成上班族3年沒調過薪；其中，甚至還有12%的人高達10年都沒被加薪。而勞工評估自我的薪資滿意度，2025年更降到36.4分，創近12年來新低。有螺絲螺帽生產業者透露，自從疫情爆發加上大環境不景氣，訂單銳減收入減少，想為員工加薪是心有餘而力不足，目前薪資已經凍漲4年。鮮奶脆皮甜甜圈店被指控騙薪之外，前員工也指控休假日也宛如奴隸，比如每個月都要到老闆的別墅幫打掃、運動、玩遊戲到深夜。還有人要幫忙裝太陽能板、甚至要求女員工穿短褲去、還要學游泳才能去員工旅遊。老闆則反駁，沒有要求員工一定要穿短褲，至於玩遊戲是尾牙沒有強迫參加。勞動局表示，休假加班打掃需要付加班費，至於要求員工穿短褲，可能涉及性騷。IC設計大廠聯發科將於2月底發放2024年下半年員工分紅，外界估算，此次分紅總金額近110億元，大約是去年8月底發放去年...領完年終再找工作的情況，近年來出現變化。根據人力銀行數據顯示，今年農曆年前一個月找工作人數，比去年同期成長3.1%，大環境缺工下，求職者更勇於在年前轉職，期盼爭取更優渥薪資。不過專家也強調，想轉職獲取高薪，學經歷、專業技能、語言能力和表達力，都相當重要。在 iPhone 以動作按鈕取代傳統的靜音撥桿後，越來越多廠商也開始為單一按鍵賦予更多功能，預載 One UI 7 的 Galaxy S25 系列便是其中之一。開學季想換新筆電卻不知道怎麼選？找高CP值的Acer筆電、桌機或電競筆電推薦，Yahoo的Acer品牌日會是最佳下單日！集結AI PC、電競筆電，甚至還有不到8千元的高性價比文書筆電，讓你省錢升級不是夢。期間限定使用聯名款最高還有6%回饋，加碼送上超贈點讓你買的超划算！新青安政策原意為協助年輕人一圓購屋夢，不料卻出現政策漏洞。根據最新統計，八大公股行庫近半年來，已追回上千戶違規案件的利息補貼。財政部已要求各大行庫加強審查，以確保新青安政策的資源能被妥善利用。[FTNN新聞網]記者蔡昀庭／台北報導台股今（18）日終場上漲160.78點、漲幅0.68%，收在23,666.11點，成交金額為3307.85億元。據證交所統計，今日三大法人買進13...[FTNN新聞網]記者陳弘志／台北報導數位存款市場似乎漸趨飽和。金管會今（18）日表示，截至2024年12月底止，有36家本國銀行開辦線上申請數位存款開戶業務，開...橋水基金創始人達利歐發出嚴重警告，他認為美國國債已超過 36 兆美元，並且還在持續增加，這如同在動脈壁上堆積的斑塊，正侵蝕美國的金融體系。 達利歐表示，除非川普政府能夠說服債券投資人接受與財政可持續性相符的較低投資回報率，否則若政府繼續肆意揮霍而不採取解決措施，「經濟心臟病發作[FTNN新聞網]記者李惠婷／台北報導台股今（20）日下挫116.62點、0.49%收23,487.46點，成交金額3,815.48億元。季配息ETF國泰永續高股息（00878）今日進行除息...蘋果「iPhone 16e」，也就是外界所認為的iPhone SE 4在眾人期盼下亮相，明（21）日開放預購，不過，容量128G要2.19萬元，不少網友覺得很貴，其實，在其他國家買還可以更便宜，《Yahoo奇摩財經》一次統整亞洲及美國五大國家的官網價格，並以目前台銀匯價換算，在美國、中國大陸買最滑算，不到2萬元。遠傳（4904）今（20）日召開2024年第四季法說會。受惠於遠亞合併綜效、用戶持續升級5G、新經濟業務挹注，加上電信本業與新經濟獲利能力提升，遠傳2024年第四季及全年的合併總營收、合併EBITDA均站上歷史新高。2024年全年稅後淨利創下近18年來新高，EPS 3.56元創下近11年來新高，遠傳董事會於今日決議通過2024年度盈餘分配案，擬配發現金股利每股3.56元，創下近6年來新高，發放率達100%。【財訊快報／記者王宜弘報導】美系大廠力拱，人形機器人產業趨勢成形，IPC廠新漢(8234)旗下機器人解決方案業者創博(NexCOBOT)佈局即將收割，機器人控制器業務斬獲美國、中國、德國、日本、韓國與台灣客戶訂單，明年進入量產，業績可望起飛。創博總經理沈倩怡指出，創博把自己定位是一家「不做機器人的機器人公司」，提供各種構型的機器人控制器，包括機器人大腦與小腦，助客戶快速建構智能與安全的機器人。創博在機器人領域中涉獵範圍極廣，其控制器客戶涵蓋七軸雙臂的搬運機器人、沖泡咖啡的協作型機器人、資源回收分配機器人、晶圓搬運的AMR機器人、AI瑕疵檢測機器人、點交機器人、自動鎖螺絲機器人，更早在六年前，即與台大合作開發人形機器人。沈倩怡表示，在發展機器人控制器的過程中，功能性安全認證尤為重要，國際功能安規認證ISO 10218-1、-2在歐美日韓等國均已導入，台灣再兩、三年也會強制導入，所有進口或是國產的機器人都要符合此一安規認證，這是人機協作的的開始，預估未來5-8年，協作機器人市場可望大幅成長，具功能安全認證的機器人控制器將有剛性需求。而創博如今已成為國內首家具功能安全認證的機器人控制器業者，【時報-台北電】川普關稅利空持續籠罩台股，法人表示，投資人今年想追求固定領息，與其選擇高股息ETF，可能擔心股息縮水，或擔心股價波動影響獲利，不如懷抱債券ETF改領債息，尤其是3月除息的債券ETF，不乏鎖定具高殖利率、高票息率的BBB級投等債，預估年化配息率至少有逾6％水準，可優先布局。 根據CMoney統計，2月除息債券ETF高達40檔，投資等級債ETF佔29檔為最多，其中，包括元大優息投等債(00968B)、群益ESG投等債20＋(00937B)、兆豐US優選投等債(00957B)等5檔月配息債券ETF，換算年化配息率約有6％以上。 而去年新加入的月配債券ETF新兵：新光BBB投等債20＋ETF(00970B)，也將於3月11日進行首次除息，3月10日為最後買進日，依投信官網2月19日最新公布每單位預估配息金額0.053元，若採2月19收盤價計算，預估當期配息率達0.53％，預估年化配息率更達6.4％。 新光BBB投等債20＋ETF(00970B)經理人詹佳峰指出，2025年川普關稅政風吹草動，對全球股債市波動大增，儘管美債殖利率變化大，債市投資氣氛承壓，唯當市場過度悲觀，反而是投外資連2賣，今（20）日賣超台股167.97億元，外資續砍記憶體股票，昨日賣超第一名為華邦電（2344），今日則是賣超南亞科（2408）1.5萬張，累計2日，共賣2.3萬張，另外元大台灣50（0050）今也被倒貨近萬張。明年台灣將步入超高齡社會，隨著社會高齡化，遺產稅規劃議題越來越受重視。曾有案例一名妻子往生後，先生繼承房產，因為不懂遺產稅規劃，竟需負擔比預期高出「2.6倍」的房地合一稅，原因是因為借款人登記非妻子本人所致。信義房屋代書廖女滿表示，民眾可透過「善用免稅額」與「不計入遺產總額項目」等方式，合法減輕遺產稅負擔，其中基本免稅額達1,333萬元，若為因公殉職的軍公教人員，更可享有2,666萬元的加倍優惠。[FTNN新聞網]記者蔡昀庭／台北報導台股今（20）日終場下跌116.42點、跌幅0.49%，收在23,487.46點，成交金額為3815.48億元。今天共有13檔上市個股漲停。由於AI...【財訊快報／記者戴海茜報導】根據TrendForce最新統計，2024年全球純電動車（BEV）、插電混合式電動車（PHEV）和氫燃料電池車等新能源車合計銷量達1629萬輛，年增25%，中國市場占比擴大至67%，預估2025年全球新能源車銷量將年增18%，中國市場可望持續成長，美國的政策變化可能為銷售增添多項變數。分析2024年BEV銷量排名，Tesla維持第一名，比亞迪以些微差距排第二，上汽通用五菱憑藉銷量年增達44%，重返年度第3名位置。第4、5名的Volkswagen和廣汽埃安年銷量皆呈負成長，第7、8名的極氪和零跑則因年銷量增加近一倍，首度進入年度十大銷售排行，至於Hyundai名次下滑至第9名，其2024年銷量衰退21%，在美國、韓國、歐洲等主要市場都表現不佳。PHEV部分，第一名的比亞迪品牌市占率約38%，若加計集團內其他品牌則超過40%。第2至4名分別為理想、傲圖和長安（含啟源），其中，傲圖因問界M9帶動其總銷量大幅提升，進入年度市占前十大榜單。BMW的PHEV銷量較去年小幅下降3%，位居第7名，其BEV和PHEV的銷量差距持續擴大。吉利集團的自主品牌領克和吉利銀河也是新上【時報記者任珮云台北報導】當前全球市場仍有很多不明朗因素，但股市表現卻呈現「驚驚漲」，瑞銀財富管理投資總監辦公室(CIO)表示，在投資組合中，繼續看好全球股票，並認為美國和亞洲市場「具吸引力」，至於歐元區則仍存在機會。 當前市場不確確因素包括:歐洲官員對向烏克蘭派遣維和部隊仍存在分歧，受政治因素影響，該地區的增長依然前景未明。美國總統特朗普提議的關稅將對全球產生重大影響，而在防止政府停擺的3月14日限期逐步逼近之際，國會就政府撥款進行的談判陷入僵局。 在美股的預期，瑞銀財富管理投資總監辦公室(CIO)認為，強勁的盈利增長應會支撐美國股市進一步上漲。美國最終可能會針對性而非全面加征關稅，因白宮致力於維持增長和降低通脹。因此，為美國股市的漲勢有望延續，得益於具韌性的經濟、穩健的盈利、人工智能（AI）利好和貨幣政策的寬鬆。迄今為止的第四季度業績表明，企業利潤有望在該季增長約10%，我們預計全年盈利將增長9%。投資者也已經克服了1月份 DeepSeek最初發佈造成的恐慌，大型科技公司對AI的投資承諾和變現趨勢的改善增強了我們對更廣泛AI前景的信心。 其次，亞洲提供諸多增長機會，而中國科技股的表消暑吃冰棒很正常，但被「加料」恐怕笑不出來！有民眾購買基隆百年糕餅店「連珍」的芋頭冰，大口咬下卻驚見蟑螂，令他做嘔表示「快吐了」，影片上網後掀起熱議，對此業者緊急回應，除了致歉也將提出適當補償。[NOWnews今日新聞]歐洲商會與全球知名人才解決方案公司華德士（RobertWalters）今（20）日發布最新的台灣薪資調查，顯示企業因整體經濟環境朝向謹慎、保守，僅有35%的企業對就業市場保持...（中央社記者張璦台北20日電）台積電2奈米預計今年起陸續量產，國科會轄下智庫DSET今天發布報告指出，2025至2027年，在最壞的情境下，台灣夜尖峰備轉容量率可能偶爾略低於6%，顯示先進製程擴廠的用電需求成長，對台電供電能力的衝擊。【財訊快報／編輯部】FOMC會議紀要顯示，大部分票委們支持利率維持現狀，態度中性；而Apple發表平價款iPhone 16e，發布後Apple股價收平，兩事件皆對台指期影響有限。台指期早盤開低走弱，不過早盤急殺後見急彈行情，維持高檔震盪格局。綜觀法人籌碼，三大法人合計賣超238.6億元，其中外資賣超168億元，而自營商賣超6.4億元，投信則賣超64.2億元。檢視選擇權金流，外資布局0億元偏空部位，自營商則布局0.06億元偏空部位。選擇權未平倉部分，2月月選價平近9檔賣權最大未平倉仍為23,300點，買權最大未平倉下降200點至23,800點，最大OI區間下移偏空。期貨方面，外資夜盤加碼1,926口空單，日盤則減碼1,283口空單，未平倉淨空單增至-25,187口；十大特定法人減碼2,322口空單至-1,756口。日 期：2025年02月20日公司名稱：南亞科(2408)主 旨：係因南亞科有價證券於集中交易市場達公布注意交易資訊標準，故公布相關財務業務等重大訊息，以利投資人區別瞭解發言人：李培瑛說 明：1.事實發生日:114/02/202.發生緣由:依臺灣證券交易所股份有限公司通知辦理3.財務業務資訊:(IFRS合併)單位:新台幣佰萬元 最近一月 與去年同期科目 (114年1月自結數) 增減%----------- ----------------- ---------------營業收入 2,162 (29.35%)稅前淨利 (828) (26.49%)歸屬母公司業主淨利 (616) (33.12%)每股盈餘(元) (0.20) (33.33%)單位:新台幣佰萬元 最近一季 與去年同期 最近四季累計(113年第4季自結數) 增減% (113年第1季至科目 113年第4季自結數)----------- ----------------- --------------- ---------------------營業收入 6,575 (24.46%) 34,132稅前淨利 (1,913) 45.8高雄國賓飯店建築物重新評估耐震初評結果出爐！高雄市工務局委託第三方評定機構台灣省結構工程技師公會評估結果指出，建物危險度總評估分數R值為53.08分，大於45分，達危老重建標準。【時報-台北電】經濟部統計處公布，114年1月外銷訂單469.7億美元，比去年同期減少14.5億美元、減幅3%，終止「連十紅」。 統計處表示，雖全球經濟穩步成長，人工智慧、高效能運算及雲端產業等商機持續熱絡，惟受農曆春節落點不同影響，加上部分產品受到海外同業低價競爭，致1月外銷訂單469.7億美元，較上月減11.2%，較上年同月減3.0%。 外銷訂單在去年2月降到谷底，去年3月起年增率轉正，至12月都為正成長，呈現連十紅。今年1月因基期關係轉負，中斷「連十紅」。 按貨品別觀察，由於新興科技應用需求殷切，持續推升電子產品接單成長，年增1.5%；資訊通信產品因春節落點與上年不同，年減13.3%；光學器材因背光模組及光學鏡頭接單減少，惟光學檢測及量測設備接單續增，抵銷部分減幅，年減0.3%。 傳統貨品受農曆春節影響，以及海外同業低價競爭，加上自動化設備及工具機接單減少，致基本金屬、塑橡膠製品、化學品及機械接單減少，分別年減21.7%、20.5%、19.0%、4.7%。 據外銷訂單受查廠商對2月份接單看法，預期2月整體外銷訂單金額將較1月減少。 展望未來，國際政經情勢及地緣政治風險等不確定性因在AI、HPC新應用推動下，先進封裝商機持續噴發，也為設備廠商創造絕佳機會。其中，先進製程解決方案大廠印能科技(7734)即將掛牌上櫃，這家公司以半導體「封裝製程氣泡解決方案」聞名，他們如何看待後市?未來營運展望又是如何呢?MoneyDJ TV帶您一探究竟。 #印能 #CoWoS #FOPLP #CPO #先進封裝 #半導體設備 #IC封測 #台積電 #翹曲 #除泡機【時報記者王逸芯台北報導】AI商機大爆發，市場百花齊放，是方(6561)將AI定位為數位產業的火車頭，並組建新團隊專門與業者洽談合作，提供AI算力服務。總經理劉耀元表示，是方並非單純提供營收產品，而是希望透過不斷努力，幫助這些領域的業者壯大，這是一個「育成」的概念。儘管需要時間發酵，但相信是方有機會抓住先機，從長期來看，為更多客戶提供服務，將進一步貢獻是方整體營運成績。 是方看準AI為數位產業的火車頭，自去年6月LY2資料中心上線以來，持續擴大並累積效應，吸引更多產業資源進駐。新機房匯聚了公有雲業者、AI算力業者、電子商務、金融保險及OTT影音串流等內容服務業者。是方積極引進國際雲端、AI及跨境電商業者，並透過這個完整的生態系統，為客戶提供多元服務。 看準AI商機未來幾年將持續成為產業主流， 是方也組建新團隊與業者洽談合作，提供AI算力服務。劉耀元表示，是方的核心理念是育成，如果將自己視為一家小型企業，或許與大型企業的運作方式有所不同，但是方的企圖心在於整合四方資源，並將這些資源應用於快速發展的AI應用服務領域。是方的目標是透過AI應用的育成來推動這些領域的成長，並幫助業者不斷壯大，且（中央社台北20日電）中國持續收緊對於稀土的管控，繼1月初要求企業新增申報海外的稀土等戰略礦產資源後，昨天再公布調控管理辦法的意見徵求稿，擬對非國有企業稀土開採採取進一步限制，未獲得官方同意的組織和個人不得開採。【時報編譯張朝欽綜合外電報導】香港股市周四全時低走。之前中國新創DeepSeek引發的股市動能，以及習近平在本周稍早接見大陸科技業領袖，其催化效果放緩。 周四香港恆生綜合指數收盤下跌367.26點或1.60%，為22576.98點。國企股(H股)指數跌1.7%，為8323點。科技指數挫3.0%，為5500點。 交易所成交金額為2839億港元。 網路科技股(互聯網股)大幅下挫，騰訊跌2.2%，阿里巴巴跌2.6%，快手跌7.2%，百度跌3.2%。 美團下滑6.4%，稍早該公司在微信公眾帳號說，預計今年第二季開始，為全職和穩定兼職的騎手送貨員繳納社會保險。 小米小跌0.6%。 半導體股明顯滑落，中芯國際跌3.0%，華虹半導體跌3.7%。 大陸收緊稀土開發，稀土公司上漲，中國稀土升5.1%，金力永磁漲1.5%。 美元指數下跌，金價衝新高，黃金股上漲，靈寶黃金升6.4%，招金礦業漲3.9%，山東黃金也升2.6%。黃金價格去年上漲了27%，今年迄今已上漲12%。</code></pre>
 </div>
 </div>
 </section>
 <section id="即時股價爬取---爬連結內的新聞-3" class="slide level2">
 <h2>即時股價爬取 - 爬連結內的新聞</h2>
 <p>用<code>for</code>迴圈一次做完所有連結，並轉成pandas data frame</p>
-<div id="0a3bcf4d" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href=""></a>newdf <span class="op">=</span> []</span>
-<span id="cb60-2"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
-<span id="cb60-3"><a href=""></a>  title <span class="op">=</span> title_click.get_text()</span>
-<span id="cb60-4"><a href=""></a>  url <span class="op">=</span> title_click.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>)</span>
-<span id="cb60-5"><a href=""></a>  res <span class="op">=</span> requests.get(url)</span>
-<span id="cb60-6"><a href=""></a>  soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb60-7"><a href=""></a>  news_full <span class="op">=</span> soup.select(<span class="st">"p"</span>)</span>
-<span id="cb60-8"><a href=""></a>  full_text <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb60-9"><a href=""></a>  <span class="cf">for</span> news_para <span class="kw">in</span> news_full:</span>
-<span id="cb60-10"><a href=""></a>    full_text <span class="op">=</span> full_text <span class="op">+</span> news_para.get_text()</span>
-<span id="cb60-11"><a href=""></a>  add_news <span class="op">=</span> pd.DataFrame({<span class="st">"title"</span>:[title],<span class="st">"content"</span>:[full_text]})</span>
-<span id="cb60-12"><a href=""></a>  newdf.append(add_news)</span>
-<span id="cb60-13"><a href=""></a></span>
-<span id="cb60-14"><a href=""></a>newdf_pd<span class="op">=</span>pd.concat(newdf)</span>
-<span id="cb60-15"><a href=""></a>newdf_pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
+<div id="a0e6d1ab" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href=""></a>newdf <span class="op">=</span> []</span>
+<span id="cb73-2"><a href=""></a><span class="cf">for</span> title_click <span class="kw">in</span> news:</span>
+<span id="cb73-3"><a href=""></a>  title <span class="op">=</span> title_click.get_text()</span>
+<span id="cb73-4"><a href=""></a>  url <span class="op">=</span> title_click.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>)</span>
+<span id="cb73-5"><a href=""></a>  res <span class="op">=</span> requests.get(url)</span>
+<span id="cb73-6"><a href=""></a>  soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb73-7"><a href=""></a>  news_full <span class="op">=</span> soup.select(<span class="st">"p"</span>)</span>
+<span id="cb73-8"><a href=""></a>  full_text <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb73-9"><a href=""></a>  <span class="cf">for</span> news_para <span class="kw">in</span> news_full:</span>
+<span id="cb73-10"><a href=""></a>    full_text <span class="op">=</span> full_text <span class="op">+</span> news_para.get_text()</span>
+<span id="cb73-11"><a href=""></a>  add_news <span class="op">=</span> pd.DataFrame({<span class="st">"title"</span>:[title],<span class="st">"content"</span>:[full_text]})</span>
+<span id="cb73-12"><a href=""></a>  newdf.append(add_news)</span>
+<span id="cb73-13"><a href=""></a></span>
+<span id="cb73-14"><a href=""></a>newdf_pd<span class="op">=</span>pd.concat(newdf)</span>
+<span id="cb73-15"><a href=""></a>newdf_pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="94">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2630,28 +3314,28 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">0</td>
-<td>奇摩股市3 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便...</td>
+<td>奇摩股市7 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便...</td>
 <td>Yahoo房市觀察員/ Sam（地產秘密客版主）哪一種員工福利最吸引人？前陣子有人力銀行進行...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>聯合新聞網6 小時前台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮</td>
+<td>聯合新聞網10 小時前台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮</td>
 <td>外傳台積電（2330）和博通可能各自收購英特爾的晶圓代工與晶片設計部門，巴隆周刊（Barro...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">0</td>
-<td>MoneyDJ1 天前外媒：台積是憑企業文化拿下領先 難跟Intel兼容-新聞內容-基金</td>
-<td>MoneyDJ新聞 2025-02-19 11:38:22 記者 郭妍希 報導\r\n市場最...</td>
+<td>今周刊5 小時前從商業模式、政府出資到合作夥伴，處處以台積電為師，連英文簡稱都差一個字，張幼...</td>
+<td>林宏文科技公司提供2025-02-20 11:21農曆年後，與台灣生物醫藥製造公司（TBMC...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>今周刊1 天前大成鋼漲不停、台塑谷底翻身，都因「美國製造」…台積電、環球晶超前佈署，這2家準...</td>
-<td>龔招健台股達志勿轉1470期2025-02-19 09:28儘管美國製造成本較高，但美國是台...</td>
+<td>TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關</td>
+<td>點擊關閉或任一空白處，繼續閱讀新聞。追蹤我們掌握最新動態人氣點閱榜今日頭條才哽咽喊「拜託相信...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">0</td>
-<td>TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關</td>
-<td>點擊關閉或任一空白處，繼續閱讀新聞。追蹤我們掌握最新動態人氣點閱榜今日頭條TVBS民調／近半...</td>
+<td>FTNN 新聞網2 天前被倒1萬張照鎖？「它」今年股價飆漲46％…成交額飆93億 網驚：衝破...</td>
+<td>發布時間：2025/2/18 15:30記者蔡昀庭／台北報導台股今（18）日終場上漲160....</td>
 </tr>
 </tbody>
 </table>
@@ -2662,8 +3346,8 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 </section>
 <section id="即時股價爬取---爬連結內的新聞-4" class="slide level2">
 <h2>即時股價爬取 - 爬連結內的新聞</h2>
-<div id="48d70e01" class="cell" data-execution_count="41">
-<div class="cell-output cell-output-display" data-execution_count="79">
+<div id="0e468580" class="cell" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="95">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2695,28 +3379,28 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">0</td>
-<td>奇摩股市3 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便...</td>
+<td>奇摩股市7 小時前企業寵員工無極限！台積電員工福利也比不上它貼心「這間」竟直接蓋房讓員工撿便...</td>
 <td>Yahoo房市觀察員/ Sam（地產秘密客版主）哪一種員工福利最吸引人？前陣子有人力銀行進行...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>聯合新聞網6 小時前台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮</td>
+<td>聯合新聞網10 小時前台積電可能投資英特爾晶圓廠 外媒：台美恐掀政治憂慮</td>
 <td>外傳台積電（2330）和博通可能各自收購英特爾的晶圓代工與晶片設計部門，巴隆周刊（Barro...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">0</td>
-<td>MoneyDJ1 天前外媒：台積是憑企業文化拿下領先 難跟Intel兼容-新聞內容-基金</td>
-<td>MoneyDJ新聞 2025-02-19 11:38:22 記者 郭妍希 報導\r\n市場最...</td>
+<td>今周刊5 小時前從商業模式、政府出資到合作夥伴，處處以台積電為師，連英文簡稱都差一個字，張幼...</td>
+<td>林宏文科技公司提供2025-02-20 11:21農曆年後，與台灣生物醫藥製造公司（TBMC...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>今周刊1 天前大成鋼漲不停、台塑谷底翻身，都因「美國製造」…台積電、環球晶超前佈署，這2家準...</td>
-<td>龔招健台股達志勿轉1470期2025-02-19 09:28儘管美國製造成本較高，但美國是台...</td>
+<td>TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關</td>
+<td>點擊關閉或任一空白處，繼續閱讀新聞。追蹤我們掌握最新動態人氣點閱榜今日頭條才哽咽喊「拜託相信...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">0</td>
-<td>TVBS新聞網1 天前【川普施壓台積電3】補貼政策恐生變 台積電在美擴大投資還有3大難關</td>
-<td>點擊關閉或任一空白處，繼續閱讀新聞。追蹤我們掌握最新動態人氣點閱榜今日頭條TVBS民調／近半...</td>
+<td>FTNN 新聞網2 天前被倒1萬張照鎖？「它」今年股價飆漲46％…成交額飆93億 網驚：衝破...</td>
+<td>發布時間：2025/2/18 15:30記者蔡昀庭／台北報導台股今（18）日終場上漲160....</td>
 </tr>
 </tbody>
 </table>
@@ -2770,7 +3454,7 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 <li>取出需要的資料 <code>get_text()</code>, <code>get(屬性名稱)</code></li>
 </ul>
 </section>
-<section id="data-input-and-output-5" class="slide level2">
+<section id="data-input-and-output-6" class="slide level2">
 <h2>Data input and output</h2>
 <ul>
 <li>Data input
@@ -2778,6 +3462,7 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 <li>From file</li>
 <li>From google drive</li>
 <li>From API</li>
+<li>From database</li>
 <li>Webscrapping</li>
 </ul></li>
 <li><strong>Data output</strong></li>
@@ -2803,14 +3488,14 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 <li>使用<code>檔案.writelines(資料)</code>寫入內容</li>
 <li><code>檔案.writelines(資料)</code>的資料可以是列表</li>
 </ul>
-<div id="f3d1bf9f" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href=""></a>path <span class="op">=</span> <span class="st">'output_writeline.txt'</span></span>
-<span id="cb61-2"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(path, <span class="st">'w'</span>)</span>
-<span id="cb61-3"><a href=""></a>lines1 <span class="op">=</span> [<span class="st">'Hello World'</span>, <span class="st">'123'</span>, <span class="st">'456'</span>, <span class="st">'789'</span>]</span>
-<span id="cb61-4"><a href=""></a>lines2 <span class="op">=</span> [<span class="st">'Hello World</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'123</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'456</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'789</span><span class="ch">\n</span><span class="st">'</span>]</span>
-<span id="cb61-5"><a href=""></a>f.writelines(lines1)</span>
-<span id="cb61-6"><a href=""></a>f.writelines(lines2)</span>
-<span id="cb61-7"><a href=""></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="20aa2f40" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href=""></a>path <span class="op">=</span> <span class="st">'output_writeline.txt'</span></span>
+<span id="cb74-2"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(path, <span class="st">'w'</span>)</span>
+<span id="cb74-3"><a href=""></a>lines1 <span class="op">=</span> [<span class="st">'Hello World'</span>, <span class="st">'123'</span>, <span class="st">'456'</span>, <span class="st">'789'</span>]</span>
+<span id="cb74-4"><a href=""></a>lines2 <span class="op">=</span> [<span class="st">'Hello World</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'123</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'456</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'789</span><span class="ch">\n</span><span class="st">'</span>]</span>
+<span id="cb74-5"><a href=""></a>f.writelines(lines1)</span>
+<span id="cb74-6"><a href=""></a>f.writelines(lines2)</span>
+<span id="cb74-7"><a href=""></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="資料匯出---文字檔-.txt-1" class="slide level2">
@@ -2820,33 +3505,33 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 <li>使用<code>檔案.write(資料)</code>寫入內容</li>
 <li><code>檔案.write(資料)</code>的資料必須是文字</li>
 </ul>
-<div id="acc193d0" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href=""></a>path <span class="op">=</span> <span class="st">'output_write.txt'</span></span>
-<span id="cb62-2"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(path, <span class="st">'w'</span>)</span>
-<span id="cb62-3"><a href=""></a><span class="cf">for</span> t <span class="kw">in</span> lines1:</span>
-<span id="cb62-4"><a href=""></a>  f.write(t)</span>
-<span id="cb62-5"><a href=""></a>  </span>
-<span id="cb62-6"><a href=""></a><span class="cf">for</span> t <span class="kw">in</span> lines2:</span>
-<span id="cb62-7"><a href=""></a>  f.write(t)</span>
-<span id="cb62-8"><a href=""></a></span>
-<span id="cb62-9"><a href=""></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="699991d0" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href=""></a>path <span class="op">=</span> <span class="st">'output_write.txt'</span></span>
+<span id="cb75-2"><a href=""></a>f <span class="op">=</span> <span class="bu">open</span>(path, <span class="st">'w'</span>)</span>
+<span id="cb75-3"><a href=""></a><span class="cf">for</span> t <span class="kw">in</span> lines1:</span>
+<span id="cb75-4"><a href=""></a>  f.write(t)</span>
+<span id="cb75-5"><a href=""></a>  </span>
+<span id="cb75-6"><a href=""></a><span class="cf">for</span> t <span class="kw">in</span> lines2:</span>
+<span id="cb75-7"><a href=""></a>  f.write(t)</span>
+<span id="cb75-8"><a href=""></a></span>
+<span id="cb75-9"><a href=""></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="資料匯出---csv檔-.csv" class="slide level2">
 <h2>資料匯出 - CSV檔 .csv</h2>
 <p>使用<code>pandas</code> Data frame物件中的<code>.to_csv(檔名)</code>儲存檔案。</p>
-<div id="35258174" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href=""></a>house.to_csv(<span class="st">"house.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="be0e32f5" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href=""></a>house.to_csv(<span class="st">"house.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="資料匯出---json檔-.json" class="slide level2">
 <h2>資料匯出 - json檔 .json</h2>
 <p>使用<code>pandas</code> Data frame物件中的<code>.to_json(檔名)</code>儲存檔案。</p>
 <p>DataFrame中一定要有index</p>
-<div id="9fc074aa" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href=""></a>house.to_json(<span class="st">"house.json"</span>)</span>
-<span id="cb64-2"><a href=""></a>house</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="83">
+<div id="d492e72c" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href=""></a>house.to_json(<span class="st">"house.json"</span>)</span>
+<span id="cb77-2"><a href=""></a>house</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="99">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -3173,23 +3858,23 @@ https://news.tvbs.com.tw/politics/2783650</code></pre>
 </section>
 <section id="hands-on-資料匯出-1" class="slide level2">
 <h2>Hands-on 資料匯出</h2>
-<div id="5956a713" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href=""></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
-<span id="cb65-2"><a href=""></a><span class="im">import</span> requests</span>
-<span id="cb65-3"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb65-4"><a href=""></a><span class="co"># step 1 download url</span></span>
-<span id="cb65-5"><a href=""></a>res <span class="op">=</span> requests.get(<span class="st">"https://www.ptt.cc/bbs/Tech_Job/index.html"</span>)</span>
-<span id="cb65-6"><a href=""></a><span class="co"># step 2 parse html</span></span>
-<span id="cb65-7"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb65-8"><a href=""></a><span class="co"># step 3 select tags/css</span></span>
-<span id="cb65-9"><a href=""></a>title_tags <span class="op">=</span> soup.select(<span class="st">".title a"</span>)</span>
-<span id="cb65-10"><a href=""></a><span class="bu">print</span>(title_tags)</span>
-<span id="cb65-11"><a href=""></a><span class="co"># step 4 get the data</span></span>
-<span id="cb65-12"><a href=""></a>title_list<span class="op">=</span>[] </span>
-<span id="cb65-13"><a href=""></a><span class="cf">for</span> title <span class="kw">in</span> title_tags:</span>
-<span id="cb65-14"><a href=""></a>  title_list.append(title.get_text())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="25957973" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href=""></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb78-2"><a href=""></a><span class="im">import</span> requests</span>
+<span id="cb78-3"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb78-4"><a href=""></a><span class="co"># step 1 download url</span></span>
+<span id="cb78-5"><a href=""></a>res <span class="op">=</span> requests.get(<span class="st">"https://www.ptt.cc/bbs/Tech_Job/index.html"</span>)</span>
+<span id="cb78-6"><a href=""></a><span class="co"># step 2 parse html</span></span>
+<span id="cb78-7"><a href=""></a>soup <span class="op">=</span> BeautifulSoup(res.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb78-8"><a href=""></a><span class="co"># step 3 select tags/css</span></span>
+<span id="cb78-9"><a href=""></a>title_tags <span class="op">=</span> soup.select(<span class="st">".title a"</span>)</span>
+<span id="cb78-10"><a href=""></a><span class="bu">print</span>(title_tags)</span>
+<span id="cb78-11"><a href=""></a><span class="co"># step 4 get the data</span></span>
+<span id="cb78-12"><a href=""></a>title_list<span class="op">=</span>[] </span>
+<span id="cb78-13"><a href=""></a><span class="cf">for</span> title <span class="kw">in</span> title_tags:</span>
+<span id="cb78-14"><a href=""></a>  title_list.append(title.get_text())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[&lt;a href="/bbs/Tech_Job/M.1740002631.A.06C.html"&gt;Re: Wed Feb 19 02:15:01 2025&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740005514.A.E98.html"&gt;Re: [新聞] 台積電美國廠3挑戰曝光　魏哲家坦言「我&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740011374.A.9C5.html"&gt;[討論] 智易智邦年薪&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740012359.A.15B.html"&gt;[新聞] 聯發科分紅 每人估領91萬 員工加薪同步&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740017723.A.3A1.html"&gt;[新聞] 黃仁勳曾請攝影師，對某失職主管「臉部特&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740018719.A.CB2.html"&gt;[請益] 台塑警衛好嗎？&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740023613.A.9DD.html"&gt;[討論] 養1個全職竹科太太+2孩 年收入要多少 &lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1393646135.A.A28.html"&gt;[公告] Tech_Job板板規 2022.05.26更新&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1410062073.A.1B6.html"&gt;[公告] 置底 檢舉/推薦 文章&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1425268790.A.15E.html"&gt;[公告] 如何消除退文 轉自Ask板&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1585618843.A.D43.html"&gt;[情報] 薪資查詢平台&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1653574616.A.A15.html"&gt;[公告] 板規十五 offer請益文 m文解除申請&lt;/a&gt;]</code></pre>
+<pre><code>[&lt;a href="/bbs/Tech_Job/M.1740002631.A.06C.html"&gt;Re: Wed Feb 19 02:15:01 2025&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740005514.A.E98.html"&gt;Re: [新聞] 台積電美國廠3挑戰曝光　魏哲家坦言「我&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740011374.A.9C5.html"&gt;[討論] 智易智邦年薪&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740012359.A.15B.html"&gt;[新聞] 聯發科分紅 每人估領91萬 員工加薪同步&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740017723.A.3A1.html"&gt;[新聞] 黃仁勳曾請攝影師，對某失職主管「臉部特&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740018719.A.CB2.html"&gt;[請益] 台塑警衛好嗎？&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740023613.A.9DD.html"&gt;[討論] 養1個全職竹科太太+2孩 年收入要多少 &lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740027263.A.D17.html"&gt;[新聞] 聯發科分紅縮水　7年工程師「只領4.7個月&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740031593.A.787.html"&gt;Re: [討論] 養1個全職竹科太太+2孩 年收入要多少 &lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1740034216.A.F22.html"&gt;[面試] 幾間面試請益&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1393646135.A.A28.html"&gt;[公告] Tech_Job板板規 2022.05.26更新&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1410062073.A.1B6.html"&gt;[公告] 置底 檢舉/推薦 文章&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1425268790.A.15E.html"&gt;[公告] 如何消除退文 轉自Ask板&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1585618843.A.D43.html"&gt;[情報] 薪資查詢平台&lt;/a&gt;, &lt;a href="/bbs/Tech_Job/M.1653574616.A.A15.html"&gt;[公告] 板規十五 offer請益文 m文解除申請&lt;/a&gt;]</code></pre>
 </div>
 </div>
 </section>
