@@ -661,144 +661,16 @@ np.random.normal(0,1,(2,3))
 ```
 :::
 :::::
-## numpy array - 取值
 
--   使用`[`index`]`取值
--   可用slice功能(`start`,`stop`,`step`)
-    -   `1:`為從1開始到最後，`:2`為從0開始到2（不包括2）
-    -   `::2`每隔一個整數新增一個數字
-    -   `:`全部
--   `-` index為從後方計算回來
--   2D: 一個維度一個`[]`，前row後column
-    -   `array`\[`row`\]\[`column`\]
     
 ## numpy array - 取值
 
-```{python}
-#| echo: true
-print(two_d)
-```
-
-::::: columns
-::: column
-
-```{python}
-#| echo: true
-print(two_d[1:])
-```
-
-```{python}
-#| echo: true
-print(two_d[:2])
-```
-
-```{python}
-#| echo: true
-print(two_d[1][2])
-```
-:::
-
-::: column
-
-```{python}
-#| echo: true
-print(two_d[:])
-```
-
-```{python}
-#| echo: true
-print(two_d[1,:])
-```
-```{python}
-#| echo: true
-print(two_d[:,1])
-```
-
-```{python}
-#| echo: true
-print(two_d[1,-1])
-```
-:::
-:::::
+Will be covered in Ch 5
 
 ## numpy array - 新增修改
 
--   `np.concatenate(`想結合的numpy array list`)`
--   一維矩陣直接往後貼
+Will be covered in Ch 5
 
-```{python}
-#| echo: true
-np1 = np.array([0, 0.5, 1.0, 1.5, 2.0]) 
-np2 = np.array([0, 5, 10, 15, 20]) 
-new_np = np.concatenate([np1, np2])
-print(new_np)
-```
-
-## numpy array - 新增修改 2維
-
-2維矩陣可決定新增方向
-
--   `np.concatenate(`想結合的numpy array list`)` 新增row
--   `np.row_stack([np1,np2])` or `np.vstack()` by row
--   `np.column_stack([np1,np2])` or `np.hstack()` by column
-
-```{python}
-#| echo: true
-np.row_stack([np1,np2])
-```
-
-```{python}
-#| echo: true
-np.column_stack([np1,np2])
-```
-
-## numpy array - split
-
--   `np.split(`np array,[split points]`)` 
--   `np.vsplit(`np array,[split points]`,)` 
--   `np.hsplit(`np array,[split points]`)`  
-
-```{python}
-#| echo: true
-x = [1, 2, 3, 99, 99, 3, 2, 1]
-x1, x2, x3 = np.split(x, [3, 5])
-print(x1, x2, x3)
-```
-
-## numpy array - split
-```{python}
-#| echo: true
-np2d = np.row_stack([np1,np2,np1])
-print(np2d)
-```
-
--   `np.vsplit(`np array,[split points]`)` 
--   `np.hsplit(`np array,[split points]`)`  
-
-```{python}
-#| echo: true
-upper, lower = np.vsplit(np2d, [2])
-print(upper)
-print(lower)
-```
-
-
-## numpy array - split
-```{python}
-#| echo: true
-np2d = np.row_stack([np1,np2,np1])
-print(np2d)
-```
-
--   `np.vsplit(`np array,[split points]`)` 
--   `np.hsplit(`np array,[split points]`)`  
-
-```{python}
-#| echo: true
-left, right = np.hsplit(np2d, [2])
-print(left)
-print(right)
-```
 ## numpy array - 計算功能
 
 `sum()`、`mean()`、`std()`、`cumsum()`、`max()`、`min()`、`count()`
