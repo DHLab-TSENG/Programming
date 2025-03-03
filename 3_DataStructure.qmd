@@ -72,7 +72,7 @@ print(list1)
 
 ## list and for loop
 
-依序將list結構的內容取出，設定為i，並印出來
+依序將list結構的內容取出，設定為x，並印出來
 
 ```{python}
 #| echo: true
@@ -446,7 +446,7 @@ print(dist1)
 
 ## Hands-on
 
--   新增一mapping `c`，內容為
+-   新增一mapping `dist1`，內容為
 
 ```{python}
 #| echo: true
@@ -772,8 +772,7 @@ print(two_d.mean(axis=1))
 
 -   The first student (index) has wrong score, the correct score is 73. Please correct the score
 -   Please compute the average score and determine which students passed (scores above a certain threshold)
--   Split the array, first five scores are from class 1 and the others are from class 2
--   Which class has higher average score?
+
 ```{python}
 #| echo: true
 import numpy as np
@@ -991,11 +990,11 @@ type(dist1)
 ::::: columns
 ::: {.column width="50%"}
 -   序列 (sequence)
-    -   表 (list) `[]`
-    -   定值表 (tuple) `()`
-    -   範圍 (range) `range()`
+    -   表 (list) `[,]`
+    -   定值表 (tuple) `(,)`
+    -   範圍 (range) `range(s,e,i)`
 -   映射 (mapping)
-    -   字典 (dist) `{key:value}`
+    -   字典 (dist) `{key:value,key:value}`
 :::
 
 ::: {.column width="50%"}

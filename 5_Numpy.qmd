@@ -332,6 +332,17 @@ print(left)
 print(right)
 ```
 
+
+## Hands-on
+
+-   Split the array, first five scores are from class 1 and the others are from class 2
+-   Which class has higher average score?
+```{python}
+#| echo: true
+import numpy as np
+scores = np.array([75, 82, 90, 65, 88, 55, 66, 77, 44, 100])
+```
+
 ## NumPy
 
 *   Basic NumPy
