@@ -60,7 +60,7 @@ A collection allows us to put many values in a single “variable”
 
 -   surrounded by square brackets`[ ]`
 -   separated by commas`,`
--   element can be *any* Python object 
+-   element can be *any* Python object
 -   can be empty
 -   可作運算
 
@@ -96,14 +96,17 @@ print('Done!')
 #| echo: true
 print(friends)
 ```
+
 ```{python}
 #| echo: true
 print(friends[0])
 ```
+
 ```{python}
 #| echo: true
 print(friends[1])
 ```
+
 ```{python}
 #| echo: true
 print(friends[2])
@@ -117,19 +120,21 @@ print(friends[2])
 #| echo: true
 print(friends)
 ```
+
 ```{python}
 #| echo: true
 print(friends[1:2])
 ```
+
 ```{python}
 #| echo: true
 print(friends[:2])
 ```
+
 ```{python}
 #| echo: true
 print(friends[:1])
 ```
-
 
 ## 範圍 (range)
 
@@ -142,16 +147,19 @@ print(friends[:1])
 r1 = range(10)
 print(r1)
 ```
+
 ```{python}
 #| echo: true
 r2 = range(10,20)
 print(r2)
 ```
+
 ```{python}
 #| echo: true
 r3 = range(10,20,2)
 print(r3)
 ```
+
 ## 範圍 (range)
 
 ::::: columns
@@ -159,6 +167,7 @@ print(r3)
 ```{python}
 print(r1)
 ```
+
 ```{python}
 #| echo: true
 for i in r1:
@@ -170,6 +179,7 @@ for i in r1:
 ```{python}
 print(r3)
 ```
+
 ```{python}
 #| echo: true
 for i in r3:
@@ -178,7 +188,6 @@ for i in r3:
 :::
 :::::
 
-
 ## list and for loop - range
 
 ```{python}
@@ -186,6 +195,7 @@ for i in r3:
 friends = ['Joseph', 'Glenn', 'Sally']
 print(len(friends))
 ```
+
 ```{python}
 #| echo: true
 print(range(len(friends)))
@@ -200,6 +210,7 @@ for x in friends:
 print('Done!')
 ```
 :::
+
 ::: column
 ```{python}
 #| echo: true
@@ -220,6 +231,7 @@ print('Done!')
 #| echo: true
 print(friends)
 ```
+
 ```{python}
 #| echo: true
 friends[0]='new friend'
@@ -229,7 +241,6 @@ print(friends)
 ## list 新增修改 +
 
 We can create a new list by adding `+` two existing lists together
-
 
 ```{python}
 #| echo: true
@@ -241,6 +252,7 @@ print(friend_cs+friend_md)
 ## list 新增修改 append
 
 We can create an empty list and then add elements using the `append` method
+
 ```{python}
 #| echo: true
 print(friend_cs)
@@ -282,7 +294,7 @@ max(list1)
 -   Like `list`...
 -   surrounded by square brackets`( )`
 -   separated by commas`,`
--   Tuples are “immutable” --> *More Efficient*
+-   Tuples are “immutable” --\> *More Efficient*
     -   No `.append()`, `.sort()`, etc
 
 ```{python}
@@ -343,7 +355,7 @@ dist1 = {"id":1, "name":"Ryan","age":20, "School":"NYCU"}
 print(dist1)
 ```
 
-## mapping 取值 [ ]
+## mapping 取值 \[ \]
 
 -   mapping包含：dist
 -   使用中括號加上key取值`變數名稱[key]`
@@ -352,6 +364,7 @@ print(dist1)
 #| echo: true
 print(dist1)
 ```
+
 ```{python}
 #| echo: true
 print(dist1['age'])
@@ -359,12 +372,13 @@ print(dist1['age'])
 
 ## mapping 取值 .keys()
 
-[key1, key2, ...]
+\[key1, key2, ...\]
 
 ```{python}
 #| echo: true
 print(dist1)
 ```
+
 ```{python}
 #| echo: true
 print(dist1.keys())
@@ -372,12 +386,13 @@ print(dist1.keys())
 
 ## mapping 取值 .values()
 
-[value1, value2, ...]
+\[value1, value2, ...\]
 
 ```{python}
 #| echo: true
 print(dist1)
 ```
+
 ```{python}
 #| echo: true
 print(dist1.values())
@@ -385,12 +400,13 @@ print(dist1.values())
 
 ## mapping 取值 .items()
 
-[(key1, value1), (key2, value2),...]
+\[(key1, value1), (key2, value2),...\]
 
 ```{python}
 #| echo: true
 print(dist1)
 ```
+
 ```{python}
 #| echo: true
 print(dist1.items())
@@ -412,7 +428,7 @@ dist1.update({"age":25, "dept":"CS"})
 print(dist1)
 ```
 
-## mapping 新增修改 [ ]
+## mapping 新增修改 \[ \]
 
 `[ ]`取值後寫回
 
@@ -458,7 +474,6 @@ dist1 = {"id":[1,2,3,4],
 -   取出`id`中的第*3*個值
 -   取出`name`中的第*2*個值的第1個字元（字母）
 
-
 ## mapping + for
 
 -   mapping結構（dist）預設取得部份為key
@@ -472,6 +487,7 @@ print(dist1)
 ::::: columns
 ::: column
 Key
+
 ```{python}
 #| echo: true
 for i in dist1:
@@ -481,6 +497,7 @@ for i in dist1:
 
 ::: column
 Value
+
 ```{python}
 #| echo: true
 for i in dist1.values():
@@ -490,17 +507,22 @@ for i in dist1.values():
 :::::
 
 ## mapping + for - key and value
+
 ```{python}
 #| echo: true
 print(dist1)
 ```
+
 先得到key，再取得value
+
 ```{python}
 #| echo: true
 for key in dist1:
   print(key, dist1[key])
 ```
+
 或是直接使用`.items()`
+
 ```{python}
 #| echo: true
 for key,value in dist1.items():
@@ -533,6 +555,7 @@ for name in ??? : # edit here
 print(counts)
 ```
 :::
+
 ::: column
 ```{python}
 #| echo: true
@@ -617,6 +640,7 @@ print([a,b])
 ```
 
 ## numpy array - 1維
+
 或是用`.arrange(起點,終點[不包含],間隔)`來生成numpy array，如同`range()`的用法
 
 ```{python}
@@ -648,13 +672,16 @@ print(two_d)
 np.full((2, 4), 3.14)
 ```
 :::
+
 ::: column
 -   `np.random.random(dim)`
 -   `np.random.normal(mean,sd,dim)`
+
 ```{python}
 #| echo: true
 np.random.random((2,3))
 ```
+
 ```{python}
 #| echo: true
 np.random.normal(0,1,(2,3))
@@ -662,7 +689,6 @@ np.random.normal(0,1,(2,3))
 :::
 :::::
 
-    
 ## numpy array - 取值
 
 Will be covered in Ch 5
@@ -809,12 +835,14 @@ Series, DataFrame, and Index
 -   使用前須載入`pandas` library
 -   one-dimensional array of indexed data
 -   `pd.Series(list)`
+
 ```{python}
 #| echo: true
 import pandas as pd
 data = pd.Series([0.25, 0.5, 0.75, 1.0])
 print(data)
 ```
+
 ```{python}
 #| echo: true
 print(data[1])
@@ -835,6 +863,7 @@ print(data)
 #| echo: true
 print(data['b'])
 ```
+
 ## pandas Series from dictionary
 
 `pd.Series(dictionary)`
@@ -850,7 +879,7 @@ population = pd.Series(population_dict)
 print(population)
 ```
 
-## pandas DataFrame 資料框 
+## pandas DataFrame 資料框
 
 -   a two-dimensional array with both flexible row indices and flexible *column names*
 -   a sequence of aligned Series objects
@@ -863,7 +892,8 @@ df1 = pd.DataFrame({"ID":[1, 2, 3, 4],
 df1
 ```
 
-## pandas DataFrame 資料框 
+## pandas DataFrame 資料框
+
 ```{python}
 #| echo: true
 population_dict = {'California': 38332521,
@@ -1006,8 +1036,6 @@ type(dist1)
 :::
 :::::
 
-
-
 ## References
 
 -   [Python for Everybody](https://www.py4e.com/)
@@ -1015,4 +1043,3 @@ type(dist1)
 -   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 # Questions?
-

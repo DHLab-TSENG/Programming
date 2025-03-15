@@ -44,6 +44,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 -   .csv 逗號分隔格式檔案
 -   .xls Excel格式檔案
+-   .pkl pickle格式檔案 **python常用**
 -   純文字資料
 -   其他格式
 
@@ -102,7 +103,7 @@ house.head()
 ## .xls Excel格式檔案
 
 ```{python}
-house.head()
+print(house.head())
 ```
 
 ## Hands-on - .xls Excel格式檔案
@@ -111,11 +112,28 @@ house.head()
 -   複製`Excel`資料下載網址
 -   用pandas 的 `read_excel()`函數將檔案匯入，記得設定工作表名稱
 -   匯入後印出第三個row
+ 
+## .pkl pickle格式檔案
+
+-   python專用，可儲存 python 的工作階段與變數
+-   常用functions
+    -   `dumps`, `dump`:儲存
+    -   `loads`, `load`:讀取
+-   確保使用信任來源的pickle檔案以避免安全風險
+-   `with ... as ...:`可自動在執行完區塊程式後將檔案關閉
+```{python}
+#| echo: true
+import pickle
+with open("cash_rate.pkl", 'rb') as f: 
+    cash = pickle.load(f) 
+    
+print(type(cash))
+```
 
 ## 純文字資料
 
 -   使用`oepn(檔名)`開啟檔案
-    - 以sequence形式儲存
+    -   以sequence形式儲存
 -   使用`檔案物件.read()`讀取內容。**一次取全部**
 -   讀取完畢後，使用`檔案物件.close()`關閉檔案
 
@@ -154,6 +172,7 @@ f.close()
 ```
 
 ## dist + for + open
+
 ```{python}
 #| echo: true
 name = 'trump.txt'
@@ -241,12 +260,32 @@ pd.read_csv(link+csv_link)
 pd.read_csv(link+csv_link)
 ```
 
+## 從Google drive匯入 - google 試算表
+
+```{python}
+print(pd.read_csv(link+csv_link))
+```
+
 ## Hands-on - google 試算表匯入
 
 -   以[Example Spreadsheet](https://docs.google.com/spreadsheets/d/1wmcc6e8n9bvIQgps6MgFLyLCcq6DWx-3uP2uLIA9rnU)為例
 -   加工連結 (**hint**:前兩頁投影片)
 -   用pandas 的 `pd.read_csv()`函數將檔案匯入
 -   匯入後印出第Home State column
+
+## 從Google drive匯入 - 下載後匯入
+
+使用`gdown`指令，並輸入google drive 檔案ID
+
+https://drive.google.com/uc?id=1ivP1VeeU0QTdN1pJcudEaIgKO33DMDm7
+
+```{python}
+#| echo: true
+#| eval: false
+!gdown '1ivP1VeeU0QTdN1pJcudEaIgKO33DMDm7'
+```
+執行後會儲存在工作路徑中，在用相對應的方法匯入即可
+
 
 ## Data input and output
 
@@ -293,14 +332,11 @@ pd.read_csv(link+csv_link)
 
 ## API - Open Data
 
--   [桃園公共自行車即時服務資料]https://opendata.tycg.gov.tw/datalist/5ca2bfc7-9ace-4719-88ae-4034b9a5a55c)資料
+-   \[桃園公共自行車即時服務資料\]https://opendata.tycg.gov.tw/datalist/5ca2bfc7-9ace-4719-88ae-4034b9a5a55c)資料
 -   每日更新
 -   不可能每日手動下載
 -   提供透過**API**下載的服務
 -   透過API下載的資料格式: **JSON格式**
-
-
-
 
 ## JSON format
 
@@ -433,7 +469,7 @@ File system以SQLite為例，需要先安裝`sqlite3`套件
 
 -   `dbfile` local path for db file or url
 -   `sqlite3.connect(dbfile)` connect to the db file
-    - `dbfile` can be local path or url
+    -   `dbfile` can be local path or url
 -   `conn.execute("SQL")` execute `SQL`
 -   `pd.read_sql_query("SQL")` retrieve data with `SQL` and save as dataframe
 -   `conn.close()` close the connection
@@ -452,7 +488,7 @@ conn.close()
 
 ```{python}
 #| echo: true
-df
+print(df)
 ```
 
 ## Databases access - MySQL (FYR)
@@ -466,6 +502,7 @@ df
 ```
 
 ## Databases access - MySQL (FYR)
+
 ```{python}
 #| echo: true
 #| eval: false
@@ -485,7 +522,7 @@ df = pd.DataFrame(myresult)
 ## DuckDB
 
 -   https://duckdb.org/
--   an open-source column-oriented relational database management system 
+-   an open-source column-oriented relational database management system
 -   Unlike other embedded databases (SQLite) DuckDB is not focusing on transactional (OLTP) applications and instead is specialized for online analytical processing (OLAP) workloads
 -   需要先安裝`pandas`和`duckdb`套件
 
@@ -496,8 +533,9 @@ df = pd.DataFrame(myresult)
 ```
 
 ## DuckDB
+
 -   Load any file with DuckDB
--   Use `.csv` as an example 
+-   Use `.csv` as an example
     -   TSMC stock price
     -   Download from [MarketWatch](https://www.marketwatch.com/investing/stock/2330/download-data?startDate=2/1/2022&endDate=2/18/2025&countryCode=tw)
 -   `file_path` can be `local file path` or `url`
@@ -515,6 +553,7 @@ file_path = "STOCK_TW_XTAI_2330.csv"
 -   `conn.execute(SQL)` execute `SQL`
     -   `CREATE`, `SELECT`, etc
 -   `conn.close()` close the connection
+
 ```{python}
 #| echo: true
 conn = duckdb.connect(database=':memory:')   
@@ -537,7 +576,7 @@ conn.execute(f"""
 #| echo: true
 df_duckdb = conn.execute("SELECT * FROM TSMC_stock").fetchdf()
 conn.close()     
-df_duckdb
+print(df_duckdb)
 ```
 
 ## DuckDB
@@ -563,13 +602,16 @@ conn.close()
 ```
 
 ## DuckDB
+
 ```{python}
 #| echo: true
-df_duckdb   
+print(df_duckdb) 
 ```
 
 ## DuckDB
+
 You can also use `duckdb.query(SQL).to_df()` for data retrieval
+
 ```{python}
 #| echo: true
 Query = '''
@@ -623,6 +665,7 @@ df_duckdb2
 
 -   [Google 財經](ttps://www.google.com/finance/)
 -   [Google 財經 - 台積電](https://www.google.com/finance/quote/2330:TPE?hl=zh-TW)
+
 ```{python}
 #| echo: true
 from bs4 import BeautifulSoup
@@ -631,12 +674,12 @@ StockUrl = "https://www.google.com/finance/quote/2330:TPE?hl=zh-TW"
 res = requests.get(StockUrl)
 soup = BeautifulSoup(res.text, "html.parser")
 ```
+
 ```{python}
 #| echo: true
 price = soup.select(".fxKbKc")
 price[0].get_text()
 ```
-
 
 ## 即時股價爬取 - 下載html
 
@@ -728,7 +771,6 @@ for price in price_detail:
   print(price.get_text())
 ```
 
-
 ## 即時股價爬取 - 搜尋所需節點 -3
 
 範例：class 包含 `z4rs2b`
@@ -741,6 +783,7 @@ soup = BeautifulSoup(res.text, "html.parser")
 news = soup.select(".z4rs2b")
 news
 ```
+
 ## 即時股價爬取 - 取出需要的資料 -3
 
 -   `.get_text()`可抓取節點內文字
@@ -757,8 +800,6 @@ for title_click in news:
   print(title_click.get_text())
 ```
 
-
-
 ## Hands-on 爬蟲練習
 
 -   [Ptt Tech_Job 版](https://www.ptt.cc/bbs/Tech_Job/index.html)
@@ -769,7 +810,6 @@ for title_click in news:
     -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`\
     -   搜尋所需節點 `find(節點)`, `select(css條件)`
     -   取出需要的資料 `get_text()`, `get(屬性名稱)`
-
 
 ## 即時股價爬取 - 取出需要的資料 -4
 
@@ -822,7 +862,6 @@ for news_para in news_full:
   full_text = full_text + news_para.get_text()
 print("標題: "+title_list[1] +", 內文:" + full_text)
 ```
-
 
 ## 即時股價爬取 - 爬連結內的新聞
 
@@ -900,6 +939,7 @@ newdf_pd
 -   文字檔 .txt
 -   CSV檔 .csv
 -   json檔 .json
+-   pickle檔 .pkl 
 
 ## 資料匯出 - 文字檔 .txt
 
@@ -958,6 +998,20 @@ house.to_json("house.json")
 house
 ```
 
+## 資料匯出 - pickle檔 .pkl 
+
+-   python專用，可儲存 python 的工作階段與變數
+-   常用functions
+    -   `dumps`, `dump`:儲存
+    -   `loads`, `load`:讀取
+
+```{python}
+#| echo: true
+with open("house.pkl", "wb") as file:
+    pickle.dump(house, file)
+```
+
+    
 ## Hands-on 資料匯出
 
 -   [Ptt Tech_Job 版](https://www.ptt.cc/bbs/Tech_Job/index.html)
@@ -998,4 +1052,3 @@ for title in title_tags:
 -   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 # Questions?
-

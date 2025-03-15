@@ -300,7 +300,9 @@ print(x1, x2, x3)
 ## Splitting - Example
 ```{python}
 #| echo: true
-np2d = np.row_stack([np1,np2,np1])
+x = np.array([1, 2, 3])
+y = np.array([3, 2, 1])
+np2d = np.row_stack([x,y,x])
 print(np2d)
 ```
 
@@ -318,7 +320,9 @@ print(lower)
 ## Splitting - Example
 ```{python}
 #| echo: true
-np2d = np.row_stack([np1,np2,np1])
+x = np.array([1, 2, 3])
+y = np.array([3, 2, 1])
+np2d = np.row_stack([x,y,x])
 print(np2d)
 ```
 
@@ -495,6 +499,10 @@ print("log(1 + x) =", np.log1p(x))
 *   NumPy has many more ufuncs (hyperbolic trig, bitwise, comparisons, etc.).
 *   `scipy.special` is an excellent source for more specialized mathematical functions.
 *   Examples from `scipy.special`:  `gamma()`, `gammaln()`, `beta()`, `erf()`, `erfc()`, `erfinv()`
+
+```
+!pip3 install scipy
+```
 
 ```{python}
 #| echo: true
@@ -681,6 +689,19 @@ M.max(axis=1)  # Maximum value within each row
 | `np.any`          | N/A              | Evaluate whether any elements are true        |
 | `np.all`          | N/A              | Evaluate whether all elements are true         |
 
+## 前置作業
+
+為了成功從https (加密封包傳輸)下載資料，首先取消證書驗證
+
+```{python}
+#| echo: true
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+```
+
+```         
+!pip3 install seaborn
+```
 
 ## Example: President Heights
 
@@ -691,7 +712,7 @@ M.max(axis=1)  # Maximum value within each row
 #| echo: true
 import numpy as np
 import pandas as pd
-data = pd.read_csv('data/president_heights.csv')
+data = pd.read_csv('https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/refs/heads/master/notebooks/data/president_heights.csv')
 heights = np.array(data['height(cm)'])
 print("Mean height: ", heights.mean())
 print("Standard deviation:", heights.std())
@@ -708,14 +729,14 @@ print("75th percentile: ", np.percentile(heights, 75))
 
 ```{python}
 #| echo: true
-%matplotlib inline
 import matplotlib.pyplot as plt
 import seaborn; seaborn.set()  # set plot style
 
 plt.hist(heights)
 plt.title('Height Distribution of US Presidents')
 plt.xlabel('height (cm)')
-plt.ylabel('number');
+plt.ylabel('number')
+plt.plot()
 ```
 
 ## NumPy
@@ -743,7 +764,7 @@ plt.ylabel('number');
 #| echo: true
 import numpy as np
 a = np.array([1])
-b = np.array()
+b = np.array([2])
 print(a + b)
 ```
 
@@ -953,28 +974,15 @@ plt.show()
 ```{python}
 #| echo: true
 import numpy as np
-x = np.array()
+x = np.array([1, 2, 3, 4, 5])
 
-print(x  3)
-print(x = 3)
+print(x > 3)
+print(x <= 3)
 print(x == 3)
 print(x != 3)
 ```
 
-## Compound Expressions
 
-
-*   Combine comparison operations with logical operators (`&`, `|`, `^`, `~`).
-*   *Important*: Use bitwise operators (`&`, `|`, `^`, `~`) instead of Python's `and`, `or`, `not` for boolean arrays.
-
-```{python}
-#| echo: true
-import numpy as np
-x = np.array()
-
-print((x > 4) & (x  4) and (x  4) and (x  4) & (x  inches
-print(inches.shape)
-```
 
 ## Rainfall Data: Create the Plot
 
@@ -987,7 +995,7 @@ import matplotlib.pyplot as plt
 import seaborn; seaborn.set()  # set plot styles
 
 # Load the data (replace with your actual path)
-rainfall = pd.read_csv('data/Seattle2014.csv')['PRCP'].values
+rainfall = pd.read_csv('https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv')['PRCP'].values
 inches = rainfall / 254  # 1/10mm -> inches
 
 plt.hist(inches, 40);
@@ -1007,13 +1015,13 @@ import pandas as pd
 
 # Load the data (replace with your actual path)
 
-rainfall = pd.read_csv('data/Seattle2014.csv')['PRCP'].values
+rainfall = pd.read_csv('https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv')['PRCP'].values
 inches = rainfall / 254  # 1/10mm -> inches
 
 print("Number days without rain:      ", np.sum(inches == 0))
 print("Number days with rain:         ", np.sum(inches != 0))
-print("Days with more than 0.5 inches  :", np.sum(inches > 0.5))
-print("Rainy days with  0) &
+print("Days with more than 0.5 inches:", np.sum(inches > 0.5))
+print("Rainy days with < 0.2 inches  :", np.sum((inches > 0) &
                                                 (inches < 0.2)))
 ```
 
@@ -1030,6 +1038,7 @@ print("Rainy days with  0) &
 ```{python}
 #| echo: true
 import numpy as np
+rng = np.random.RandomState(0)
 x = rng.randint(10, size=(3, 4))
 print(np.any(x < 5))
 print(np.all(x < 5))
