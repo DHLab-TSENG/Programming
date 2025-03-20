@@ -10,33 +10,36 @@ editor: visual
 
 ## NumPy
 
-*   Basic NumPy
-*   Universal Functions (UFuncs) in NumPy
-*   Aggregates
-*   Broadcasting
+-   Basic NumPy
+-   Universal Functions (UFuncs) in NumPy
+-   Aggregations
+-   Broadcasting
+-   Boolean Arrays and Masks
 
 ## NumPy
 
-*   **Basic NumPy**
-*   Universal Functions (UFuncs) in NumPy
-*   Aggregates
-*   Broadcasting
+-   **Basic NumPy**
+-   Universal Functions (UFuncs) in NumPy
+-   Aggregations
+-   Broadcasting
+-   Boolean Arrays and Masks
 
 # Basic NumPy
 
 ## What is NumPy?
 
 -   **Num**erical **Py**thon
+-   Contain values of a **single type**
 -   the fundamental package for **numerical computation** in Python
 -   high-performance multidimensional array object + tools for working with these arrays
--   foundation of other data science libraries (like Pandas, SciPy, and scikit-learn) 
--   Key feature: **ndarray**, a homogeneous n-dimensional array object.
+-   foundation of other data science libraries (`Pandas`, `SciPy`, and `scikit-learn`)
+-   Key feature: **ndarray** n-dimensional array object
 
 ## Why Use NumPy Arrays?
 
-*   **Efficiency:** more compact than Python lists
-*   **Speed:**  vectorized operations on NumPy arrays are much faster than iterating through Python lists. NumPy uses optimized C code under the hood
-*   **Functionality:** provides a large library of mathematical functions optimized for arrays
+-   **Efficiency:** more compact than Python lists
+-   **Speed:** vectorized operations on NumPy arrays are much faster than iterating through Python `lists` (optimized C)
+-   **Functionality:** provides a large library of mathematical functions
 
 ## NumPy Getting Started
 
@@ -45,7 +48,7 @@ Install
 ```{python}
 #| eval: false
 #| echo: true
-!pip3 install numpy
+!pip3 install numpy # ! for shell script
 ```
 
 Import
@@ -55,23 +58,54 @@ Import
 import numpy as np
 ```
 
+## Create NumPy array (Recap)
+
+Check Ch.3 for more information
+
+::::: columns
+::: column
+-   `np.full(dim, value)`: repeated `value`s
+-   2d dimension: (row, column)
+
+```{python}
+#| echo: true
+np.full((2, 4), 3.14)
+```
+:::
+
+::: column
+-   `np.random.random(dim)`
+-   `np.random.normal(mean,sd,dim)`
+
+```{python}
+#| echo: true
+np.random.random((2,3))
+```
+
+```{python}
+#| echo: true
+np.random.normal(0,1,(2,3))
+```
+:::
+:::::
+
 ## Basic NumPy Array Manipulations
 
-*   `Attributes`: Determining the size, shape, memory consumption, and data types of arrays
-*   `Indexing`: Getting and setting the value of individual array elements
-*   `Slicing`: Getting and setting smaller subarrays within a larger array
-*   `Reshaping`: Changing the shape of a given array
-*   `Joining and splitting`: Combining multiple arrays into one, and splitting one array into many
+-   **Attributes**: Size, shape, memory consumption, and data types of arrays
+-   **Indexing**: Getting and setting the value of individual array elements
+-   **Slicing**: Getting and setting smaller subarrays within a larger array
+-   **Reshaping**: Changing the shape of a given array
+-   **Joining** and **splitting**: Combining multiple arrays into one, and splitting one array into many
 
 ## NumPy Array Attributes
 
-*   Every NumPy array has attributes:
-    *   `ndim`: the number of dimensions
-    *   `shape`: the size of each dimension
-    *   `size`: the total size of the array
-    *   `dtype`: the data type of the array elements
-    *   `itemsize`: the size (in bytes) of each array element
-    *   `nbytes`: the total size (in bytes) of the array
+-   Every NumPy array has attributes:
+    -   `ndim`: the *number* of dimensions
+    -   `shape`: the *size* of each dimension
+    -   `size`: the *total size* of the array
+    -   `dtype`: the *data type* of the array elements
+    -   `itemsize`: the size (in bytes) of each array element
+    -   `nbytes`: the total size (in bytes) of the array
 
 ## NumPy Array Attributes - Examples
 
@@ -96,6 +130,7 @@ print("itemsize:", x1.itemsize, "bytes")
 print("nbytes: ", x1.nbytes, "bytes")
 ```
 :::
+
 ::: column
 ```{python}
 #| echo: true
@@ -115,20 +150,24 @@ print("nbytes: ", x2.nbytes, "bytes")
 -   NumPy arrays contain values of a single type
 -   `dtype`: Assign data type when creating a numpy array
     -   Most of the time, this can be automatically detected
-    -   Available data type [link](https://jakevdp.github.io/PythonDataScienceHandbook/02.01-understanding-data-types.html)
+    -   Available data type: [ref](https://jakevdp.github.io/PythonDataScienceHandbook/02.01-understanding-data-types.html)
 
 ```{python}
 #| echo: true
 np.zeros(10, dtype=np.int16)
 ```
 
-## Array Indexing - Accessing Single Elements
+## Array Indexing - Single Elements
 
-*   Similar to Python lists
-*   In a multi-dimensional array, items can be accessed using a comma-separated tuple of indices
-*   Indexing starts from 0
+-   Similar to **lists**
+-   In a multi-dimensional array, items can be accessed using a comma-separated indices
+-   Indexing starts from 0
 
 ## Array Indexing - Example
+
+-   `x[row, column]`
+-   `-1`: last index
+
 ```{python}
 #| echo: true
 x = np.array([[1,2,3],[4,5,6]])
@@ -141,34 +180,47 @@ print(x)
 #| echo: true
 print(x[0, 0]) 
 ```
+
 ```{python}
 #| echo: true
 print(x[1, 2])  
 ```
 :::
+
 ::: column
 ```{python}
 #| echo: true
 x[0, 0] = 12
 print(x)
 ```
+
+```{python}
+#| echo: true
+x[-1, -1] = 24
+print(x)
+```
 :::
 :::::
 
-## Array Slicing - Accessing Subarrays
+## Array Slicing - Subarrays
 
-*   Use the colon (`:`) operator to slice arrays.
-*   `x[start:stop:step]`
-*   If any of these are unspecified, they default to the values `start=0`, `stop=`*`size of dimension`*, `step=1`.
+-   Colon (`:`) operator: slice arrays
+-   `x[start:stop:step]`
+-   Default:
+    -   `start=0`
+    -   `stop=size of dimension`
+    -   `step=1`
 
-## Array Slicing - Example
+## Array Slicing - Example (1D)
 
 ```{python}
 #| echo: true
 x = np.arange(10)
 x
 ```
+
 `x[start:stop:step]`
+
 ```{python}
 #| echo: true
 print(x[1:5]) # Elements 1 to 4
@@ -177,19 +229,40 @@ print(x[::2]) # Every other element from the beginning
 print(x[5:]) # Elements starting at index 5
 ```
 
-## Array Slicing: Example
+## Array Slicing - Example (2D)
+
 ```{python}
 #| echo: true
-two_d = np.array([np.arange(5),np.arange(5)]) 
+two_d = np.array([np.arange(5),np.arange(5,10)]) 
 print(two_d)
 ```
 
 ::::: columns
 ::: column
+empty slice (`:`)
 
 ```{python}
 #| echo: true
-print(two_d[1:])
+print(two_d[1,:])
+```
+
+```{python}
+#| echo: true
+print(two_d[:,1])
+```
+
+```{python}
+#| echo: true
+print(two_d[1,-1])
+```
+:::
+
+::: column
+can be omitted in row access
+
+```{python}
+#| echo: true
+print(two_d[1])
 ```
 
 ```{python}
@@ -202,50 +275,112 @@ print(two_d[:2])
 print(two_d[1][2])
 ```
 :::
+:::::
+
+## No Copy View
+
+-   In NumPy array, slices will be *View*. in lists, slices will be copies
+-   `.copy()` if you need a copy
+
+::::: columns
+::: column
+```{python}
+#| echo: true
+print(two_d)
+```
+
+```{python}
+#| echo: true
+x2_sub = x2[:2, :2]
+print(x2_sub)
+```
+:::
 
 ::: column
-
 ```{python}
 #| echo: true
-print(two_d[:])
+x2_sub[0, 0] = 99
+print(x2_sub)
 ```
 
 ```{python}
 #| echo: true
-print(two_d[1,:])
-```
-```{python}
-#| echo: true
-print(two_d[:,1])
-```
-
-```{python}
-#| echo: true
-print(two_d[1,-1])
+print(x2)
 ```
 :::
 :::::
+
 ## Reshaping of Arrays
-*   The `reshape()` method gives a new shape to an array without changing its data.
+
+-   `reshape(dim)`: gives a new shape to an array
+-   the size must match
+
 ```{python}
 #| echo: true
 x = np.arange(1, 10)
 x
 ```
+
 ```{python}
 #| echo: true
 grid = x.reshape((3, 3))
 print(grid)
 ```
 
+## Hands-on - Indexing and Slicing - 1
+
+You're working on a project to analyze and manipulate digital images using NumPy. Your task is to perform various operations on image data represented as NumPy arrays.
+
+```{python}
+#| echo: true
+import numpy as np
+import matplotlib.pyplot as plt
+# Create a sample 8x8 grayscale image (0-255 values)
+image = np.array([
+    [50, 50, 50, 50, 200, 200, 200, 200],
+    [50, 50, 50, 50, 200, 200, 200, 200],
+    [50, 90, 90, 50, 200, 200, 200, 200],
+    [50, 90, 90, 50, 200, 200, 200, 200],
+    [50, 50, 50, 50, 200, 200, 200, 200],
+    [50, 50, 50, 50, 200, 200, 200, 200],
+    [50, 50, 50, 50, 50, 50, 50, 50],
+    [50, 50, 50, 50, 50, 50, 50, 50]
+])
+```
+
+## Hands-on - Indexing and Slicing - 2
+
+```{python}
+#| echo: true
+# Function to display the image
+def show_image(img, title="Image"):
+    plt.imshow(img, cmap='gray', vmin=0, vmax=255)
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+show_image(image, "Original Image")
+```
+
+
+## Hands-on - Indexing and Slicing - 3
+
+-   Extract the 4x4 sub-image from the top-left corner.
+-   Extract every other pixel from both dimensions (creating a 4x4 image).
+-   Flatten the image into a 1D array.
+-   Reshape the flattened array back into an 8x8 image.
+
+
 ## Array Concatenation and Splitting
 
-*   `np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing axis.
-*   `np.vstack((array1, array2))`: Vertical stack (row-wise concatenation).
-*   `np.hstack((array1, array2))`: Horizontal stack (column-wise concatenation).
-
+-   `np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing (or first) axis.
+-   `np.vstack([array1, array2])`: Vertical stack (row-wise concatenation).
+-   `np.hstack([array1, array2])`: Horizontal stack (column-wise concatenation).
 
 ## Concatenation - Example
+
+`np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing (or first) axis.
+
 ```{python}
 #| echo: true
 x = np.array([1, 2, 3])
@@ -253,42 +388,59 @@ y = np.array([3, 2, 1])
 z = [99, 99, 99]
 print(np.concatenate([x, y, z]))
 ```
+
 ## Concatenation - Example
+
+`np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing (or first) axis.
+
 ```{python}
 #| echo: true
 grid = np.array([[1, 2, 3],
                  [4, 5, 6]])
-# concatenate along the first axis
 np.concatenate([grid, grid])                 
 ```
+
+Set `axis=1` for the second axis
+
 ```{python}
 #| echo: true
-# concatenate along the second axis (zero-indexed)
 np.concatenate([grid, grid], axis=1)                 
 ```
-## Concatenation - Example
+
+## Concatenation - np.vstack
+
+-   `np.vstack([array1, array2])`: Vertical stack (row-wise concatenation).
+
 ```{python}
 #| echo: true
 x = np.array([1, 2, 3])
 grid = np.array([[9, 8, 7],
                  [6, 5, 4]])
-
-# vertically stack the arrays
 np.vstack([x, grid])           
 ```
+
+## Concatenation - np.hstack
+
+-   `np.hstack([array1, array2])`: Horizontal stack (column-wise concatenation).
+
 ```{python}
 #| echo: true
-# horizontally stack the arrays
 y = np.array([[99],
               [99]])
 np.hstack([grid, y])       
 ```
 
-## Splitting - Example
+## Splitting
 
--   `np.split(`np array,[split points]`)` 
--   `np.vsplit(`np array,[split points]`,)` 
--   `np.hsplit(`np array,[split points]`)`  
+The opposite of concatenation is splitting
+
+-   `np.split(`np array,\[split points\]`)`
+-   `np.vsplit(`np array,\[split points\]`)`
+-   `np.hsplit(`np array,\[split points\]`)`\
+-   split before the split point
+-   N split-points, leads to N + 1 subarrays
+
+## Splitting
 
 ```{python}
 #| echo: true
@@ -297,7 +449,8 @@ x1, x2, x3 = np.split(x, [3, 5])
 print(x1, x2, x3)
 ```
 
-## Splitting - Example
+## Splitting - np.vsplit
+
 ```{python}
 #| echo: true
 x = np.array([1, 2, 3])
@@ -306,8 +459,7 @@ np2d = np.row_stack([x,y,x])
 print(np2d)
 ```
 
--   `np.vsplit(`np array,[split points]`)` 
--   `np.hsplit(`np array,[split points]`)`  
+`np.vsplit(`np array,\[split points\]`)`
 
 ```{python}
 #| echo: true
@@ -316,8 +468,8 @@ print(upper)
 print(lower)
 ```
 
+## Splitting - np.hsplit
 
-## Splitting - Example
 ```{python}
 #| echo: true
 x = np.array([1, 2, 3])
@@ -326,8 +478,7 @@ np2d = np.row_stack([x,y,x])
 print(np2d)
 ```
 
--   `np.vsplit(`np array,[split points]`)` 
--   `np.hsplit(`np array,[split points]`)`  
+`np.hsplit(`np array,\[split points\]`)`
 
 ```{python}
 #| echo: true
@@ -337,37 +488,49 @@ print(right)
 ```
 
 
-## Hands-on
+## Hands-on - Concatenation & Split - 1
 
--   Split the array, first five scores are from class 1 and the others are from class 2
--   Which class has higher average score?
+You're a meteorologist working on analyzing and combining weather data from multiple stations. 
+
 ```{python}
-#| echo: true
+#| echo: true       
 import numpy as np
-scores = np.array([75, 82, 90, 65, 88, 55, 66, 77, 44, 100])
+import matplotlib.pyplot as plt
+# Generate sample weather data for 3 stations over 5 days
+np.random.seed(42)
+station1 = np.random.randint(15, 25, size=(5, 3))  # 5 days, temp/humidity/wind
+station2 = np.random.randint(18, 28, size=(5, 3))
+station3 = np.random.randint(20, 30, size=(5, 3))
+print("Station 1 data:")
+print(station1)
 ```
+
+## Hands-on - Concatenation & Split - 2
+
+-   Combine the data from all three stations vertically (stacking days).
+-   Combine the data from all three stations horizontally (side by side).
+-   Split the vertically stacked data back into three station datasets.
+-   Split the horizontally stacked data into temperature, humidity, and wind speed datasets.
 
 ## NumPy
 
-*   Basic NumPy
-*   **Universal Functions (UFuncs) in NumPy**
-*   Aggregates
-*   Broadcasting
+-   Basic NumPy
+-   **Universal Functions (UFuncs) in NumPy**
+-   Aggregations
+-   Broadcasting
+-   Boolean Arrays and Masks
 
 # Universal Functions (UFuncs) in NumPy
 
 ## Why UFuncs?
 
-*   NumPy excels at fast computation on arrays.
-*   Achieving this speed requires *vectorized* operations.
-*   UFuncs (Universal Functions) are the key to vectorized operations in NumPy.
-*   UFuncs allow you to apply a function element-wise to arrays, often with significant performance gains compared to Python loops.
-
+-   The key to vectorized operations in NumPy.
+-   UFuncs allow you to apply a function element-wise to arrays, often with significant performance gains compared to Python loops.
 
 ## The Slowness of Loops
 
-*   Python's default implementation (CPython) can be slow for repeated small operations.
-*   Dynamic typing and interpreted nature lead to overhead in loops.
+-   Python's default implementation (CPython) can be slow for repeated small operations.
+-   Dynamic typing and interpreted nature lead to overhead in loops.
 
 ```{python}
 #| echo: true
@@ -377,13 +540,13 @@ def compute_reciprocals(values):
         output[i] = 1.0 / values[i]
     return output
 values = np.random.randint(1, 10, size=5)
+print(values)
 print(compute_reciprocals(values))
 ```
 
 ## UFuncs to the Rescue
 
-*   NumPy's UFuncs provide a fast, vectorized alternative to loops.
-*   UFuncs push the loop into NumPy's compiled layer for much faster execution.
+Fast, vectorized alternative to loops
 
 ```{python}
 #| echo: true
@@ -396,12 +559,11 @@ big_array = np.random.randint(1, 100, size=1000000)
 
 ## UFuncs: Two Flavors
 
-*   **Unary UFuncs:** Operate on a single input array.  Examples: `np.abs`, `np.sin`, `np.exp`.
-*   **Binary UFuncs:** Operate on two input arrays. Examples: `np.add`, `np.subtract`, `np.multiply`, `np.divide`, `np.power`.
+-   **Unary UFuncs:** Operate on a single input array. Examples: `np.abs`, `np.sin`, `np.exp`.
+-   **Binary UFuncs:** Operate on two input arrays. Examples: `np.add`, `np.subtract`, `np.multiply`, `np.divide`, `np.power`.
 
 ## Array Arithmetic
 
-*   NumPy's UFuncs leverage Python's native arithmetic operators.
 ```{python}
 #| echo: true
 import numpy as np
@@ -417,90 +579,114 @@ print("x ** 2 =", x ** 2)
 print("x % 2 =", x % 2)
 ```
 
-
 ## UFunc Equivalents
 
-| Operator | Equivalent UFunc | Description                     |
-| :------- | :--------------- | :------------------------------ |
-| `+`      | `np.add`         | Addition                        |
-| `-`      | `np.subtract`    | Subtraction                     |
-| `-`      | `np.negative`    | Unary negation                  |
-| `*`      | `np.multiply`    | Multiplication                  |
-| `/`      | `np.divide`      | Division                        |
-| `//`     | `np.floor_divide` | Floor division                 |
-| `**`     | `np.power`       | Exponentiation                  |
-| `%`      | `np.mod`         | Modulus/remainder               |
+| Operator | Equivalent UFunc  | Description       |
+|:---------|:------------------|:------------------|
+| `+`      | `np.add`          | Addition          |
+| `-`      | `np.subtract`     | Subtraction       |
+| `-`      | `np.negative`     | Unary negation    |
+| `*`      | `np.multiply`     | Multiplication    |
+| `/`      | `np.divide`       | Division          |
+| `//`     | `np.floor_divide` | Floor division    |
+| `**`     | `np.power`        | Exponentiation    |
+| `%`      | `np.mod`          | Modulus/remainder |
 
 ## Absolute Value
-
-*   Python's built-in `abs()` function is also supported by NumPy.
-*   NumPy provides `np.absolute()` (alias `np.abs()`)
-*   Works with complex numbers (returns magnitude).
 
 ```{python}
 #| echo: true
 import numpy as np
 x = np.array([-2, -1, 0, 1, 2])
 print(np.abs(x))
-
-x = np.array([3 - 4j, 4 - 3j, 2 + 0j, 0 + 1j])
-print(np.abs(x))
 ```
 
 ## Trigonometric Functions
 
-*   NumPy offers a comprehensive suite of trigonometric functions:
-    *   `np.sin()`, `np.cos()`, `np.tan()`
-    *   `np.arcsin()`, `np.arccos()`, `np.arctan()`
+-   Trigonometric functions in NumPy:
+    -   `np.sin()`, `np.cos()`, `np.tan()`
+    -   `np.arcsin()`, `np.arccos()`, `np.arctan()`
+
 ```{python}
 #| echo: true
-import numpy as np
-theta = np.linspace(0, np.pi, 3)
-
+# Return evenly spaced numbers over a specified interval
+theta = np.linspace(0, np.pi, 3) #
 print("theta =", theta)
 print("sin(theta) =", np.sin(theta))
 print("cos(theta) =", np.cos(theta))
 print("tan(theta) =", np.tan(theta))
+```
 
+## Trigonometric Functions
+
+**Inverse** trigonometric functions are also available:
+
+```{python}
+#| echo: true
 x = [-1, 0, 1]
 print("arcsin(x) =", np.arcsin(x))
 print("arccos(x) =", np.arccos(x))
 print("arctan(x) =", np.arctan(x))
 ```
-    
-## Exponents and Logarithms
 
-*   Exponentials: `np.exp()`, `np.exp2()`, `np.power()`
-*   Logarithms: `np.log()` (natural log), `np.log2()` (base-2), `np.log10()` (base-10)
-*   Specialized versions for small inputs: `np.expm1()`, `np.log1p()`
+## Exponents
+
+`np.exp()`, `np.exp2()`, `np.power()`
 
 ```{python}
 #| echo: true
-import numpy as np
 x = [1, 2, 3]
 print("x =", x)
 print("e^x =", np.exp(x))
 print("2^x =", np.exp2(x))
 print("3^x =", np.power(3, x))
+```
 
+## Logarithms
+
+`np.log()` (natural log), `np.log2()` (base-2), `np.log10()` (base-10)
+
+```{python}
+#| echo: true
 x = [1, 2, 4, 10]
 print("x =", x)
-print("ln(x) =", np.log(x))
+print("ln(x) =", np.log(x)) #natural logarithm
 print("log2(x) =", np.log2(x))
 print("log10(x) =", np.log10(x))
 
-x = [0, 0.001, 0.01, 0.1]
-print("exp(x) - 1 =", np.expm1(x))
-print("log(1 + x) =", np.log1p(x))
 ```
 
-## Specialized UFuncs
+## Hands-on - UFuncs - 1
 
-*   NumPy has many more ufuncs (hyperbolic trig, bitwise, comparisons, etc.).
-*   `scipy.special` is an excellent source for more specialized mathematical functions.
-*   Examples from `scipy.special`:  `gamma()`, `gammaln()`, `beta()`, `erf()`, `erfc()`, `erfinv()`
-
+You're analyzing sensor data from industrial equipment. The dataset contains temperature (℃), vibration (mm/s²), and pressure (kPa) readings sampled every 5 minutes over 30 days.
+```{python}
+#| echo: true
+# Generate synthetic sensor data (4320 = 30 days * 144 samples/day)
+np.random.seed(42)
+time_points = 4320
+temperature = 25 + 10 * np.sin(2 * np.pi * np.arange(time_points)/144) + np.random.normal(0, 1, time_points)
+vibration = np.abs(2 * np.random.randn(time_points) + np.sin(np.arange(time_points)/100))
+pressure = 100 + 20 * np.cos(2 * np.pi * np.arange(time_points)/288) + np.random.normal(0, 3, time_points)
 ```
+
+## Hands-on - UFuncs - 2
+
+-   Remove negative vibration values using `np.clip`
+-   Find daily temperature amplitude (max - min)
+-   Calculate equipment stress using custom formula: 
+    -   stress = (temp² + vib²) / pressure
+-   Apply log transform to vibration data
+
+
+## Specialized UFuncs (FYR)
+
+-   NumPy has many more ufuncs
+-   `scipy.special` is an excellent source for more specialized mathematical functions.
+-   Examples from `scipy.special`: `gamma()`, `gammaln()`, `beta()`, `erf()`, `erfc()`, `erfinv()`
+
+## Specialized UFuncs (FYR) - Examples
+
+```         
 !pip3 install scipy
 ```
 
@@ -508,57 +694,41 @@ print("log(1 + x) =", np.log1p(x))
 #| echo: true
 from scipy import special
 import numpy as np
-
 # Gamma functions and related functions
 x = [1, 5, 10]
 print("gamma(x) =", special.gamma(x))
 print("ln|gamma(x)| =", special.gammaln(x))
 print("beta(x, 2) =", special.beta(x, 2))
-
-# Error function
-x = np.array([0, 0.3, 0.7, 1.0])
-print("erf(x) =", special.erf(x))
-print("erfc(x) =", special.erfc(x))
-print("erfinv(x) =", special.erfinv(x))
-
 ```
-
-## Advanced UFunc Features
-
-*   (Mention these topics briefly - can expand in presentation if desired)
-*   UFunc output options (e.g., specifying an output array).
-*   Aggregates (e.g., `np.add.reduce()`).
-*   Outer products (e.g., `np.multiply.outer()`).
 
 ## NumPy
 
-*   Basic NumPy
-*   Universal Functions (UFuncs) in NumPy
-*   **Aggregates**
-*   Broadcasting
+-   Basic NumPy
+-   Universal Functions (UFuncs) in NumPy
+-   **Aggregations**
+-   Broadcasting
+-   Boolean Arrays and Masks
 
-# Aggregates
+# Aggregations
 
-# Why Aggregate?
+## Why Aggregations?
 
-*   Often, the first step when facing large datasets is to compute summary statistics.
-*   Aggregates provide a concise way to describe the "typical" values in a dataset.
-*   Examples: mean, standard deviation, sum, product, min, max, median, quantiles.
-*   NumPy has fast, built-in aggregation functions optimized for arrays.
-
+-   Often, the first step when facing large datasets is to compute summary statistics.
+-   Aggregations provide a concise way to describe the "typical" values in a dataset.
+-   **Examples**: mean, standard deviation, sum, product, min, max, median, quantiles.
 
 ## Summing Array Values
 
-*   Python's built-in `sum()` function:
+-   Python's built-in `sum()` function:
 
-
-```python
+``` python
 import numpy as np
 L = np.random.random(100)
 sum(L)
 ```
 
-*   NumPy's `np.sum()` function:
+-   NumPy's `np.sum()` function:
+
 ```{python}
 #| echo: true
 import numpy as np
@@ -568,13 +738,7 @@ np.sum(L)
 
 ## NumPy's `sum()` is Faster
 
-
-# NumPy's `sum()` is Faster!
-
-*   NumPy's `sum()` executes in compiled code, offering significant speed improvements.
-
-
-```{python} 
+```{python}
 #| echo: true
 import numpy as np
 big_array = np.random.rand(1000000)
@@ -582,28 +746,19 @@ big_array = np.random.rand(1000000)
 %timeit np.sum(big_array)
 ```
 
-## Caveat: `sum()` vs. `np.sum()`
-
-
-
-*   `sum()` and `np.sum()` are *not* identical!
-*   Optional arguments have different meanings.
-*   `np.sum()` is aware of multiple array dimensions. Be aware of these differences to avoid confusion.
-
 ## Minimum and Maximum
 
+-   Python's built-in `min()` and `max()` functions
 
-*   Python's built-in `min()` and `max()` functions.
-
-
-```{python} 
+```{python}
 #| echo: true
 import numpy as np
 big_array = np.random.rand(1000000)
 min(big_array), max(big_array)
 ```
 
-*   NumPy's `np.min()` and `np.max()` functions.
+-   NumPy's `np.min()` and `np.max()` functions
+
 ```{python}
 #| echo: true
 import numpy as np
@@ -623,7 +778,7 @@ big_array = np.random.rand(1000000)
 
 ## Shorter Syntax: Array Methods
 
-*   For `min`, `max`, `sum`, etc., use the array object's methods:
+-   For `min`, `max`, `sum`, etc., use the array object's methods:
 
 ```{python}
 #| echo: true
@@ -634,9 +789,7 @@ print(big_array.min(), big_array.max(), big_array.sum())
 
 ## Multi-Dimensional Aggregates
 
-
-*   Aggregate along rows or columns in multi-dimensional arrays using the `axis` argument.
-
+-   Aggregate along rows or columns in multi-dimensional arrays using the `axis` argument.
 
 ```{python}
 #| echo: true
@@ -647,49 +800,50 @@ print(M)
 
 ## `axis` Argument Example (Columns)
 
-
-*   `axis=0`: collapses the *first* axis (columns in a 2D array).
+`axis=0`: collapses the *first* axis
 
 ```{python}
 #| echo: true
 import numpy as np
 M = np.random.random((3, 4))
-M.min(axis=0)  # Minimum value within each column
+print(M)
+# Minimum value within each column
+M.min(axis=0)  
 ```
 
 ## `axis` Argument Example (Rows)
 
-*   `axis=1`: collapses the *second* axis (rows in a 2D array).
-
+`axis=1`: collapses the *second* axis.
 
 ```{python}
 #| echo: true
 import numpy as np
 M = np.random.random((3, 4))
-M.max(axis=1)  # Maximum value within each row
+print(M)
+# Maximum value within each row
+M.max(axis=1)  
 ```
 
-## Other Aggregation Functions
+## Other Aggregation Functions - 1
 
+-   `np.sum` (`np.nansum`): Compute sum of elements
+-   `np.prod` (`np.nanprod`): Compute product of elements
+-   `np.mean` (`np.nanmean`): Compute mean of elements
+-   `np.std` (`np.nanstd`): Compute standard deviation
+-   `np.var` (`np.nanvar`): Compute variance
+-   `np.min` (`np.nanmin`): Find minimum value
+-   `np.max` (`np.nanmax`): Find maximum value
 
+## Other Aggregation Functions - 2
 
-| Function Name   | NaN-safe Version | Description                                     |
-| :---------------- | :--------------- | :---------------------------------------------- |
-| `np.sum`          | `np.nansum`      | Compute sum of elements                       |
-| `np.prod`         | `np.nanprod`     | Compute product of elements                     |
-| `np.mean`         | `np.nanmean`     | Compute mean of elements                      |
-| `np.std`          | `np.nanstd`      | Compute standard deviation                      |
-| `np.var`          | `np.nanvar`      | Compute variance                                |
-| `np.min`          | `np.nanmin`      | Find minimum value                              |
-| `np.max`          | `np.nanmax`      | Find maximum value                              |
-| `np.argmin`       | `np.nanargmin`    | Find index of minimum value                     |
-| `np.argmax`       | `np.nanargmax`    | Find index of maximum value                     |
-| `np.median`       | `np.nanmedian`    | Compute median of elements                      |
-| `np.percentile`    | `np.nanpercentile` | Compute rank-based statistics of elements       |
-| `np.any`          | N/A              | Evaluate whether any elements are true        |
-| `np.all`          | N/A              | Evaluate whether all elements are true         |
+-   `np.argmin` (`np.nanargmin`): index of minimum value
+-   `np.argmax` (`np.nanargmax`): index of maximum value
+-   `np.median` (`np.nanmedian`): median of elements
+-   `np.percentile` (`np.nanpercentile`): rank-based statistics of elements
+-   `np.any`: whether any elements are true
+-   `np.all`: whether all elements are true
 
-## 前置作業
+## Example: 前置作業
 
 為了成功從https (加密封包傳輸)下載資料，首先取消證書驗證
 
@@ -705,8 +859,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 ## Example: President Heights
 
-
-*   Uses a real-world dataset to demonstrate aggregates.
+-   Uses a real-world dataset to demonstrate aggregates.
 
 ```{python}
 #| echo: true
@@ -725,13 +878,10 @@ print("75th percentile: ", np.percentile(heights, 75))
 
 ## Visualizing President Heights
 
-*   Uses Matplotlib to create a histogram.
-
 ```{python}
 #| echo: true
 import matplotlib.pyplot as plt
 import seaborn; seaborn.set()  # set plot style
-
 plt.hist(heights)
 plt.title('Height Distribution of US Presidents')
 plt.xlabel('height (cm)')
@@ -739,52 +889,75 @@ plt.ylabel('number')
 plt.plot()
 ```
 
+## Hands-on - Aggregations - 1
+
+You're a financial analyst tasked with analyzing historical stock data for several tech companies.
+```{python}
+#| echo: true
+np.random.seed(42)
+companies = ['TechCorp', 'DataSys', 'AIGlobal', 'CloudNet', 'CyberSec']
+trading_days = 252
+stock_data = np.random.randint(100, 200, size=(len(companies), trading_days))
+stock_data = stock_data * (1 + np.random.randn(len(companies), trading_days) * 0.01)  # Add some randomness
+print("Stock Data Shape:", stock_data.shape)
+print("First few days of data:\n", stock_data[:, :5])
+```
+## Hands-on - Aggregations - 2
+
+-   Calculate for each company:
+    -   Average stock price
+    -   Highest and lowest stock prices
+    -   Standard deviation of stock prices
+    -   Number of days the stock price increased `np.diff`
+-   Get the day with the highest average stock price across all companies
+-   Get the company with the most volatile stock (highest standard deviation)
+
 ## NumPy
 
-*   Basic NumPy
-*   Universal Functions (UFuncs) in NumPy
-*   Aggregates
-*   **Broadcasting**
+-   Basic NumPy
+-   Universal Functions (UFuncs) in NumPy
+-   Aggregations
+-   **Broadcasting**
+-   Boolean Arrays and Masks
 
 # Broadcasting
 
-## Vectorization and Broadcasting
-
-*   UFuncs vectorize operations to remove slow Python loops.
-*   Broadcasting extends this by enabling UFuncs to operate on arrays of different sizes.
-*   Broadcasting defines how NumPy handles operations on arrays with differing shapes.
-
-
-
 ## Broadcasting: The Basic Idea
 
-*   Binary operations on arrays of the *same* size operate element-wise.
+Enabling UFuncs to **operate on arrays of different sizes**
+
+-   Binary operations on arrays of the *same* size operate element-wise.
 
 ```{python}
 #| echo: true
 import numpy as np
-a = np.array([1])
-b = np.array([2])
+a = np.array([0, 1, 2])
+b = np.array([5, 5, 5])
 print(a + b)
 ```
 
-*   Broadcasting allows operations on arrays of *different* sizes.
+-   Broadcasting allows operations on arrays of *different* sizes.
 
 ```{python}
 #| echo: true
 import numpy as np
-a = np.array([1])
+a = np.array([0, 1, 2])
 print(a + 5)
 ```
 
 ## Broadcasting Analogy
 
+"stretching" or "duplicating" the smaller array to match the shape of the larger array
 
-*   Think of broadcasting as "stretching" or "duplicating" the smaller array to match the shape of the larger array.
-*   *Crucially*, this duplication doesn't actually happen in memory – it's a conceptual model. NumPy optimizes the operation.
+![](https://jakevdp.github.io/PythonDataScienceHandbook/figures/02.05-broadcasting.png)
+
+[Source](https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html)
+
 
 
 ## Broadcasting Example: Higher Dimensions
+
+The 1D array `a` is "broadcast" across the 2nd dimension of `M`
 
 ```{python}
 #| echo: true
@@ -794,11 +967,11 @@ a = np.arange(3)
 print(M + a)
 ```
 
-*   The 1D array `a` is "broadcast" across the 2nd dimension of `M`.
 
 
 ## Broadcasting Example: Both Arrays
 
+Both `a` and `b` are broadcast to a common shape
 
 ```{python}
 #| echo: true
@@ -810,166 +983,150 @@ print(b)
 print(a + b)
 ```
 
-*   Both `a` and `b` are broadcast to a common shape.
-
 
 ## Rules of Broadcasting
 
-*   NumPy uses a strict set of rules to determine how to handle broadcasting.
-
-    *   **Rule 1:** If the two arrays differ in their number of dimensions, the shape of the one with fewer dimensions is *padded* with ones on its leading (left) side.
-    *   **Rule 2:** If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.
-    *   **Rule 3:** If in any dimension the sizes disagree and neither is equal to 1, an error is raised.
-
+-   **Rule 1:** If the two arrays differ in their number of **dimensions**, the shape of the one with fewer dimensions is *padded* with ones on its leading (left) side.
+-   **Rule 2:** If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.
+-   **Rule 3:** If in any dimension the sizes disagree and neither is equal to 1, an error is raised.
 
 ## Broadcasting Example 1
+
+::::: columns
+::: column
 
 ```{python}
 #| echo: true
 import numpy as np
 M = np.ones((2, 3))
 a = np.arange(3)
-```
-
-*   Shapes:
-    *   `M.shape = (2, 3)`
-    *   `a.shape = (3,)`
-
-*   Rule 1: Pad `a` with ones:
-    *   `M.shape -> (2, 3)`
-    *   `a.shape -> (1, 3)`
-*   Rule 2: Stretch the first dimension of `a`:
-    *   `M.shape -> (2, 3)`
-    *   `a.shape -> (2, 3)`
-*   Result:  Shapes match!
-```{python}
-#| echo: true
 print(M + a)
 ```
 
+-   Shapes:
+    -   `M.shape = (2, 3)`
+    -   `a.shape = (3)`
+    
+:::
+::: column
+
+-   Rule 1: Pad `a` with ones:
+    -   `M.shape -> (2, 3)`
+    -   `a.shape -> (1, 3)`
+-   Rule 2: Stretch the first dimension of `a`:
+    -   `M.shape -> (2, 3)`
+    -   `a.shape -> (2, 3)`
+-   Result: Shapes match!
+
+:::
+:::::
+
 ## Broadcasting Example 2
-
-
+::::: columns
+::: column
 ```{python}
 #| echo: true
 import numpy as np
 a = np.arange(3).reshape((3, 1))
 b = np.arange(3)
-```
-
-*   Shapes:
-    *   `a.shape = (3, 1)`
-    *   `b.shape = (3,)`
-
-*   Rule 1: Pad `b` with ones:
-    *   `a.shape -> (3, 1)`
-    *   `b.shape -> (1, 3)`
-*   Rule 2: Stretch both arrays:
-    *   `a.shape -> (3, 3)`
-    *   `b.shape -> (3, 3)`
-
-*   Result: Shapes match!
-
-```{python}
-#| echo: true
 print(a + b)
 ```
 
-## Broadcasting Example 3: Incompatible
+-   Shapes:
+    -   `a.shape = (3, 1)`
+    -   `b.shape = (3)`
+    
+:::
+::: column
 
+-   Rule 1: Pad `b` with ones (left):
+    -   `a.shape -> (3, 1)`
+    -   `b.shape -> (1, 3)`
+-   Rule 2: Stretch both arrays:
+    -   `a.shape -> (3, 3)`
+    -   `b.shape -> (3, 3)`
+-   Result: Shapes match!
+
+:::
+:::::
+
+
+## Broadcasting Example 3: Incompatible
+::::: columns
+::: column
 ```{python}
 #| echo: true
-import numpy as np
 M = np.ones((3, 2))
 a = np.arange(3)
-```
-
-*   Shapes:
-    *   `M.shape = (3, 2)`
-    *   `a.shape = (3,)`
-
-*   Rule 1: Pad `a` with ones:
-    *   `M.shape -> (3, 2)`
-    *   `a.shape -> (1, 3)`
-*   Rule 2: Stretch the first dimension of `a`:
-    *   `M.shape -> (3, 2)`
-    *   `a.shape -> (3, 3)`
-
-*   Rule 3: Shapes disagree, and neither dimension is 1.  **Error!**
-
-
-```{python}
-#| echo: true
 # This will raise a ValueError:
 # print(M + a)
 ```
 
-## Broadcasting and UFuncs
+-   Shapes:
+    -   `M.shape = (3, 2)`
+    -   `a.shape = (3,)`
+-   1: Pad `a` with ones:
+    -   `M.shape -> (3, 2)`
+    -   `a.shape -> (1, 3)` 
+    
+:::
+::: column
 
-*   Broadcasting rules apply to *any* binary UFunc.
+-   2: Stretch the first dimension of `a`:
+    -   `M.shape -> (3, 2)`
+    -   `a.shape -> (3, 3)`
+-   3: Shapes disagree, and neither dimension is 1. **Error!**
 
+:::
+:::::
+
+
+## Broadcasting in Practice - 1
+Centering an Array
 ```{python}
 #| echo: true
-import numpy as np
-M = np.ones((3, 2))
-a = np.arange(3)
-#To fix the above error you can add a new axis and it will work
-print(M + a[:, np.newaxis])
-
+X = np.random.random((10, 3))  # 10 observations, 3 features
+print(X)
 ```
 
-
-## Centering an Array
-
+## Broadcasting in Practice - 2
 ```{python}
 #| echo: true
-import numpy as np
-X = np.random.random((10, 3))  # 10 observations, 3 features
 Xmean = X.mean(0)  # Mean of each feature
+print(Xmean)
+```
+```{python}
+#| echo: true
 X_centered = X - Xmean
 print(X_centered.mean(0))  # Should be near zero
 ```
+Broadcasting allows subtracting the feature means from each observation efficiently.
 
-*   Broadcasting allows subtracting the feature means from each observation efficiently.
-
-
-## Two-Dimensional Function
+## Hands-on - Broadcasting
+You have temperature data for multiple cities over a week.
 
 ```{python}
 #| echo: true
-import numpy as np
-import matplotlib.pyplot as plt
-
-# x and y have 50 steps from 0 to 5
-x = np.linspace(0, 5, 50)
-y = np.linspace(0, 5, 50)[:, np.newaxis]
-
-z = np.sin(x) ** 10 + np.cos(10 + y * x) * np.cos(x)
-
-plt.imshow(z, origin='lower', extent=[0, 5, 0, 5],
-cmap='viridis')
-plt.colorbar();
-plt.show()
-
+temperatures = np.random.randint(15, 35, size=(5, 7))
+cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix']
+days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 ```
 
-*   Broadcasting computes the function $z = f(x, y)$ across a grid.
+-   Convert all temperatures from Celsius to Fahrenheit.
+-   Rank the temperatures for each day across cities (1 being the hottest, 5 being the coldest). `np.argsort()`
+-   Calculate a 3-day weighted moving average for each city, where the weights are [0.6, 0.3, 0.1] for [today, yesterday, day before yesterday]. `np.dot()`
 
+## NumPy
 
+-   Basic NumPy
+-   Universal Functions (UFuncs) in NumPy
+-   Aggregations
+-   Broadcasting
+-   **Boolean Arrays and Masks**
 
 # Boolean Arrays and Masks
 
-
-
-##  Comparison Operators as UFuncs
-
-
-*   NumPy's comparison operators (e.g., ``, `==`, `!=`, `=`) are implemented as UFuncs.
-*   This means they work element-wise on arrays.
-*   They return *boolean arrays*.
-
-
-## Example: Comparison Operators
+## Comparison Operators
 
 ```{python}
 #| echo: true
@@ -982,42 +1139,26 @@ print(x == 3)
 print(x != 3)
 ```
 
-
-
 ## Rainfall Data: Create the Plot
-
 
 ```{python}
 #| echo: true
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn; seaborn.set()  # set plot styles
-
-# Load the data (replace with your actual path)
 rainfall = pd.read_csv('https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv')['PRCP'].values
 inches = rainfall / 254  # 1/10mm -> inches
-
 plt.hist(inches, 40);
 plt.xlabel("Inches")
 plt.ylabel("Number of Days")
 plt.show()
 ```
 
+
+
 ## Rainfall Data: Boolean Masking
-
-
 
 ```{python}
 #| echo: true
-import numpy as np
-import pandas as pd
-
-# Load the data (replace with your actual path)
-
 rainfall = pd.read_csv('https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv')['PRCP'].values
 inches = rainfall / 254  # 1/10mm -> inches
-
 print("Number days without rain:      ", np.sum(inches == 0))
 print("Number days with rain:         ", np.sum(inches != 0))
 print("Days with more than 0.5 inches:", np.sum(inches > 0.5))
@@ -1025,19 +1166,14 @@ print("Rainy days with < 0.2 inches  :", np.sum((inches > 0) &
                                                 (inches < 0.2)))
 ```
 
-
 ## `any()` and `all()`
 
-*   `any()`: Are any values True?
-*   `all()`: Are all values True?
-*   Can be used along axes, like aggregates.
-
-
-## `any()` and `all()` Examples
+-   `any()`: Are any values True?
+-   `all()`: Are all values True?
+-   Can be used along axes, like aggregates.
 
 ```{python}
 #| echo: true
-import numpy as np
 rng = np.random.RandomState(0)
 x = rng.randint(10, size=(3, 4))
 print(np.any(x < 5))
@@ -1045,6 +1181,7 @@ print(np.all(x < 5))
 print(np.any(x < 5, axis=1))
 print(np.all(x < 5, axis=1))
 ```
+
 
 
 
