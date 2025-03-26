@@ -681,6 +681,14 @@ price = soup.select(".fxKbKc")
 price[0].get_text()
 ```
 
+## HTML/XML 101
+
+-   Element: `<a class=’link’ href=’url’>29.99</a>`
+-   Start tag: `<a>`
+-   End tag: `</a>`
+-   Attribute屬性: `href=’url’`, `class=’link’`
+-   Text文字: `29.99`
+
 ## 即時股價爬取 - 下載html
 
 -   使用`requests`套件的`get(網址)`函數，輸入網址，將網頁載入python分析環境。
@@ -704,23 +712,28 @@ res.text[0:1000] ## print first 1000 chars
 soup = BeautifulSoup(res.text, "html.parser")
 ```
 
-## 即時股價爬取 - 搜尋所需節點 -1
+## 即時股價爬取 - 搜尋所需element -1
+Python 搜尋法，多用於搜尋`<>`tag內的內容
 
--   `find(節點條件)`:
-    -   取得第一個符合條件的節點 (`<>`內的內容)
--   `find_all(節點條件)`
-    -   取得所有符合條件的節點 (`<>`內的內容)
+-   `find(tag名稱)`:
+    -   取得第一個符合條件的element
+-   `find_all(tag名稱)`
+    -   取得所有符合條件的elements
+
+## 即時股價爬取 - 搜尋所需element -1
+CCS selector 搜尋法，有較多彈性
+
 -   `select_one()`
-    -   取得第一個符合CSS條件的節點 (`class` or `id`等屬性)
+    -   取得第一個符合CSS條件的element (`class` or `id`等屬性)
 -   `select()`
-    -   取得所有符合CSS條件的節點 (`class` or `id`等屬性)
+    -   取得所有符合CSS條件的elements (`class` or `id`等屬性)
 
-## 即時股價爬取 - 搜尋所需節點 -1
+## 即時股價爬取 - 搜尋所需element -1
 
 範例：class 包含 `fxKbKc`
 
 -   `select()`
-    -   取得所有符合CSS條件的節點 (`class` or `id`等屬性)
+    -   取得所有符合CSS條件的elements (`class` or `id`等屬性)
 -   `class=`可用`.`代表
 -   `id=`可用`#`代表
 
@@ -733,7 +746,7 @@ price
 
 ## 即時股價爬取 - 取出需要的資料 -1
 
--   `.get_text()`可抓取節點內文字
+-   `.get_text()`可抓取element內文字
 -   `.get("屬性名稱")`可抓取屬性內容
 
 ```{python}
@@ -741,12 +754,12 @@ price
 price[0].get_text()
 ```
 
-## 即時股價爬取 - 搜尋所需節點 -2
+## 即時股價爬取 - 搜尋所需element -2
 
 範例：class 包含 `gyFHrc`
 
 -   `select()`
-    -   取得所有符合CSS條件的節點 (`class` or `id`等屬性)
+    -   取得所有符合CSS條件的elements (`class` or `id`等屬性)
 
 ```{python}
 #| echo: true
@@ -757,7 +770,7 @@ price_detail
 
 ## 即時股價爬取 - 取出需要的資料 -2
 
--   `.get_text()`可抓取節點內文字
+-   `.get_text()`可抓取element內文字
 -   `.get("屬性名稱")`可抓取屬性內容
 
 ```{python}
@@ -771,11 +784,11 @@ for price in price_detail:
   print(price.get_text())
 ```
 
-## 即時股價爬取 - 搜尋所需節點 -3
+## 即時股價爬取 - 搜尋所需element -3
 
 範例：class 包含 `z4rs2b`
 
--   `select()`: 取得所有符合CSS條件的節點 (`class` or `id`等屬性)
+-   `select()`: 取得所有符合CSS條件的element (`class` or `id`等屬性)
 
 ```{python}
 #| echo: true
@@ -786,7 +799,7 @@ news
 
 ## 即時股價爬取 - 取出需要的資料 -3
 
--   `.get_text()`可抓取節點內文字
+-   `.get_text()`可抓取element內文字
 -   `.get("屬性名稱")`可抓取屬性內容
 
 ```{python}
@@ -808,12 +821,12 @@ for title_click in news:
 -   提示：
     -   下載html `requests.get(網址)`
     -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`\
-    -   搜尋所需節點 `find(節點)`, `select(css條件)`
+    -   搜尋所需element `find(tag name)`, `select(css條件)`
     -   取出需要的資料 `get_text()`, `get(屬性名稱)`
 
 ## 即時股價爬取 - 取出需要的資料 -4
 
--   `.get_text()`可抓取節點內文字
+-   `.get_text()`可抓取element內文字
 -   `.get("屬性名稱")`可抓取屬性內容
 
 ```{python}
@@ -827,7 +840,7 @@ for title_click in news:
 -   得到連結後，重複上述步驟
     -   下載html `requests.get(網址)`
     -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`\
-    -   搜尋所需節點 `find(節點)`, `select(css條件)`
+    -   搜尋所需element `find(tag名稱)`, `select(css條件)`
     -   取出需要的資料 `get_text()`, `get(屬性名稱)`
 
 ## 即時股價爬取 - 爬連結內的新聞
@@ -900,7 +913,7 @@ newdf_pd
 -   提示：
     -   下載html `requests.get(網址)`
     -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`\
-    -   搜尋所需節點 `find(節點)`, `select(css條件)`
+    -   搜尋所需element `find(tag名稱)`, `select(css條件)`
     -   取出需要的資料 `get_text()`, `get(屬性名稱)`
 -   一頁一頁爬 or for 迴圈都可以
 
@@ -919,7 +932,7 @@ newdf_pd
 
 -   下載html `requests.get(網址)`
 -   解析html `BeautifulSoup(下載網頁.text, "html.parser")`
--   搜尋所需節點 `find(節點)`, `select(css條件)`
+-   搜尋所需element `find(tag名稱)`, `select(css條件)`
 -   取出需要的資料 `get_text()`, `get(屬性名稱)`
 
 ## Data input and output
