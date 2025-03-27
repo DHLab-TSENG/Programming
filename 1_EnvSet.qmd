@@ -8,6 +8,7 @@ format:
 editor: visual
 ---
 
+
 # Basic Setup
 
 ## Python vs. Python IDE
@@ -18,7 +19,7 @@ Python: Core/Kernel (engine) ![plot of chunk unnamed-chunk-1](https://www.teslar
 
 ## Python vs. Python IDE
 
-Python IDE: User interface IDE (Dashboard)
+Python IDE (integrated development environment): User interface IDE (Dashboard)
 
 Ex. **VS Code**, **PyCharm**
 
@@ -28,9 +29,9 @@ Ex. **VS Code**, **PyCharm**
 
 ## Work in the Cloud
 
--   You can use **Google Colab** with **Jupyter notebook**.
+-   You can use **Google Colab** (cloud services) with **Jupyter notebook** (Notebook IDE).
     -   If you are not familiar with Python and Python IDE, and are able to work in the cloud.
--   [Jupyter notebook](https://jupyter.org/) is a really good python interface for **data analysis**.
+-   [Jupyter notebook](https://jupyter.org/) is a really good python IDE for **data analysis**.
 -   Check the [document](https://colab.research.google.com/?hl=zh-tw#scrollTo=GJBs_flRovLc) for more information
 
 ## Google Colab Interface
@@ -93,7 +94,7 @@ Python Library: Applications, Add-on (APP)
 
 ## Install Libraries
 
--   `!` `pip3` `install` "package names"
+-   `!` `pip3` `install` "library name 1" "library name 2"
 
 ```{python}
 #| eval: false
