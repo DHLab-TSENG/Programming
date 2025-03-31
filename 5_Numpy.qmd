@@ -286,7 +286,7 @@ print(two_d[1][2])
 ::: column
 ```{python}
 #| echo: true
-print(two_d)
+print(x2)
 ```
 
 ```{python}
@@ -362,14 +362,12 @@ def show_image(img, title="Image"):
 show_image(image, "Original Image")
 ```
 
-
 ## Hands-on - Indexing and Slicing - 3
 
 -   Extract the 4x4 sub-image from the top-left corner.
 -   Extract every other pixel from both dimensions (creating a 4x4 image).
 -   Flatten the image into a 1D array.
 -   Reshape the flattened array back into an 8x8 image.
-
 
 ## Array Concatenation and Splitting
 
@@ -434,19 +432,28 @@ np.hstack([grid, y])
 
 The opposite of concatenation is splitting
 
--   `np.split(`np array,\[split points\]`)`
--   `np.vsplit(`np array,\[split points\]`)`
--   `np.hsplit(`np array,\[split points\]`)`\
--   split before the split point
--   N split-points, leads to N + 1 subarrays
+-   `np.split(`np array,\[split points\]`)` or `np.split(`np array, # of sections`)`
+-   `np.vsplit(`np array,\[split points\]`)` or `np.vsplit(`np array, # of sections`)`
+-   `np.hsplit(`np array,\[split points\]`)` or `np.hsplit(`np array, # of sections`)`
+-   **split points**: split before the split point
+    -   N split-points, leads to N + 1 subarrays
+-   **# of sections**: divided into N equal arrays 
 
 ## Splitting
 
+split points
 ```{python}
 #| echo: true
-x = [1, 2, 3, 99, 99, 3, 2, 1]
+x = np.array([1, 2, 3, 99, 99, 3, 2, 1])
 x1, x2, x3 = np.split(x, [3, 5])
 print(x1, x2, x3)
+```
+
+number of sections
+```{python}
+#| echo: true
+x4, x5 = np.split(x, 2)
+print(x4, x5)
 ```
 
 ## Splitting - np.vsplit
@@ -459,7 +466,7 @@ np2d = np.row_stack([x,y,x])
 print(np2d)
 ```
 
-`np.vsplit(`np array,\[split points\]`)`
+`np.vsplit(`np array,\[split points\]`)` or `np.vsplit(`np array, # of sections`)`
 
 ```{python}
 #| echo: true
@@ -478,7 +485,7 @@ np2d = np.row_stack([x,y,x])
 print(np2d)
 ```
 
-`np.hsplit(`np array,\[split points\]`)`
+`np.hsplit(`np array,\[split points\]`)` or `np.hsplit(`np array, # of sections`)`
 
 ```{python}
 #| echo: true
@@ -487,10 +494,9 @@ print(left)
 print(right)
 ```
 
-
 ## Hands-on - Concatenation & Split - 1
 
-You're a meteorologist working on analyzing and combining weather data from multiple stations. 
+You're a meteorologist working on analyzing and combining weather data from multiple stations.
 
 ```{python}
 #| echo: true       
@@ -659,6 +665,7 @@ print("log10(x) =", np.log10(x))
 ## Hands-on - UFuncs - 1
 
 You're analyzing sensor data from industrial equipment. The dataset contains temperature (℃), vibration (mm/s²), and pressure (kPa) readings sampled every 5 minutes over 30 days.
+
 ```{python}
 #| echo: true
 # Generate synthetic sensor data (4320 = 30 days * 144 samples/day)
@@ -673,10 +680,9 @@ pressure = 100 + 20 * np.cos(2 * np.pi * np.arange(time_points)/288) + np.random
 
 -   Remove negative vibration values using `np.clip`
 -   Find daily temperature amplitude (max - min)
--   Calculate equipment stress using custom formula: 
+-   Calculate equipment stress using custom formula:
     -   stress = (temp² + vib²) / pressure
 -   Apply log transform to vibration data
-
 
 ## Specialized UFuncs (FYR)
 
@@ -892,6 +898,7 @@ plt.plot()
 ## Hands-on - Aggregations - 1
 
 You're a financial analyst tasked with analyzing historical stock data for several tech companies.
+
 ```{python}
 #| echo: true
 np.random.seed(42)
@@ -902,6 +909,7 @@ stock_data = stock_data * (1 + np.random.randn(len(companies), trading_days) * 0
 print("Stock Data Shape:", stock_data.shape)
 print("First few days of data:\n", stock_data[:, :5])
 ```
+
 ## Hands-on - Aggregations - 2
 
 -   Calculate for each company:
@@ -953,8 +961,6 @@ print(a + 5)
 
 [Source](https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html)
 
-
-
 ## Broadcasting Example: Higher Dimensions
 
 The 1D array `a` is "broadcast" across the 2nd dimension of `M`
@@ -966,8 +972,6 @@ M = np.ones((3, 3))
 a = np.arange(3)
 print(M + a)
 ```
-
-
 
 ## Broadcasting Example: Both Arrays
 
@@ -983,7 +987,6 @@ print(b)
 print(a + b)
 ```
 
-
 ## Rules of Broadcasting
 
 -   **Rule 1:** If the two arrays differ in their number of **dimensions**, the shape of the one with fewer dimensions is *padded* with ones on its leading (left) side.
@@ -994,7 +997,6 @@ print(a + b)
 
 ::::: columns
 ::: column
-
 ```{python}
 #| echo: true
 import numpy as np
@@ -1006,10 +1008,9 @@ print(M + a)
 -   Shapes:
     -   `M.shape = (2, 3)`
     -   `a.shape = (3)`
-    
 :::
-::: column
 
+::: column
 -   Rule 1: Pad `a` with ones:
     -   `M.shape -> (2, 3)`
     -   `a.shape -> (1, 3)`
@@ -1017,11 +1018,11 @@ print(M + a)
     -   `M.shape -> (2, 3)`
     -   `a.shape -> (2, 3)`
 -   Result: Shapes match!
-
 :::
 :::::
 
 ## Broadcasting Example 2
+
 ::::: columns
 ::: column
 ```{python}
@@ -1035,10 +1036,9 @@ print(a + b)
 -   Shapes:
     -   `a.shape = (3, 1)`
     -   `b.shape = (3)`
-    
 :::
-::: column
 
+::: column
 -   Rule 1: Pad `b` with ones (left):
     -   `a.shape -> (3, 1)`
     -   `b.shape -> (1, 3)`
@@ -1046,12 +1046,11 @@ print(a + b)
     -   `a.shape -> (3, 3)`
     -   `b.shape -> (3, 3)`
 -   Result: Shapes match!
-
 :::
 :::::
 
-
 ## Broadcasting Example 3: Incompatible
+
 ::::: columns
 ::: column
 ```{python}
@@ -1067,22 +1066,21 @@ a = np.arange(3)
     -   `a.shape = (3,)`
 -   1: Pad `a` with ones:
     -   `M.shape -> (3, 2)`
-    -   `a.shape -> (1, 3)` 
-    
+    -   `a.shape -> (1, 3)`
 :::
-::: column
 
+::: column
 -   2: Stretch the first dimension of `a`:
     -   `M.shape -> (3, 2)`
     -   `a.shape -> (3, 3)`
 -   3: Shapes disagree, and neither dimension is 1. **Error!**
-
 :::
 :::::
 
-
 ## Broadcasting in Practice - 1
+
 Centering an Array
+
 ```{python}
 #| echo: true
 X = np.random.random((10, 3))  # 10 observations, 3 features
@@ -1090,19 +1088,23 @@ print(X)
 ```
 
 ## Broadcasting in Practice - 2
+
 ```{python}
 #| echo: true
 Xmean = X.mean(0)  # Mean of each feature
 print(Xmean)
 ```
+
 ```{python}
 #| echo: true
 X_centered = X - Xmean
 print(X_centered.mean(0))  # Should be near zero
 ```
+
 Broadcasting allows subtracting the feature means from each observation efficiently.
 
 ## Hands-on - Broadcasting
+
 You have temperature data for multiple cities over a week.
 
 ```{python}
@@ -1114,7 +1116,7 @@ days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 -   Convert all temperatures from Celsius to Fahrenheit.
 -   Rank the temperatures for each day across cities (1 being the hottest, 5 being the coldest). `np.argsort()`
--   Calculate a 3-day weighted moving average for each city, where the weights are [0.6, 0.3, 0.1] for [today, yesterday, day before yesterday]. `np.dot()`
+-   Calculate a 3-day weighted moving average for each city, where the weights are \[0.6, 0.3, 0.1\] for \[today, yesterday, day before yesterday\]. `np.dot()`
 
 ## NumPy
 
@@ -1151,8 +1153,6 @@ plt.ylabel("Number of Days")
 plt.show()
 ```
 
-
-
 ## Rainfall Data: Boolean Masking
 
 ```{python}
@@ -1181,10 +1181,6 @@ print(np.all(x < 5))
 print(np.any(x < 5, axis=1))
 print(np.all(x < 5, axis=1))
 ```
-
-
-
-
 
 ## References
 

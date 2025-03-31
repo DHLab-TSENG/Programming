@@ -449,11 +449,11 @@ Yi-Ju Tseng
 <section id="numpy-getting-started" class="slide level2">
 <h2>NumPy Getting Started</h2>
 <p>Install</p>
-<div id="c5067c72" class="cell" data-execution_count="1">
+<div id="c288158d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="op">!</span>pip3 install numpy <span class="co"># ! for shell script</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Import</p>
-<div id="3319940f" class="cell" data-execution_count="2">
+<div id="ee53bc6a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -466,7 +466,7 @@ Yi-Ju Tseng
 <li><code>np.full(dim, value)</code>: repeated <code>value</code>s</li>
 <li>2d dimension: (row, column)</li>
 </ul>
-<div id="b7e8980a" class="cell" data-execution_count="3">
+<div id="e3ea4c6f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>np.full((<span class="dv">2</span>, <span class="dv">4</span>), <span class="fl">3.14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[3.14, 3.14, 3.14, 3.14],
@@ -478,18 +478,18 @@ Yi-Ju Tseng
 <li><code>np.random.random(dim)</code></li>
 <li><code>np.random.normal(mean,sd,dim)</code></li>
 </ul>
-<div id="8e604878" class="cell" data-execution_count="4">
+<div id="6e1d50f7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>np.random.random((<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[0.32521492, 0.58945493, 0.45569914],
-       [0.93117061, 0.04246179, 0.50533628]])</code></pre>
+<pre><code>array([[0.5944637 , 0.84159963, 0.72068187],
+       [0.77757299, 0.67632398, 0.95776011]])</code></pre>
 </div>
 </div>
-<div id="08f9a8f7" class="cell" data-execution_count="5">
+<div id="b26b9d93" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>array([[-0.55804414, -0.17726234,  0.51787849],
-       [-0.80962323, -1.40655877,  1.43504248]])</code></pre>
+<pre><code>array([[-0.21818906, -1.50016822, -0.84992889],
+       [-0.39955645, -0.34549649, -0.74024924]])</code></pre>
 </div>
 </div>
 </div></div>
@@ -520,7 +520,7 @@ Yi-Ju Tseng
 </section>
 <section id="numpy-array-attributes---examples" class="slide level2">
 <h2>NumPy Array Attributes - Examples</h2>
-<div id="f64e431e" class="cell" data-execution_count="6">
+<div id="2427f102" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>np.random.seed(<span class="dv">0</span>)  <span class="co"># seed for reproducibility</span></span>
 <span id="cb9-2"><a href=""></a>x1 <span class="op">=</span> np.random.randint(<span class="dv">10</span>, size<span class="op">=</span><span class="dv">6</span>)  <span class="co"># One-dimensional array</span></span>
 <span id="cb9-3"><a href=""></a>x2 <span class="op">=</span> np.random.randint(<span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))  <span class="co"># Two-dimensional array</span></span>
@@ -528,7 +528,7 @@ Yi-Ju Tseng
 </div>
 <div class="columns">
 <div class="column">
-<div id="ec02595f" class="cell" data-execution_count="7">
+<div id="d535766e" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="bu">print</span>(x1)</span>
 <span id="cb10-2"><a href=""></a><span class="bu">print</span>(<span class="st">"ndim: "</span>, x1.ndim)</span>
 <span id="cb10-3"><a href=""></a><span class="bu">print</span>(<span class="st">"shape:"</span>, x1.shape)</span>
@@ -547,7 +547,7 @@ nbytes:  48 bytes</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div id="e6beef05" class="cell" data-execution_count="8">
+<div id="9c730bdf" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="bu">print</span>(x2)</span>
 <span id="cb12-2"><a href=""></a><span class="bu">print</span>(<span class="st">"ndim: "</span>, x2.ndim)</span>
 <span id="cb12-3"><a href=""></a><span class="bu">print</span>(<span class="st">"shape:"</span>, x2.shape)</span>
@@ -579,7 +579,7 @@ nbytes:  96 bytes</code></pre>
 <li>Available data type: <a href="https://jakevdp.github.io/PythonDataScienceHandbook/02.01-understanding-data-types.html">ref</a></li>
 </ul></li>
 </ul>
-<div id="8c62adc1" class="cell" data-execution_count="9">
+<div id="1256da6a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>np.zeros(<span class="dv">10</span>, dtype<span class="op">=</span>np.int16)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0], dtype=int16)</code></pre>
@@ -600,7 +600,7 @@ nbytes:  96 bytes</code></pre>
 <li><code>x[row, column]</code></li>
 <li><code>-1</code>: last index</li>
 </ul>
-<div id="28d2f719" class="cell" data-execution_count="10">
+<div id="ed6fe9b9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a>x <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
 <span id="cb16-2"><a href=""></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -610,20 +610,20 @@ nbytes:  96 bytes</code></pre>
 </div>
 <div class="columns">
 <div class="column">
-<div id="fde94ab2" class="cell" data-execution_count="11">
+<div id="e8a3df8c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="bu">print</span>(x[<span class="dv">0</span>, <span class="dv">0</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div id="308aa192" class="cell" data-execution_count="12">
+<div id="8007ab9b" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="bu">print</span>(x[<span class="dv">1</span>, <span class="dv">2</span>])  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div id="ff222918" class="cell" data-execution_count="13">
+<div id="3e943b27" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>x[<span class="dv">0</span>, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">12</span></span>
 <span id="cb22-2"><a href=""></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -631,7 +631,7 @@ nbytes:  96 bytes</code></pre>
  [ 4  5  6]]</code></pre>
 </div>
 </div>
-<div id="4e2ef48a" class="cell" data-execution_count="14">
+<div id="e1b1d421" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a>x[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">24</span></span>
 <span id="cb24-2"><a href=""></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -656,7 +656,7 @@ nbytes:  96 bytes</code></pre>
 </section>
 <section id="array-slicing---example-1d" class="slide level2">
 <h2>Array Slicing - Example (1D)</h2>
-<div id="ddb323b6" class="cell" data-execution_count="15">
+<div id="604ed520" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a>x <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
 <span id="cb26-2"><a href=""></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -664,7 +664,7 @@ nbytes:  96 bytes</code></pre>
 </div>
 </div>
 <p><code>x[start:stop:step]</code></p>
-<div id="00bb244c" class="cell" data-execution_count="16">
+<div id="cd0e1a1a" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="bu">print</span>(x[<span class="dv">1</span>:<span class="dv">5</span>]) <span class="co"># Elements 1 to 4</span></span>
 <span id="cb28-2"><a href=""></a><span class="bu">print</span>(x[:<span class="dv">5</span>:<span class="dv">2</span>]) <span class="co"># Every other element from beginning to index 5</span></span>
 <span id="cb28-3"><a href=""></a><span class="bu">print</span>(x[::<span class="dv">2</span>]) <span class="co"># Every other element from the beginning</span></span>
@@ -679,7 +679,7 @@ nbytes:  96 bytes</code></pre>
 </section>
 <section id="array-slicing---example-2d" class="slide level2">
 <h2>Array Slicing - Example (2D)</h2>
-<div id="dc8d2c9e" class="cell" data-execution_count="17">
+<div id="59f4294b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a>two_d <span class="op">=</span> np.array([np.arange(<span class="dv">5</span>),np.arange(<span class="dv">5</span>,<span class="dv">10</span>)]) </span>
 <span id="cb30-2"><a href=""></a><span class="bu">print</span>(two_d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -690,19 +690,19 @@ nbytes:  96 bytes</code></pre>
 <div class="columns">
 <div class="column">
 <p>empty slice (<code>:</code>)</p>
-<div id="717619c6" class="cell" data-execution_count="18">
+<div id="a4298be1" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="bu">print</span>(two_d[<span class="dv">1</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[5 6 7 8 9]</code></pre>
 </div>
 </div>
-<div id="e2dc6278" class="cell" data-execution_count="19">
+<div id="e4bc60cc" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a><span class="bu">print</span>(two_d[:,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1 6]</code></pre>
 </div>
 </div>
-<div id="2def0e40" class="cell" data-execution_count="20">
+<div id="66f4909b" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="bu">print</span>(two_d[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>9</code></pre>
@@ -710,20 +710,20 @@ nbytes:  96 bytes</code></pre>
 </div>
 </div><div class="column">
 <p>can be omitted in row access</p>
-<div id="5fff6b44" class="cell" data-execution_count="21">
+<div id="6b9a22e6" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a><span class="bu">print</span>(two_d[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[5 6 7 8 9]</code></pre>
 </div>
 </div>
-<div id="02a9e8a9" class="cell" data-execution_count="22">
+<div id="7dbbf6c9" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a><span class="bu">print</span>(two_d[:<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0 1 2 3 4]
  [5 6 7 8 9]]</code></pre>
 </div>
 </div>
-<div id="918cd30e" class="cell" data-execution_count="23">
+<div id="5d021e3a" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a><span class="bu">print</span>(two_d[<span class="dv">1</span>][<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>7</code></pre>
@@ -739,14 +739,15 @@ nbytes:  96 bytes</code></pre>
 </ul>
 <div class="columns">
 <div class="column">
-<div id="c3d0e903" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="bu">print</span>(two_d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b0809c5a" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="bu">print</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[0 1 2 3 4]
- [5 6 7 8 9]]</code></pre>
+<pre><code>[[3 5 2 4]
+ [7 6 8 8]
+ [1 6 7 7]]</code></pre>
 </div>
 </div>
-<div id="61673e51" class="cell" data-execution_count="25">
+<div id="75bac873" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a>x2_sub <span class="op">=</span> x2[:<span class="dv">2</span>, :<span class="dv">2</span>]</span>
 <span id="cb46-2"><a href=""></a><span class="bu">print</span>(x2_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -755,7 +756,7 @@ nbytes:  96 bytes</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div id="26803000" class="cell" data-execution_count="26">
+<div id="2da01ba2" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>x2_sub[<span class="dv">0</span>, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
 <span id="cb48-2"><a href=""></a><span class="bu">print</span>(x2_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -763,7 +764,7 @@ nbytes:  96 bytes</code></pre>
  [ 7  6]]</code></pre>
 </div>
 </div>
-<div id="1e58488b" class="cell" data-execution_count="27">
+<div id="d05727ee" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a><span class="bu">print</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[99  5  2  4]
@@ -779,14 +780,14 @@ nbytes:  96 bytes</code></pre>
 <li><code>reshape(dim)</code>: gives a new shape to an array</li>
 <li>the size must match</li>
 </ul>
-<div id="804fcb14" class="cell" data-execution_count="28">
+<div id="020500a3" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">10</span>)</span>
 <span id="cb52-2"><a href=""></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>array([1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
 </div>
-<div id="658739ae" class="cell" data-execution_count="29">
+<div id="91feef7f" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href=""></a>grid <span class="op">=</span> x.reshape((<span class="dv">3</span>, <span class="dv">3</span>))</span>
 <span id="cb54-2"><a href=""></a><span class="bu">print</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -799,7 +800,7 @@ nbytes:  96 bytes</code></pre>
 <section id="hands-on---indexing-and-slicing---1" class="slide level2">
 <h2>Hands-on - Indexing and Slicing - 1</h2>
 <p>You’re working on a project to analyze and manipulate digital images using NumPy. Your task is to perform various operations on image data represented as NumPy arrays.</p>
-<div id="a974438f" class="cell" data-execution_count="30">
+<div id="6d648c15" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb56-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb56-3"><a href=""></a><span class="co"># Create a sample 8x8 grayscale image (0-255 values)</span></span>
@@ -817,7 +818,7 @@ nbytes:  96 bytes</code></pre>
 </section>
 <section id="hands-on---indexing-and-slicing---2" class="slide level2">
 <h2>Hands-on - Indexing and Slicing - 2</h2>
-<div id="04bea983" class="cell" data-execution_count="31">
+<div id="ff187fd3" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href=""></a><span class="co"># Function to display the image</span></span>
 <span id="cb57-2"><a href=""></a><span class="kw">def</span> show_image(img, title<span class="op">=</span><span class="st">"Image"</span>):</span>
 <span id="cb57-3"><a href=""></a>    plt.imshow(img, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
@@ -855,7 +856,7 @@ nbytes:  96 bytes</code></pre>
 <section id="concatenation---example" class="slide level2">
 <h2>Concatenation - Example</h2>
 <p><code>np.concatenate([array1, array2, ...])</code>: Concatenates arrays along an existing (or first) axis.</p>
-<div id="a04dceec" class="cell" data-execution_count="32">
+<div id="8581796c" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb58-2"><a href=""></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
 <span id="cb58-3"><a href=""></a>z <span class="op">=</span> [<span class="dv">99</span>, <span class="dv">99</span>, <span class="dv">99</span>]</span>
@@ -868,7 +869,7 @@ nbytes:  96 bytes</code></pre>
 <section id="concatenation---example-1" class="slide level2">
 <h2>Concatenation - Example</h2>
 <p><code>np.concatenate([array1, array2, ...])</code>: Concatenates arrays along an existing (or first) axis.</p>
-<div id="6b30ffcc" class="cell" data-execution_count="33">
+<div id="1901c13f" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href=""></a>grid <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb60-2"><a href=""></a>                 [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
 <span id="cb60-3"><a href=""></a>np.concatenate([grid, grid])                 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -880,7 +881,7 @@ nbytes:  96 bytes</code></pre>
 </div>
 </div>
 <p>Set <code>axis=1</code> for the second axis</p>
-<div id="b4731d94" class="cell" data-execution_count="34">
+<div id="159fbd59" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href=""></a>np.concatenate([grid, grid], axis<span class="op">=</span><span class="dv">1</span>)                 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>array([[1, 2, 3, 1, 2, 3],
@@ -893,7 +894,7 @@ nbytes:  96 bytes</code></pre>
 <ul>
 <li><code>np.vstack([array1, array2])</code>: Vertical stack (row-wise concatenation).</li>
 </ul>
-<div id="3bb3bb52" class="cell" data-execution_count="35">
+<div id="0bbd5a22" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb64-2"><a href=""></a>grid <span class="op">=</span> np.array([[<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>],</span>
 <span id="cb64-3"><a href=""></a>                 [<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>]])</span>
@@ -910,7 +911,7 @@ nbytes:  96 bytes</code></pre>
 <ul>
 <li><code>np.hstack([array1, array2])</code>: Horizontal stack (column-wise concatenation).</li>
 </ul>
-<div id="9d775a97" class="cell" data-execution_count="36">
+<div id="b6b83318" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href=""></a>y <span class="op">=</span> np.array([[<span class="dv">99</span>],</span>
 <span id="cb66-2"><a href=""></a>              [<span class="dv">99</span>]])</span>
 <span id="cb66-3"><a href=""></a>np.hstack([grid, y])       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -924,43 +925,54 @@ nbytes:  96 bytes</code></pre>
 <h2>Splitting</h2>
 <p>The opposite of concatenation is splitting</p>
 <ul>
-<li><code>np.split(</code>np array,[split points]<code>)</code></li>
-<li><code>np.vsplit(</code>np array,[split points]<code>)</code></li>
-<li><code>np.hsplit(</code>np array,[split points]<code>)</code><br>
-</li>
-<li>split before the split point</li>
+<li><code>np.split(</code>np array,[split points]<code>)</code> or <code>np.split(</code>np array, # of sections<code>)</code></li>
+<li><code>np.vsplit(</code>np array,[split points]<code>)</code> or <code>np.vsplit(</code>np array, # of sections<code>)</code></li>
+<li><code>np.hsplit(</code>np array,[split points]<code>)</code> or <code>np.hsplit(</code>np array, # of sections<code>)</code></li>
+<li><strong>split points</strong>: split before the split point
+<ul>
 <li>N split-points, leads to N + 1 subarrays</li>
+</ul></li>
+<li><strong># of sections</strong>: divided into N equal arrays</li>
 </ul>
 </section>
 <section id="splitting-1" class="slide level2">
 <h2>Splitting</h2>
-<div id="e3b48277" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">99</span>, <span class="dv">99</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span>
+<p>split points</p>
+<div id="1fd9559f" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">99</span>, <span class="dv">99</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
 <span id="cb68-2"><a href=""></a>x1, x2, x3 <span class="op">=</span> np.split(x, [<span class="dv">3</span>, <span class="dv">5</span>])</span>
 <span id="cb68-3"><a href=""></a><span class="bu">print</span>(x1, x2, x3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1 2 3] [99 99] [3 2 1]</code></pre>
 </div>
 </div>
+<p>number of sections</p>
+<div id="a8871671" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href=""></a>x4, x5 <span class="op">=</span> np.split(x, <span class="dv">2</span>)</span>
+<span id="cb70-2"><a href=""></a><span class="bu">print</span>(x4, x5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 1  2  3 99] [99  3  2  1]</code></pre>
+</div>
+</div>
 </section>
 <section id="splitting---np.vsplit" class="slide level2">
 <h2>Splitting - np.vsplit</h2>
-<div id="63571126" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb70-2"><a href=""></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
-<span id="cb70-3"><a href=""></a>np2d <span class="op">=</span> np.row_stack([x,y,x])</span>
-<span id="cb70-4"><a href=""></a><span class="bu">print</span>(np2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="365c5774" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb72-2"><a href=""></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb72-3"><a href=""></a>np2d <span class="op">=</span> np.row_stack([x,y,x])</span>
+<span id="cb72-4"><a href=""></a><span class="bu">print</span>(np2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1 2 3]
  [3 2 1]
  [1 2 3]]</code></pre>
 </div>
 </div>
-<p><code>np.vsplit(</code>np array,[split points]<code>)</code></p>
-<div id="713e531b" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href=""></a>upper, lower <span class="op">=</span> np.vsplit(np2d, [<span class="dv">2</span>])</span>
-<span id="cb72-2"><a href=""></a><span class="bu">print</span>(upper)</span>
-<span id="cb72-3"><a href=""></a><span class="bu">print</span>(lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>np.vsplit(</code>np array,[split points]<code>)</code> or <code>np.vsplit(</code>np array, # of sections<code>)</code></p>
+<div id="1321525c" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href=""></a>upper, lower <span class="op">=</span> np.vsplit(np2d, [<span class="dv">2</span>])</span>
+<span id="cb74-2"><a href=""></a><span class="bu">print</span>(upper)</span>
+<span id="cb74-3"><a href=""></a><span class="bu">print</span>(lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1 2 3]
  [3 2 1]]
@@ -970,22 +982,22 @@ nbytes:  96 bytes</code></pre>
 </section>
 <section id="splitting---np.hsplit" class="slide level2">
 <h2>Splitting - np.hsplit</h2>
-<div id="536b634e" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb74-2"><a href=""></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
-<span id="cb74-3"><a href=""></a>np2d <span class="op">=</span> np.row_stack([x,y,x])</span>
-<span id="cb74-4"><a href=""></a><span class="bu">print</span>(np2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f764593d" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb76-2"><a href=""></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb76-3"><a href=""></a>np2d <span class="op">=</span> np.row_stack([x,y,x])</span>
+<span id="cb76-4"><a href=""></a><span class="bu">print</span>(np2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1 2 3]
  [3 2 1]
  [1 2 3]]</code></pre>
 </div>
 </div>
-<p><code>np.hsplit(</code>np array,[split points]<code>)</code></p>
-<div id="b52e33fd" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href=""></a>left, right <span class="op">=</span> np.hsplit(np2d, [<span class="dv">2</span>])</span>
-<span id="cb76-2"><a href=""></a><span class="bu">print</span>(left)</span>
-<span id="cb76-3"><a href=""></a><span class="bu">print</span>(right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>np.hsplit(</code>np array,[split points]<code>)</code> or <code>np.hsplit(</code>np array, # of sections<code>)</code></p>
+<div id="665025e3" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href=""></a>left, right <span class="op">=</span> np.hsplit(np2d, [<span class="dv">2</span>])</span>
+<span id="cb78-2"><a href=""></a><span class="bu">print</span>(left)</span>
+<span id="cb78-3"><a href=""></a><span class="bu">print</span>(right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1 2]
  [3 2]
@@ -999,16 +1011,16 @@ nbytes:  96 bytes</code></pre>
 <section id="hands-on---concatenation-split---1" class="slide level2">
 <h2>Hands-on - Concatenation &amp; Split - 1</h2>
 <p>You’re a meteorologist working on analyzing and combining weather data from multiple stations.</p>
-<div id="5fa48f6a" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb78-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb78-3"><a href=""></a><span class="co"># Generate sample weather data for 3 stations over 5 days</span></span>
-<span id="cb78-4"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb78-5"><a href=""></a>station1 <span class="op">=</span> np.random.randint(<span class="dv">15</span>, <span class="dv">25</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))  <span class="co"># 5 days, temp/humidity/wind</span></span>
-<span id="cb78-6"><a href=""></a>station2 <span class="op">=</span> np.random.randint(<span class="dv">18</span>, <span class="dv">28</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
-<span id="cb78-7"><a href=""></a>station3 <span class="op">=</span> np.random.randint(<span class="dv">20</span>, <span class="dv">30</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
-<span id="cb78-8"><a href=""></a><span class="bu">print</span>(<span class="st">"Station 1 data:"</span>)</span>
-<span id="cb78-9"><a href=""></a><span class="bu">print</span>(station1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d2293d2a" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb80-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb80-3"><a href=""></a><span class="co"># Generate sample weather data for 3 stations over 5 days</span></span>
+<span id="cb80-4"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb80-5"><a href=""></a>station1 <span class="op">=</span> np.random.randint(<span class="dv">15</span>, <span class="dv">25</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))  <span class="co"># 5 days, temp/humidity/wind</span></span>
+<span id="cb80-6"><a href=""></a>station2 <span class="op">=</span> np.random.randint(<span class="dv">18</span>, <span class="dv">28</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb80-7"><a href=""></a>station3 <span class="op">=</span> np.random.randint(<span class="dv">20</span>, <span class="dv">30</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb80-8"><a href=""></a><span class="bu">print</span>(<span class="st">"Station 1 data:"</span>)</span>
+<span id="cb80-9"><a href=""></a><span class="bu">print</span>(station1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Station 1 data:
 [[21 18 22]
@@ -1056,15 +1068,15 @@ nbytes:  96 bytes</code></pre>
 <li>Python’s default implementation (CPython) can be slow for repeated small operations.</li>
 <li>Dynamic typing and interpreted nature lead to overhead in loops.</li>
 </ul>
-<div id="78f6597f" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href=""></a><span class="kw">def</span> compute_reciprocals(values):</span>
-<span id="cb80-2"><a href=""></a>    output <span class="op">=</span> np.empty(<span class="bu">len</span>(values))</span>
-<span id="cb80-3"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(values)):</span>
-<span id="cb80-4"><a href=""></a>        output[i] <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> values[i]</span>
-<span id="cb80-5"><a href=""></a>    <span class="cf">return</span> output</span>
-<span id="cb80-6"><a href=""></a>values <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, size<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb80-7"><a href=""></a><span class="bu">print</span>(values)</span>
-<span id="cb80-8"><a href=""></a><span class="bu">print</span>(compute_reciprocals(values))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e21a6c69" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href=""></a><span class="kw">def</span> compute_reciprocals(values):</span>
+<span id="cb82-2"><a href=""></a>    output <span class="op">=</span> np.empty(<span class="bu">len</span>(values))</span>
+<span id="cb82-3"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(values)):</span>
+<span id="cb82-4"><a href=""></a>        output[i] <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> values[i]</span>
+<span id="cb82-5"><a href=""></a>    <span class="cf">return</span> output</span>
+<span id="cb82-6"><a href=""></a>values <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, size<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb82-7"><a href=""></a><span class="bu">print</span>(values)</span>
+<span id="cb82-8"><a href=""></a><span class="bu">print</span>(compute_reciprocals(values))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[5 2 4 7 8]
 [0.2        0.5        0.25       0.14285714 0.125     ]</code></pre>
@@ -1074,15 +1086,15 @@ nbytes:  96 bytes</code></pre>
 <section id="ufuncs-to-the-rescue" class="slide level2">
 <h2>UFuncs to the Rescue</h2>
 <p>Fast, vectorized alternative to loops</p>
-<div id="a339b705" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb82-2"><a href=""></a>big_array <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">1000000</span>)</span>
-<span id="cb82-3"><a href=""></a><span class="co">#Compare the time between looping and ufuncs.</span></span>
-<span id="cb82-4"><a href=""></a><span class="op">%</span>timeit compute_reciprocals(big_array) <span class="co">#previous slide's method</span></span>
-<span id="cb82-5"><a href=""></a><span class="op">%</span>timeit (<span class="fl">1.0</span> <span class="op">/</span> big_array) <span class="co">#ufunc implementation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a95e4d5d" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb84-2"><a href=""></a>big_array <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">1000000</span>)</span>
+<span id="cb84-3"><a href=""></a><span class="co">#Compare the time between looping and ufuncs.</span></span>
+<span id="cb84-4"><a href=""></a><span class="op">%</span>timeit compute_reciprocals(big_array) <span class="co">#previous slide's method</span></span>
+<span id="cb84-5"><a href=""></a><span class="op">%</span>timeit (<span class="fl">1.0</span> <span class="op">/</span> big_array) <span class="co">#ufunc implementation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.3 s ± 24.3 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-2.04 ms ± 44.7 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+<pre><code>1.21 s ± 30.8 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+1.91 ms ± 46.4 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
 </section>
@@ -1095,18 +1107,18 @@ nbytes:  96 bytes</code></pre>
 </section>
 <section id="array-arithmetic" class="slide level2">
 <h2>Array Arithmetic</h2>
-<div id="37e64b56" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb84-2"><a href=""></a>x <span class="op">=</span> np.arange(<span class="dv">4</span>)</span>
-<span id="cb84-3"><a href=""></a><span class="bu">print</span>(<span class="st">"x ="</span>, x)</span>
-<span id="cb84-4"><a href=""></a><span class="bu">print</span>(<span class="st">"x + 5 ="</span>, x <span class="op">+</span> <span class="dv">5</span>)</span>
-<span id="cb84-5"><a href=""></a><span class="bu">print</span>(<span class="st">"x - 5 ="</span>, x <span class="op">-</span> <span class="dv">5</span>)</span>
-<span id="cb84-6"><a href=""></a><span class="bu">print</span>(<span class="st">"x * 2 ="</span>, x <span class="op">*</span> <span class="dv">2</span>)</span>
-<span id="cb84-7"><a href=""></a><span class="bu">print</span>(<span class="st">"x / 2 ="</span>, x <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb84-8"><a href=""></a><span class="bu">print</span>(<span class="st">"x // 2 ="</span>, x <span class="op">//</span> <span class="dv">2</span>)  <span class="co"># Floor division</span></span>
-<span id="cb84-9"><a href=""></a><span class="bu">print</span>(<span class="st">"-x ="</span>, <span class="op">-</span>x)</span>
-<span id="cb84-10"><a href=""></a><span class="bu">print</span>(<span class="st">"x ** 2 ="</span>, x <span class="op">**</span> <span class="dv">2</span>)</span>
-<span id="cb84-11"><a href=""></a><span class="bu">print</span>(<span class="st">"x % 2 ="</span>, x <span class="op">%</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b7374134" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb86-2"><a href=""></a>x <span class="op">=</span> np.arange(<span class="dv">4</span>)</span>
+<span id="cb86-3"><a href=""></a><span class="bu">print</span>(<span class="st">"x ="</span>, x)</span>
+<span id="cb86-4"><a href=""></a><span class="bu">print</span>(<span class="st">"x + 5 ="</span>, x <span class="op">+</span> <span class="dv">5</span>)</span>
+<span id="cb86-5"><a href=""></a><span class="bu">print</span>(<span class="st">"x - 5 ="</span>, x <span class="op">-</span> <span class="dv">5</span>)</span>
+<span id="cb86-6"><a href=""></a><span class="bu">print</span>(<span class="st">"x * 2 ="</span>, x <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb86-7"><a href=""></a><span class="bu">print</span>(<span class="st">"x / 2 ="</span>, x <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb86-8"><a href=""></a><span class="bu">print</span>(<span class="st">"x // 2 ="</span>, x <span class="op">//</span> <span class="dv">2</span>)  <span class="co"># Floor division</span></span>
+<span id="cb86-9"><a href=""></a><span class="bu">print</span>(<span class="st">"-x ="</span>, <span class="op">-</span>x)</span>
+<span id="cb86-10"><a href=""></a><span class="bu">print</span>(<span class="st">"x ** 2 ="</span>, x <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb86-11"><a href=""></a><span class="bu">print</span>(<span class="st">"x % 2 ="</span>, x <span class="op">%</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x = [0 1 2 3]
 x + 5 = [5 6 7 8]
@@ -1176,10 +1188,10 @@ x % 2 = [0 1 0 1]</code></pre>
 </section>
 <section id="absolute-value" class="slide level2">
 <h2>Absolute Value</h2>
-<div id="d77f2849" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb86-2"><a href=""></a>x <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb86-3"><a href=""></a><span class="bu">print</span>(np.<span class="bu">abs</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3aa40dce" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb88-2"><a href=""></a>x <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb88-3"><a href=""></a><span class="bu">print</span>(np.<span class="bu">abs</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2 1 0 1 2]</code></pre>
 </div>
@@ -1194,13 +1206,13 @@ x % 2 = [0 1 0 1]</code></pre>
 <li><code>np.arcsin()</code>, <code>np.arccos()</code>, <code>np.arctan()</code></li>
 </ul></li>
 </ul>
-<div id="0504a528" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href=""></a><span class="co"># Return evenly spaced numbers over a specified interval</span></span>
-<span id="cb88-2"><a href=""></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, np.pi, <span class="dv">3</span>) <span class="co">#</span></span>
-<span id="cb88-3"><a href=""></a><span class="bu">print</span>(<span class="st">"theta ="</span>, theta)</span>
-<span id="cb88-4"><a href=""></a><span class="bu">print</span>(<span class="st">"sin(theta) ="</span>, np.sin(theta))</span>
-<span id="cb88-5"><a href=""></a><span class="bu">print</span>(<span class="st">"cos(theta) ="</span>, np.cos(theta))</span>
-<span id="cb88-6"><a href=""></a><span class="bu">print</span>(<span class="st">"tan(theta) ="</span>, np.tan(theta))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cdbd8b79" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href=""></a><span class="co"># Return evenly spaced numbers over a specified interval</span></span>
+<span id="cb90-2"><a href=""></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, np.pi, <span class="dv">3</span>) <span class="co">#</span></span>
+<span id="cb90-3"><a href=""></a><span class="bu">print</span>(<span class="st">"theta ="</span>, theta)</span>
+<span id="cb90-4"><a href=""></a><span class="bu">print</span>(<span class="st">"sin(theta) ="</span>, np.sin(theta))</span>
+<span id="cb90-5"><a href=""></a><span class="bu">print</span>(<span class="st">"cos(theta) ="</span>, np.cos(theta))</span>
+<span id="cb90-6"><a href=""></a><span class="bu">print</span>(<span class="st">"tan(theta) ="</span>, np.tan(theta))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>theta = [0.         1.57079633 3.14159265]
 sin(theta) = [0.0000000e+00 1.0000000e+00 1.2246468e-16]
@@ -1212,11 +1224,11 @@ tan(theta) = [ 0.00000000e+00  1.63312394e+16 -1.22464680e-16]</code></pre>
 <section id="trigonometric-functions-1" class="slide level2">
 <h2>Trigonometric Functions</h2>
 <p><strong>Inverse</strong> trigonometric functions are also available:</p>
-<div id="c0a2fd8a" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href=""></a>x <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb90-2"><a href=""></a><span class="bu">print</span>(<span class="st">"arcsin(x) ="</span>, np.arcsin(x))</span>
-<span id="cb90-3"><a href=""></a><span class="bu">print</span>(<span class="st">"arccos(x) ="</span>, np.arccos(x))</span>
-<span id="cb90-4"><a href=""></a><span class="bu">print</span>(<span class="st">"arctan(x) ="</span>, np.arctan(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="479df3d9" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href=""></a>x <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb92-2"><a href=""></a><span class="bu">print</span>(<span class="st">"arcsin(x) ="</span>, np.arcsin(x))</span>
+<span id="cb92-3"><a href=""></a><span class="bu">print</span>(<span class="st">"arccos(x) ="</span>, np.arccos(x))</span>
+<span id="cb92-4"><a href=""></a><span class="bu">print</span>(<span class="st">"arctan(x) ="</span>, np.arctan(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>arcsin(x) = [-1.57079633  0.          1.57079633]
 arccos(x) = [3.14159265 1.57079633 0.        ]
@@ -1227,12 +1239,12 @@ arctan(x) = [-0.78539816  0.          0.78539816]</code></pre>
 <section id="exponents" class="slide level2">
 <h2>Exponents</h2>
 <p><code>np.exp()</code>, <code>np.exp2()</code>, <code>np.power()</code></p>
-<div id="4d63f994" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb92-2"><a href=""></a><span class="bu">print</span>(<span class="st">"x ="</span>, x)</span>
-<span id="cb92-3"><a href=""></a><span class="bu">print</span>(<span class="st">"e^x ="</span>, np.exp(x))</span>
-<span id="cb92-4"><a href=""></a><span class="bu">print</span>(<span class="st">"2^x ="</span>, np.exp2(x))</span>
-<span id="cb92-5"><a href=""></a><span class="bu">print</span>(<span class="st">"3^x ="</span>, np.power(<span class="dv">3</span>, x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c2440d3f" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb94-2"><a href=""></a><span class="bu">print</span>(<span class="st">"x ="</span>, x)</span>
+<span id="cb94-3"><a href=""></a><span class="bu">print</span>(<span class="st">"e^x ="</span>, np.exp(x))</span>
+<span id="cb94-4"><a href=""></a><span class="bu">print</span>(<span class="st">"2^x ="</span>, np.exp2(x))</span>
+<span id="cb94-5"><a href=""></a><span class="bu">print</span>(<span class="st">"3^x ="</span>, np.power(<span class="dv">3</span>, x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x = [1, 2, 3]
 e^x = [ 2.71828183  7.3890561  20.08553692]
@@ -1244,12 +1256,12 @@ e^x = [ 2.71828183  7.3890561  20.08553692]
 <section id="logarithms" class="slide level2">
 <h2>Logarithms</h2>
 <p><code>np.log()</code> (natural log), <code>np.log2()</code> (base-2), <code>np.log10()</code> (base-10)</p>
-<div id="c9310f94" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">10</span>]</span>
-<span id="cb94-2"><a href=""></a><span class="bu">print</span>(<span class="st">"x ="</span>, x)</span>
-<span id="cb94-3"><a href=""></a><span class="bu">print</span>(<span class="st">"ln(x) ="</span>, np.log(x)) <span class="co">#natural logarithm</span></span>
-<span id="cb94-4"><a href=""></a><span class="bu">print</span>(<span class="st">"log2(x) ="</span>, np.log2(x))</span>
-<span id="cb94-5"><a href=""></a><span class="bu">print</span>(<span class="st">"log10(x) ="</span>, np.log10(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="20bc2553" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">10</span>]</span>
+<span id="cb96-2"><a href=""></a><span class="bu">print</span>(<span class="st">"x ="</span>, x)</span>
+<span id="cb96-3"><a href=""></a><span class="bu">print</span>(<span class="st">"ln(x) ="</span>, np.log(x)) <span class="co">#natural logarithm</span></span>
+<span id="cb96-4"><a href=""></a><span class="bu">print</span>(<span class="st">"log2(x) ="</span>, np.log2(x))</span>
+<span id="cb96-5"><a href=""></a><span class="bu">print</span>(<span class="st">"log10(x) ="</span>, np.log10(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x = [1, 2, 4, 10]
 ln(x) = [0.         0.69314718 1.38629436 2.30258509]
@@ -1261,13 +1273,13 @@ log10(x) = [0.         0.30103    0.60205999 1.        ]</code></pre>
 <section id="hands-on---ufuncs---1" class="slide level2">
 <h2>Hands-on - UFuncs - 1</h2>
 <p>You’re analyzing sensor data from industrial equipment. The dataset contains temperature (℃), vibration (mm/s²), and pressure (kPa) readings sampled every 5 minutes over 30 days.</p>
-<div id="b449445a" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href=""></a><span class="co"># Generate synthetic sensor data (4320 = 30 days * 144 samples/day)</span></span>
-<span id="cb96-2"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb96-3"><a href=""></a>time_points <span class="op">=</span> <span class="dv">4320</span></span>
-<span id="cb96-4"><a href=""></a>temperature <span class="op">=</span> <span class="dv">25</span> <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> np.arange(time_points)<span class="op">/</span><span class="dv">144</span>) <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, time_points)</span>
-<span id="cb96-5"><a href=""></a>vibration <span class="op">=</span> np.<span class="bu">abs</span>(<span class="dv">2</span> <span class="op">*</span> np.random.randn(time_points) <span class="op">+</span> np.sin(np.arange(time_points)<span class="op">/</span><span class="dv">100</span>))</span>
-<span id="cb96-6"><a href=""></a>pressure <span class="op">=</span> <span class="dv">100</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> np.arange(time_points)<span class="op">/</span><span class="dv">288</span>) <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">3</span>, time_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7e18a5aa" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href=""></a><span class="co"># Generate synthetic sensor data (4320 = 30 days * 144 samples/day)</span></span>
+<span id="cb98-2"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb98-3"><a href=""></a>time_points <span class="op">=</span> <span class="dv">4320</span></span>
+<span id="cb98-4"><a href=""></a>temperature <span class="op">=</span> <span class="dv">25</span> <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> np.arange(time_points)<span class="op">/</span><span class="dv">144</span>) <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, time_points)</span>
+<span id="cb98-5"><a href=""></a>vibration <span class="op">=</span> np.<span class="bu">abs</span>(<span class="dv">2</span> <span class="op">*</span> np.random.randn(time_points) <span class="op">+</span> np.sin(np.arange(time_points)<span class="op">/</span><span class="dv">100</span>))</span>
+<span id="cb98-6"><a href=""></a>pressure <span class="op">=</span> <span class="dv">100</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> np.arange(time_points)<span class="op">/</span><span class="dv">288</span>) <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">3</span>, time_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="hands-on---ufuncs---2" class="slide level2">
@@ -1293,14 +1305,14 @@ log10(x) = [0.         0.30103    0.60205999 1.        ]</code></pre>
 <section id="specialized-ufuncs-fyr---examples" class="slide level2">
 <h2>Specialized UFuncs (FYR) - Examples</h2>
 <pre><code>!pip3 install scipy</code></pre>
-<div id="51b7852d" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href=""></a><span class="im">from</span> scipy <span class="im">import</span> special</span>
-<span id="cb98-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb98-3"><a href=""></a><span class="co"># Gamma functions and related functions</span></span>
-<span id="cb98-4"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
-<span id="cb98-5"><a href=""></a><span class="bu">print</span>(<span class="st">"gamma(x) ="</span>, special.gamma(x))</span>
-<span id="cb98-6"><a href=""></a><span class="bu">print</span>(<span class="st">"ln|gamma(x)| ="</span>, special.gammaln(x))</span>
-<span id="cb98-7"><a href=""></a><span class="bu">print</span>(<span class="st">"beta(x, 2) ="</span>, special.beta(x, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e1a8a85d" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href=""></a><span class="im">from</span> scipy <span class="im">import</span> special</span>
+<span id="cb100-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb100-3"><a href=""></a><span class="co"># Gamma functions and related functions</span></span>
+<span id="cb100-4"><a href=""></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb100-5"><a href=""></a><span class="bu">print</span>(<span class="st">"gamma(x) ="</span>, special.gamma(x))</span>
+<span id="cb100-6"><a href=""></a><span class="bu">print</span>(<span class="st">"ln|gamma(x)| ="</span>, special.gammaln(x))</span>
+<span id="cb100-7"><a href=""></a><span class="bu">print</span>(<span class="st">"beta(x, 2) ="</span>, special.beta(x, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>gamma(x) = [1.0000e+00 2.4000e+01 3.6288e+05]
 ln|gamma(x)| = [ 0.          3.17805383 12.80182748]
@@ -1336,31 +1348,31 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <ul>
 <li>Python’s built-in <code>sum()</code> function:</li>
 </ul>
-<div class="sourceCode" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb100-2"><a href=""></a>L <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
-<span id="cb100-3"><a href=""></a><span class="bu">sum</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb102-2"><a href=""></a>L <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
+<span id="cb102-3"><a href=""></a><span class="bu">sum</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>NumPy’s <code>np.sum()</code> function:</li>
 </ul>
-<div id="b9f116de" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb101-2"><a href=""></a>L <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
-<span id="cb101-3"><a href=""></a>np.<span class="bu">sum</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div id="6231ad4c" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb103-2"><a href=""></a>L <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
+<span id="cb103-3"><a href=""></a>np.<span class="bu">sum</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>48.021499666755986</code></pre>
 </div>
 </div>
 </section>
 <section id="numpys-sum-is-faster" class="slide level2">
 <h2>NumPy’s <code>sum()</code> is Faster</h2>
-<div id="d468bc9e" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb103-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
-<span id="cb103-3"><a href=""></a><span class="op">%</span>timeit <span class="bu">sum</span>(big_array)</span>
-<span id="cb103-4"><a href=""></a><span class="op">%</span>timeit np.<span class="bu">sum</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="989575df" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb105-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
+<span id="cb105-3"><a href=""></a><span class="op">%</span>timeit <span class="bu">sum</span>(big_array)</span>
+<span id="cb105-4"><a href=""></a><span class="op">%</span>timeit np.<span class="bu">sum</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>64.2 ms ± 1.89 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
-407 μs ± 8.57 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>62.9 ms ± 3.41 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+361 μs ± 7 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
 </section>
@@ -1369,36 +1381,36 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <ul>
 <li>Python’s built-in <code>min()</code> and <code>max()</code> functions</li>
 </ul>
-<div id="05e3344b" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb105-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
-<span id="cb105-3"><a href=""></a><span class="bu">min</span>(big_array), <span class="bu">max</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
+<div id="8b051c99" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb107-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
+<span id="cb107-3"><a href=""></a><span class="bu">min</span>(big_array), <span class="bu">max</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>(3.7745761005680833e-07, 0.9999993822414859)</code></pre>
 </div>
 </div>
 <ul>
 <li>NumPy’s <code>np.min()</code> and <code>np.max()</code> functions</li>
 </ul>
-<div id="ed523c43" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb107-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
-<span id="cb107-3"><a href=""></a>np.<span class="bu">min</span>(big_array), np.<span class="bu">max</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div id="b71e529a" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb109-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
+<span id="cb109-3"><a href=""></a>np.<span class="bu">min</span>(big_array), np.<span class="bu">max</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>(9.958058022618843e-07, 0.9999978869129644)</code></pre>
 </div>
 </div>
 </section>
 <section id="numpys-min-and-max-are-faster" class="slide level2">
 <h2>NumPy’s <code>min()</code> and <code>max()</code> are Faster!</h2>
-<div id="56a589df" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb109-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
-<span id="cb109-3"><a href=""></a><span class="op">%</span>timeit <span class="bu">min</span>(big_array)</span>
-<span id="cb109-4"><a href=""></a><span class="op">%</span>timeit np.<span class="bu">min</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="13e5d27a" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb111-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
+<span id="cb111-3"><a href=""></a><span class="op">%</span>timeit <span class="bu">min</span>(big_array)</span>
+<span id="cb111-4"><a href=""></a><span class="op">%</span>timeit np.<span class="bu">min</span>(big_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>47.7 ms ± 864 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
-324 μs ± 4.02 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>44.3 ms ± 434 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+285 μs ± 13 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
 </section>
@@ -1407,10 +1419,10 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <ul>
 <li>For <code>min</code>, <code>max</code>, <code>sum</code>, etc., use the array object’s methods:</li>
 </ul>
-<div id="bade1499" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb111-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
-<span id="cb111-3"><a href=""></a><span class="bu">print</span>(big_array.<span class="bu">min</span>(), big_array.<span class="bu">max</span>(), big_array.<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="be7580e1" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb113-2"><a href=""></a>big_array <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>)</span>
+<span id="cb113-3"><a href=""></a><span class="bu">print</span>(big_array.<span class="bu">min</span>(), big_array.<span class="bu">max</span>(), big_array.<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.869667026812351e-07 0.999996616605816 499937.583352858</code></pre>
 </div>
@@ -1421,10 +1433,10 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <ul>
 <li>Aggregate along rows or columns in multi-dimensional arrays using the <code>axis</code> argument.</li>
 </ul>
-<div id="f4834659" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb113-2"><a href=""></a>M <span class="op">=</span> np.random.random((<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb113-3"><a href=""></a><span class="bu">print</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="090ac8de" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb115-2"><a href=""></a>M <span class="op">=</span> np.random.random((<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb115-3"><a href=""></a><span class="bu">print</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.05129103 0.32547955 0.65895467 0.7601047 ]
  [0.75975984 0.08813557 0.79059896 0.12849497]
@@ -1435,18 +1447,18 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <section id="axis-argument-example-columns" class="slide level2">
 <h2><code>axis</code> Argument Example (Columns)</h2>
 <p><code>axis=0</code>: collapses the <em>first</em> axis</p>
-<div id="cd5162d2" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb115-2"><a href=""></a>M <span class="op">=</span> np.random.random((<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb115-3"><a href=""></a><span class="bu">print</span>(M)</span>
-<span id="cb115-4"><a href=""></a><span class="co"># Minimum value within each column</span></span>
-<span id="cb115-5"><a href=""></a>M.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">0</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1faa21fe" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb117-2"><a href=""></a>M <span class="op">=</span> np.random.random((<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb117-3"><a href=""></a><span class="bu">print</span>(M)</span>
+<span id="cb117-4"><a href=""></a><span class="co"># Minimum value within each column</span></span>
+<span id="cb117-5"><a href=""></a>M.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">0</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.91099955 0.98637716 0.46804137 0.55040904]
  [0.00926242 0.79668349 0.23558379 0.92889502]
  [0.65245155 0.2240943  0.71448474 0.40978092]]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>array([0.00926242, 0.2240943 , 0.23558379, 0.40978092])</code></pre>
 </div>
 </div>
@@ -1454,18 +1466,18 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <section id="axis-argument-example-rows" class="slide level2">
 <h2><code>axis</code> Argument Example (Rows)</h2>
 <p><code>axis=1</code>: collapses the <em>second</em> axis.</p>
-<div id="7b73b96b" class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb118-2"><a href=""></a>M <span class="op">=</span> np.random.random((<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb118-3"><a href=""></a><span class="bu">print</span>(M)</span>
-<span id="cb118-4"><a href=""></a><span class="co"># Maximum value within each row</span></span>
-<span id="cb118-5"><a href=""></a>M.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="567f2020" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb120-2"><a href=""></a>M <span class="op">=</span> np.random.random((<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb120-3"><a href=""></a><span class="bu">print</span>(M)</span>
+<span id="cb120-4"><a href=""></a><span class="co"># Maximum value within each row</span></span>
+<span id="cb120-5"><a href=""></a>M.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.1864629  0.20599943 0.14828817 0.02800223]
  [0.15572912 0.58429388 0.13569173 0.22563104]
  [0.45870571 0.35204676 0.8516537  0.58664033]]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>array([0.20599943, 0.58429388, 0.8516537 ])</code></pre>
 </div>
 </div>
@@ -1496,9 +1508,9 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <section id="example-前置作業" class="slide level2">
 <h2>Example: 前置作業</h2>
 <p>為了成功從https (加密封包傳輸)下載資料，首先取消證書驗證</p>
-<div id="efbbc926" class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href=""></a><span class="im">import</span> ssl</span>
-<span id="cb121-2"><a href=""></a>ssl._create_default_https_context <span class="op">=</span> ssl._create_unverified_context</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="871f3f55" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href=""></a><span class="im">import</span> ssl</span>
+<span id="cb123-2"><a href=""></a>ssl._create_default_https_context <span class="op">=</span> ssl._create_unverified_context</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>!pip3 install seaborn</code></pre>
 </section>
@@ -1507,18 +1519,18 @@ beta(x, 2) = [0.5        0.03333333 0.00909091]</code></pre>
 <ul>
 <li>Uses a real-world dataset to demonstrate aggregates.</li>
 </ul>
-<div id="ad171a44" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb123-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb123-3"><a href=""></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/refs/heads/master/notebooks/data/president_heights.csv'</span>)</span>
-<span id="cb123-4"><a href=""></a>heights <span class="op">=</span> np.array(data[<span class="st">'height(cm)'</span>])</span>
-<span id="cb123-5"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean height: "</span>, heights.mean())</span>
-<span id="cb123-6"><a href=""></a><span class="bu">print</span>(<span class="st">"Standard deviation:"</span>, heights.std())</span>
-<span id="cb123-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Minimum height: "</span>, heights.<span class="bu">min</span>())</span>
-<span id="cb123-8"><a href=""></a><span class="bu">print</span>(<span class="st">"Maximum height: "</span>, heights.<span class="bu">max</span>())</span>
-<span id="cb123-9"><a href=""></a><span class="bu">print</span>(<span class="st">"25th percentile: "</span>, np.percentile(heights, <span class="dv">25</span>))</span>
-<span id="cb123-10"><a href=""></a><span class="bu">print</span>(<span class="st">"Median: "</span>, np.median(heights))</span>
-<span id="cb123-11"><a href=""></a><span class="bu">print</span>(<span class="st">"75th percentile: "</span>, np.percentile(heights, <span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="49b3d6f3" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb125-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb125-3"><a href=""></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/refs/heads/master/notebooks/data/president_heights.csv'</span>)</span>
+<span id="cb125-4"><a href=""></a>heights <span class="op">=</span> np.array(data[<span class="st">'height(cm)'</span>])</span>
+<span id="cb125-5"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean height: "</span>, heights.mean())</span>
+<span id="cb125-6"><a href=""></a><span class="bu">print</span>(<span class="st">"Standard deviation:"</span>, heights.std())</span>
+<span id="cb125-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Minimum height: "</span>, heights.<span class="bu">min</span>())</span>
+<span id="cb125-8"><a href=""></a><span class="bu">print</span>(<span class="st">"Maximum height: "</span>, heights.<span class="bu">max</span>())</span>
+<span id="cb125-9"><a href=""></a><span class="bu">print</span>(<span class="st">"25th percentile: "</span>, np.percentile(heights, <span class="dv">25</span>))</span>
+<span id="cb125-10"><a href=""></a><span class="bu">print</span>(<span class="st">"Median: "</span>, np.median(heights))</span>
+<span id="cb125-11"><a href=""></a><span class="bu">print</span>(<span class="st">"75th percentile: "</span>, np.percentile(heights, <span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean height:  180.04545454545453
 Standard deviation: 6.983599441335736
@@ -1532,18 +1544,18 @@ Median:  182.0
 </section>
 <section id="visualizing-president-heights" class="slide level2">
 <h2>Visualizing President Heights</h2>
-<div id="98abe425" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb125-2"><a href=""></a><span class="im">import</span> seaborn<span class="op">;</span> seaborn.<span class="bu">set</span>()  <span class="co"># set plot style</span></span>
-<span id="cb125-3"><a href=""></a>plt.hist(heights)</span>
-<span id="cb125-4"><a href=""></a>plt.title(<span class="st">'Height Distribution of US Presidents'</span>)</span>
-<span id="cb125-5"><a href=""></a>plt.xlabel(<span class="st">'height (cm)'</span>)</span>
-<span id="cb125-6"><a href=""></a>plt.ylabel(<span class="st">'number'</span>)</span>
-<span id="cb125-7"><a href=""></a>plt.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ff534d80" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb127-2"><a href=""></a><span class="im">import</span> seaborn<span class="op">;</span> seaborn.<span class="bu">set</span>()  <span class="co"># set plot style</span></span>
+<span id="cb127-3"><a href=""></a>plt.hist(heights)</span>
+<span id="cb127-4"><a href=""></a>plt.title(<span class="st">'Height Distribution of US Presidents'</span>)</span>
+<span id="cb127-5"><a href=""></a>plt.xlabel(<span class="st">'height (cm)'</span>)</span>
+<span id="cb127-6"><a href=""></a>plt.ylabel(<span class="st">'number'</span>)</span>
+<span id="cb127-7"><a href=""></a>plt.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="5_Numpy_files/figure-revealjs/cell-65-output-1.png" width="812" height="455"></p>
+<p><img data-src="5_Numpy_files/figure-revealjs/cell-66-output-1.png" width="812" height="455"></p>
 </figure>
 </div>
 </div>
@@ -1552,14 +1564,14 @@ Median:  182.0
 <section id="hands-on---aggregations---1" class="slide level2">
 <h2>Hands-on - Aggregations - 1</h2>
 <p>You’re a financial analyst tasked with analyzing historical stock data for several tech companies.</p>
-<div id="b908f1b9" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb126-2"><a href=""></a>companies <span class="op">=</span> [<span class="st">'TechCorp'</span>, <span class="st">'DataSys'</span>, <span class="st">'AIGlobal'</span>, <span class="st">'CloudNet'</span>, <span class="st">'CyberSec'</span>]</span>
-<span id="cb126-3"><a href=""></a>trading_days <span class="op">=</span> <span class="dv">252</span></span>
-<span id="cb126-4"><a href=""></a>stock_data <span class="op">=</span> np.random.randint(<span class="dv">100</span>, <span class="dv">200</span>, size<span class="op">=</span>(<span class="bu">len</span>(companies), trading_days))</span>
-<span id="cb126-5"><a href=""></a>stock_data <span class="op">=</span> stock_data <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> np.random.randn(<span class="bu">len</span>(companies), trading_days) <span class="op">*</span> <span class="fl">0.01</span>)  <span class="co"># Add some randomness</span></span>
-<span id="cb126-6"><a href=""></a><span class="bu">print</span>(<span class="st">"Stock Data Shape:"</span>, stock_data.shape)</span>
-<span id="cb126-7"><a href=""></a><span class="bu">print</span>(<span class="st">"First few days of data:</span><span class="ch">\n</span><span class="st">"</span>, stock_data[:, :<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6e5f66c3" class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb128-2"><a href=""></a>companies <span class="op">=</span> [<span class="st">'TechCorp'</span>, <span class="st">'DataSys'</span>, <span class="st">'AIGlobal'</span>, <span class="st">'CloudNet'</span>, <span class="st">'CyberSec'</span>]</span>
+<span id="cb128-3"><a href=""></a>trading_days <span class="op">=</span> <span class="dv">252</span></span>
+<span id="cb128-4"><a href=""></a>stock_data <span class="op">=</span> np.random.randint(<span class="dv">100</span>, <span class="dv">200</span>, size<span class="op">=</span>(<span class="bu">len</span>(companies), trading_days))</span>
+<span id="cb128-5"><a href=""></a>stock_data <span class="op">=</span> stock_data <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> np.random.randn(<span class="bu">len</span>(companies), trading_days) <span class="op">*</span> <span class="fl">0.01</span>)  <span class="co"># Add some randomness</span></span>
+<span id="cb128-6"><a href=""></a><span class="bu">print</span>(<span class="st">"Stock Data Shape:"</span>, stock_data.shape)</span>
+<span id="cb128-7"><a href=""></a><span class="bu">print</span>(<span class="st">"First few days of data:</span><span class="ch">\n</span><span class="st">"</span>, stock_data[:, :<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Stock Data Shape: (5, 252)
 First few days of data:
@@ -1606,11 +1618,11 @@ First few days of data:
 <ul>
 <li>Binary operations on arrays of the <em>same</em> size operate element-wise.</li>
 </ul>
-<div id="b5b71079" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb128-2"><a href=""></a>a <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb128-3"><a href=""></a>b <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>])</span>
-<span id="cb128-4"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="88b27b59" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb130-2"><a href=""></a>a <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb130-3"><a href=""></a>b <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>])</span>
+<span id="cb130-4"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[5 6 7]</code></pre>
 </div>
@@ -1618,10 +1630,10 @@ First few days of data:
 <ul>
 <li>Broadcasting allows operations on arrays of <em>different</em> sizes.</li>
 </ul>
-<div id="9f5601c4" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb130-2"><a href=""></a>a <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb130-3"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e82be001" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb132-2"><a href=""></a>a <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb132-3"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[5 6 7]</code></pre>
 </div>
@@ -1636,11 +1648,11 @@ First few days of data:
 <section id="broadcasting-example-higher-dimensions" class="slide level2">
 <h2>Broadcasting Example: Higher Dimensions</h2>
 <p>The 1D array <code>a</code> is “broadcast” across the 2nd dimension of <code>M</code></p>
-<div id="f3f842a3" class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb132-2"><a href=""></a>M <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb132-3"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
-<span id="cb132-4"><a href=""></a><span class="bu">print</span>(M <span class="op">+</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2327d620" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb134-2"><a href=""></a>M <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb134-3"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
+<span id="cb134-4"><a href=""></a><span class="bu">print</span>(M <span class="op">+</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1. 2. 3.]
  [1. 2. 3.]
@@ -1651,13 +1663,13 @@ First few days of data:
 <section id="broadcasting-example-both-arrays" class="slide level2">
 <h2>Broadcasting Example: Both Arrays</h2>
 <p>Both <code>a</code> and <code>b</code> are broadcast to a common shape</p>
-<div id="82497311" class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb134-2"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
-<span id="cb134-3"><a href=""></a>b <span class="op">=</span> np.arange(<span class="dv">3</span>)[:, np.newaxis]  <span class="co"># Reshape b to be a column vector</span></span>
-<span id="cb134-4"><a href=""></a><span class="bu">print</span>(a)</span>
-<span id="cb134-5"><a href=""></a><span class="bu">print</span>(b)</span>
-<span id="cb134-6"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1c760a88" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb136-2"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
+<span id="cb136-3"><a href=""></a>b <span class="op">=</span> np.arange(<span class="dv">3</span>)[:, np.newaxis]  <span class="co"># Reshape b to be a column vector</span></span>
+<span id="cb136-4"><a href=""></a><span class="bu">print</span>(a)</span>
+<span id="cb136-5"><a href=""></a><span class="bu">print</span>(b)</span>
+<span id="cb136-6"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0 1 2]
 [[0]
@@ -1681,11 +1693,11 @@ First few days of data:
 <h2>Broadcasting Example 1</h2>
 <div class="columns">
 <div class="column">
-<div id="67af2f85" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb136-2"><a href=""></a>M <span class="op">=</span> np.ones((<span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb136-3"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
-<span id="cb136-4"><a href=""></a><span class="bu">print</span>(M <span class="op">+</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="51538c7a" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb138-2"><a href=""></a>M <span class="op">=</span> np.ones((<span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb138-3"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
+<span id="cb138-4"><a href=""></a><span class="bu">print</span>(M <span class="op">+</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1. 2. 3.]
  [1. 2. 3.]]</code></pre>
@@ -1718,11 +1730,11 @@ First few days of data:
 <h2>Broadcasting Example 2</h2>
 <div class="columns">
 <div class="column">
-<div id="e1679834" class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb138-2"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>).reshape((<span class="dv">3</span>, <span class="dv">1</span>))</span>
-<span id="cb138-3"><a href=""></a>b <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
-<span id="cb138-4"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="90ea603c" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb140-2"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>).reshape((<span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb140-3"><a href=""></a>b <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
+<span id="cb140-4"><a href=""></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0 1 2]
  [1 2 3]
@@ -1756,11 +1768,11 @@ First few days of data:
 <h2>Broadcasting Example 3: Incompatible</h2>
 <div class="columns">
 <div class="column">
-<div id="5f58b9ac" class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href=""></a>M <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">2</span>))</span>
-<span id="cb140-2"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
-<span id="cb140-3"><a href=""></a><span class="co"># This will raise a ValueError:</span></span>
-<span id="cb140-4"><a href=""></a><span class="co"># print(M + a)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a940d31c" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href=""></a>M <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb142-2"><a href=""></a>a <span class="op">=</span> np.arange(<span class="dv">3</span>)</span>
+<span id="cb142-3"><a href=""></a><span class="co"># This will raise a ValueError:</span></span>
+<span id="cb142-4"><a href=""></a><span class="co"># print(M + a)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Shapes:
@@ -1788,9 +1800,9 @@ First few days of data:
 <section id="broadcasting-in-practice---1" class="slide level2">
 <h2>Broadcasting in Practice - 1</h2>
 <p>Centering an Array</p>
-<div id="b75c7f28" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href=""></a>X <span class="op">=</span> np.random.random((<span class="dv">10</span>, <span class="dv">3</span>))  <span class="co"># 10 observations, 3 features</span></span>
-<span id="cb141-2"><a href=""></a><span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1ca99216" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href=""></a>X <span class="op">=</span> np.random.random((<span class="dv">10</span>, <span class="dv">3</span>))  <span class="co"># 10 observations, 3 features</span></span>
+<span id="cb143-2"><a href=""></a><span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.39543427 0.31320626 0.14706185]
  [0.4878512  0.13004778 0.83548024]
@@ -1807,16 +1819,16 @@ First few days of data:
 </section>
 <section id="broadcasting-in-practice---2" class="slide level2">
 <h2>Broadcasting in Practice - 2</h2>
-<div id="4197af85" class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href=""></a>Xmean <span class="op">=</span> X.mean(<span class="dv">0</span>)  <span class="co"># Mean of each feature</span></span>
-<span id="cb143-2"><a href=""></a><span class="bu">print</span>(Xmean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="edf076f2" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href=""></a>Xmean <span class="op">=</span> X.mean(<span class="dv">0</span>)  <span class="co"># Mean of each feature</span></span>
+<span id="cb145-2"><a href=""></a><span class="bu">print</span>(Xmean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0.3498752  0.54495823 0.56842606]</code></pre>
 </div>
 </div>
-<div id="565a582a" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href=""></a>X_centered <span class="op">=</span> X <span class="op">-</span> Xmean</span>
-<span id="cb145-2"><a href=""></a><span class="bu">print</span>(X_centered.mean(<span class="dv">0</span>))  <span class="co"># Should be near zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5713dd59" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href=""></a>X_centered <span class="op">=</span> X <span class="op">-</span> Xmean</span>
+<span id="cb147-2"><a href=""></a><span class="bu">print</span>(X_centered.mean(<span class="dv">0</span>))  <span class="co"># Should be near zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 4.99600361e-17 -9.99200722e-17 -6.66133815e-17]</code></pre>
 </div>
@@ -1826,10 +1838,10 @@ First few days of data:
 <section id="hands-on---broadcasting" class="slide level2">
 <h2>Hands-on - Broadcasting</h2>
 <p>You have temperature data for multiple cities over a week.</p>
-<div id="3dc2154b" class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href=""></a>temperatures <span class="op">=</span> np.random.randint(<span class="dv">15</span>, <span class="dv">35</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">7</span>))</span>
-<span id="cb147-2"><a href=""></a>cities <span class="op">=</span> [<span class="st">'New York'</span>, <span class="st">'Los Angeles'</span>, <span class="st">'Chicago'</span>, <span class="st">'Houston'</span>, <span class="st">'Phoenix'</span>]</span>
-<span id="cb147-3"><a href=""></a>days <span class="op">=</span> [<span class="st">'Mon'</span>, <span class="st">'Tue'</span>, <span class="st">'Wed'</span>, <span class="st">'Thu'</span>, <span class="st">'Fri'</span>, <span class="st">'Sat'</span>, <span class="st">'Sun'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eecb6817" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href=""></a>temperatures <span class="op">=</span> np.random.randint(<span class="dv">15</span>, <span class="dv">35</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">7</span>))</span>
+<span id="cb149-2"><a href=""></a>cities <span class="op">=</span> [<span class="st">'New York'</span>, <span class="st">'Los Angeles'</span>, <span class="st">'Chicago'</span>, <span class="st">'Houston'</span>, <span class="st">'Phoenix'</span>]</span>
+<span id="cb149-3"><a href=""></a>days <span class="op">=</span> [<span class="st">'Mon'</span>, <span class="st">'Tue'</span>, <span class="st">'Wed'</span>, <span class="st">'Thu'</span>, <span class="st">'Fri'</span>, <span class="st">'Sat'</span>, <span class="st">'Sun'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Convert all temperatures from Celsius to Fahrenheit.</li>
@@ -1854,14 +1866,14 @@ First few days of data:
 </section>
 <section id="comparison-operators" class="slide level2">
 <h2>Comparison Operators</h2>
-<div id="0bd0c6a5" class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb148-2"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb148-3"><a href=""></a></span>
-<span id="cb148-4"><a href=""></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">3</span>)</span>
-<span id="cb148-5"><a href=""></a><span class="bu">print</span>(x <span class="op">&lt;=</span> <span class="dv">3</span>)</span>
-<span id="cb148-6"><a href=""></a><span class="bu">print</span>(x <span class="op">==</span> <span class="dv">3</span>)</span>
-<span id="cb148-7"><a href=""></a><span class="bu">print</span>(x <span class="op">!=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7b54ca2e" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb150-2"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb150-3"><a href=""></a></span>
+<span id="cb150-4"><a href=""></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb150-5"><a href=""></a><span class="bu">print</span>(x <span class="op">&lt;=</span> <span class="dv">3</span>)</span>
+<span id="cb150-6"><a href=""></a><span class="bu">print</span>(x <span class="op">==</span> <span class="dv">3</span>)</span>
+<span id="cb150-7"><a href=""></a><span class="bu">print</span>(x <span class="op">!=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[False False False  True  True]
 [ True  True  True False False]
@@ -1872,17 +1884,17 @@ First few days of data:
 </section>
 <section id="rainfall-data-create-the-plot" class="slide level2">
 <h2>Rainfall Data: Create the Plot</h2>
-<div id="483cc600" class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href=""></a>rainfall <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv'</span>)[<span class="st">'PRCP'</span>].values</span>
-<span id="cb150-2"><a href=""></a>inches <span class="op">=</span> rainfall <span class="op">/</span> <span class="dv">254</span>  <span class="co"># 1/10mm -&gt; inches</span></span>
-<span id="cb150-3"><a href=""></a>plt.hist(inches, <span class="dv">40</span>)<span class="op">;</span></span>
-<span id="cb150-4"><a href=""></a>plt.xlabel(<span class="st">"Inches"</span>)</span>
-<span id="cb150-5"><a href=""></a>plt.ylabel(<span class="st">"Number of Days"</span>)</span>
-<span id="cb150-6"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fa872910" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href=""></a>rainfall <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv'</span>)[<span class="st">'PRCP'</span>].values</span>
+<span id="cb152-2"><a href=""></a>inches <span class="op">=</span> rainfall <span class="op">/</span> <span class="dv">254</span>  <span class="co"># 1/10mm -&gt; inches</span></span>
+<span id="cb152-3"><a href=""></a>plt.hist(inches, <span class="dv">40</span>)<span class="op">;</span></span>
+<span id="cb152-4"><a href=""></a>plt.xlabel(<span class="st">"Inches"</span>)</span>
+<span id="cb152-5"><a href=""></a>plt.ylabel(<span class="st">"Number of Days"</span>)</span>
+<span id="cb152-6"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="5_Numpy_files/figure-revealjs/cell-79-output-1.png" width="820" height="435"></p>
+<p><img data-src="5_Numpy_files/figure-revealjs/cell-80-output-1.png" width="820" height="435"></p>
 </figure>
 </div>
 </div>
@@ -1890,14 +1902,14 @@ First few days of data:
 </section>
 <section id="rainfall-data-boolean-masking" class="slide level2">
 <h2>Rainfall Data: Boolean Masking</h2>
-<div id="35744561" class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href=""></a>rainfall <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv'</span>)[<span class="st">'PRCP'</span>].values</span>
-<span id="cb151-2"><a href=""></a>inches <span class="op">=</span> rainfall <span class="op">/</span> <span class="dv">254</span>  <span class="co"># 1/10mm -&gt; inches</span></span>
-<span id="cb151-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Number days without rain:      "</span>, np.<span class="bu">sum</span>(inches <span class="op">==</span> <span class="dv">0</span>))</span>
-<span id="cb151-4"><a href=""></a><span class="bu">print</span>(<span class="st">"Number days with rain:         "</span>, np.<span class="bu">sum</span>(inches <span class="op">!=</span> <span class="dv">0</span>))</span>
-<span id="cb151-5"><a href=""></a><span class="bu">print</span>(<span class="st">"Days with more than 0.5 inches:"</span>, np.<span class="bu">sum</span>(inches <span class="op">&gt;</span> <span class="fl">0.5</span>))</span>
-<span id="cb151-6"><a href=""></a><span class="bu">print</span>(<span class="st">"Rainy days with &lt; 0.2 inches  :"</span>, np.<span class="bu">sum</span>((inches <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
-<span id="cb151-7"><a href=""></a>                                                (inches <span class="op">&lt;</span> <span class="fl">0.2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="80b9b7fc" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href=""></a>rainfall <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv'</span>)[<span class="st">'PRCP'</span>].values</span>
+<span id="cb153-2"><a href=""></a>inches <span class="op">=</span> rainfall <span class="op">/</span> <span class="dv">254</span>  <span class="co"># 1/10mm -&gt; inches</span></span>
+<span id="cb153-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Number days without rain:      "</span>, np.<span class="bu">sum</span>(inches <span class="op">==</span> <span class="dv">0</span>))</span>
+<span id="cb153-4"><a href=""></a><span class="bu">print</span>(<span class="st">"Number days with rain:         "</span>, np.<span class="bu">sum</span>(inches <span class="op">!=</span> <span class="dv">0</span>))</span>
+<span id="cb153-5"><a href=""></a><span class="bu">print</span>(<span class="st">"Days with more than 0.5 inches:"</span>, np.<span class="bu">sum</span>(inches <span class="op">&gt;</span> <span class="fl">0.5</span>))</span>
+<span id="cb153-6"><a href=""></a><span class="bu">print</span>(<span class="st">"Rainy days with &lt; 0.2 inches  :"</span>, np.<span class="bu">sum</span>((inches <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span></span>
+<span id="cb153-7"><a href=""></a>                                                (inches <span class="op">&lt;</span> <span class="fl">0.2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number days without rain:       215
 Number days with rain:          150
@@ -1913,13 +1925,13 @@ Rainy days with &lt; 0.2 inches  : 75</code></pre>
 <li><code>all()</code>: Are all values True?</li>
 <li>Can be used along axes, like aggregates.</li>
 </ul>
-<div id="b7a59a34" class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href=""></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">0</span>)</span>
-<span id="cb153-2"><a href=""></a>x <span class="op">=</span> rng.randint(<span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb153-3"><a href=""></a><span class="bu">print</span>(np.<span class="bu">any</span>(x <span class="op">&lt;</span> <span class="dv">5</span>))</span>
-<span id="cb153-4"><a href=""></a><span class="bu">print</span>(np.<span class="bu">all</span>(x <span class="op">&lt;</span> <span class="dv">5</span>))</span>
-<span id="cb153-5"><a href=""></a><span class="bu">print</span>(np.<span class="bu">any</span>(x <span class="op">&lt;</span> <span class="dv">5</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb153-6"><a href=""></a><span class="bu">print</span>(np.<span class="bu">all</span>(x <span class="op">&lt;</span> <span class="dv">5</span>, axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e5ea295d" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href=""></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">0</span>)</span>
+<span id="cb155-2"><a href=""></a>x <span class="op">=</span> rng.randint(<span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb155-3"><a href=""></a><span class="bu">print</span>(np.<span class="bu">any</span>(x <span class="op">&lt;</span> <span class="dv">5</span>))</span>
+<span id="cb155-4"><a href=""></a><span class="bu">print</span>(np.<span class="bu">all</span>(x <span class="op">&lt;</span> <span class="dv">5</span>))</span>
+<span id="cb155-5"><a href=""></a><span class="bu">print</span>(np.<span class="bu">any</span>(x <span class="op">&lt;</span> <span class="dv">5</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb155-6"><a href=""></a><span class="bu">print</span>(np.<span class="bu">all</span>(x <span class="op">&lt;</span> <span class="dv">5</span>, axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True
 False
