@@ -530,13 +530,14 @@ print(station1)
 
 ## Why UFuncs?
 
--   The key to vectorized operations in NumPy.
--   UFuncs allow you to apply a function element-wise to arrays, often with significant performance gains compared to Python loops.
+-   The key to **vectorized** operations in NumPy.
+-   Allow you to apply a function element-wise to arrays
+    -   with significant performance gains compared to Python loops.
 
 ## The Slowness of Loops
 
--   Python's default implementation (CPython) can be slow for repeated small operations.
--   Dynamic typing and interpreted nature lead to overhead in loops.
+-   Python's default implementation can be slow for repeated small operations.
+-   **Dynamic typing** and interpreted nature lead to overhead in loops.
 
 ```{python}
 #| echo: true
@@ -548,15 +549,19 @@ def compute_reciprocals(values):
 values = np.random.randint(1, 10, size=5)
 print(values)
 print(compute_reciprocals(values))
+
 ```
 
 ## UFuncs to the Rescue
 
-Fast, vectorized alternative to loops
+-   Fast, vectorized alternative to loops
+```{python}
+#| echo: true
+print(1/values) #UFuncs
+```
 
 ```{python}
 #| echo: true
-import numpy as np
 big_array = np.random.randint(1, 100, size=1000000)
 #Compare the time between looping and ufuncs.
 %timeit compute_reciprocals(big_array) #previous slide's method
@@ -572,13 +577,12 @@ big_array = np.random.randint(1, 100, size=1000000)
 
 ```{python}
 #| echo: true
-import numpy as np
 x = np.arange(4)
 print("x =", x)
-print("x + 5 =", x + 5)
-print("x - 5 =", x - 5)
-print("x * 2 =", x * 2)
-print("x / 2 =", x / 2)
+print("x + 5 =", x + 5) #np.add(x,5)
+print("x - 5 =", x - 5) #np.subtract(x,5)
+print("x * 2 =", x * 2) #np.multiply(x,2)
+print("x / 2 =", x / 2) #np.divide(x,2)
 print("x // 2 =", x // 2)  # Floor division
 print("-x =", -x)
 print("x ** 2 =", x ** 2)
@@ -609,9 +613,8 @@ print(np.abs(x))
 
 ## Trigonometric Functions
 
--   Trigonometric functions in NumPy:
+-   Trigonometric functions in NumPy
     -   `np.sin()`, `np.cos()`, `np.tan()`
-    -   `np.arcsin()`, `np.arccos()`, `np.arctan()`
 
 ```{python}
 #| echo: true
@@ -625,7 +628,8 @@ print("tan(theta) =", np.tan(theta))
 
 ## Trigonometric Functions
 
-**Inverse** trigonometric functions are also available:
+-   **Inverse** trigonometric functions are also available
+    -   `np.arcsin()`, `np.arccos()`, `np.arctan()`
 
 ```{python}
 #| echo: true
@@ -650,7 +654,9 @@ print("3^x =", np.power(3, x))
 
 ## Logarithms
 
-`np.log()` (natural log), `np.log2()` (base-2), `np.log10()` (base-10)
+-   `np.log()` (natural log)
+-   `np.log2()` (base-2)
+-   `np.log10()` (base-10)
 
 ```{python}
 #| echo: true
@@ -662,7 +668,7 @@ print("log10(x) =", np.log10(x))
 
 ```
 
-## Hands-on - UFuncs - 1
+## Hands-on - UFuncs - 1/2
 
 You're analyzing sensor data from industrial equipment. The dataset contains temperature (℃), vibration (mm/s²), and pressure (kPa) readings sampled every 5 minutes over 30 days.
 
@@ -676,23 +682,26 @@ vibration = np.abs(2 * np.random.randn(time_points) + np.sin(np.arange(time_poin
 pressure = 100 + 20 * np.cos(2 * np.pi * np.arange(time_points)/288) + np.random.normal(0, 3, time_points)
 ```
 
-## Hands-on - UFuncs - 2
+## Hands-on - UFuncs - 2/2
 
 -   Remove negative vibration values using `np.clip`
 -   Find daily temperature amplitude (max - min)
--   Calculate equipment stress using custom formula:
+-   Calculate equipment stress using custom formula with UFuncs
     -   stress = (temp² + vib²) / pressure
--   Apply log transform to vibration data
+-   Apply log transform (natural log) to vibration data
 
 ## Specialized UFuncs (FYR)
 
 -   NumPy has many more ufuncs
 -   `scipy.special` is an excellent source for more specialized mathematical functions.
--   Examples from `scipy.special`: `gamma()`, `gammaln()`, `beta()`, `erf()`, `erfc()`, `erfinv()`
+-   Examples from `scipy.special`
+    -   `gamma()`, `gammaln()`, `beta()`, `erf()`, `erfc()`, `erfinv()`
 
 ## Specialized UFuncs (FYR) - Examples
 
-```         
+```   {python}
+#| echo: true
+#| eval: false      
 !pip3 install scipy
 ```
 
@@ -719,7 +728,7 @@ print("beta(x, 2) =", special.beta(x, 2))
 
 ## Why Aggregations?
 
--   Often, the first step when facing large datasets is to compute summary statistics.
+-   Often, the first step when facing large datasets is to compute **summary statistics**.
 -   Aggregations provide a concise way to describe the "typical" values in a dataset.
 -   **Examples**: mean, standard deviation, sum, product, min, max, median, quantiles.
 
@@ -727,8 +736,8 @@ print("beta(x, 2) =", special.beta(x, 2))
 
 -   Python's built-in `sum()` function:
 
-``` python
-import numpy as np
+```{python}
+#| echo: true
 L = np.random.random(100)
 sum(L)
 ```
@@ -737,16 +746,14 @@ sum(L)
 
 ```{python}
 #| echo: true
-import numpy as np
 L = np.random.random(100)
 np.sum(L)
 ```
 
-## NumPy's `sum()` is Faster
+## NumPy's `np.sum()` is Faster
 
 ```{python}
 #| echo: true
-import numpy as np
 big_array = np.random.rand(1000000)
 %timeit sum(big_array)
 %timeit np.sum(big_array)
@@ -758,7 +765,6 @@ big_array = np.random.rand(1000000)
 
 ```{python}
 #| echo: true
-import numpy as np
 big_array = np.random.rand(1000000)
 min(big_array), max(big_array)
 ```
@@ -767,16 +773,14 @@ min(big_array), max(big_array)
 
 ```{python}
 #| echo: true
-import numpy as np
 big_array = np.random.rand(1000000)
 np.min(big_array), np.max(big_array)
 ```
 
-## NumPy's `min()` and `max()` are Faster!
+## NumPy's `np.min()` and `np.max()` are Faster!
 
 ```{python}
 #| echo: true
-import numpy as np
 big_array = np.random.rand(1000000)
 %timeit min(big_array)
 %timeit np.min(big_array)
@@ -788,7 +792,6 @@ big_array = np.random.rand(1000000)
 
 ```{python}
 #| echo: true
-import numpy as np
 big_array = np.random.rand(1000000)
 print(big_array.min(), big_array.max(), big_array.sum())
 ```
@@ -796,12 +799,13 @@ print(big_array.min(), big_array.max(), big_array.sum())
 ## Multi-Dimensional Aggregates
 
 -   Aggregate along rows or columns in multi-dimensional arrays using the `axis` argument.
+-   Default: across all values
 
 ```{python}
 #| echo: true
-import numpy as np
 M = np.random.random((3, 4))
 print(M)
+M.min()  
 ```
 
 ## `axis` Argument Example (Columns)
@@ -810,7 +814,6 @@ print(M)
 
 ```{python}
 #| echo: true
-import numpy as np
 M = np.random.random((3, 4))
 print(M)
 # Minimum value within each column
@@ -819,11 +822,10 @@ M.min(axis=0)
 
 ## `axis` Argument Example (Rows)
 
-`axis=1`: collapses the *second* axis.
+`axis=1`: collapses the *second* axis
 
 ```{python}
 #| echo: true
-import numpy as np
 M = np.random.random((3, 4))
 print(M)
 # Maximum value within each row
@@ -895,7 +897,7 @@ plt.ylabel('number')
 plt.plot()
 ```
 
-## Hands-on - Aggregations - 1
+## Hands-on - Aggregations - 1/2
 
 You're a financial analyst tasked with analyzing historical stock data for several tech companies.
 
@@ -907,16 +909,17 @@ trading_days = 252
 stock_data = np.random.randint(100, 200, size=(len(companies), trading_days))
 stock_data = stock_data * (1 + np.random.randn(len(companies), trading_days) * 0.01)  # Add some randomness
 print("Stock Data Shape:", stock_data.shape)
-print("First few days of data:\n", stock_data[:, :5])
+print("First six days of data:\n", stock_data[:, :6])
 ```
 
-## Hands-on - Aggregations - 2
+## Hands-on - Aggregations - 2/2
 
 -   Calculate for each company:
     -   Average stock price
     -   Highest and lowest stock prices
     -   Standard deviation of stock prices
-    -   Number of days the stock price increased `np.diff`
+    -   Number of days the stock price increased 
+        -   Hint: `np.diff`
 -   Get the day with the highest average stock price across all companies
 -   Get the company with the most volatile stock (highest standard deviation)
 
@@ -981,7 +984,7 @@ Both `a` and `b` are broadcast to a common shape
 #| echo: true
 import numpy as np
 a = np.arange(3)
-b = np.arange(3)[:, np.newaxis]  # Reshape b to be a column vector
+b = np.arange(3).reshape(3,1)  # Reshape b to be a column vector
 print(a)
 print(b)
 print(a + b)
@@ -989,9 +992,9 @@ print(a + b)
 
 ## Rules of Broadcasting
 
--   **Rule 1:** If the two arrays differ in their number of **dimensions**, the shape of the one with fewer dimensions is *padded* with ones on its leading (left) side.
--   **Rule 2:** If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.
--   **Rule 3:** If in any dimension the sizes disagree and neither is equal to 1, an error is raised.
+-   **Rule 1:** If the two arrays differ in their **number of dimensions**, the shape of the one with fewer dimensions is *padded* with ones on its leading (left) side.
+-   **Rule 2:** If the shape of the two arrays does not match in any dimension, the array with **shape equal to 1** in that dimension is stretched to match the other shape.
+-   **Rule 3:** If in any dimension the sizes disagree and neither is equal to 1, an **error is raised**.
 
 ## Broadcasting Example 1
 
@@ -1002,6 +1005,8 @@ print(a + b)
 import numpy as np
 M = np.ones((2, 3))
 a = np.arange(3)
+print(M)
+print(a)
 print(M + a)
 ```
 
@@ -1030,6 +1035,8 @@ print(M + a)
 import numpy as np
 a = np.arange(3).reshape((3, 1))
 b = np.arange(3)
+print(a)
+print(b)
 print(a + b)
 ```
 
@@ -1057,6 +1064,8 @@ print(a + b)
 #| echo: true
 M = np.ones((3, 2))
 a = np.arange(3)
+print(M)
+print(a)
 # This will raise a ValueError:
 # print(M + a)
 ```
@@ -1098,7 +1107,7 @@ print(Xmean)
 ```{python}
 #| echo: true
 X_centered = X - Xmean
-print(X_centered.mean(0))  # Should be near zero
+print(X_centered.mean(axis=0))  # Should be near zero
 ```
 
 Broadcasting allows subtracting the feature means from each observation efficiently.
@@ -1112,11 +1121,12 @@ You have temperature data for multiple cities over a week.
 temperatures = np.random.randint(15, 35, size=(5, 7))
 cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix']
 days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+print(temperatures)
 ```
 
 -   Convert all temperatures from Celsius to Fahrenheit.
 -   Rank the temperatures for each day across cities (1 being the hottest, 5 being the coldest). `np.argsort()`
--   Calculate a 3-day weighted moving average for each city, where the weights are \[0.6, 0.3, 0.1\] for \[today, yesterday, day before yesterday\]. `np.dot()`
+
 
 ## NumPy
 

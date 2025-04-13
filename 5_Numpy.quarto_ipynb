@@ -1,0 +1,2171 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"5. NumPy\"\n",
+        "author: \"Yi-Ju Tseng\"\n",
+        "format:\n",
+        "  revealjs:\n",
+        "    slide-number: c/t\n",
+        "    show-slide-number: all\n",
+        "editor: visual\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## NumPy\n",
+        "\n",
+        "-   Basic NumPy\n",
+        "-   Universal Functions (UFuncs) in NumPy\n",
+        "-   Aggregations\n",
+        "-   Broadcasting\n",
+        "-   Boolean Arrays and Masks\n",
+        "\n",
+        "## NumPy\n",
+        "\n",
+        "-   **Basic NumPy**\n",
+        "-   Universal Functions (UFuncs) in NumPy\n",
+        "-   Aggregations\n",
+        "-   Broadcasting\n",
+        "-   Boolean Arrays and Masks\n",
+        "\n",
+        "# Basic NumPy\n",
+        "\n",
+        "## What is NumPy?\n",
+        "\n",
+        "-   **Num**erical **Py**thon\n",
+        "-   Contain values of a **single type**\n",
+        "-   the fundamental package for **numerical computation** in Python\n",
+        "-   high-performance multidimensional array object + tools for working with these arrays\n",
+        "-   foundation of other data science libraries (`Pandas`, `SciPy`, and `scikit-learn`)\n",
+        "-   Key feature: **ndarray** n-dimensional array object\n",
+        "\n",
+        "## Why Use NumPy Arrays?\n",
+        "\n",
+        "-   **Efficiency:** more compact than Python lists\n",
+        "-   **Speed:** vectorized operations on NumPy arrays are much faster than iterating through Python `lists` (optimized C)\n",
+        "-   **Functionality:** provides a large library of mathematical functions\n",
+        "\n",
+        "## NumPy Getting Started\n",
+        "\n",
+        "Install\n"
+      ],
+      "id": "d082abae"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "#| echo: true\n",
+        "!pip3 install numpy # ! for shell script"
+      ],
+      "id": "55216114",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Import\n"
+      ],
+      "id": "a55c3757"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np"
+      ],
+      "id": "347d2433",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Create NumPy array (Recap)\n",
+        "\n",
+        "Check Ch.3 for more information\n",
+        "\n",
+        "::::: columns\n",
+        "::: column\n",
+        "-   `np.full(dim, value)`: repeated `value`s\n",
+        "-   2d dimension: (row, column)\n"
+      ],
+      "id": "e76ad6d3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.full((2, 4), 3.14)"
+      ],
+      "id": "c949b221",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: column\n",
+        "-   `np.random.random(dim)`\n",
+        "-   `np.random.normal(mean,sd,dim)`\n"
+      ],
+      "id": "14130b91"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.random.random((2,3))"
+      ],
+      "id": "03e4bb4c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.random.normal(0,1,(2,3))"
+      ],
+      "id": "d589e459",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## Basic NumPy Array Manipulations\n",
+        "\n",
+        "-   **Attributes**: Size, shape, memory consumption, and data types of arrays\n",
+        "-   **Indexing**: Getting and setting the value of individual array elements\n",
+        "-   **Slicing**: Getting and setting smaller subarrays within a larger array\n",
+        "-   **Reshaping**: Changing the shape of a given array\n",
+        "-   **Joining** and **splitting**: Combining multiple arrays into one, and splitting one array into many\n",
+        "\n",
+        "## NumPy Array Attributes\n",
+        "\n",
+        "-   Every NumPy array has attributes:\n",
+        "    -   `ndim`: the *number* of dimensions\n",
+        "    -   `shape`: the *size* of each dimension\n",
+        "    -   `size`: the *total size* of the array\n",
+        "    -   `dtype`: the *data type* of the array elements\n",
+        "    -   `itemsize`: the size (in bytes) of each array element\n",
+        "    -   `nbytes`: the total size (in bytes) of the array\n",
+        "\n",
+        "## NumPy Array Attributes - Examples\n"
+      ],
+      "id": "9862c8ff"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.random.seed(0)  # seed for reproducibility\n",
+        "x1 = np.random.randint(10, size=6)  # One-dimensional array\n",
+        "x2 = np.random.randint(10, size=(3, 4))  # Two-dimensional array\n",
+        "x3 = np.random.randint(10, size=(3, 4, 5))  # Three-dimensional array"
+      ],
+      "id": "d7090651",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "::::: columns\n",
+        "::: column"
+      ],
+      "id": "f4e29d10"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x1)\n",
+        "print(\"ndim: \", x1.ndim)\n",
+        "print(\"shape:\", x1.shape)\n",
+        "print(\"size: \", x1.size)\n",
+        "print(\"dtype: \", x1.dtype)\n",
+        "print(\"itemsize:\", x1.itemsize, \"bytes\")\n",
+        "print(\"nbytes: \", x1.nbytes, \"bytes\")"
+      ],
+      "id": "7c2a9404",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: column"
+      ],
+      "id": "e0281258"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x2)\n",
+        "print(\"ndim: \", x2.ndim)\n",
+        "print(\"shape:\", x2.shape)\n",
+        "print(\"size: \", x2.size)\n",
+        "print(\"dtype: \", x2.dtype)\n",
+        "print(\"itemsize:\", x2.itemsize, \"bytes\")\n",
+        "print(\"nbytes: \", x2.nbytes, \"bytes\")"
+      ],
+      "id": "bfd31263",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## NumPy Array Attributes - data type\n",
+        "\n",
+        "-   NumPy arrays contain values of a single type\n",
+        "-   `dtype`: Assign data type when creating a numpy array\n",
+        "    -   Most of the time, this can be automatically detected\n",
+        "    -   Available data type: [ref](https://jakevdp.github.io/PythonDataScienceHandbook/02.01-understanding-data-types.html)\n"
+      ],
+      "id": "35931274"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.zeros(10, dtype=np.int16)"
+      ],
+      "id": "102dd5d9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Array Indexing - Single Elements\n",
+        "\n",
+        "-   Similar to **lists**\n",
+        "-   In a multi-dimensional array, items can be accessed using a comma-separated indices\n",
+        "-   Indexing starts from 0\n",
+        "\n",
+        "## Array Indexing - Example\n",
+        "\n",
+        "-   `x[row, column]`\n",
+        "-   `-1`: last index\n"
+      ],
+      "id": "9f41df69"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.array([[1,2,3],[4,5,6]])\n",
+        "print(x)"
+      ],
+      "id": "a0851a40",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "::::: columns\n",
+        "::: column"
+      ],
+      "id": "4ae39007"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x[0, 0]) "
+      ],
+      "id": "74628780",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x[1, 2])  "
+      ],
+      "id": "b8338e45",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: column"
+      ],
+      "id": "2339824d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x[0, 0] = 12\n",
+        "print(x)"
+      ],
+      "id": "ee768b67",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x[-1, -1] = 24\n",
+        "print(x)"
+      ],
+      "id": "42ab8f22",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## Array Slicing - Subarrays\n",
+        "\n",
+        "-   Colon (`:`) operator: slice arrays\n",
+        "-   `x[start:stop:step]`\n",
+        "-   Default:\n",
+        "    -   `start=0`\n",
+        "    -   `stop=size of dimension`\n",
+        "    -   `step=1`\n",
+        "\n",
+        "## Array Slicing - Example (1D)\n"
+      ],
+      "id": "9685a366"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.arange(10)\n",
+        "x"
+      ],
+      "id": "9005cbb2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "`x[start:stop:step]`\n"
+      ],
+      "id": "aee82250"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x[1:5]) # Elements 1 to 4\n",
+        "print(x[:5:2]) # Every other element from beginning to index 5\n",
+        "print(x[::2]) # Every other element from the beginning\n",
+        "print(x[5:]) # Elements starting at index 5"
+      ],
+      "id": "d6e5f6a4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Array Slicing - Example (2D)\n"
+      ],
+      "id": "ccb8cf74"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "two_d = np.array([np.arange(5),np.arange(5,10)]) \n",
+        "print(two_d)"
+      ],
+      "id": "ae34cfbb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "::::: columns\n",
+        "::: column\n",
+        "empty slice (`:`)\n"
+      ],
+      "id": "35fb0662"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(two_d[1,:])"
+      ],
+      "id": "91036077",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(two_d[:,1])"
+      ],
+      "id": "b8d12b99",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(two_d[1,-1])"
+      ],
+      "id": "7f012c81",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: column\n",
+        "can be omitted in row access\n"
+      ],
+      "id": "489d76ff"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(two_d[1])"
+      ],
+      "id": "b8a55f23",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(two_d[:2])"
+      ],
+      "id": "717c959d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(two_d[1][2])"
+      ],
+      "id": "7b34c1f4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## No Copy View\n",
+        "\n",
+        "-   In NumPy array, slices will be *View*. in lists, slices will be copies\n",
+        "-   `.copy()` if you need a copy\n",
+        "\n",
+        "::::: columns\n",
+        "::: column"
+      ],
+      "id": "38070306"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x2)"
+      ],
+      "id": "9640dc28",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x2_sub = x2[:2, :2]\n",
+        "print(x2_sub)"
+      ],
+      "id": "21d5cb54",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: column"
+      ],
+      "id": "5d680a4e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x2_sub[0, 0] = 99\n",
+        "print(x2_sub)"
+      ],
+      "id": "e8092e0a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(x2)"
+      ],
+      "id": "5914eae9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## Reshaping of Arrays\n",
+        "\n",
+        "-   `reshape(dim)`: gives a new shape to an array\n",
+        "-   the size must match\n"
+      ],
+      "id": "f999c0e6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.arange(1, 10)\n",
+        "x"
+      ],
+      "id": "f5c2ebc2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "grid = x.reshape((3, 3))\n",
+        "print(grid)"
+      ],
+      "id": "1c50ded4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Indexing and Slicing - 1\n",
+        "\n",
+        "You're working on a project to analyze and manipulate digital images using NumPy. Your task is to perform various operations on image data represented as NumPy arrays.\n"
+      ],
+      "id": "b62750eb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "# Create a sample 8x8 grayscale image (0-255 values)\n",
+        "image = np.array([\n",
+        "    [50, 50, 50, 50, 200, 200, 200, 200],\n",
+        "    [50, 50, 50, 50, 200, 200, 200, 200],\n",
+        "    [50, 90, 90, 50, 200, 200, 200, 200],\n",
+        "    [50, 90, 90, 50, 200, 200, 200, 200],\n",
+        "    [50, 50, 50, 50, 200, 200, 200, 200],\n",
+        "    [50, 50, 50, 50, 200, 200, 200, 200],\n",
+        "    [50, 50, 50, 50, 50, 50, 50, 50],\n",
+        "    [50, 50, 50, 50, 50, 50, 50, 50]\n",
+        "])"
+      ],
+      "id": "2596d827",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Indexing and Slicing - 2\n"
+      ],
+      "id": "bf6b91f7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "# Function to display the image\n",
+        "def show_image(img, title=\"Image\"):\n",
+        "    plt.imshow(img, cmap='gray', vmin=0, vmax=255)\n",
+        "    plt.title(title)\n",
+        "    plt.axis('off')\n",
+        "    plt.show()\n",
+        "\n",
+        "show_image(image, \"Original Image\")"
+      ],
+      "id": "b843b393",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Indexing and Slicing - 3\n",
+        "\n",
+        "-   Extract the 4x4 sub-image from the top-left corner.\n",
+        "-   Extract every other pixel from both dimensions (creating a 4x4 image).\n",
+        "-   Flatten the image into a 1D array.\n",
+        "-   Reshape the flattened array back into an 8x8 image.\n",
+        "\n",
+        "## Array Concatenation and Splitting\n",
+        "\n",
+        "-   `np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing (or first) axis.\n",
+        "-   `np.vstack([array1, array2])`: Vertical stack (row-wise concatenation).\n",
+        "-   `np.hstack([array1, array2])`: Horizontal stack (column-wise concatenation).\n",
+        "\n",
+        "## Concatenation - Example\n",
+        "\n",
+        "`np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing (or first) axis.\n"
+      ],
+      "id": "3939c76b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.array([1, 2, 3])\n",
+        "y = np.array([3, 2, 1])\n",
+        "z = [99, 99, 99]\n",
+        "print(np.concatenate([x, y, z]))"
+      ],
+      "id": "d88755d5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Concatenation - Example\n",
+        "\n",
+        "`np.concatenate([array1, array2, ...])`: Concatenates arrays along an existing (or first) axis.\n"
+      ],
+      "id": "1bcb78b8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "grid = np.array([[1, 2, 3],\n",
+        "                 [4, 5, 6]])\n",
+        "np.concatenate([grid, grid])                 "
+      ],
+      "id": "d0d0f7f9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Set `axis=1` for the second axis\n"
+      ],
+      "id": "0345cfde"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.concatenate([grid, grid], axis=1)                 "
+      ],
+      "id": "31d77fe3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Concatenation - np.vstack\n",
+        "\n",
+        "-   `np.vstack([array1, array2])`: Vertical stack (row-wise concatenation).\n"
+      ],
+      "id": "cec9aa61"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.array([1, 2, 3])\n",
+        "grid = np.array([[9, 8, 7],\n",
+        "                 [6, 5, 4]])\n",
+        "np.vstack([x, grid])           "
+      ],
+      "id": "fcad1551",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Concatenation - np.hstack\n",
+        "\n",
+        "-   `np.hstack([array1, array2])`: Horizontal stack (column-wise concatenation).\n"
+      ],
+      "id": "75361e9c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "y = np.array([[99],\n",
+        "              [99]])\n",
+        "np.hstack([grid, y])       "
+      ],
+      "id": "ff600037",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Splitting\n",
+        "\n",
+        "The opposite of concatenation is splitting\n",
+        "\n",
+        "-   `np.split(`np array,\\[split points\\]`)` or `np.split(`np array, # of sections`)`\n",
+        "-   `np.vsplit(`np array,\\[split points\\]`)` or `np.vsplit(`np array, # of sections`)`\n",
+        "-   `np.hsplit(`np array,\\[split points\\]`)` or `np.hsplit(`np array, # of sections`)`\n",
+        "-   **split points**: split before the split point\n",
+        "    -   N split-points, leads to N + 1 subarrays\n",
+        "-   **# of sections**: divided into N equal arrays \n",
+        "\n",
+        "## Splitting\n",
+        "\n",
+        "split points"
+      ],
+      "id": "97b9bdf9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.array([1, 2, 3, 99, 99, 3, 2, 1])\n",
+        "x1, x2, x3 = np.split(x, [3, 5])\n",
+        "print(x1, x2, x3)"
+      ],
+      "id": "41a30636",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "number of sections"
+      ],
+      "id": "a0ab0187"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x4, x5 = np.split(x, 2)\n",
+        "print(x4, x5)"
+      ],
+      "id": "49ac23ef",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Splitting - np.vsplit\n"
+      ],
+      "id": "c49a7b14"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.array([1, 2, 3])\n",
+        "y = np.array([3, 2, 1])\n",
+        "np2d = np.row_stack([x,y,x])\n",
+        "print(np2d)"
+      ],
+      "id": "2a1b6ecc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "`np.vsplit(`np array,\\[split points\\]`)` or `np.vsplit(`np array, # of sections`)`\n"
+      ],
+      "id": "be80e6ea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "upper, lower = np.vsplit(np2d, [2])\n",
+        "print(upper)\n",
+        "print(lower)"
+      ],
+      "id": "4f8d53c8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Splitting - np.hsplit\n"
+      ],
+      "id": "863a3edd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.array([1, 2, 3])\n",
+        "y = np.array([3, 2, 1])\n",
+        "np2d = np.row_stack([x,y,x])\n",
+        "print(np2d)"
+      ],
+      "id": "68a4bb26",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "`np.hsplit(`np array,\\[split points\\]`)` or `np.hsplit(`np array, # of sections`)`\n"
+      ],
+      "id": "d49a0aed"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "left, right = np.hsplit(np2d, [2])\n",
+        "print(left)\n",
+        "print(right)"
+      ],
+      "id": "6b002dd8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Concatenation & Split - 1\n",
+        "\n",
+        "You're a meteorologist working on analyzing and combining weather data from multiple stations.\n"
+      ],
+      "id": "7173d17f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true       \n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "# Generate sample weather data for 3 stations over 5 days\n",
+        "np.random.seed(42)\n",
+        "station1 = np.random.randint(15, 25, size=(5, 3))  # 5 days, temp/humidity/wind\n",
+        "station2 = np.random.randint(18, 28, size=(5, 3))\n",
+        "station3 = np.random.randint(20, 30, size=(5, 3))\n",
+        "print(\"Station 1 data:\")\n",
+        "print(station1)"
+      ],
+      "id": "74da1c13",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Concatenation & Split - 2\n",
+        "\n",
+        "-   Combine the data from all three stations vertically (stacking days).\n",
+        "-   Combine the data from all three stations horizontally (side by side).\n",
+        "-   Split the vertically stacked data back into three station datasets.\n",
+        "-   Split the horizontally stacked data into temperature, humidity, and wind speed datasets.\n",
+        "\n",
+        "## NumPy\n",
+        "\n",
+        "-   Basic NumPy\n",
+        "-   **Universal Functions (UFuncs) in NumPy**\n",
+        "-   Aggregations\n",
+        "-   Broadcasting\n",
+        "-   Boolean Arrays and Masks\n",
+        "\n",
+        "# Universal Functions (UFuncs) in NumPy\n",
+        "\n",
+        "## Why UFuncs?\n",
+        "\n",
+        "-   The key to **vectorized** operations in NumPy.\n",
+        "-   Allow you to apply a function element-wise to arrays\n",
+        "    -   with significant performance gains compared to Python loops.\n",
+        "\n",
+        "## The Slowness of Loops\n",
+        "\n",
+        "-   Python's default implementation can be slow for repeated small operations.\n",
+        "-   **Dynamic typing** and interpreted nature lead to overhead in loops.\n"
+      ],
+      "id": "7ceb47b4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "def compute_reciprocals(values):\n",
+        "    output = np.empty(len(values))\n",
+        "    for i in range(len(values)):\n",
+        "        output[i] = 1.0 / values[i]\n",
+        "    return output\n",
+        "values = np.random.randint(1, 10, size=5)\n",
+        "print(values)\n",
+        "print(compute_reciprocals(values))"
+      ],
+      "id": "5d52bb01",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## UFuncs to the Rescue\n",
+        "\n",
+        "-   Fast, vectorized alternative to loops"
+      ],
+      "id": "e57a9664"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "print(1/values) #UFuncs"
+      ],
+      "id": "a4ac0355",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "big_array = np.random.randint(1, 100, size=1000000)\n",
+        "#Compare the time between looping and ufuncs.\n",
+        "%timeit compute_reciprocals(big_array) #previous slide's method\n",
+        "%timeit (1.0 / big_array) #ufunc implementation"
+      ],
+      "id": "8497f4f9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## UFuncs: Two Flavors\n",
+        "\n",
+        "-   **Unary UFuncs:** Operate on a single input array. Examples: `np.abs`, `np.sin`, `np.exp`.\n",
+        "-   **Binary UFuncs:** Operate on two input arrays. Examples: `np.add`, `np.subtract`, `np.multiply`, `np.divide`, `np.power`.\n",
+        "\n",
+        "## Array Arithmetic\n"
+      ],
+      "id": "6bbe153f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = np.arange(4)\n",
+        "print(\"x =\", x)\n",
+        "print(\"x + 5 =\", x + 5) #np.add(x,5)\n",
+        "print(\"x - 5 =\", x - 5) #np.subtract(x,5)\n",
+        "print(\"x * 2 =\", x * 2) #np.multiply(x,2)\n",
+        "print(\"x / 2 =\", x / 2) #np.divide(x,2)\n",
+        "print(\"x // 2 =\", x // 2)  # Floor division\n",
+        "print(\"-x =\", -x)\n",
+        "print(\"x ** 2 =\", x ** 2)\n",
+        "print(\"x % 2 =\", x % 2)"
+      ],
+      "id": "6aa18275",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## UFunc Equivalents\n",
+        "\n",
+        "| Operator | Equivalent UFunc  | Description       |\n",
+        "|:---------|:------------------|:------------------|\n",
+        "| `+`      | `np.add`          | Addition          |\n",
+        "| `-`      | `np.subtract`     | Subtraction       |\n",
+        "| `-`      | `np.negative`     | Unary negation    |\n",
+        "| `*`      | `np.multiply`     | Multiplication    |\n",
+        "| `/`      | `np.divide`       | Division          |\n",
+        "| `//`     | `np.floor_divide` | Floor division    |\n",
+        "| `**`     | `np.power`        | Exponentiation    |\n",
+        "| `%`      | `np.mod`          | Modulus/remainder |\n",
+        "\n",
+        "## Absolute Value\n"
+      ],
+      "id": "3e5042c2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "x = np.array([-2, -1, 0, 1, 2])\n",
+        "print(np.abs(x))"
+      ],
+      "id": "efdc1b14",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Trigonometric Functions\n",
+        "\n",
+        "-   Trigonometric functions in NumPy\n",
+        "    -   `np.sin()`, `np.cos()`, `np.tan()`\n"
+      ],
+      "id": "e31df0c5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "# Return evenly spaced numbers over a specified interval\n",
+        "theta = np.linspace(0, np.pi, 3) #\n",
+        "print(\"theta =\", theta)\n",
+        "print(\"sin(theta) =\", np.sin(theta))\n",
+        "print(\"cos(theta) =\", np.cos(theta))\n",
+        "print(\"tan(theta) =\", np.tan(theta))"
+      ],
+      "id": "ea7c85c3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Trigonometric Functions\n",
+        "\n",
+        "-   **Inverse** trigonometric functions are also available\n",
+        "    -   `np.arcsin()`, `np.arccos()`, `np.arctan()`\n"
+      ],
+      "id": "de53a09e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = [-1, 0, 1]\n",
+        "print(\"arcsin(x) =\", np.arcsin(x))\n",
+        "print(\"arccos(x) =\", np.arccos(x))\n",
+        "print(\"arctan(x) =\", np.arctan(x))"
+      ],
+      "id": "a9fe0b0f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Exponents\n",
+        "\n",
+        "`np.exp()`, `np.exp2()`, `np.power()`\n"
+      ],
+      "id": "d51614b2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = [1, 2, 3]\n",
+        "print(\"x =\", x)\n",
+        "print(\"e^x =\", np.exp(x))\n",
+        "print(\"2^x =\", np.exp2(x))\n",
+        "print(\"3^x =\", np.power(3, x))"
+      ],
+      "id": "20f3ca54",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Logarithms\n",
+        "\n",
+        "-   `np.log()` (natural log)\n",
+        "-   `np.log2()` (base-2)\n",
+        "-   `np.log10()` (base-10)\n"
+      ],
+      "id": "2ad96725"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "x = [1, 2, 4, 10]\n",
+        "print(\"x =\", x)\n",
+        "print(\"ln(x) =\", np.log(x)) #natural logarithm\n",
+        "print(\"log2(x) =\", np.log2(x))\n",
+        "print(\"log10(x) =\", np.log10(x))"
+      ],
+      "id": "eaca8f59",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - UFuncs - 1/2\n",
+        "\n",
+        "You're analyzing sensor data from industrial equipment. The dataset contains temperature (℃), vibration (mm/s²), and pressure (kPa) readings sampled every 5 minutes over 30 days.\n"
+      ],
+      "id": "ef9d55cf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "# Generate synthetic sensor data (4320 = 30 days * 144 samples/day)\n",
+        "np.random.seed(42)\n",
+        "time_points = 4320\n",
+        "temperature = 25 + 10 * np.sin(2 * np.pi * np.arange(time_points)/144) + np.random.normal(0, 1, time_points)\n",
+        "vibration = np.abs(2 * np.random.randn(time_points) + np.sin(np.arange(time_points)/100))\n",
+        "pressure = 100 + 20 * np.cos(2 * np.pi * np.arange(time_points)/288) + np.random.normal(0, 3, time_points)"
+      ],
+      "id": "efe2b16d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - UFuncs - 2/2\n",
+        "\n",
+        "-   Remove negative vibration values using `np.clip`\n",
+        "-   Find daily temperature amplitude (max - min)\n",
+        "-   Calculate equipment stress using custom formula with UFuncs\n",
+        "    -   stress = (temp² + vib²) / pressure\n",
+        "-   Apply log transform (natural log) to vibration data\n",
+        "\n",
+        "## Specialized UFuncs (FYR)\n",
+        "\n",
+        "-   NumPy has many more ufuncs\n",
+        "-   `scipy.special` is an excellent source for more specialized mathematical functions.\n",
+        "-   Examples from `scipy.special`\n",
+        "    -   `gamma()`, `gammaln()`, `beta()`, `erf()`, `erfc()`, `erfinv()`\n",
+        "\n",
+        "## Specialized UFuncs (FYR) - Examples\n"
+      ],
+      "id": "fb6c435d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false      \n",
+        "!pip3 install scipy"
+      ],
+      "id": "ab0d0087",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "from scipy import special\n",
+        "import numpy as np\n",
+        "# Gamma functions and related functions\n",
+        "x = [1, 5, 10]\n",
+        "print(\"gamma(x) =\", special.gamma(x))\n",
+        "print(\"ln|gamma(x)| =\", special.gammaln(x))\n",
+        "print(\"beta(x, 2) =\", special.beta(x, 2))"
+      ],
+      "id": "a91bc099",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## NumPy\n",
+        "\n",
+        "-   Basic NumPy\n",
+        "-   Universal Functions (UFuncs) in NumPy\n",
+        "-   **Aggregations**\n",
+        "-   Broadcasting\n",
+        "-   Boolean Arrays and Masks\n",
+        "\n",
+        "# Aggregations\n",
+        "\n",
+        "## Why Aggregations?\n",
+        "\n",
+        "-   Often, the first step when facing large datasets is to compute **summary statistics**.\n",
+        "-   Aggregations provide a concise way to describe the \"typical\" values in a dataset.\n",
+        "-   **Examples**: mean, standard deviation, sum, product, min, max, median, quantiles.\n",
+        "\n",
+        "## Summing Array Values\n",
+        "\n",
+        "-   Python's built-in `sum()` function:\n"
+      ],
+      "id": "6c98a4fd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "L = np.random.random(100)\n",
+        "sum(L)"
+      ],
+      "id": "5dda8c16",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   NumPy's `np.sum()` function:\n"
+      ],
+      "id": "129d8488"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "L = np.random.random(100)\n",
+        "np.sum(L)"
+      ],
+      "id": "765b0b52",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## NumPy's `np.sum()` is Faster\n"
+      ],
+      "id": "5830c1bd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "big_array = np.random.rand(1000000)\n",
+        "%timeit sum(big_array)\n",
+        "%timeit np.sum(big_array)"
+      ],
+      "id": "7a64e582",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Minimum and Maximum\n",
+        "\n",
+        "-   Python's built-in `min()` and `max()` functions\n"
+      ],
+      "id": "5fbb2e3c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "big_array = np.random.rand(1000000)\n",
+        "min(big_array), max(big_array)"
+      ],
+      "id": "3dcb5bc7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   NumPy's `np.min()` and `np.max()` functions\n"
+      ],
+      "id": "d2a938c6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "big_array = np.random.rand(1000000)\n",
+        "np.min(big_array), np.max(big_array)"
+      ],
+      "id": "6fcc322a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## NumPy's `np.min()` and `np.max()` are Faster!\n"
+      ],
+      "id": "5f01ae77"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "big_array = np.random.rand(1000000)\n",
+        "%timeit min(big_array)\n",
+        "%timeit np.min(big_array)"
+      ],
+      "id": "28e71295",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Shorter Syntax: Array Methods\n",
+        "\n",
+        "-   For `min`, `max`, `sum`, etc., use the array object's methods:\n"
+      ],
+      "id": "ec51bdb6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "big_array = np.random.rand(1000000)\n",
+        "print(big_array.min(), big_array.max(), big_array.sum())"
+      ],
+      "id": "08178cb1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Multi-Dimensional Aggregates\n",
+        "\n",
+        "-   Aggregate along rows or columns in multi-dimensional arrays using the `axis` argument.\n",
+        "-   Default: across all values\n"
+      ],
+      "id": "af6dd5c3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "M = np.random.random((3, 4))\n",
+        "print(M)\n",
+        "M.min()  "
+      ],
+      "id": "2a59031a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## `axis` Argument Example (Columns)\n",
+        "\n",
+        "`axis=0`: collapses the *first* axis\n"
+      ],
+      "id": "5f5299a3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "M = np.random.random((3, 4))\n",
+        "print(M)\n",
+        "# Minimum value within each column\n",
+        "M.min(axis=0)  "
+      ],
+      "id": "f1b76c5a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## `axis` Argument Example (Rows)\n",
+        "\n",
+        "`axis=1`: collapses the *second* axis\n"
+      ],
+      "id": "eaa570a5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "M = np.random.random((3, 4))\n",
+        "print(M)\n",
+        "# Maximum value within each row\n",
+        "M.max(axis=1)  "
+      ],
+      "id": "6711b1b9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Other Aggregation Functions - 1\n",
+        "\n",
+        "-   `np.sum` (`np.nansum`): Compute sum of elements\n",
+        "-   `np.prod` (`np.nanprod`): Compute product of elements\n",
+        "-   `np.mean` (`np.nanmean`): Compute mean of elements\n",
+        "-   `np.std` (`np.nanstd`): Compute standard deviation\n",
+        "-   `np.var` (`np.nanvar`): Compute variance\n",
+        "-   `np.min` (`np.nanmin`): Find minimum value\n",
+        "-   `np.max` (`np.nanmax`): Find maximum value\n",
+        "\n",
+        "## Other Aggregation Functions - 2\n",
+        "\n",
+        "-   `np.argmin` (`np.nanargmin`): index of minimum value\n",
+        "-   `np.argmax` (`np.nanargmax`): index of maximum value\n",
+        "-   `np.median` (`np.nanmedian`): median of elements\n",
+        "-   `np.percentile` (`np.nanpercentile`): rank-based statistics of elements\n",
+        "-   `np.any`: whether any elements are true\n",
+        "-   `np.all`: whether all elements are true\n",
+        "\n",
+        "## Example: 前置作業\n",
+        "\n",
+        "為了成功從https (加密封包傳輸)下載資料，首先取消證書驗證\n"
+      ],
+      "id": "aeb7fa72"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import ssl\n",
+        "ssl._create_default_https_context = ssl._create_unverified_context"
+      ],
+      "id": "b6f839aa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "```         \n",
+        "!pip3 install seaborn\n",
+        "```\n",
+        "\n",
+        "## Example: President Heights\n",
+        "\n",
+        "-   Uses a real-world dataset to demonstrate aggregates.\n"
+      ],
+      "id": "e0b68ee6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "data = pd.read_csv('https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/refs/heads/master/notebooks/data/president_heights.csv')\n",
+        "heights = np.array(data['height(cm)'])\n",
+        "print(\"Mean height: \", heights.mean())\n",
+        "print(\"Standard deviation:\", heights.std())\n",
+        "print(\"Minimum height: \", heights.min())\n",
+        "print(\"Maximum height: \", heights.max())\n",
+        "print(\"25th percentile: \", np.percentile(heights, 25))\n",
+        "print(\"Median: \", np.median(heights))\n",
+        "print(\"75th percentile: \", np.percentile(heights, 75))"
+      ],
+      "id": "b4f91a3e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Visualizing President Heights\n"
+      ],
+      "id": "08faec8a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn; seaborn.set()  # set plot style\n",
+        "plt.hist(heights)\n",
+        "plt.title('Height Distribution of US Presidents')\n",
+        "plt.xlabel('height (cm)')\n",
+        "plt.ylabel('number')\n",
+        "plt.plot()"
+      ],
+      "id": "be0663f1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Aggregations - 1/2\n",
+        "\n",
+        "You're a financial analyst tasked with analyzing historical stock data for several tech companies.\n"
+      ],
+      "id": "2918fcbb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "np.random.seed(42)\n",
+        "companies = ['TechCorp', 'DataSys', 'AIGlobal', 'CloudNet', 'CyberSec']\n",
+        "trading_days = 252\n",
+        "stock_data = np.random.randint(100, 200, size=(len(companies), trading_days))\n",
+        "stock_data = stock_data * (1 + np.random.randn(len(companies), trading_days) * 0.01)  # Add some randomness\n",
+        "print(\"Stock Data Shape:\", stock_data.shape)\n",
+        "print(\"First six days of data:\\n\", stock_data[:, :6])"
+      ],
+      "id": "0cc40ec5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Hands-on - Aggregations - 2/2\n",
+        "\n",
+        "-   Calculate for each company:\n",
+        "    -   Average stock price\n",
+        "    -   Highest and lowest stock prices\n",
+        "    -   Standard deviation of stock prices\n",
+        "    -   Number of days the stock price increased \n",
+        "        -   Hint: `np.diff`\n",
+        "-   Get the day with the highest average stock price across all companies\n",
+        "-   Get the company with the most volatile stock (highest standard deviation)\n",
+        "\n",
+        "## NumPy\n",
+        "\n",
+        "-   Basic NumPy\n",
+        "-   Universal Functions (UFuncs) in NumPy\n",
+        "-   Aggregations\n",
+        "-   **Broadcasting**\n",
+        "-   Boolean Arrays and Masks\n",
+        "\n",
+        "# Broadcasting\n",
+        "\n",
+        "## Broadcasting: The Basic Idea\n",
+        "\n",
+        "Enabling UFuncs to **operate on arrays of different sizes**\n",
+        "\n",
+        "-   Binary operations on arrays of the *same* size operate element-wise.\n"
+      ],
+      "id": "f1b9d5f7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "a = np.array([0, 1, 2])\n",
+        "b = np.array([5, 5, 5])\n",
+        "print(a + b)"
+      ],
+      "id": "f5dbbfb8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Broadcasting allows operations on arrays of *different* sizes.\n"
+      ],
+      "id": "0de4caa1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "a = np.array([0, 1, 2])\n",
+        "print(a + 5)"
+      ],
+      "id": "ab818d24",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Broadcasting Analogy\n",
+        "\n",
+        "\"stretching\" or \"duplicating\" the smaller array to match the shape of the larger array\n",
+        "\n",
+        "![](https://jakevdp.github.io/PythonDataScienceHandbook/figures/02.05-broadcasting.png)\n",
+        "\n",
+        "[Source](https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html)\n",
+        "\n",
+        "## Broadcasting Example: Higher Dimensions\n",
+        "\n",
+        "The 1D array `a` is \"broadcast\" across the 2nd dimension of `M`\n"
+      ],
+      "id": "32b55cb4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "M = np.ones((3, 3))\n",
+        "a = np.arange(3)\n",
+        "print(M + a)"
+      ],
+      "id": "40cfeefa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Broadcasting Example: Both Arrays\n",
+        "\n",
+        "Both `a` and `b` are broadcast to a common shape\n"
+      ],
+      "id": "f7ff1f8a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "a = np.arange(3)\n",
+        "b = np.arange(3).reshape(3,1)  # Reshape b to be a column vector\n",
+        "print(a)\n",
+        "print(b)\n",
+        "print(a + b)"
+      ],
+      "id": "8b08a293",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Rules of Broadcasting\n",
+        "\n",
+        "-   **Rule 1:** If the two arrays differ in their **number of dimensions**, the shape of the one with fewer dimensions is *padded* with ones on its leading (left) side.\n",
+        "-   **Rule 2:** If the shape of the two arrays does not match in any dimension, the array with **shape equal to 1** in that dimension is stretched to match the other shape.\n",
+        "-   **Rule 3:** If in any dimension the sizes disagree and neither is equal to 1, an **error is raised**.\n",
+        "\n",
+        "## Broadcasting Example 1\n",
+        "\n",
+        "::::: columns\n",
+        "::: column"
+      ],
+      "id": "ea4ff4a9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "M = np.ones((2, 3))\n",
+        "a = np.arange(3)\n",
+        "print(M)\n",
+        "print(a)\n",
+        "print(M + a)"
+      ],
+      "id": "5287e1ca",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Shapes:\n",
+        "    -   `M.shape = (2, 3)`\n",
+        "    -   `a.shape = (3)`\n",
+        ":::\n",
+        "\n",
+        "::: column\n",
+        "-   Rule 1: Pad `a` with ones:\n",
+        "    -   `M.shape -> (2, 3)`\n",
+        "    -   `a.shape -> (1, 3)`\n",
+        "-   Rule 2: Stretch the first dimension of `a`:\n",
+        "    -   `M.shape -> (2, 3)`\n",
+        "    -   `a.shape -> (2, 3)`\n",
+        "-   Result: Shapes match!\n",
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## Broadcasting Example 2\n",
+        "\n",
+        "::::: columns\n",
+        "::: column"
+      ],
+      "id": "0f944869"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "a = np.arange(3).reshape((3, 1))\n",
+        "b = np.arange(3)\n",
+        "print(a)\n",
+        "print(b)\n",
+        "print(a + b)"
+      ],
+      "id": "8c09e54b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Shapes:\n",
+        "    -   `a.shape = (3, 1)`\n",
+        "    -   `b.shape = (3)`\n",
+        ":::\n",
+        "\n",
+        "::: column\n",
+        "-   Rule 1: Pad `b` with ones (left):\n",
+        "    -   `a.shape -> (3, 1)`\n",
+        "    -   `b.shape -> (1, 3)`\n",
+        "-   Rule 2: Stretch both arrays:\n",
+        "    -   `a.shape -> (3, 3)`\n",
+        "    -   `b.shape -> (3, 3)`\n",
+        "-   Result: Shapes match!\n",
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## Broadcasting Example 3: Incompatible\n",
+        "\n",
+        "::::: columns\n",
+        "::: column"
+      ],
+      "id": "a083c574"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "M = np.ones((3, 2))\n",
+        "a = np.arange(3)\n",
+        "print(M)\n",
+        "print(a)\n",
+        "# This will raise a ValueError:\n",
+        "# print(M + a)"
+      ],
+      "id": "cbdbbfe4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Shapes:\n",
+        "    -   `M.shape = (3, 2)`\n",
+        "    -   `a.shape = (3,)`\n",
+        "-   1: Pad `a` with ones:\n",
+        "    -   `M.shape -> (3, 2)`\n",
+        "    -   `a.shape -> (1, 3)`\n",
+        ":::\n",
+        "\n",
+        "::: column\n",
+        "-   2: Stretch the first dimension of `a`:\n",
+        "    -   `M.shape -> (3, 2)`\n",
+        "    -   `a.shape -> (3, 3)`\n",
+        "-   3: Shapes disagree, and neither dimension is 1. **Error!**\n",
+        ":::\n",
+        ":::::\n",
+        "\n",
+        "## Broadcasting in Practice - 1\n",
+        "\n",
+        "Centering an Array\n"
+      ],
+      "id": "f418bc92"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "X = np.random.random((10, 3))  # 10 observations, 3 features\n",
+        "print(X)"
+      ],
+      "id": "749f3776",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Broadcasting in Practice - 2\n"
+      ],
+      "id": "5cc7fcb2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "Xmean = X.mean(0)  # Mean of each feature\n",
+        "print(Xmean)"
+      ],
+      "id": "d0c4e92a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "X_centered = X - Xmean\n",
+        "print(X_centered.mean(axis=0))  # Should be near zero"
+      ],
+      "id": "f461352d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Broadcasting allows subtracting the feature means from each observation efficiently.\n",
+        "\n",
+        "## Hands-on - Broadcasting\n",
+        "\n",
+        "You have temperature data for multiple cities over a week.\n"
+      ],
+      "id": "913e23cf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "temperatures = np.random.randint(15, 35, size=(5, 7))\n",
+        "cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix']\n",
+        "days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']\n",
+        "print(temperatures)"
+      ],
+      "id": "20798937",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Convert all temperatures from Celsius to Fahrenheit.\n",
+        "-   Rank the temperatures for each day across cities (1 being the hottest, 5 being the coldest). `np.argsort()`\n",
+        "\n",
+        "\n",
+        "## NumPy\n",
+        "\n",
+        "-   Basic NumPy\n",
+        "-   Universal Functions (UFuncs) in NumPy\n",
+        "-   Aggregations\n",
+        "-   Broadcasting\n",
+        "-   **Boolean Arrays and Masks**\n",
+        "\n",
+        "# Boolean Arrays and Masks\n",
+        "\n",
+        "## Comparison Operators\n"
+      ],
+      "id": "2c62b33f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import numpy as np\n",
+        "x = np.array([1, 2, 3, 4, 5])\n",
+        "\n",
+        "print(x > 3)\n",
+        "print(x <= 3)\n",
+        "print(x == 3)\n",
+        "print(x != 3)"
+      ],
+      "id": "834bc00f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Rainfall Data: Create the Plot\n"
+      ],
+      "id": "d2e91ee2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "rainfall = pd.read_csv('https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv')['PRCP'].values\n",
+        "inches = rainfall / 254  # 1/10mm -> inches\n",
+        "plt.hist(inches, 40);\n",
+        "plt.xlabel(\"Inches\")\n",
+        "plt.ylabel(\"Number of Days\")\n",
+        "plt.show()"
+      ],
+      "id": "d97198ff",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Rainfall Data: Boolean Masking\n"
+      ],
+      "id": "b8579df6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "rainfall = pd.read_csv('https://raw.githubusercontent.com/amankharwal/Website-data/refs/heads/master/Seattle2014.csv')['PRCP'].values\n",
+        "inches = rainfall / 254  # 1/10mm -> inches\n",
+        "print(\"Number days without rain:      \", np.sum(inches == 0))\n",
+        "print(\"Number days with rain:         \", np.sum(inches != 0))\n",
+        "print(\"Days with more than 0.5 inches:\", np.sum(inches > 0.5))\n",
+        "print(\"Rainy days with < 0.2 inches  :\", np.sum((inches > 0) &\n",
+        "                                                (inches < 0.2)))"
+      ],
+      "id": "b2c3107f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## `any()` and `all()`\n",
+        "\n",
+        "-   `any()`: Are any values True?\n",
+        "-   `all()`: Are all values True?\n",
+        "-   Can be used along axes, like aggregates.\n"
+      ],
+      "id": "20544bdd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "rng = np.random.RandomState(0)\n",
+        "x = rng.randint(10, size=(3, 4))\n",
+        "print(np.any(x < 5))\n",
+        "print(np.all(x < 5))\n",
+        "print(np.any(x < 5, axis=1))\n",
+        "print(np.all(x < 5, axis=1))"
+      ],
+      "id": "adb9ce11",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## References\n",
+        "\n",
+        "-   [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)\n",
+        "\n",
+        "# Questions?"
+      ],
+      "id": "04be5564"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/yjtseng/.virtualenvs/r-reticulate/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
