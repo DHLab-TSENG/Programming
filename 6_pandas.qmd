@@ -24,11 +24,9 @@ editor: visual
 
 ## Introduction to Pandas Objects
 
-## Overview
-
--   Pandas objects are enhanced versions of NumPy structured arrays
+-   Pandas objects are enhanced versions of NumPy arrays
     -   we need more flexibility (e.g., attaching labels to data, working with missing data, etc.)
--   Rows and columns identified with labels instead of integer indices
+-   Rows and columns identified with **labels** instead of integer indices
 -   Three fundamental data structures:
     -   Series
     -   DataFrame
@@ -56,43 +54,51 @@ import pandas as pd
 
 -   One-dimensional array of indexed data
 -   Wraps both values and indices
+-   `pd.Series(np 1D array or list)`
+    -   From list (default integer index)
+    -   With custom index
+    -   From dictionary
 
 ```{python}
 #| echo: true
 data = pd.Series([0.25, 0.5, 0.75, 1.0])
-data
 ```
 
 ## Series: Data Access
-
+```{python}
+#| echo: true
+data
+```
 -   Position (index)
 -   Slicing
-
 ```{python}
 #| echo: true
 # Access by position
 data[1] 
+```
+```{python}
+#| echo: true
 # Slicing works too
 data[1:3]    
 ```
 
 ## Series: Flexible Indices
 
--   Pandas Series has an explicitly defined index associated with the values
--   Index need not be integers
+-   Pandas Series has an **defined index** associated with the values
 -   Can use strings or other types
 
 ```{python}
 #| echo: true
 data = pd.Series([0.25, 0.5, 0.75, 1.0],
                  index=['a', 'b', 'c', 'd'])
+print(data)
 data['b']
 ```
 
 ## Series as Specialized Dictionary
 
--   keys: index
--   values: values
+-   **keys**: index
+-   **values**: values
 
 ```{python}
 #| echo: true
@@ -105,64 +111,67 @@ population = pd.Series(population_dict)
 print(population)
 ```
 
-------------------------------------------------------------------------
-
 ## Series: Dictionary-like Operations
-
--   Index (Dictionary-style access)
--   Slicing! (Array-style operations)
-
+```{python}
+#| echo: true
+population
+```
+Index (Dictionary-style access)
 ```{python}
 #| echo: true
 population['California'] 
 ```
-
+Slicing! (Array-style operations) **Includes the end point**
 ```{python}
 #| echo: true
-population['California':'Illinois']
-```
-
-## Series Construction
-
--   From list (default integer index)
--   Scalar value with custom index
--   From dictionary
-
-```{python}
-#| echo: true
-pd.Series([2, 4, 6])
-```
-
-```{python}
-#| echo: true
-pd.Series(5, index=[100, 200, 300])
-```
-
-```{python}
-#| echo: true
-pd.Series({2:'a', 1:'b', 3:'c'})
+population['California':'New York']
 ```
 
 ## Hands-on - Series
 
--   Create a Pandas Series containing the following student scores (out of 100): 85, 92, 78, 90, 88.
--   Create a Series with the same scores but use student names as the index: 'Alice', 'Bob', 'Charlie', 'David', 'Emma'.
+-   Create a Series containing the following student scores (out of 100): 85, 92, 78, 90, 88, and use student names as the index: 'Alice', 'Bob', 'Charlie', 'David', 'Emma'.
 -   Series Operations
--   Find Bob's score
--   Find the average score
--   Find all scores above 85
--   Add 5 points to everyone's score
+    -   Find Bob's score
+    -   Find the average score
+    -   Find all scores above 85 (`Hint`: Boolean)
+    -   Add 5 points to everyone's score  (`Hint`: +)
 
 ## The Pandas DataFrame Object
 
 -   Two-dimensional data structure
-    -   with both flexible row indices and flexible column names
+    -   with both flexible **row indices** and flexible **column names**
 -   Can be viewed as:
     -   Generalized NumPy array
     -   Specialization of Python dictionary
     -   Collection of aligned Series objects
 
-## DataFrame: Example
+## DataFrame Construction Methods
+
+-   From a single Series
+-   From a two-dimensional NumPy array
+-   From a dictionary of Series
+
+## DataFrame: From a Single Series
+
+```{python}
+pd.DataFrame(population, columns=['population'])
+```
+
+## DataFrame: From 2D NumPy Array
+
+```{python}
+#| echo: true
+np.random.rand(3, 2)
+```
+
+```{python}
+#| echo: true
+pd.DataFrame(np.random.rand(3, 2),
+             columns=['foo', 'bar'],
+             index=['a', 'b', 'c'])
+```
+
+## DataFrame: From a Dictionary of Series
 
 ```{python}
 #| echo: true
@@ -171,80 +180,35 @@ area_dict = {'California': 423967, 'Texas': 695662,
              'New York': 141297, 'Florida': 170312, 
              'Illinois': 149995}
 area = pd.Series(area_dict)
-
 # Combine with population Series
 states = pd.DataFrame({'population': population,
                        'area': area})
-states
+print(states)
 ```
-
-------------------------------------------------------------------------
 
 ## DataFrame: Structure
 
--   Access index (row labels)
--   Access columns
-
+Access index (row labels)
 ```{python}
 #| echo: true
 print(states.index)
+```
+Access columns
+
+```{python}
+#| echo: true
 print(states.columns)
 ```
 
 ## DataFrame as Dictionary of Series
 
-Access a column (returns a Series) with column name and `[]`
+Access a column values (returns a Series) with `column name` and `[]`
 
 ```{python}
 #| echo: true
 states['area']
 ```
 
-## DataFrame Construction Methods
-
--   From a single Series
--   From a list of dictionaries
--   From a dictionary of Series
--   From a two-dimensional NumPy array
-
-## DataFrame: From a Single Series
-
-```{python}
-pd.DataFrame(population, columns=['population'])
-```
-
-## DataFrame: From List of Dicts
-
-```{python}
-#| echo: true
-data = [{'a': i, 'b': 2 * i} for i in range(3)]
-print(data)
-```
-
-```{python}
-pd.DataFrame(data)
-```
-
-```{python}
-#| echo: true
-pd.DataFrame([{'a': 1, 'b': 2}, {'b': 3, 'c': 4}])
-```
-
-## DataFrame: From a Dictionary of Series
-
-```{python}
-pd.DataFrame({'population': population,
-              'area': area})
-```
-
-## DataFrame: From 2D NumPy Array
-
-```{python}
-#| echo: true
-pd.DataFrame(np.random.rand(3, 2),
-             columns=['foo', 'bar'],
-             index=['a', 'b', 'c'])
-```
 
 ## The Pandas Index Object
 
@@ -256,6 +220,7 @@ pd.DataFrame(np.random.rand(3, 2),
 ```{python}
 #| echo: true
 ind = pd.Index([2, 3, 5, 7, 11])
+print(ind)
 ```
 
 ## Summary
@@ -268,8 +233,9 @@ ind = pd.Index([2, 3, 5, 7, 11])
 
 You have information about countries stored in dictionaries. Convert this to a DataFrame `countries_df`.
 
-```         
-# Population
+```{python}
+#| echo: true     
+# Midyear Population
 population_dict = {
     'USA': 331002651,
     'China': 1439323776,
@@ -277,7 +243,7 @@ population_dict = {
     'Brazil': 212559417,
     'Japan': 126476461
 }
-# Area
+# Area (square km)
 area_dict = {
     'USA': 9833517,
     'China': 9596960,
@@ -297,76 +263,87 @@ gdp_dict = {
 
 ## Hands-on - DataFrame
 
--   Add the following columns to the countries_df:
+-   Add the following columns to the `countries_df` (`Hint`: like numpy 2D array):
     -   Population density (population per square km)
-    -   GDP per capita
+    -   GDP per capita (gross domestic product divided by midyear population)
 
 # Data Indexing and Selection in Pandas
 
 ## Series Indexing - 1/2
-
-Pandas Series objects support multiple indexing methods
-
--   **Dictionary-style indexing**: Access values by index (labels)
+```{python}
+#| echo: true
+data = pd.Series([0.25, 0.5, 0.75, 1.0],
+                 index=['a', 'b', 'c', 'd'])
+print(data)
+```
+**Dictionary-style indexing**: Access values by index (labels)
 
 ```{python}
 #| echo: true
-import pandas as pd
-data = pd.Series([0.25, 0.5, 0.75, 1.0],
-                 index=['a', 'b', 'c', 'd'])
-data
-```
-
-```{python}
 data['b']  
 ```
 
--   **Attribute-style access**: For string index (labels)
+**Attribute-style access**: For string index (labels)
 
 ```{python}
-  #| echo: true
-  data.area  # Same as data['area']
+#| echo: true
+data.b  # Same as data['b']
 ```
 
 ## Series Indexing - 2/2
 
--   **Slicing with explicit index**: Includes the end point
+**Slicing with explicit index**: Includes the end point
 
 ```{python}
-  #| echo: true
-  data['a':'c']  # Includes 'a', 'b', 'c'
+#| echo: true
+data['a':'c']  # Includes 'a', 'b', 'c'
 ```
 
--   **Slicing with implicit integer index**: Excludes the end point
+**Slicing with implicit integer index**: Excludes the end point
 
 ```{python}
-  #| echo: true
-  data[0:2]  # Includes indices 0, 1
+#| echo: true
+data[0:2]  # Includes indices 0, 1
 ```
 
--   **Boolean masking**: Filter based on conditions
+## Boolean masking
+
+**Boolean masking**: Filter based on conditions
 
 ```{python}
-  #| echo: true
-  data[(data > 0.3) & (data < 0.8)]   
+#| echo: true
+data[(data > 0.3) & (data < 0.8)]   
 ```
 
-## Special Indexers
+## Special Indexers - loc
 
 Pandas provides special indexers to avoid confusion with integer indices:
-
--   **loc**: Label-based indexing
-
-```{python}
-  #| echo: true
-data.loc[1]  
-```
-
+-   **loc**: **Label-based** indexing
 -   **iloc**: Integer-based indexing
 
 ```{python}
-  #| echo: true
-data.iloc[1]  
+#| echo: true
+data_int_index = pd.Series([0.25, 0.5, 0.75, 1.0],
+                 index=[1, 2, 3, 4]) ## a bit confusing
+print(data_int_index)
+```
+**loc**: **Label-based** indexing
+```{python}
+#| echo: true
+data_int_index.loc[1]  
+```
+
+## Special Indexers - iloc
+```{python}
+#| echo: true
+print(data_int_index)
+```
+
+**iloc**: **Integer**-based indexing
+
+```{python}
+#| echo: true
+data_int_index.iloc[1]  
 ```
 
 ## DataFrame Indexing
@@ -380,68 +357,87 @@ pop = pd.Series({'California': 38332521, 'Texas': 26448193,
                  'New York': 19651127, 'Florida': 19552860,
                  'Illinois': 12882135})
 df = pd.DataFrame({'area':area, 'pop':pop})
-df
+print(df)
 ```
 
-## DataFrame Indexing
-
-DataFrames can be indexed as dictionaries of Series or as two-dimensional arrays:
-
--   **Column access**:
+## DataFrame Access
+```{python}
+#| echo: true
+print(df)
+```
+**Column access**
 
 ```{python}
 #| echo: true
 df['area']  # Dictionary-style
+```
+```{python}
+#| echo: true
 df.area     # Attribute-style
 ```
 
--   **Adding new columns**:
+## DataFrame Access
+```{python}
+#| echo: true
+print(df)
+```
+**Adding new columns**
 
 ```{python}
   #| echo: true
 df['density'] = df['pop'] / df['area']
+print(df)
 ```
 
 ## Special Indexers
-
--   **loc**: Label-based indexing
+```{python}
+#| echo: true
+print(df)
+```
+**loc**: Label-based indexing
 
 ```{python}
-  #| echo: true
-data.loc[:'Illinois', :'pop']
+#| echo: true
+print(df.loc[:'Illinois',:'pop'])
 ```
 
--   **iloc**: Integer-based indexing
+**iloc**: Integer-based indexing
 
 ```{python}
-  #| echo: true
-data.iloc[:3, :2]
+#| echo: true
+print(df.iloc[:3, :2])
 ```
 
 ## Additional Indexing Conventions
-
+```{python}
+#| echo: true
+print(df)
+```
 Slicing refers to rows when used directly on a DataFrame:
 
 ```{python}
-  #| echo: true
+#| echo: true
 # Selects rows with these index (labels)
-data['Florida':'Illinois']  
+print(df['Florida':'Illinois']  )
 ```
 
 ```{python}
 #| echo: true
 # Selects rows by position
-data[1:3]                  
+print(df[1:3])                
 ```
 
-## Additional Indexing Conventions
-
+## Masking
+```{python}
+#| echo: true
+print(df)
+```
 Direct masking is row-wise:
 
 ```{python}
 #| echo: true
 # Selects rows where density > 100
-data[data.density > 100]   
+print(df[df.density > 100])
 ```
 
 ## Hands-on - Index and Slicing
@@ -458,6 +454,12 @@ population = pd.Series({'United States': 331.9, 'India': 1393.4, 'Brazil': 214.3
 covid_df = pd.DataFrame({'cases_millions': cases, 
                          'deaths_millions': deaths, 
                          'population_millions': population})
+```
+
+## Hands-on - Index and Slicing
+
+```{python}
+#| echo: true
 print("COVID-19 Statistics by Country:")
 covid_df
 ```
@@ -465,38 +467,20 @@ covid_df
 ## Hands-on - Index and Slicing
 
 -   Access the number of cases in Brazil
--   Add a new column 'case_fatality_rate' calculated as deaths divided by cases (as a percentage)
--   Use loc to select data for Brazil and France, showing only cases and deaths
--   Use iloc to select the first 3 countries and all columns
--   Select countries with case fatality rate greater than 1.5%
+-   Add a new column 'case_fatality_rate' calculated as **deaths divided by cases (as a percentage)**
+-   Use `loc` to select data for Brazil and France, showing only cases and deaths
+-   Use `iloc` to select the first 3 countries and all columns
+-   Select countries with **case fatality rate greater than 1.5%**
 
 # Operations in Pandas
 
 ## Universal Functions: Index Preservation
 
-Pandas inherits NumPy's ability to perform quick element-wise operations while adding two key features:
+Pandas inherits NumPy's ability to perform **quick element-wise operations** while adding two key features:
 
 -   **Index and column label preservation** for unary operations
 -   **Automatic index alignment** for binary operations
 
-## Universal Functions: Index Preservation
-
-The indices are preserved
-
-```{python}
-#| echo: true
-import pandas as pd
-import numpy as np
-# Create sample data
-rng = np.random.RandomState(42)
-ser = pd.Series(rng.randint(0, 10, 4))
-print(ser)
-```
-
-```{python}
-#| echo: true
-np.exp(ser)
-```
 
 ## Universal Functions: Index Preservation
 
@@ -504,6 +488,7 @@ The indices are preserved
 
 ```{python}
 #| echo: true
+rng = np.random.RandomState(0)
 df = pd.DataFrame(rng.randint(0, 10, (3, 4)),
                  columns=['A', 'B', 'C', 'D'])
 print(df)                
@@ -511,39 +496,36 @@ print(df)
 
 ```{python}
 #| echo: true
-np.sin(df * np.pi / 4)
+print(np.sin(df * np.pi / 4))
 ```
 
 ## Index Alignment in Operations
 
-When operating on two Series, Pandas automatically aligns indices:
+When operating on two Series, Pandas automatically **aligns indices**.
 
 ```{python}
 #| echo: true
 area = pd.Series({'Alaska': 1723337, 'Texas': 695662,'California': 423967}, name='area')
 population = pd.Series({'California': 38332521, 'Texas': 26448193, 'New York': 19651127}, name='population')
-# Division automatically aligns indices
-population / area
+
+print(population)
+print(area)
 ```
 
 ## Index Alignment in Operations
 
-```{python}
-#| echo: true
-A = pd.Series([2, 4, 6], index=[0, 1, 2])
-B = pd.Series([1, 3, 5], index=[1, 2, 3])
-```
-
 Default behavior produces NaN for missing indices
 
 ```{python}
-A + B
+#| echo: true
+population / area
 ```
 
-Using add() method with fill_value
+Using `div()` method with `fill_value`
 
 ```{python}
-A.add(B, fill_value=0)
+#| echo: true
+population.div(area, fill_value=1) ## just for demo
 ```
 
 ## DataFrame Alignment
@@ -552,14 +534,14 @@ For DataFrames, alignment happens on both rows and columns.
 
 ```{python}
 #| echo: true
-A = pd.DataFrame(rng.randint(0, 20, (2, 2)),
+A = pd.DataFrame(np.random.randint(0, 20, (2, 2)),
                 columns=list('AB'))
 print(A)
 ```
 
 ```{python}
 #| echo: true
-B = pd.DataFrame(rng.randint(0, 10, (3, 3)),
+B = pd.DataFrame(np.random.randint(0, 10, (3, 3)),
                 columns=list('BAC'))
 print(B)
 ```
@@ -569,58 +551,14 @@ print(B)
 Addition with automatic alignment
 
 ```{python}
-A + B
+#| echo: true
+print(A + B)
 ```
 
 Fill values can be specified for missing entries.
-
 ```{python}
 #| echo: true
-fill = A.stack().mean()
-# Fill with mean of all values in A
-A.add(B, fill_value=fill)
-```
-
-## Operations Between DataFrame and Series
-
-Operations between DataFrames and Series maintain proper alignment.
-
-```{python}
-#| echo: true
-df = pd.DataFrame(rng.randint(10, size=(3, 4)),
-                 columns=list('QRST'))
-print(df)
-```
-
-## Operations Between DataFrame and Series
-
-```{python}
-#| echo: true
-# Row-wise operation (default)
-df - df.iloc[0]
-```
-
-```{python}
-#| echo: true
-# Column-wise operation
-df.subtract(df['R'], axis=0)
-```
-
-## Operations Between DataFrame and Series
-
-Partial Series operations also align correctly:
-
-```{python}
-#| echo: true
-# Select every other column from first row
-halfrow = df.iloc[0, ::2]  
-print(halfrow)
-```
-
-```{python}
-#| echo: true
-# Subtraction only affects matching columns
-df - halfrow 
+print(A.add(B, fill_value=0))
 ```
 
 ## Pandas Method Equivalents
@@ -635,15 +573,6 @@ df - halfrow
 | `%`             | `mod()`                          |
 | `**`            | `pow()`                          |
 
-## Pandas Method Equivalents
-
--   `+` `add()`
--   `-` `sub()`, `subtract()`
--   `*` `mul()`, `multiply()`
--   `/` `truediv()`, `div()`, `divide()`
--   `//` `floordiv()`
--   `%` `mod()`
--   `**` `pow()`
 
 ## Hands-on - UFunc
 
@@ -668,108 +597,145 @@ print(daily_cases)
 
 ## Hands-on - UFunc
 
--   Create a DataFrame showing the percentage change from the first day for each country
--   Subtract the mean daily cases for each country from the daily cases DataFrame
--   Calculate the ratio of daily cases in the United States compared to each other country
--   Create a new DataFrame showing the 3-day moving average of cases for each country
+-   Create a DataFrame showing the **percentage change** for all the days from the first day for each country
+-   Subtract the **mean daily cases** for each country from the daily cases
+-   Calculate the **ratio of daily cases** in the United States compared to each other country
 
 # Handling Missing Data in Pandas
 
-## Missing Data Representations
+## Missing Data Representations (1/2)
 
-Pandas uses two main sentinel values to represent missing data:
+Pandas uses two main values to represent missing data:
 
 1.  **None**: A Python singleton object
-    -   Can only be used in arrays with `dtype='object'`
-    -   Operations on arrays with `None` values are performed at the Python level (slower)
+    -   Operations on arrays with `None` values are performed at the Python level (**slower**)
     -   Aggregations like `sum()` or `min()` will generally result in errors
+    
+## Missing Data Representations (2/2)
+
+Pandas uses two main values to represent missing data:
+
 2.  **NaN (Not a Number)**: A special floating-point value
     -   Part of the IEEE floating-point specification
-    -   Arrays with NaN maintain native data types (faster operations)
+    -   Arrays with NaN maintain native data types (**faster operations**)
     -   NaN "infects" other values in arithmetic operations
-    -   Aggregations return NaN unless using special functions like `np.nansum()`
+    -   Aggregations return **NaN** unless using special functions like `np.nansum()`
 
 ## Detecting Null Values
 
 ```{python}
 #| echo: true
-# Generate boolean mask of null values
-data.isnull()
-data.notnull()  # Opposite of isnull()
+import pandas as pd
+import numpy as np
+# Create Series for COVID-19 metrics
+cases = pd.Series({'2020-01-01': 98.2, '2020-01-02': 99, '2020-01-03': np.nan,'2020-01-04': 150, '2020-01-05': 180})
+deaths = pd.Series({'2020-01-01': np.nan, '2020-01-02': np.nan, '2020-01-03': np.nan,'2020-01-04': np.nan, '2020-01-05': np.nan})
+population = pd.Series({'2020-01-01': 331.9, '2020-01-02':331.9, '2020-01-03': 331.9, '2020-01-04': 331.9, '2020-01-05': 331.9})
+# Create DataFrame
+covid_df = pd.DataFrame({'cases_millions': cases, 
+                         'deaths_millions': deaths, 
+                         'population_millions': population})
+print("COVID-19 Statistics by Country:")
+print(covid_df)
 ```
-
+## Detecting Null Values
+`df.isnull()`: Generate boolean mask of null values
 ```{python}
 #| echo: true
-# Use as a mask
-data[data.notnull()]
+print(covid_df.isnull())
 ```
+`df.notnull()`: Opposite of isnull()
+```{python}
+#| echo: true
+print(covid_df.notnull() )
+```
+
 
 ## Dropping Null Values
-
 ```{python}
 #| echo: true
-# For Series - straightforward removal
-data.dropna()
+print(covid_df)
 ```
+
+`df.dropna()` default: drop `row`s
 
 ```{python}
 #| echo: true
 # Drop rows with any null values
-df.dropna()                     
+print(covid_df.dropna())              
 ```
-
+## Dropping Null Values
 ```{python}
 #| echo: true
-# Drop columns with any null values
-df.dropna(axis='columns')       
+print(covid_df)
+```
+`axis='columns'`: Drop columns with any null values
+```{python}
+#| echo: true
+print(covid_df.dropna(axis='columns'))  
 ```
 
 ## Dropping Null Values
-
 ```{python}
 #| echo: true
-# Drop rows with all null values
-df.dropna(how='all')            
+print(covid_df)
 ```
-
+`how='all'`: Drop **rows** with all null values
 ```{python}
 #| echo: true
-# Drop columns with all null values
-df.dropna(axis=1, how='all')    
+print(covid_df.dropna(how='all'))          
 ```
-
+## Dropping Null Values
 ```{python}
 #| echo: true
-# Keep rows with at least 3 non-null values
-df.dropna(thresh=3)             
+print(covid_df)
 ```
-
-## Filling Null Values
-
+`axis=1, how='all'`: Drop **columns** with all null values
 ```{python}
 #| echo: true
-# Fill with a constant value
-data.fillna(0)
+print(covid_df.dropna(axis=1, how='all'))
 ```
-
+## Dropping Null Values
 ```{python}
 #| echo: true
-# Forward-fill (propagate last valid value)
-data.fillna(method='ffill')
+print(covid_df)
+```
+`thresh=3`: Keep rows with at least `2` non-null values
+```{python}
+#| echo: true
+print(covid_df.dropna(thresh=2))          
 ```
 
 ## Filling Null Values
-
 ```{python}
 #| echo: true
-# Back-fill (use next valid value)
-data.fillna(method='bfill')
+print(covid_df)
+```
+`df.fillna(value)`:Fill with a constant value
+```{python}
+#| echo: true
+print(covid_df.fillna(0))
+```
+## Filling Null Values
+```{python}
+#| echo: true
+print(covid_df)
+```
+`df.ffill()`: Forward-fill (propagate last valid value)
+```{python}
+#| echo: true
+print(covid_df.ffill())
 ```
 
+## Filling Null Values
 ```{python}
 #| echo: true
-# For DataFrames, can specify axis
-df.fillna(method='ffill', axis=1)
+print(covid_df)
+```
+`df.bfill()`: Back-fill (use next valid value)
+```{python}
+#| echo: true
+print(covid_df.bfill())
 ```
 
 ## Hands-on - Missing Value
@@ -798,26 +764,25 @@ print(covid_df)
 ## Hands-on - Missing Value
 
 -   Check for missing values in the dataset using isnull() and calculate the sum for each column
--   Drop only rows where the 'Deaths' column has missing values
+-   Drop only rows where the 'Deaths' column has missing values (`Hint`: `subset` parameter in `df.dropna()`)
 -   Use forward fill (ffill) to propagate the last valid observation forward
 -   Create a new column 'Case_Fatality_Rate' calculated as Deaths/Cases, handling any resulting NaN values appropriately
 
 # Hierarchical Indexing in Pandas
 
-## Introduction to Multi-Indexing
+## Introduction to Multi-Indexing/Hierarchical indexing
 
--   Hierarchical indexing (multi-indexing)
--   Represent higher-dimensional data within the familiar one-dimensional Series and two-dimensional DataFrame objects.
--   Incorporate multiple index levels within a single index, providing a powerful way to work with complex data structures.
+-   Represent higher-dimensional data within the familiar 1D **Series** and 2D **DataFrame** objects.
+-   Providing a powerful way to work with complex data structures.
 
 ## Creating a Multi-Indexed Series
 
-Create a multi-indexed Series by using tuples as keys.
+Create a multi-indexed Series by using **tuples** as keys.
 
 ```{python}
 #| echo: true
-index = [('California', 2000), ('California', 2010),
-         ('New York', 2000), ('New York', 2010),
+index = [('New York', 2000), ('New York', 2010),
+          ('California', 2000), ('California', 2010),
          ('Texas', 2000), ('Texas', 2010)]
 populations = [33871648, 37253956, 18976457, 19378102, 20851820, 25145561]
 pop = pd.Series(populations, index=index)
@@ -843,7 +808,7 @@ print(pop)
 
 ## The Better Way: MultiIndex
 
-With this structure, we can easily select data using intuitive slicing.
+We can easily select data using intuitive slicing.
 
 ```{python}
 #| echo: true
@@ -851,38 +816,30 @@ With this structure, we can easily select data using intuitive slicing.
 pop[:, 2010]
 ```
 
-## MultiIndex Construction Methods
+## MultiIndex Construction Methods (1/2)
 
 There are several ways to create a MultiIndex.
 
+From arrays
 ```{python}
 #| echo: true
-# From arrays
 pd.MultiIndex.from_arrays([['a', 'a', 'b', 'b'], [1, 2, 1, 2]])
 ```
-
+From tuples
 ```{python}
 #| echo: true
-# From tuples
 pd.MultiIndex.from_tuples([('a', 1), ('a', 2), ('b', 1), ('b', 2)])
 ```
 
-## MultiIndex Construction Methods
+## MultiIndex Construction Methods (2/2)
 
-There are several ways to create a MultiIndex.
+From Cartesian product
 
 ```{python}
 #| echo: true
-# From Cartesian product
 pd.MultiIndex.from_product([['a', 'b'], [1, 2]])
 ```
 
-```{python}
-#| echo: true
-# Direct construction
-pd.MultiIndex(levels=[['a', 'b'], [1, 2]], 
-              labels=[[0, 0, 1, 1], [0, 1, 0, 1]])
-```
 
 ## Naming Levels
 
@@ -896,112 +853,153 @@ print(pop)
 
 ## MultiIndex for Columns
 
-DataFrames can have multi-indexed columns as well:
+Original DataFrame:
 
+```{python}
+#| echo: true
+HR_Bob = np.array([130,120,155,168])
+HR_Guido = np.array([100,90,60,80])
+HR_Sue = np.array([60,70,80,70])
+Temp_Bob = np.array([36.7,38.2,37.6,36.2])
+Temp_Guido = np.array([37.5,38,36.8,37.1])
+Temp_Sue = np.array([37.7,38.2,36.9,35.7])
+health_data = pd.DataFrame(np.column_stack((HR_Bob,Temp_Bob,HR_Guido,Temp_Guido,HR_Sue,Temp_Sue)))
+print(health_data)
+```
+
+## MultiIndex for Columns
+
+DataFrames can have multi-indexed columns as well:
 ```{python}
 #| echo: true
 # Create hierarchical indices and columns
 index = pd.MultiIndex.from_product([[2013, 2014], [1, 2]], names=['year', 'visit'])
 columns = pd.MultiIndex.from_product([['Bob', 'Guido', 'Sue'], ['HR', 'Temp']], names=['subject', 'type'])
 
-health_data = pd.DataFrame(data, index=index, columns=columns)
+health_data = pd.DataFrame(np.column_stack((HR_Bob,Temp_Bob,HR_Guido,Temp_Guido,HR_Sue,Temp_Sue)), 
+              index=index, columns=columns)
 print(health_data)
 ```
 
-## Indexing and Slicing
-
+## Indexing and Slicing - Series
 ```{python}
 #| echo: true
-# Access single elements
+print(pop)
+```
+Access single elements
+```{python}
+#| echo: true
 pop['California', 2000]
 ```
-
+## Indexing and Slicing  - Series
 ```{python}
 #| echo: true
-# Partial indexing (returns a Series)
+print(pop)
+```
+Partial indexing (returns a Series)
+```{python}
+#| echo: true
 pop['California']
 ```
-
+## Indexing and Slicing - Series
 ```{python}
 #| echo: true
-# Slicing between states
-pop.loc['California':'New York']
+print(pop)
 ```
-
+Selecting specific level
 ```{python}
 #| echo: true
-# Selecting specific level
 pop[:, 2000]
 ```
-
+## Indexing and Slicing - Series
 ```{python}
 #| echo: true
-# Boolean masking
+print(pop)
+```
+Boolean masking
+```{python}
+#| echo: true
 pop[pop > 22000000]
 ```
-
+## Indexing and Slicing - Series
+select multiple index by `[[]]`
 ```{python}
 #| echo: true
-# Fancy indexing
+print(pop)
+```
+```{python}
+#| echo: true
 pop[['California', 'Texas']]
 ```
 
 ## Indexing and Slicing - multi-indexed columns
-
 ```{python}
 #| echo: true
-# Select a specific person's data
-health_data['Guido']
+print(health_data)
+```
+Select a specific person's data
+```{python}
+#| echo: true
+print(health_data['Guido'])
 ```
 
+## Indexing and Slicing - multi-indexed columns
 ```{python}
 #| echo: true
-# Select specific measurements
-health_data['Guido', 'HR']
+print(health_data)
 ```
-
+Select specific measurements
 ```{python}
 #| echo: true
-# Use IndexSlice for complex selections
-idx = pd.IndexSlice
-health_data.loc[idx[:, 1], idx[:, 'HR']]
+print(health_data['Guido', 'HR'])
 ```
 
 ## Sorting Indices
-
-MultiIndex operations often require sorted indices:
-
 ```{python}
 #| echo: true
-# Sort index for proper slicing
-print(data)
-data_sort = data.sort_index()
-print(data_sort)
+print(pop)
+```
+Sort index for proper slicing
+```{python}
+#| echo: true
+pop_sort = pop.sort_index()
+print(pop_sort)
 ```
 
 ## Stacking and Unstacking
-
 ```{python}
 #| echo: true
-# Convert Series to DataFrame
 print(pop)
+```
+Convert Series to DataFrame
+```{python}
+#| echo: true
 pop_df = pop.unstack()
+print("unstack: ")
 print(pop_df)
 ```
 
 ## Index Manipulation
-
 ```{python}
 #| echo: true
-# Convert index to columns
+print(pop)
+```
+Convert index to columns
+```{python}
+#| echo: true
 pop_flat = pop.reset_index(name='population')
 print(pop_flat)
 ```
 
+## Index Manipulation
 ```{python}
 #| echo: true
-# Convert columns to index
-pop_flat.set_index(['state', 'year'])
+print(pop)
+```
+Convert columns to index
+```{python}
+#| echo: true
+print(pop_flat.set_index(['state', 'year']))
 ```
 
 ## Data Aggregations
@@ -1013,15 +1011,43 @@ print(health_data)
 
 ```{python}
 #| echo: true
-# Average by year
-data_mean = health_data.mean(level='year')
+data_mean = health_data.mean()
 print(data_mean)
 ```
 
+## Data Aggregations
+
 ```{python}
 #| echo: true
-# Average by measurement type across columns
-data_mean.mean(axis=1, level='type')
+print(health_data)
+```
+Average by year
+```{python}
+#| echo: true
+data_mean = health_data.groupby('year').mean()
+print(data_mean)
+```
+## Data Aggregations
+```{python}
+#| echo: true
+print(health_data)
+```
+Average by measurement type across columns
+```{python}
+#| echo: true
+data_mean.T.mean() # just for demo
+```
+
+## Data Aggregations
+
+```{python}
+#| echo: true
+print(health_data)
+```
+Average by measurement type across columns
+```{python}
+#| echo: true
+print(data_mean.T.groupby('type').mean())
 ```
 
 ## Hands-on - Hierarchical Indexing
@@ -1059,12 +1085,10 @@ print(health_df)
 
 ## Hands-on - Hierarchical Indexing
 
--   Use IndexSlice to select all vital signs for patients in the Cardiology department
+-   Select all vital signs for patients in the Cardiology department
 -   Calculate the average values for each measurement by hospital
--   Find the patient with the highest blood pressure in each department
 -   Create a boolean mask to identify patients with heart rate \> 100 and glucose \> 120
--   Reset the index to convert the hierarchical index to columns, then set it back again
--   Create a pivot table showing the average measurements by hospital and department
+-   Reset the index to convert the hierarchical index to columns
 
 # Combining Datasets: Concat and Append
 
@@ -1095,31 +1119,17 @@ class display(object):
                            for a in self.args)
 ```
 
-## Basic Concatenation - Series
-
-pandas offers `pd.concat()` for combining data
-
-```{python}
-#| echo: true
-import pandas as pd
-import numpy as np
-ser1 = pd.Series(['A', 'B', 'C'], index=[1, 2, 3])
-ser2 = pd.Series(['D', 'E', 'F'], index=[4, 5, 6])
-pd.concat([ser1, ser2])
-```
 
 ## Basic Concatenation - DataFrames
 
-Default: Concatenate vertically (axis=0)
+`pd.concat` Default: Concatenate vertically (`axis=0`)
 
 ```{python}
 #| echo: true
 df1 = make_df('AB', [1, 2]) 
 df2 = make_df('AB', [3, 4])  
-print(df1)
-print(df2)
-
-pd.concat([df1, df2])
+df12 = pd.concat([df1, df2])
+display('df1', 'df2', 'df12')
 ```
 
 ## Concatenation - Axis Selection
@@ -1136,8 +1146,7 @@ display('df3', 'df4', 'df5')
 
 ## Concatenation - Duplicate Indices
 
--   Pandas preserves indices during concatenation
-    -   can result in duplicate indices
+Pandas preserves indices during concatenation: can result in duplicate indices
 
 ```{python}
 #| echo: true
@@ -1146,9 +1155,9 @@ y = make_df('AB', [0, 1])
 display('x', 'y', 'pd.concat([x, y])')
 ```
 
-## Concatenation - Handling Duplicate Indices
+## Handling Duplicate Indices
 
-1.  **Verify integrity**: Raise an error if duplicates exist
+1.  **Verify integrity**: Raise an error if duplicates exist `verify_integrity=True`
 
 ```{python}
 #| echo: true
@@ -1157,7 +1166,7 @@ try:
 except ValueError as e:
     print("ValueError:", e)
 ```
-
+## Handling Duplicate Indices
 2.  **Ignore indices**: Create new integer indices
 
 ```{python}
@@ -1165,7 +1174,7 @@ except ValueError as e:
 index2 = pd.concat([x, y], ignore_index=True)
 display('x', 'y', "index2")
 ```
-
+## Handling Duplicate Indices
 3.  **Add hierarchical keys**: Create a MultiIndex to distinguish sources
 
 ```{python}
@@ -1174,39 +1183,20 @@ index3 = pd.concat([x, y], keys=['x', 'y'])
 display('x', 'y', "index3")
 ```
 
-## Concatenation - Join Behavior
+## Concatenation 
 
-When concatenating DataFrames with shared columns - **Join**
+When concatenating DataFrames with shared columns
 
 ```{python}
 #| echo: true
-df5 = make_df('ABC', [1, 2])
-df6 = make_df('BCD', [3, 4])
+df5 = make_df('AB', [1, 2])
+df6 = make_df('BC', [2, 3])
 display('df5', 'df6', 'pd.concat([df5, df6])')
-```
-
-## Concatenation - Join Behavior
-
-1.  **Outer join** (default): Union of columns, filling missing values with NaN
-
-```{python}
-#| echo: true
-# join='outer' is default
-outdf = pd.concat([df5, df6])  
-display('df5', 'df6', 'outdf')
-```
-
-2.  **Inner join**: Only keep columns present in all inputs
-
-```{python}
-#| echo: true
-inndf = pd.concat([df5, df6], join='inner')
-display('df5', 'df6', 'inndf')
 ```
 
 ## Hands-on - Concat and Append
 
-In this exercise, you'll work with sales data from different regional offices that need to be combined for company-wide analysis.
+Here is sales data from different regional offices that need to be combined for company-wide analysis.
 
 ```{python}
 #| echo: true
@@ -1238,7 +1228,10 @@ north_sales = create_sales_data('North', 20, seed=42)
 south_sales = create_sales_data('South', 15, seed=43)
 east_sales = create_sales_data('East', 25, seed=44)
 west_sales = create_sales_data('West', 18, seed=45)
-
+```
+## Hands-on - Concat and Append
+```{python}
+#| echo: true
 # Display the first few rows of each dataset
 print("North Region Sales:")
 print(north_sales.head(3))
@@ -1254,45 +1247,33 @@ print(south_sales.head(3))
 
 # Combining Datasets: Merge and Join
 
-## Helper Function
-
-```{python}
-#| echo: true
-class display(object):
-    """Display HTML representation of multiple objects"""
-    template = """<div style="float: left; padding: 10px;">
-    <p style='font-family:"Courier New", Courier, monospace'>{0}</p>{1}
-    </div>"""
-    def __init__(self, *args):
-        self.args = args
-    def _repr_html_(self):
-        return '\n'.join(self.template.format(a, eval(a)._repr_html_())
-                         for a in self.args)
-    def __repr__(self):
-        return '\n\n'.join(a + '\n' + repr(eval(a))
-                           for a in self.args)
-```
 
 ## Relational Algebra in Pandas
 
--   Pandas provides high-performance, in-memory join and merge operations through the `pd.merge` function
+Pandas provides high-performance, in-memory join and merge operations through the `pd.merge` function
 
 1.  **One-to-one joins**: Combine datasets with unique keys in both DataFrames
 2.  **Many-to-one joins**: Join when one DataFrame has duplicate keys
-3.  **Many-to-many joins**: Join when both DataFrames have duplicate keys
+3.  **Many-to-many joins**: Join when both DataFrames have duplicate keys -> **should be avoided**
 
 ## Basic Join Example
 
-The result combines information from both DataFrames using the common column as the key.
+Using the common column as the key.
 
 ```{python}
 #| echo: true
 df1 = pd.DataFrame({'employee': ['Bob', 'Jake', 'Lisa', 'Sue'],'group': ['Accounting', 'Engineering', 'Engineering', 'HR']})
 df2 = pd.DataFrame({'employee': ['Lisa', 'Bob', 'Jake', 'Sue'],'hire_date': [2004, 2008, 2012, 2014]})
 dfmerge = pd.merge(df1, df2)
-display('df1','df2','dfmerge')
 ```
-
+## Basic Join Example
+```{python}
+display('df1','df2')
+```
+## Basic Join Example
+```{python}
+display('dfmerge')
+```
 ## Specifying Merge Keys
 
 Using the `on` Parameter
@@ -1308,33 +1289,31 @@ pd.merge(df1, df2, on='employee')
 
 ```{python}
 #| echo: true
-df3 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],'salary': [70000, 80000, 120000, 90000]})
-pd.merge(df1, df3, left_on="employee", right_on="name")
+df3 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                    'salary': [70000, 80000, 120000, 90000]})
+print(df1)
+print(df3)
+print(pd.merge(df1, df3, left_on="employee", right_on="name"))
 ```
 
 ## Merging on Index
-
-`left_index` and `right_index` Parameter
 
 ```{python}
 #| echo: true
 df1a = df1.set_index('employee')
 df2a = df2.set_index('employee')
-pd.merge(df1a, df2a, left_index=True, right_index=True)
 ```
 
 The DataFrame `.join()` method provides a shortcut for index-based merges:
 
 ```{python}
 #| echo: true
-df1a.join(df2a)
+print(df1a.join(df2a))
 ```
 
-## Join Types
+## Join Types: Inner join
 
-`how` Parameter
-
--   **Inner join** (default): Returns only matching rows
+`how` Parameter: **Inner join** (default): Returns only matching rows
 
 ```{python}
 #| echo: true
@@ -1345,35 +1324,112 @@ df8 = pd.DataFrame({'name': ['Mary', 'Joseph'],
                     'drink': ['wine', 'beer']},
                    columns=['name', 'drink'])
 innerpd = pd.merge(df7, df8, how='inner')
-display(df7, df8, innerpd)
+```
+::::: columns
+::: column
+```{python}
+print('df7')
+print(df7)
+```
+:::
+::: column
+```{python}
+print('df8')
+print(df8)
+```
+:::
+:::::
+
+```{python}
+print('innerpd')
+print(innerpd)
 ```
 
--   **Outer join**: Returns all rows from both DataFrames, filling missing values with NaN
+## Join Types: Outer join
+
+`how` Parameter: **Outer join**: Returns all rows from both DataFrames, filling missing values with NaN
 
 ```{python}
 #| echo: true
 outerpd = pd.merge(df7, df8, how='outer')
-display(df7, df8, outerpd)
 ```
 
-## Join Types
+::::: columns
+::: column
+```{python}
+print('df7')
+print(df7)
+```
+:::
+::: column
+```{python}
+print('df8')
+print(df8)
+```
+:::
+:::::
 
--   **Left join**: Returns all rows from the left DataFrame
+```{python}
+print('outerpd')
+print(outerpd)
+```
+
+## Join Types: Left join
+
+`how` Parameter:  **Left join**: Returns all rows from the left DataFrame
 
 ```{python}
 #| echo: true
 leftpd = pd.merge(df7, df8, how='left')
-display(df7, df8, leftpd)
 ```
 
--   **Right join**: Returns all rows from the right DataFrame
+::::: columns
+::: column
+```{python}
+print('df7')
+print(df7)
+```
+:::
+::: column
+```{python}
+print('df8')
+print(df8)
+```
+:::
+:::::
+
+```{python}
+print('leftpd')
+print(leftpd)
+```
+## Join Types: Right join
+
+`how` Parameter:  **Right join**: Returns all rows from the right DataFrame
 
 ```{python}
 #| echo: true
 rightpd = pd.merge(df7, df8, how='right')
-display(df7, df8, rightpd)
 ```
 
+::::: columns
+::: column
+```{python}
+print('df7')
+print(df7)
+```
+:::
+::: column
+```{python}
+print('df8')
+print(df8)
+```
+:::
+:::::
+
+```{python}
+print('rightpd')
+print(rightpd)
+```
 ## Handling Duplicate Column Names
 
 When DataFrames have conflicting column names, Pandas adds suffixes:
@@ -1388,6 +1444,8 @@ df10 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
 pd.merge(df9, df10, on="name")
 ```
 
+## Handling Duplicate Column Names
+Custom suffixes with `suffixes` parameter
 ```{python}
 #| echo: true
 # Custom suffixes
@@ -1403,29 +1461,58 @@ ssl._create_default_https_context = ssl._create_unverified_context
 pop_url = "https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-population.csv"
 area_url = "https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv"
 abb_url = "https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-abbrevs.csv"
+pop = pd.read_csv(pop_url)
+areas = pd.read_csv(area_url)
+abbrevs = pd.read_csv(abb_url)
 ```
 
 ## Hands-on: US States Data
 
+::::: columns
+::: column
 ```{python}
-#| echo: true
-pop = pd.read_csv(pop_url)
-areas = pd.read_csv(area_url)
-abbrevs = pd.read_csv(abb_url)
-
-display('pop.head()', 'areas.head()', 'abbrevs.head()')
+print('pop.head()')
+print(pop.head())
 ```
+:::
+::: column
+```{python}
+print('areas.head()')
+print(areas.head())
+```
+:::
+::: column
+```{python}
+print('abbrevs.head()')
+print(abbrevs.head())
+```
+:::
+:::::
 
 ## Hands-on: US States Data
 
 Merge multiple datasets to calculate population density:
 
-1.  Merge population data with state abbreviations
-2.  Handle missing values and mismatches
-3.  Merge with area data
+1.  Merge population data `pop` with state abbreviations `abbrevs`
+2.  Handle missing values and mismatches (?)
+3.  Merge with area data `areas`
 4.  Calculate and rank US states and territories by their 2010 population density
 
-## Hint 1 `.query()`
+## Hint Q2 PR
+
+```{python}
+#| echo: true
+print(pop.query("`state/region`	 == 'PR'").head())
+```
+
+Do we have PR in `abbrevs` table?
+
+```{python}
+#| echo: true
+abbrevs.query("abbreviation == 'PR'")
+```
+
+## Hint for Q4 `.query()`
 
 ```{python}
 #| echo: true
@@ -1433,66 +1520,44 @@ pop2010 = pop.query("year == 2010 & ages == 'total'")
 pop2010.head()
 ```
 
-## Hint 2 PR
+## Hint for Q4 Sort
 
+`df.sort_values(by='column name', ascending=False)`
 ```{python}
 #| echo: true
-pop2010.query("`state/region`	 == 'PR'")
+pop2010.sort_values(by='population',ascending=False).head()
 ```
-
-Do we have PR in abbrevs table?
-
-```{python}
-#| echo: true
-PRabb = abbrevs.query("abbreviation == 'PR'")
-PRabb
-```
-
-## Hint 3 Sort
-
-`.sort_values(ascending=False)`
 
 # Aggregation and Grouping in Pandas
 
-## Basic Aggregation
-
-Pandas provides powerful tools for summarizing large datasets
-
-For Series objects, aggregations return a single value
-
-```{python}
-#| echo: true
-ser = pd.Series([0.37, 0.95, 0.73, 0.60, 0.16])
-ser.sum()    
-ser.mean()  
-```
 
 ## Basic Aggregation
 
-For DataFrames, aggregations operate on each column by
+For DataFrames, aggregations operate on each column (collapse rows)
 
 ```{python}
 #| echo: true
 df = pd.DataFrame({'A': [0.16, 0.06, 0.87, 0.60, 0.71],
                    'B': [0.02, 0.97, 0.83, 0.21, 0.18]})
+print(df)
 df.mean()
 ```
 
-Use axis parameter to aggregate across rows instead
+Use axis parameter to aggregate across rows instead (collapse columns)
 
 ```{python}
 #| echo: true
 df.mean(axis='columns')
 ```
 
-## Basic Aggregation
+## Basic Aggregation `describe()`
 
 quick statistical summary of your data: `describe()`
 
 ```{python}
 #| echo: true
 planets = sns.load_dataset('planets')
-planets.dropna().describe()
+print(planets.dropna().describe())
 ```
 
 ## GroupBy: Split, Apply, Combine
@@ -1505,7 +1570,9 @@ planets.dropna().describe()
 
 3.  **Combining** the results into a data structure
 
+## GroupBy: Split, Apply, Combine
 ![](https://jakevdp.github.io/PythonDataScienceHandbook/figures/03.08-split-apply-combine.png)
+[Source](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 ## GroupBy: Split, Apply, Combine
 
@@ -1513,37 +1580,10 @@ planets.dropna().describe()
 #| echo: true
 df = pd.DataFrame({'key': ['A', 'B', 'C', 'A', 'B', 'C'],
                    'data': range(6)})
-df.groupby('key').sum()
+print(df)
+print(df.groupby('key').sum())
 ```
 
-## Working with GroupBy Objects
-
-```{python}
-#| echo: true
-planets.groupby('method')
-```
-
-```{python}
-#| echo: true
-planets.groupby('method')['orbital_period']
-```
-
-## Working with GroupBy Objects
-
-**Column Selection**: Select specific columns from groups
-
-```{python}
-#| echo: true
-planets.groupby('method')['orbital_period'].median()
-```
-
-**Iteration**: Iterate through groups
-
-```{python}
-#| echo: true
-for method, group in planets.groupby('method'):
-    print(f"{method:30s} shape={group.shape}")
-```
 
 ## Working with GroupBy Objects
 
@@ -1551,37 +1591,30 @@ for method, group in planets.groupby('method'):
 
 ```{python}
 #| echo: true
-planets.groupby('method')['year'].describe()
-```
-## Working with GroupBy Objects
-
-`.unstack()`
-
-```{python}
-#| echo: true
-planets.groupby('method')['year'].describe().unstack()
+df = planets.groupby('method')['year'].describe()
+print(df)
 ```
 
 ## Advanced GroupBy Operations
+
 ```{python}
 #| echo: true
-rng = np.random.RandomState(0)
 df = pd.DataFrame({'key': ['A', 'B', 'C', 'A', 'B', 'C'],
                    'data1': range(6),
                    'data2': rng.randint(0, 10, 6)},
                    columns = ['key', 'data1', 'data2'])
-df
+print(df)
 ```
 
-## Advanced GroupBy Operations
+## GroupBy Operations - Aggregation
 
-**Aggregation**: Multiple aggregations at once. It can take a string, a function, or a list thereof
+**Aggregation**: Multiple aggregations at once. 
 
-```{python}
+```{python}                                                                                   
 #| echo: true
-df.groupby('key').aggregate(['min', np.median, 'max'])
+df.groupby('key').aggregate(['min', 'median', 'max'])
 ```
-
+## GroupBy Operations - Aggregation
 Different aggregations per column
 
 ```{python}
@@ -1589,7 +1622,7 @@ Different aggregations per column
 df.groupby('key').aggregate({'data1': 'min', 'data2': 'max'})
 ```
 
-## Advanced GroupBy Operations
+## GroupBy Operations - Filtering
 
 **Filtering**: Keep only groups that satisfy a condition
 
@@ -1597,20 +1630,45 @@ df.groupby('key').aggregate({'data1': 'min', 'data2': 'max'})
 #| echo: true
 def filter_func(x):
     return x['data2'].std() > 4
-
-display('df', "df.groupby('key').std()", "df.groupby('key').filter(filter_func)")
+agg_df = df.groupby('key').filter(filter_func)
 ```
-
-## Advanced GroupBy Operations
+::::: columns
+::: column
+```{python}
+print('df')
+print(print(df))
+```
+:::
+::: column
+```{python}
+print('agg_df')
+print(print(agg_df))
+```
+:::
+:::::
+## GroupBy Operations - Transformation
 
 **Transformation**: Apply a transformation that preserves the input shape
 
 ```{python}
 #| echo: true
-df.groupby('key').transform(lambda x: x - x.mean())
+trans_df = df.groupby('key').transform(lambda x: x - x.mean())
 ```
-
-## Advanced GroupBy Operations
+::::: columns
+::: column
+```{python}
+print('df')
+print(print(df))
+```
+:::
+::: column
+```{python}
+print('trans_df')
+print(print(trans_df))
+```
+:::
+:::::
+## GroupBy Operations - Apply
 
 **Apply**: Apply arbitrary functions to each group
 
@@ -1620,21 +1678,24 @@ def norm_by_data2(x):
     # x is a DataFrame of group values
     x['data1'] /= x['data2'].sum()
     return x
-
-display('df', "df.groupby('key').apply(norm_by_data2)")
+app_df = df.groupby('key').apply(norm_by_data2)
 ```
+::::: columns
+::: column
+```{python}
+print('df')
+print(print(df))
+```
+:::
+::: column
+```{python}
+print('app_df')
+print(print(app_df))
+```
+:::
+:::::
 
-## Flexible Grouping
-
-Groups can be specified in multiple ways:
-
-1.  By column name: `df.groupby('key')`
-2.  By list/array: `df.groupby([1,1,2])`
-3.  By dictionary mapping: `df2.groupby({'A': 'vowel', 'B': 'consonant'})`
-4.  By function: `df2.groupby(str.lower)`
-5.  By multiple keys: `df.groupby(['key1', 'key2'])`
-
-## Practical Example
+## Practical Example - Groupby
 
 Analyzing planet discovery methods by decade
 
@@ -1642,114 +1703,104 @@ Analyzing planet discovery methods by decade
 #| echo: true
 decade = 10 * (planets['year'] // 10)
 decade = decade.astype(str) + 's'
-decade.name = 'decade'
-planets.groupby(['method', decade])['number'].sum()
+planets['decade'] = decade
+print(planets)
 ```
-
-## Practical Example
+## Practical Example - Groupby
 
 ```{python}
-planets.groupby(['method', decade])['number'].sum().unstack().fillna(0)
+#| echo: true
+planets.groupby(['method', 'decade'])['number'].sum()
+```
+
+## Practical Example - Groupby
+`.unstack()`
+```{python}
+#| echo: true
+unstack_df = planets.groupby(['method', 'decade'])['number'].sum().unstack().fillna(0)
+print(unstack_df)
 ```
 
 ## Pivot Tables in Pandas
 
-Pivot tables are a powerful data analysis tool that provide multidimensional summarization of data. They can be thought of as a multidimensional version of GroupBy aggregation.
-
-### Basic Syntax
-
-```{python}
-#| echo: true
-df.pivot_table(values, index, columns, aggfunc='mean')
-```
-
-### Key Features
+Pivot tables are a powerful data analysis tool that provide multidimensional summarization of data. They can be thought of as a **multidimensional version** of GroupBy aggregation.
 
 -   Transforms column-wise data into a two-dimensional table
 -   Allows for multiple levels of indices and columns
 -   Supports various aggregation functions
 
-### Example: Titanic Dataset
+## Example: Titanic Dataset
 
 ```{python}
 #| echo: true
 import pandas as pd
 import seaborn as sns
-
 titanic = sns.load_dataset('titanic')
-
-# Basic pivot table
+print(titanic)
+```
+## Titanic Dataset - Basic pivot table
+Default: `aggfunc='mean'`
+```{python}
+#| echo: true
 survival_by_class = titanic.pivot_table('survived', index='sex', columns='class')
-
-# Multi-level pivot table
-age_groups = pd.cut(titanic['age'], [0, 18, 80])
-survival_by_age_class = titanic.pivot_table('survived', ['sex', age_groups], 'class')
+print(survival_by_class)
 ```
 
-### Additional Options
+## Titanic Dataset - Multi-level 
+```{python}
+#| echo: true
+age_groups = pd.cut(titanic['age'], [0, 18, 80])
+survival_by_age_class = titanic.pivot_table('survived', ['sex', age_groups], 'class')
+print(survival_by_age_class)
+```
+
+## Additional Options
 
 -   `aggfunc`: Specify aggregation function (e.g., 'sum', 'mean', 'count')
 -   `fill_value`: Replace missing values
 -   `margins`: Add row/column totals
 -   `dropna`: Remove rows with missing values
 
-### Practical Application: US Birth Data
-
+## Practical Application: US Birth Data
 ```{python}
 #| echo: true
-births = pd.read_csv('births.csv')
+births = pd.read_csv('https://raw.githubusercontent.com/jakevdp/data-CDCbirths/master/births.csv')
 births['decade'] = 10 * (births['year'] // 10)
+print(births)
+```
 
-# Analyze births by decade and gender
-births_by_decade = births.pivot_table('births', index='decade', columns='gender', aggfunc='sum')
-
-# Visualize trends
+## Practical Application: US Birth Data
+Analyze births by decade and gender
+```{python}
+#| echo: true
+births_by_decade = births.pivot_table('births', index='decade', 
+                              columns='gender', aggfunc='sum')
+print(births_by_decade)
+```
+## Practical Application: US Birth Data
+Visualize trends
+```{python}
+#| echo: true
 births_by_decade.plot()
 ```
 
-Pivot tables in Pandas provide a flexible and efficient way to analyze complex datasets, revealing patterns and trends that might otherwise be difficult to discern.
 
-## Working with Strings in Pandas
+## Hands-on: Aggregation
+```{python}
+#| echo: true
+import pandas as pd
+# Download the data
+births = pd.read_csv('https://raw.githubusercontent.com/jakevdp/data-CDCbirths/master/births.csv')
+births['decade'] = 10 * (births['year'] // 10)
+print(births.head())
+```
+## Hands-on: Aggregation
 
-Pandas provides powerful vectorized string operations for efficient data cleaning and manipulation. These operations are accessible through the `str` attribute of Series and Index objects containing strings.
-
-### Key Features
-
--   Vectorized operations for speed and efficiency
--   Handles missing values automatically
--   Supports regular expressions
-
-### Common String Methods
-
-Pandas implements most Python string methods as vectorized operations:
-
--   `lower()`, `upper()`, `capitalize()`: Change case
--   `len()`: Get string lengths
--   `startswith()`, `endswith()`: Check string prefixes/suffixes
--   `split()`: Split strings into lists
-
-### Regular Expression Methods
-
--   `extract()`: Extract matched groups
--   `findall()`: Find all occurrences of a pattern
--   `replace()`: Replace occurrences of a pattern
--   `contains()`: Check if pattern exists in string
-
-### Specialized Methods
-
--   `get()`, `slice()`: Access individual characters or substrings
--   `cat()`: Concatenate strings
--   `get_dummies()`: Create indicator variables from categorical data
-
-### Example: Recipe Database
-
-A practical application demonstrates using these string methods to clean and analyze a messy dataset of recipes:
-
-1.  Load and parse JSON data
-2.  Explore ingredient lists using string methods
-3.  Create a simple recipe recommender based on ingredients
-
-This example showcases how Pandas string operations can efficiently handle real-world data cleaning tasks, which often comprise a significant portion of data science work.
+-   Group the data by gender and calculate the total number of births for each gender.
+-   Group by both year and gender, then sum the births.
+-   Filter out years where the total number of births (all genders combined) was less than 3 million.
+-   Create a pivot table with decade as rows, gender as columns, and the sum of births as values.
+-   Create a pivot table showing the average number of births per month for each gender.
 
 # Working with Time Series in Pandas
 
@@ -1761,21 +1812,16 @@ Pandas provides extensive tools for working with time-based data, reflecting its
 -   **Time intervals/periods**: Reference lengths of time between points (e.g., the year 2015)
 -   **Time deltas/durations**: Reference exact time lengths (e.g., 22.56 seconds)
 
-## Date and Time Objects in Python
 
-### Native Python (datetime and dateutil)
+## Native Python (datetime)
 
 ```{python}
 #| echo: true
 from datetime import datetime
 datetime(year=2015, month=7, day=4)
-
-from dateutil import parser
-date = parser.parse("4th of July, 2015")
-date.strftime('%A')  # 'Saturday'
 ```
 
-### NumPy's datetime64
+## NumPy's datetime64
 
 ```{python}
 #| echo: true
@@ -1784,15 +1830,7 @@ date = np.array('2015-07-04', dtype=np.datetime64)
 date + np.arange(12)  # Array of consecutive dates
 ```
 
-NumPy's datetime64 uses a fundamental time unit that creates a trade-off between resolution and time span:
-
-| Code | Meaning    | Time span (relative) |
-|------|------------|----------------------|
-| `Y`  | Year       | ± 9.2e18 years       |
-| `D`  | Day        | ± 2.5e16 years       |
-| `ns` | Nanosecond | ± 292 years          |
-
-### Pandas Time Objects
+## Pandas Time Objects
 
 Pandas combines the ease-of-use of datetime with the efficiency of numpy.datetime64:
 
@@ -1803,6 +1841,19 @@ date = pd.to_datetime("4th of July, 2015")
 date.strftime('%A')  # 'Saturday'
 ```
 
+## Parameters for date.strftime 
+[Ref](https://strftime.org/)
+
+| Code    | Description                                                                 | Example           |
+|---------|-----------------------------------------------------------------------------|--------------------------|
+| `%a`    | Abbreviated weekday name                                                    | Sun, Mon, …              |
+| `%A`    | Full weekday name                                                           | Sunday, Monday, …        |
+| `%w`    | Weekday as a decimal number (0=Sunday, 6=Saturday)                          | 0, 1, …, 6               |
+| `%d`    | Day of the month (zero-padded)                                              | 01, 02, …, 31            |
+| `%b`    | Abbreviated month name                                                      | Jan, Feb, …, Dec         |
+| `%B`    | Full month name                                                             | January, February, …     |
+| `%m`    | Month as a zero-padded decimal number                                       | 01, 02, …, 12            |
+
 ## Pandas Time Series Data Structures
 
 -   **Timestamp**: Replacement for Python's datetime
@@ -1810,17 +1861,21 @@ date.strftime('%A')  # 'Saturday'
 -   **Period/PeriodIndex**: For fixed-frequency time intervals
 -   **Timedelta/TimedeltaIndex**: For time durations
 
-### Creating Date Ranges
-
+## Creating Date Ranges
+Daily frequency (default)
 ```{python}
 #| echo: true
-# Daily frequency (default)
 pd.date_range('2015-07-03', '2015-07-10')
-
-# Hourly frequency
-pd.date_range('2015-07-03', periods=8, freq='H')
-
-# Monthly periods
+```
+Hourly frequency
+```{python}
+#| echo: true
+pd.date_range('2015-07-03', periods=8, freq='h')
+```
+## Creating Date Ranges
+Monthly periods
+```{python}
+#| echo: true
 pd.period_range('2015-07', periods=8, freq='M')
 ```
 
@@ -1828,52 +1883,138 @@ pd.period_range('2015-07', periods=8, freq='M')
 
 ```{python}
 #| echo: true
-# Create time-indexed Series
 index = pd.DatetimeIndex(['2014-07-04', '2014-08-04', 
                           '2015-07-04', '2015-08-04'])
 data = pd.Series([0, 1, 2, 3], index=index)
-
-# Slice by date range
+print(data)
+```
+## Time Series Indexing
+Slice by date range
+```{python}
+#| echo: true
 data['2014-07-04':'2015-07-04']
-
-# Slice by year
+```
+Slice by year
+```{python}
+#| echo: true
 data['2015']
 ```
 
-## Frequency and Offset Codes
 
-Common frequency codes: - `D`: Calendar day - `B`: Business day - `W`: Weekly - `M`: Month end - `Q`: Quarter end - `A`: Year end - `H`: Hours - `T`: Minutes
-
-## Time Series Operations
-
-### Resampling
-
+## Sample dataset
 ```{python}
 #| echo: true
-# Downsample to annual frequency
-goog.resample('BA').mean()  # Mean for each year
-goog.asfreq('BA')  # Value at end of each year
+#!pip3 install yfinance
+import yfinance as yf
+dat = yf.Ticker("MSFT")
+MSFT = dat.history(period='1y')
+print(MSFT.head())
+```
+## Frequency and Offset Codes
+
+Common frequency codes:
+
+::::: columns
+::: column
+
+- `D`: Calendar day 
+- `B`: Business day 
+- `W`: Weekly 
+- `ME`: Month end 
+
+:::
+::: column
+
+- `QE`: Quarter end 
+- `YE`: Year end 
+- `h`: Hours 
+- `min`: Minutes
+
+:::
+:::::
+
+## Time Series Operations - Resampling
+Mean for each year
+```{python}
+#| echo: true
+year_m = MSFT.resample('YE').mean()  
+print(year_m)
+```
+## Time Series Operations - Resampling
+Mean for each Quarter/bussiness day
+```{python}
+#| echo: true
+qua_m = MSFT.resample('BQE').mean()  
+print(qua_m)
+```
+## Time Series Operations - Resampling
+Value at end of each year
+```{python}
+#| echo: true
+year_v = MSFT.asfreq('YE')  
+print(year_v)
+year_c = MSFT.resample('YE').count()  
+print(year_c)
 ```
 
-### Time-shifting
+## Time Series Operations - Time-shifting
 
 ```{python}
 #| echo: true
 # Shift data values
-goog.shift(900)
-
-# Shift index values
-goog.tshift(900)
+print(MSFT.head())
+```
+## Time Series Operations - Time-shifting
+```{python}
+#| echo: true
+# Shift data values
+print(MSFT.shift(3).head())
 ```
 
-### Rolling Windows
+## Time Series Operations - Rolling Windows
+monthly Rolling mean
+```{python}
+#| echo: true
+y_rolling = MSFT.rolling(30)
+y_r_mean = y_rolling.mean().tail()
+print(y_r_mean)
+```
+## Time Series Operations - Rolling Windows
+weekly Rolling mean
+```{python}
+#| echo: true
+w_rolling = MSFT.rolling(7)
+w_r_mean = w_rolling.mean().tail()  # 
+print(w_r_mean)
+```
+
+
+
+## Hands-on - Time and Pandas
 
 ```{python}
 #| echo: true
-# One-year centered rolling statistics
-rolling = goog.rolling(365, center=True)
-rolling.mean()  # Rolling mean
-rolling.std()   # Rolling standard deviation
+# Create a DataFrame with COVID-19 data for the last 5 days
+dates = pd.date_range(end='2023-04-30', periods=5)
+data = {
+    'United States': [45000, 42000, 38000, 41000, 39000],
+    'India': [12000, 13500, 14200, 13800, 12500],
+    'Brazil': [9800, 9200, 8700, 9100, 9500],
+    'France': [7500, 7200, 6800, 6500, 6200],
+    'Germany': [5200, 4800, 4600, 4900, 5100]
+}
+
+daily_cases = pd.DataFrame(data, index=dates)
+daily_cases.index.name = 'Date'
+daily_cases.columns.name = 'Country'
+print("Daily New COVID-19 Cases:")
+print(daily_cases)
 ```
 
-These powerful time series tools enable efficient analysis of temporal data, from simple date manipulations to complex financial modeling.
+## Hands-on - Time and Pandas
+-   Select and print the case numbers for India between '2023-04-27' and '2023-04-29' (inclusive).
+-   Calculate the daily change (difference) in cases for Brazil.
+-   Resample the data to a weekly frequency and calculate the mean for each country. (Hint: `.resample('W').mean()`)
+-   Showing the 3-day moving average of cases for each country
+-   For each country, identify the date with the highest number of new cases.
+
