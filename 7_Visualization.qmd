@@ -8,57 +8,59 @@ format:
 editor: visual
 ---
 
-# Visualization with Matplotlib
+# Visualization
 
----
+-   Visualization with Matplotlib
+-   Simple Line Plots with Matplotlib
+-   Simple Scatter Plots with Matplotlib
+-   Visualizing Errors with Matplotlib
+-   Density and Contour Plots in Matplotlib
+-   Histograms, Binnings, and Density
+-   Customizing Plot Legends in Matplotlib
+-   Customizing Colorbars in Matplotlib
+-   Multiple Subplots in Matplotlib
+-   Text and Annotation in Matplotlib
+-   Configurations and Stylesheets
+-   Geographic Data Visualization with Basemap
+-   Visualization with Seaborn
+
+# Visualization with Matplotlib
 
 ## What is Matplotlib?
 
-- Matplotlib is a multi-platform data visualization library for Python, built on NumPy arrays and designed to work with the broader SciPy stack.
-- Created by John Hunter in 2002, with version 0.1 released in 2003.
-- Widely adopted in the scientific Python community, including by the Space Telescope Science Institute (Hubble Telescope team)[2].
-
----
-
-## Key Features
-
-- Works across many operating systems and supports dozens of graphics backends and output types.
-- Large user and developer base, making it a powerful and ubiquitous tool for scientific visualization in Python.
-- Despite newer visualization tools, Matplotlib remains a vital part of the data science stack[2].
-
----
+-   Matplotlib is a multi-platform **data visualization library** for Python
+-   Created by John Hunter in 2002, with version 0.1 released in 2003.
+-   Large user and developer base, making it a powerful and ubiquitous tool for scientific visualization.
+-   Despite newer visualization tools, Matplotlib remains a vital part of the data science stack.
 
 ## Importing Matplotlib
 
-- Standard import shorthands:
-
-```python
+```{python} 
+#| echo: true
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 ```
 
-- The `plt` interface is most commonly used[2].
-
----
+The `plt` interface is most commonly used.
 
 ## Setting Plot Styles
 
-- Use `plt.style` to set the visual style of your plots:
+Use `plt.style.use('style')` to set the visual style of your plots
 
-```python
+```{python} 
+#| echo: true
 plt.style.use('classic')
 ```
 
-- Stylesheets are supported as of Matplotlib version 1.5[2].
+[Stylesheets](https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html)
 
----
+## How to View Your Plots - (1/2)
 
-## How to View Your Plots
+-   **From a Python script:**\
+    Use `plt.show()` once at the end of your script to display all figures.
 
-- **From a Python script:**  
-  Use `plt.show()` once at the end of your script to display all figures.
-
-```python
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -68,14 +70,17 @@ plt.plot(x, np.cos(x))
 plt.show()
 ```
 
-- **From an IPython shell:**  
-  Use `%matplotlib` magic command to enable interactive plotting.  
-  `plt.show()` is not required.
+## How to View Your Plots - (2/2)
 
-- **From a Jupyter (IPython) notebook:**  
-  Use `%matplotlib inline` for static images or `%matplotlib notebook` for interactive plots.
+-   **From an IPython shell:**\
+    Use `%matplotlib` magic command to enable interactive plotting.\
+    `plt.show()` is not required.
 
-```python
+-   **From a Jupyter (IPython) notebook:**\
+    Use `%matplotlib inline` for static images or `%matplotlib notebook` for interactive plots.
+
+```{python} 
+#| echo: true
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
@@ -87,126 +92,84 @@ plt.plot(x, np.cos(x), '--');
 ```
 
 
----
-
 ## Saving Figures
 
-- Save figures using `savefig()`:
+Save figures using `.savefig()`:
 
-```python
+```{python} 
+#| echo: true
 fig.savefig('my_figure.png')
 ```
 
-- File format is inferred from the file extension.
-- Supported formats include: PNG, JPG, PDF, SVG, TIFF, and more.
+-   File format is inferred from the file extension.
+-   Supported formats include: PNG, JPG, PDF, SVG, TIFF, and more.
 
-```python
+```{python} 
+#| echo: true
 fig.canvas.get_supported_filetypes()
 ```
 
 
----
-
-## Two Interfaces: MATLAB-style vs Object-Oriented
-
-| Feature                | MATLAB-style (`plt`)                  | Object-Oriented (`fig`, `ax`)        |
-|------------------------|---------------------------------------|--------------------------------------|
-| Syntax                 | Similar to MATLAB, stateful           | Explicit, uses Figure/Axes objects   |
-| Example                | `plt.plot(x, y)`                      | `ax.plot(x, y)`                      |
-| Panels/Subplots        | `plt.subplot(2, 1, 1)`                | `fig, ax = plt.subplots(2)`          |
-| Best for               | Quick, simple plots                   | Complex, multi-panel, customized     |
-
-**MATLAB-style Example:**
-```python
-plt.figure()
-plt.subplot(2, 1, 1)
-plt.plot(x, np.sin(x))
-plt.subplot(2, 1, 2)
-plt.plot(x, np.cos(x))
-```
-
-**Object-Oriented Example:**
-```python
-fig, ax = plt.subplots(2)
-ax[0].plot(x, np.sin(x))
-ax[1].plot(x, np.cos(x))
-```
 ## Summary
 
-Matplotlib is the foundational Python library for data visualization.
-
-Offers flexibility, cross-platform compatibility, and supports many output formats.
-
-Choose between MATLAB-style and object-oriented interfaces depending on your needs.
-
-Integrates well with scripts, IPython shells, and Jupyter notebooks.
+-   Matplotlib is the foundational Python library for data visualization.
+-   Offers flexibility, cross-platform compatibility, and supports many output formats.
+-   Integrates well with scripts, IPython shells, and Jupyter notebooks.
 
 # Simple Line Plots with Matplotlib
 
----
-
 ## Getting Started: Setup
 
-- Import necessary packages and set the plotting style:
+Import necessary packages and set the plotting style
 
-```python
+```{python} 
+#| echo: true
 %matplotlib inline
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-whitegrid')
 import numpy as np
 ```
 
----
-
 ## Creating a Figure and Axes
 
-- In Matplotlib, a **figure** is the overall window or page, and **axes** are the plotting area.
+a **figure** is the overall window or page, and **axes** are the plotting area.
 
-```python
+```{python} 
+#| echo: true
 fig = plt.figure()
 ax = plt.axes()
 ```
 
-- `fig` is a Figure instance (container for all plot elements).
-- `ax` is an Axes instance (the actual plot area)[2].
-
----
+-   `fig` is a Figure instance (container for all plot elements).
+-   `ax` is an Axes instance (the actual plot area).
 
 ## Plotting a Simple Function
 
-- Example: Plotting a sine curve
+Example: Plotting a sine curve
 
-```python
-x = np.linspace(0, 10, 1000)
-fig = plt.figure()
-ax = plt.axes()
-ax.plot(x, np.sin(x))
-```
-
-- Alternatively, use the state-based interface:
-
-```python
+```{python} 
+#| echo: true
 plt.plot(x, np.sin(x))
 ```
 
----
 
 ## Multiple Lines in One Plot
 
-- Call `plot` multiple times to overlay lines:
+Call `plot` multiple times to overlay lines:
 
-```python
+```{python} 
+#| echo: true
 plt.plot(x, np.sin(x))
 plt.plot(x, np.cos(x))
 ```
 
----
 
 ## Customizing Line Color and Style
 
-- **Color options:**
+**Color options:**
 
-```python
+```{python} 
+#| echo: true
 plt.plot(x, np.sin(x - 0), color='blue')        # by name
 plt.plot(x, np.sin(x - 1), color='g')           # short code (r, g, b, c, m, y, k)
 plt.plot(x, np.sin(x - 2), color='0.75')        # grayscale
@@ -214,10 +177,12 @@ plt.plot(x, np.sin(x - 3), color='#FFDD44')     # hex code
 plt.plot(x, np.sin(x - 4), color=(1.0,0.2,0.3)) # RGB tuple
 plt.plot(x, np.sin(x - 5), color='chartreuse')  # HTML color name
 ```
+## Customizing Line Color and Style
 
-- **Line styles:**
+**Line styles:**
 
-```python
+```{python} 
+#| echo: true
 plt.plot(x, x + 0, linestyle='solid')
 plt.plot(x, x + 1, linestyle='dashed')
 plt.plot(x, x + 2, linestyle='dashdot')
@@ -229,9 +194,12 @@ plt.plot(x, x + 6, linestyle='-.')  # dashdot
 plt.plot(x, x + 7, linestyle=':')   # dotted
 ```
 
-- **Combine color and style:**
+## Customizing Line Color and Style
 
-```python
+**Combine color and style:**
+
+```{python} 
+#| echo: true
 plt.plot(x, x + 0, '-g')  # solid green
 plt.plot(x, x + 1, '--c') # dashed cyan
 plt.plot(x, x + 2, '-.k') # dashdot black
@@ -239,125 +207,101 @@ plt.plot(x, x + 3, ':r')  # dotted red
 ```
 
 
----
-
 ## Adjusting Axes Limits
 
-- Set axis limits:
+Set axis limits:
 
-```python
+```{python} 
+#| echo: true
 plt.plot(x, np.sin(x))
 plt.xlim(-1, 11)
 plt.ylim(-1.5, 1.5)
 ```
 
-- Reverse axis direction:
+Reverse axis direction:
 
-```python
+```{python} 
+#| echo: true
 plt.xlim(10, 0)
 plt.ylim(1.2, -1.2)
 ```
 
-- Use `plt.axis()` for more control:
+## Adjusting Axes Limits
 
-```python
+Use `plt.axis()` for more control:
+
+```{python} 
+#| echo: true
 plt.axis([-1, 11, -1.5, 1.5])   # [xmin, xmax, ymin, ymax]
 plt.axis('tight')               # tight bounds
 plt.axis('equal')               # equal aspect ratio
 ```
 
 
----
-
 ## Adding Titles, Labels, and Legends
 
-- Set plot title and axis labels:
+Set plot title and axis labels:
 
-```python
+```{python} 
+#| echo: true
 plt.plot(x, np.sin(x))
 plt.title("A Sine Curve")
 plt.xlabel("x")
 plt.ylabel("sin(x)")
 ```
 
-- Add a legend for multiple lines:
+## Adding Titles, Labels, and Legends
 
-```python
+Add a legend for multiple lines:
+
+```{python} 
+#| echo: true
 plt.plot(x, np.sin(x), '-g', label='sin(x)')
 plt.plot(x, np.cos(x), ':b', label='cos(x)')
 plt.axis('equal')
 plt.legend()
 ```
 
+## Summary
 
----
-
-## Object-Oriented Interface: Setting Properties
-
-- Most `plt` functions have `ax` method equivalents:
-
-| MATLAB-style        | Object-Oriented                  |
-|---------------------|----------------------------------|
-| plt.xlabel()        | ax.set_xlabel()                  |
-| plt.ylabel()        | ax.set_ylabel()                  |
-| plt.xlim()          | ax.set_xlim()                    |
-| plt.ylim()          | ax.set_ylim()                    |
-| plt.title()         | ax.set_title()                   |
-
-- Set multiple properties at once with `ax.set()`:
-
-```python
-ax = plt.axes()
-ax.plot(x, np.sin(x))
-ax.set(xlim=(0, 10), ylim=(-2, 2),
-       xlabel='x', ylabel='sin(x)',
-       title='A Simple Plot')
-```
-
-
-## Summar
-
-Use plt.plot() for quick line plots.
-
-Customize appearance with color, line style, axis limits, titles, labels, and legends.
-
-Both state-based (plt) and object-oriented (ax) interfaces are available for flexibility.
+-   Use plt.plot() for quick line plots.
+-   Customize appearance with color, line style, axis limits, titles, labels, and legends.
 
 # Simple Scatter Plots with Matplotlib
 
----
-
 ## What is a Scatter Plot?
 
-- A scatter plot displays individual data points as dots, circles, or other shapes, rather than connecting them with lines.
-- Useful for visualizing the relationship between two or more variables[2][1].
-
----
+-   A scatter plot displays individual data points as dots, circles, or other shapes, rather than connecting them with lines.
+-   Useful for visualizing the relationship between two or more variables.
 
 ## Setup
 
-```python
+```{python} 
+#| echo: true
 %matplotlib inline
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-whitegrid')
 import numpy as np
 ```
 
-
----
-
 ## Scatter Plots with `plt.plot`
 
-- The `plt.plot` function can create scatter plots by specifying a marker style.
+The `plt.plot` function can create scatter plots by specifying a marker style.
 
-```python
+```{python} 
+#| echo: true
 x = np.linspace(0, 10, 30)
 y = np.sin(x)
 plt.plot(x, y, 'o', color='black')
 ```
-- The third argument (`'o'`) sets the marker shape. There are many marker options, such as `'o'`, `'.'`, `','`, `'x'`, `'+'`, `'v'`, `'^'`, `''`, `'s'`, `'d'`, etc.
 
-```python
+-   The third argument (`'o'`) sets the marker shape. 
+    -   `'o'`, `'.'`, `','`, `'x'`, `'+'`, `'v'`, `'^'`, `''`, `'s'`, `'d'`, etc.
+
+## Scatter Plots - marker shape
+
+```{python} 
+#| echo: true
 rng = np.random.RandomState(0)
 for marker in ['o', '.', ',', 'x', '+', 'v', '^', '', 's', 'd']:
     plt.plot(rng.rand(5), rng.rand(5), marker, label=f"marker='{marker}'")
@@ -365,16 +309,21 @@ plt.legend(numpoints=1)
 plt.xlim(0, 1.8)
 ```
 
+## Line styles and marker shape
 
-- Combine marker and line styles for more complex plots:
+Combine marker and line styles for more complex plots:
 
-```python
+```{python} 
+#| echo: true
 plt.plot(x, y, '-ok')
 ```
 
-- Customize markers and lines with additional arguments:
+## Line styles and marker shape
 
-```python
+Customize markers and lines with additional arguments:
+
+```{python} 
+#| echo: true
 plt.plot(x, y, '-p', color='gray',
          markersize=15, linewidth=4,
          markerfacecolor='white',
@@ -384,19 +333,21 @@ plt.ylim(-1.2, 1.2)
 ```
 
 
----
-
 ## Scatter Plots with `plt.scatter`
 
-- The `plt.scatter` function is more powerful and flexible, allowing individual control over each point's size, color, and other properties.
+-   The `plt.scatter` function is more powerful and flexible, allowing individual control over each point's size, color, and other properties.
 
-```python
+```{python}
+#| echo: true
 plt.scatter(x, y, marker='o')
 ```
 
-- Create a scatter plot with varying color and size:
+## with varying color and size
 
-```python
+ `c` sets the color for each point, `s` sets the size, `alpha` controls transparency, and `cmap` sets the colormap.
+
+```{python} 
+#| echo: true
 rng = np.random.RandomState(0)
 x = rng.randn(100)
 y = rng.randn(100)
@@ -407,16 +358,12 @@ plt.scatter(x, y, c=colors, s=sizes, alpha=0.3, cmap='viridis')
 plt.colorbar()  # Show color scale
 ```
 
-
-- `c` sets the color for each point, `s` sets the size, `alpha` controls transparency, and `cmap` sets the colormap.
-
----
-
 ## Visualizing Multidimensional Data
 
-- Example: Iris dataset from Scikit-Learn, visualizing four features at once.
+Example: Iris dataset from Scikit-Learn, visualizing four features at once.
 
-```python
+```{python} 
+#| echo: true
 from sklearn.datasets import load_iris
 iris = load_iris()
 features = iris.data.T
@@ -426,43 +373,36 @@ plt.scatter(features, features, alpha=0.2,
 plt.xlabel(iris.feature_names)
 plt.ylabel(iris.feature_names)
 ```
-- Here, x/y positions, size, and color all encode different data dimensions[2][1].
 
----
+x/y positions, size, and color all encode different data dimensions.
+
+------------------------------------------------------------------------
 
 ## `plot` vs. `scatter`: Efficiency Note
 
-- For small datasets, both `plt.plot` and `plt.scatter` work well.
-- For large datasets (thousands of points or more), `plt.plot` is more efficient because all points are rendered with the same style.
-- `plt.scatter` is less efficient for large datasets since it allows per-point customization and must render each point individually[2][1].
-
----
-
-## Summary
-
-- Use `plt.plot` for simple scatter plots or large datasets.
-- Use `plt.scatter` for advanced scatter plots with variable size, color, and multidimensional data visualization.
-- Both methods offer a range of marker styles and customization options[2][1].
+-   For small datasets, both `plt.plot` and `plt.scatter` work well.
+-   For large datasets (thousands of points or more), `plt.plot` is more efficient because all points are rendered with the same style.
+-   `plt.scatter` is less efficient for large datasets since it allows per-point customization and must render each point individually.
 
 
 # Visualizing Errors with Matplotlib
 
----
-
 ## Why Show Error Bars?
 
-- Error bars represent the uncertainty or variability in your data.
-- They help communicate the reliability and precision of measurements.
-- For example, reporting a measurement as $$74 \pm 5$$ is much more informative than just 74[1].
+-   Error bars represent the uncertainty or variability in your data.
+-   They help communicate the reliability and precision of measurements.
+-   For example, reporting a measurement as $$74 \pm 5$$ is much more informative than just 74.
 
----
 
 ## Basic Error Bars with `plt.errorbar`
 
-- The `plt.errorbar` function is used to add error bars to your plots.
-- Basic usage:
+The `plt.errorbar` function is used to add error bars to your plots.
 
-```python
+-   `yerr` specifies the vertical error bar size.
+-   `fmt` controls the marker and line style (same as in `plt.plot`).
+
+```{python} 
+#| echo: true
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -473,111 +413,99 @@ y = np.sin(x) + dy * np.random.randn(50)
 plt.errorbar(x, y, yerr=dy, fmt='.k')
 plt.show()
 ```
-- `yerr` specifies the vertical error bar size.
-- `fmt` controls the marker and line style (same as in `plt.plot`)[12][2].
 
----
 
 ## Customizing Error Bars
 
-- You can adjust the appearance for clarity, especially in crowded plots:
+You can adjust the appearance for clarity, especially in crowded plots:
 
-```python
+-   `ecolor`: color of the error bars
+-   `elinewidth`: width of error bar lines
+-   `capsize`: size of the error bar caps
+
+```{python} 
+#| echo: true
 plt.errorbar(
     x, y, yerr=dy, fmt='o', color='black',
     ecolor='lightgray', elinewidth=3, capsize=0
 )
 plt.show()
 ```
-- `ecolor`: color of the error bars
-- `elinewidth`: width of error bar lines
-- `capsize`: size of the error bar caps[12][2].
 
----
 
 ## Horizontal and One-Sided Error Bars
 
-- Add horizontal error bars using `xerr`:
+Add horizontal error bars using `xerr`:
 
-```python
+-   You can combine `xerr` and `yerr` for both directions
+
+```{python} 
+#| echo: true
 plt.errorbar(x, y, xerr=0.5, fmt='o')
 ```
-- You can combine `xerr` and `yerr` for both directions[12][6].
-
----
 
 ## Visualizing Continuous Errors
 
-- For continuous uncertainty (e.g., model predictions), use `plt.fill_between` to shade the confidence region:
+-   For continuous uncertainty (e.g., model predictions), use `plt.fill_between` to shade the confidence region:
 
-```python
+```{python} 
+#| echo: true
 plt.plot(xdata, ydata, 'or')
 plt.plot(xfit, yfit, '-', color='gray')
 plt.fill_between(xfit, yfit - dyfit, yfit + dyfit, color='gray', alpha=0.2)
 plt.xlim(0, 10)
 plt.show()
 ```
-- This approach visually communicates where the model is more or less certain[12].
 
----
+-   This approach visually communicates where the model is more or less certain.
 
 ## Summary Table: Common Error Bar Options
 
-| Parameter     | Description                                 |
-|---------------|---------------------------------------------|
-| `yerr`        | Vertical error bar sizes                    |
-| `xerr`        | Horizontal error bar sizes                  |
-| `fmt`         | Format string for marker/line style         |
-| `ecolor`      | Color of error bars                         |
-| `elinewidth`  | Line width of error bars                    |
-| `capsize`     | Size of caps at the ends of error bars      |
+| Parameter    | Description                            |
+|--------------|----------------------------------------|
+| `yerr`       | Vertical error bar sizes               |
+| `xerr`       | Horizontal error bar sizes             |
+| `fmt`        | Format string for marker/line style    |
+| `ecolor`     | Color of error bars                    |
+| `elinewidth` | Line width of error bars               |
+| `capsize`    | Size of caps at the ends of error bars |
 
----
-
-## Further Customization
-
-- See the [Matplotlib documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html) for more options.
-- For continuous error visualization, also explore `plt.fill_between`[12][2].
-
----
 
 ## Key Takeaways
 
-- Use error bars to show uncertainty in your data.
-- `plt.errorbar` is flexible and customizable for both simple and advanced needs.
-- For continuous error regions, use `plt.fill_between` for a more intuitive visualization[12].
+-   Use error bars to show uncertainty in your data.
+-   `plt.errorbar` is flexible and customizable for both simple and advanced needs.
+-   For continuous error regions, use `plt.fill_between` for a more intuitive visualization
+-   See the [Matplotlib documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html) for more options.
 
 # Density and Contour Plots in Matplotlib
 
----
-
 ## Introduction
 
-- Density and contour plots are useful for visualizing three-dimensional data in two dimensions using contours (lines) or color-coded regions.
-- Matplotlib provides three main functions for this purpose:
-  - `plt.contour` for contour lines
-  - `plt.contourf` for filled contours
-  - `plt.imshow` for displaying images[1]
+-   Density and contour plots are useful for visualizing three-dimensional data in two dimensions using contours (lines) or color-coded regions.
+-   Matplotlib provides three main functions for this purpose:
+    -   `plt.contour` for contour lines
+    -   `plt.contourf` for filled contours
+    -   `plt.imshow` for displaying images
 
----
 
 ## Setting Up
 
-```python
+```{python} 
+#| echo: true
 %matplotlib inline
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
 import numpy as np
 ```
 
----
-
 ## Creating a Contour Plot
 
-- Contour plots require a function $$ z = f(x, y) $$ evaluated on a grid.
-- Use `np.meshgrid` to create the grid:
+-   Contour plots require a function $$ z = f(x, y) $$ evaluated on a grid.
+-   Use `np.meshgrid` to create the grid:
 
-```python
+```{python} 
+#| echo: true
 def f(x, y):
     return np.sin(x) ** 10 + np.cos(10 + y * x) * np.cos(x)
 
@@ -587,107 +515,103 @@ X, Y = np.meshgrid(x, y)
 Z = f(X, Y)
 ```
 
-- Basic contour plot:
+##  Basic contour plot:
 
-```python
+```{python} 
+#| echo: true
 plt.contour(X, Y, Z, colors='black')
 ```
-- By default, negative values are dashed lines, positive values are solid lines[1].
 
----
+By default, negative values are dashed lines, positive values are solid lines\[1\].
+
+
 
 ## Color-Coded Contour Plot
 
-- Use the `cmap` argument to specify a colormap and increase the number of contour levels:
+Use the `cmap` argument to specify a colormap and increase the number of contour levels:
 
-```python
+```{python} 
+#| echo: true
 plt.contour(X, Y, Z, 20, cmap='RdGy')
 ```
-- `RdGy` is a good colormap for centered data. Matplotlib offers many colormaps (see `plt.cm.` in IPython for options)[1].
 
----
+`RdGy` is a good colormap for centered data. Matplotlib offers many colormaps (see `plt.cm.` in IPython for options)
+
 
 ## Filled Contour Plot
 
-- Use `plt.contourf` for filled contours and add a colorbar for reference:
+Use `plt.contourf` for filled contours and add a colorbar for reference:
 
-```python
+```{python} 
+#| echo: true
 plt.contourf(X, Y, Z, 20, cmap='RdGy')
 plt.colorbar()
 ```
-- The colorbar shows the mapping between color and data values[1].
 
----
+The colorbar shows the mapping between color and data values\[1\].
+
 
 ## Displaying Data as an Image
 
-- For a smoother appearance, use `plt.imshow` to display the grid as an image:
+For a smoother appearance, use `plt.imshow` to display the grid as an image:
 
-```python
+```{python} 
+#| echo: true
 plt.imshow(Z, extent=[0, 5, 0, 5], origin='lower', cmap='RdGy')
 plt.colorbar()
 plt.axis(aspect='image')
 ```
-- Note: `imshow` requires manual setting of plot extent and origin[1].
 
----
+Note: `imshow` requires manual setting of plot extent and origin\[1\].
+
 
 ## Combining Contour and Image Plots
 
-- Overlay contours on an image for richer visualization:
+Overlay contours on an image for richer visualization:
 
-```python
+```{python} 
+#| echo: true
 contours = plt.contour(X, Y, Z, 3, colors='black')
 plt.clabel(contours, inline=True, fontsize=8)
 plt.imshow(Z, extent=[0, 5, 0, 5], origin='lower', cmap='RdGy', alpha=0.5)
 plt.colorbar()
 ```
-- Use `plt.clabel` to label contour lines[1].
 
----
+Use `plt.clabel` to label contour lines\[1\].
+
 
 ## Summary Table: Key Functions
 
-| Function         | Description                                |
-|------------------|--------------------------------------------|
-| `plt.contour`    | Draws contour lines                        |
-| `plt.contourf`   | Draws filled contours                      |
-| `plt.imshow`     | Displays a 2D array as an image            |
-| `plt.colorbar`   | Adds a colorbar to the plot                |
-| `plt.clabel`     | Adds labels to contour lines               |
+| Function       | Description                     |
+|----------------|---------------------------------|
+| `plt.contour`  | Draws contour lines             |
+| `plt.contourf` | Draws filled contours           |
+| `plt.imshow`   | Displays a 2D array as an image |
+| `plt.colorbar` | Adds a colorbar to the plot     |
+| `plt.clabel`   | Adds labels to contour lines    |
 
----
 
 ## Tips and Notes
 
-- `plt.imshow` does not accept x and y grids; set extent manually.
-- The default origin for `imshow` is the upper left; set `origin='lower'` for consistency with contour plots.
-- Adjust the aspect ratio with `plt.axis(aspect='image')` to ensure equal scaling[1].
-- You can combine these functions for advanced visualizations.
-
----
-
-## Further Exploration
-
-- For 3D contour plotting, see the "Three-dimensional Plotting in Matplotlib" section.
-- Refer to the Matplotlib documentation for more customization options[1].
+-   `plt.imshow` does not accept x and y grids; set extent manually.
+-   The default origin for `imshow` is the upper left; set `origin='lower'` for consistency with contour plots.
+-   Adjust the aspect ratio with `plt.axis(aspect='image')` to ensure equal scaling.
+-   You can combine these functions for advanced visualizations.
 
 
 # Histograms, Binnings, and Density
 
----
-
 ## What is a Histogram?
 
-- A histogram is a graphical representation of the distribution of numerical data.
-- It divides data into bins (intervals) and shows the frequency (count) of data points in each bin.
-- Useful as a first step in understanding a dataset.
+-   A histogram is a graphical representation of the distribution of numerical data.
+-   It divides data into bins (intervals) and shows the frequency (count) of data points in each bin.
+-   Useful as a first step in understanding a dataset.
 
----
 
 ## Creating a Simple Histogram
 
-```python
+```{python} 
+#| echo: true
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
@@ -697,33 +621,35 @@ data = np.random.randn(1000)
 plt.hist(data)
 plt.show()
 ```
-- This displays the distribution of `data` in default bins[2][1].
 
----
+This displays the distribution of `data` in default bins\[2\]\[1\].
+
 
 ## Customizing Histograms
 
-- The `hist()` function offers many options to control calculation and display:
+The `hist()` function offers many options to control calculation and display:
 
-```python
+```{python} 
+#| echo: true
 plt.hist(data, bins=30, normed=True, alpha=0.5,
          histtype='stepfilled', color='steelblue',
          edgecolor='none')
 plt.show()
 ```
-- `bins`: Number of bins
-- `normed` (now `density`): Normalize the histogram so the area sums to 1
-- `alpha`: Transparency
-- `histtype`: Type of histogram (e.g., `'stepfilled'`)
-- `color`, `edgecolor`: Color settings[2][1]
 
----
+-   `bins`: Number of bins
+-   `normed` (now `density`): Normalize the histogram so the area sums to 1
+-   `alpha`: Transparency
+-   `histtype`: Type of histogram (e.g., `'stepfilled'`)
+-   `color`, `edgecolor`: Color settings\[2\]\[1\]
+
 
 ## Comparing Multiple Distributions
 
-- Overlay several histograms using transparency for comparison:
+Overlay several histograms using transparency for comparison:
 
-```python
+```{python} 
+#| echo: true
 x1 = np.random.normal(0, 0.8, 1000)
 x2 = np.random.normal(-2, 1, 1000)
 x3 = np.random.normal(3, 2, 1000)
@@ -734,28 +660,31 @@ plt.hist(x2, **kwargs)
 plt.hist(x3, **kwargs)
 plt.show()
 ```
-- This helps to compare different data distributions on the same plot[2][1].
 
----
+This helps to compare different data distributions on the same plot\[2\]\[1\].
+
+------------------------------------------------------------------------
 
 ## Computing Histograms Without Plotting
 
-- Use NumPy’s `np.histogram()` to get bin counts and edges:
+Use NumPy’s `np.histogram()` to get bin counts and edges:
 
-```python
+```{python} 
+#| echo: true
 counts, bin_edges = np.histogram(data, bins=5)
 print(counts)
 ```
-- Output: `[ 12 190 468 301 29]` (example)[2][1]
 
----
+Output: `[ 12 190 468 301 29]` (example)
+
+------------------------------------------------------------------------
 
 ## Two-Dimensional Histograms
 
-- Visualize joint distributions by binning data in two dimensions.
+Visualize joint distributions by binning data in two dimensions.
 
-**Example:**
-```python
+```{python} 
+#| echo: true
 mean = [0, 0]
 cov = [[1, 1], [1, 2]]
 x, y = np.random.multivariate_normal(mean, cov, 10000).T
@@ -765,36 +694,42 @@ cb = plt.colorbar()
 cb.set_label('counts in bin')
 plt.show()
 ```
-- `plt.hist2d` creates a 2D histogram; `plt.colorbar` adds a color scale[2][1].
 
-- To compute the 2D histogram without plotting:
-```python
+## Two-Dimensional Histograms
+
+-   `plt.hist2d` creates a 2D histogram; `plt.colorbar` adds a color scale\[2\]\[1\].
+
+-   To compute the 2D histogram without plotting:
+
+```{python} 
+#| echo: true
 counts, xedges, yedges = np.histogram2d(x, y, bins=30)
 ```
 
-- For higher dimensions, use `np.histogramdd`[2][1].
+For higher dimensions, use `np.histogramdd`.
 
----
 
 ## Hexagonal Binning
 
-- Use hexagons instead of squares for 2D binning:
+Use hexagons instead of squares for 2D binning:
 
-```python
+```{python} 
+#| echo: true
 plt.hexbin(x, y, gridsize=30, cmap='Blues')
 cb = plt.colorbar(label='count in bin')
 plt.show()
 ```
-- `plt.hexbin` can also use weights and different aggregation functions[2][1].
 
----
+`plt.hexbin` can also use weights and different aggregation functions\[2\]\[1\].
+
 
 ## Kernel Density Estimation (KDE)
 
-- KDE provides a smooth estimate of the data’s probability density.
-- Example using `scipy.stats.gaussian_kde`:
+-   KDE provides a smooth estimate of the data’s probability density.
+-   Example using `scipy.stats.gaussian_kde`:
 
-```python
+```{python} 
+#| echo: true
 from scipy.stats import gaussian_kde
 
 data = np.vstack([x, y])
@@ -812,38 +747,33 @@ cb = plt.colorbar()
 cb.set_label("density")
 plt.show()
 ```
-- KDE smooths the data, providing a continuous density estimate[2][1].
 
----
+KDE smooths the data, providing a continuous density estimate\[2\]\[1\].
+
 
 ## Summary Table: Histogram and Binning Functions
 
-| Function            | Description                                     |
-|---------------------|-------------------------------------------------|
-| `plt.hist`          | 1D histogram plot                               |
-| `np.histogram`      | Compute 1D histogram counts and bins            |
-| `plt.hist2d`        | 2D histogram plot                               |
-| `np.histogram2d`    | Compute 2D histogram counts and bins            |
-| `plt.hexbin`        | 2D hexagonal bin plot                           |
-| `np.histogramdd`    | Multidimensional histogram counts and bins      |
-| `scipy.stats.gaussian_kde` | Kernel density estimation                |
+| Function                   | Description                                |
+|----------------------------|--------------------------------------------|
+| `plt.hist`                 | 1D histogram plot                          |
+| `np.histogram`             | Compute 1D histogram counts and bins       |
+| `plt.hist2d`               | 2D histogram plot                          |
+| `np.histogram2d`           | Compute 2D histogram counts and bins       |
+| `plt.hexbin`               | 2D hexagonal bin plot                      |
+| `np.histogramdd`           | Multidimensional histogram counts and bins |
+| `scipy.stats.gaussian_kde` | Kernel density estimation                  |
 
 # Customizing Plot Legends in Matplotlib
 
----
-
-## Why Use Legends?
-
-- Legends assign meaning to plot elements, making visualizations clearer and more informative.
-
----
 
 ## Creating a Simple Legend
 
-- The simplest way to add a legend is with `plt.legend()` or `ax.legend()`.
-- Any plot element with a `label` will appear in the legend.
+-   Legends assign meaning to plot elements, making visualizations clearer and more informative.
+-   The simplest way to add a legend is with `plt.legend()` or `ax.legend()`.
+-   Any plot element with a `label` will appear in the legend.
 
-```python
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -854,69 +784,76 @@ ax.plot(x, np.cos(x), '--r', label='Cosine')
 ax.axis('equal')
 ax.legend()
 ```
-- By default, all labeled elements are included in the legend[2][1].
 
----
+-   By default, all labeled elements are included in the legend
+
 
 ## Customizing Legend Placement and Appearance
 
-- **Location:** Control legend placement with the `loc` parameter (e.g., `'upper left'`, `'lower center'`).
-- **Frame:** Remove the legend box with `frameon=False`.
-- **Columns:** Use `ncol` to arrange legend entries in multiple columns.
-- **Aesthetics:** Customize with options like `fancybox`, `shadow`, `framealpha`, and `borderpad`.
+-   **Location:** Control legend placement with the `loc` parameter (e.g., `'upper left'`, `'lower center'`).
+-   **Frame:** Remove the legend box with `frameon=False`.
+-   **Columns:** Use `ncol` to arrange legend entries in multiple columns.
+-   **Aesthetics:** Customize with options like `fancybox`, `shadow`, `framealpha`, and `borderpad`.
 
-```python
+```{python} 
+#| echo: true
 ax.legend(loc='upper left', frameon=False)
 ax.legend(frameon=False, loc='lower center', ncol=2)
 ax.legend(fancybox=True, framealpha=1, shadow=True, borderpad=1)
 ```
-- For more options, see the `plt.legend` docstring[2][1].
 
----
+-   For more options, see the `plt.legend` docstring\[2\]\[1\].
+
 
 ## Choosing Elements for the Legend
 
-- By default, all labeled elements are included.
-- To control which elements appear, pass specific plot objects and labels to `legend()`:
+-   By default, all labeled elements are included.
+-   To control which elements appear, pass specific plot objects and labels to `legend()`:
 
-```python
+```{python} 
+#| echo: true
 y = np.sin(x[:, np.newaxis] + np.pi * np.arange(0, 2, 0.5))
 lines = plt.plot(x, y)
 plt.legend(lines[:2], ['first', 'second'])
 ```
 
-- Alternatively, only label the elements you want in the legend:
+## Choosing Elements for the Legend
 
-```python
+-   Alternatively, only label the elements you want in the legend:
+
+```{python} 
+#| echo: true
 plt.plot(x, y[:, 0], label='first')
 plt.plot(x, y[:, 1], label='second')
 plt.plot(x, y[:, 2:])
 plt.legend(framealpha=1, frameon=True)
 ```
-- Only elements with a `label` attribute are shown in the legend[2][1].
 
----
+-   Only elements with a `label` attribute are shown in the legend\[2\]\[1\].
+
 
 ## Legends for Point Size (Custom Legend Entries)
 
-- Sometimes you need a legend for non-standard features, like marker size.
-- Example: Show city areas by point size in a scatter plot.
+-   Sometimes you need a legend for non-standard features, like marker size.
+-   Example: Show city areas by point size in a scatter plot.
 
-```python
+```{python} 
+#| echo: true
 for area in [100, 300, 500]:
     plt.scatter([], [], c='k', alpha=0.3, s=area, label=str(area) + ' km$^2$')
 plt.legend(scatterpoints=1, frameon=False, labelspacing=1, title='City Area')
 ```
-- By plotting empty lists, you create custom legend entries, even if those objects aren’t on the plot[2][1].
 
----
+-   By plotting empty lists, you create custom legend entries, even if those objects aren’t on the plot\[2\]\[1\].
+
 
 ## Multiple Legends
 
-- Matplotlib only allows one legend per axes by default.
-- To add a second legend, create a new `Legend` artist and add it manually:
+-   Matplotlib only allows one legend per axes by default.
+-   To add a second legend, create a new `Legend` artist and add it manually:
 
-```python
+```{python} 
+#| echo: true
 from matplotlib.legend import Legend
 
 fig, ax = plt.subplots()
@@ -931,34 +868,34 @@ ax.legend(lines[:2], ['line A', 'line B'], loc='upper right', frameon=False)
 leg = Legend(ax, lines[2:], ['line C', 'line D'], loc='lower right', frameon=False)
 ax.add_artist(leg)
 ```
-- This approach lets you display multiple legends on a single plot[2][1].
 
----
+-   This approach lets you display multiple legends on a single plot\[2\]\[1\].
+
+------------------------------------------------------------------------
 
 ## Key Points
 
-- Use `label` in plotting commands and call `legend()` to create legends.
-- Customize legends with location, columns, frame, and more.
-- Control legend entries by labeling only desired elements or passing specific objects.
-- For complex cases (e.g., marker size), add custom legend entries by plotting empty objects.
-- For multiple legends, use the `Legend` artist and `ax.add_artist()`.
+-   Use `label` in plotting commands and call `legend()` to create legends.
+-   Customize legends with location, columns, frame, and more.
+-   Control legend entries by labeling only desired elements or passing specific objects.
+-   For complex cases (e.g., marker size), add custom legend entries by plotting empty objects.
+-   For multiple legends, use the `Legend` artist and `ax.add_artist()`.
 
 # Customizing Colorbars in Matplotlib
 
----
-
 ## Why Use Colorbars?
 
-- Colorbars provide a key for interpreting the meaning of colors in plots, especially when representing continuous data values.
-- While legends are for discrete labels, colorbars are essential for continuous labels (e.g., heatmaps, density plots)[2][1].
+-   Colorbars provide a key for interpreting the meaning of colors in plots, especially when representing continuous data values.
+-   While legends are for discrete labels, colorbars are essential for continuous labels (e.g., heatmaps, density plots)\[2\]\[1\].
 
----
+------------------------------------------------------------------------
 
 ## Creating a Basic Colorbar
 
-- The simplest way to add a colorbar is with `plt.colorbar()` after a plotting function that uses color mapping:
+-   The simplest way to add a colorbar is with `plt.colorbar()` after a plotting function that uses color mapping:
 
-```python
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -968,70 +905,70 @@ I = np.sin(x) * np.cos(x[:, np.newaxis])
 plt.imshow(I)
 plt.colorbar()
 ```
-- This displays the image and adds a colorbar indicating the mapping from data values to colors[2][1].
 
----
+-   This displays the image and adds a colorbar indicating the mapping from data values to colors
+
 
 ## Customizing Colormaps
 
-- Specify a colormap with the `cmap` argument:
+Specify a colormap with the `cmap` argument:
 
-```python
+```{python} 
+#| echo: true
 plt.imshow(I, cmap='gray')
 ```
-- All available colormaps are in the `plt.cm` namespace (e.g., `plt.cm.viridis`, `plt.cm.RdBu`).
 
----
+-   All available colormaps are in the `plt.cm` namespace (e.g., `plt.cm.viridis`, `plt.cm.RdBu`).
+
 
 ## Types of Colormaps
 
-- **Sequential colormaps**: One continuous color sequence (e.g., `binary`, `viridis`).
-- **Divergent colormaps**: Two contrasting colors for positive/negative deviations (e.g., `RdBu`, `PuOr`).
-- **Qualitative colormaps**: No particular sequence, for categorical data (e.g., `rainbow`, `jet`).
+-   **Sequential colormaps**: One continuous color sequence (e.g., `binary`, `viridis`).
+-   **Divergent colormaps**: Two contrasting colors for positive/negative deviations (e.g., `RdBu`, `PuOr`).
+-   **Qualitative colormaps**: No particular sequence, for categorical data (e.g., `rainbow`, `jet`).
 
-> **Note:** The `jet` colormap (old default) is not recommended for quantitative data because it does not provide a uniform progression in brightness, which can mislead interpretation[2][1].
-
----
 
 ## Choosing the Right Colormap
 
-- Prefer colormaps like `viridis` for continuous data, as they have even brightness and are perceptually uniform—even in grayscale.
-- For rainbow-like schemes, consider `cubehelix`.
-- For data with a meaningful center (e.g., deviations from zero), use divergent maps like `RdBu`, but be careful with grayscale reproduction[2][1].
+-   Prefer colormaps like `viridis` for continuous data, as they have even brightness and are perceptually uniform—even in grayscale.
+-   For rainbow-like schemes, consider `cubehelix`.
+-   For data with a meaningful center (e.g., deviations from zero), use divergent maps like `RdBu`, but be careful with grayscale reproduction\[2\]\[1\].
 
----
 
 ## Setting Color Limits and Extensions
 
-- You can manually set color limits with `plt.clim()` and indicate out-of-bounds values using the `extend` property in the colorbar:
+-   You can manually set color limits with `plt.clim()` and indicate out-of-bounds values using the `extend` property in the colorbar:
 
-```python
+```{python} 
+#| echo: true
 plt.imshow(I, cmap='RdBu')
 plt.colorbar(extend='both')
 plt.clim(-1, 1)
 ```
-- This is useful when you want to focus on a specific data range and highlight values outside that range with arrows at the ends of the colorbar[2][1].
 
----
+-   This is useful when you want to focus on a specific data range and highlight values outside that range with arrows at the ends of the colorbar\[2\]\[1\].
+
 
 ## Discrete Colorbars
 
-- To represent discrete values, use a colormap with a specified number of bins:
+-   To represent discrete values, use a colormap with a specified number of bins:
 
-```python
+```{python} 
+#| echo: true
 plt.imshow(I, cmap=plt.cm.get_cmap('Blues', 6))
 plt.colorbar()
 plt.clim(-1, 1)
 ```
-- This approach is useful for categorical or binned data[2][1].
 
----
+-   This approach is useful for categorical or binned data\[2\]\[1\].
+
 
 ## Example: Visualizing Handwritten Digits
 
-- Visualize digit images:
+-   Visualize digit images:
 
-```python
+```{python} 
+#| echo: true
 from sklearn.datasets import load_digits
 digits = load_digits(n_class=6)
 fig, ax = plt.subplots(8, 8, figsize=(6, 6))
@@ -1040,9 +977,12 @@ for i, axi in enumerate(ax.flat):
     axi.set(xticks=[], yticks=[])
 ```
 
-- Use dimensionality reduction and a discrete colorbar for class labels:
+## Example: Visualizing Handwritten Digits
 
-```python
+-   Use dimensionality reduction and a discrete colorbar for class labels:
+
+```{python} 
+#| echo: true
 from sklearn.manifold import Isomap
 iso = Isomap(n_components=2)
 projection = iso.fit_transform(digits.data)
@@ -1052,37 +992,32 @@ plt.scatter(projection[:, 0], projection[:, 1], lw=0.1,
 plt.colorbar(ticks=range(6), label='digit value')
 plt.clim(-0.5, 5.5)
 ```
-- Here, the colorbar clearly distinguishes digit classes[2][1].
 
----
+-   Here, the colorbar clearly distinguishes digit classes\[2\]\[1\].
+
 
 ## Key Points
 
-- Use colorbars for continuous data and choose colormaps thoughtfully for clarity and accessibility.
-- Customize colorbars with colormap selection, color limits, extensions, and discrete bins.
-- Always consider how your color choices will appear in grayscale or to colorblind viewers[2][1].
-
+-   Use colorbars for continuous data and choose colormaps thoughtfully for clarity and accessibility.
+-   Customize colorbars with colormap selection, color limits, extensions, and discrete bins.
+-   Always consider how your color choices will appear in grayscale or to colorblind viewers\[2\]\[1\].
 
 # Multiple Subplots in Matplotlib
 
----
 
 ## Why Use Multiple Subplots?
 
-- Comparing data side by side is often helpful for analysis and presentation.
-- Matplotlib allows you to arrange multiple smaller plots (subplots) within a single figure.
+-   Comparing data side by side is often helpful for analysis and presentation.
+-   Matplotlib allows you to arrange multiple smaller plots (subplots) within a single figure.
 
----
+Four Ways to Create Subplots
 
-## Four Ways to Create Subplots
+## 1. **Manual Placement with `plt.axes` and `fig.add_axes`**
 
----
+-   Create axes anywhere in the figure by specifying `[left, bottom, width, height]` in figure coordinates (0 to 1).
 
-### 1. **Manual Placement with `plt.axes` and `fig.add_axes`**
-
-- Create axes anywhere in the figure by specifying `[left, bottom, width, height]` in figure coordinates (0 to 1).
-
-```python
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -1090,9 +1025,12 @@ ax1 = plt.axes()  # Standard axes
 ax2 = plt.axes([0.65, 0.65, 0.2, 0.2])  # Inset axes at top-right
 ```
 
-- With the object-oriented interface:
+## 1. **Manual Placement with `plt.axes` and `fig.add_axes`**
 
-```python
+-   With the object-oriented interface:
+
+```{python} 
+#| echo: true
 fig = plt.figure()
 ax1 = fig.add_axes([0.1, 0.5, 0.8, 0.4], xticklabels=[], ylim=(-1.2, 1.2))
 ax2 = fig.add_axes([0.1, 0.1, 0.8, 0.4], ylim=(-1.2, 1.2))
@@ -1101,21 +1039,21 @@ ax1.plot(np.sin(x))
 ax2.plot(np.cos(x))
 ```
 
----
+## 2. **Simple Grids with `plt.subplot` and `fig.add_subplot`**
 
-### 2. **Simple Grids with `plt.subplot` and `fig.add_subplot`**
+-   Create a grid of subplots by specifying rows, columns, and plot index (starts at 1, goes left-to-right, top-to-bottom).
 
-- Create a grid of subplots by specifying rows, columns, and plot index (starts at 1, goes left-to-right, top-to-bottom).
-
-```python
+```{python} 
+#| echo: true
 for i in range(1, 7):
     plt.subplot(2, 3, i)
     plt.text(0.5, 0.5, str((2, 3, i)), fontsize=18, ha='center')
 ```
+## 2. **Simple Grids with `plt.subplot` and `fig.add_subplot`**
+-   Adjust spacing between subplots:
 
-- Adjust spacing between subplots:
-
-```python
+```{python} 
+#| echo: true
 fig = plt.figure()
 fig.subplots_adjust(hspace=0.4, wspace=0.4)
 for i in range(1, 7):
@@ -1123,15 +1061,15 @@ for i in range(1, 7):
     ax.text(0.5, 0.5, str((2, 3, i)), fontsize=18, ha='center')
 ```
 
-- `hspace` and `wspace` control the height and width between subplots (as a fraction of subplot size).
+-   `hspace` and `wspace` control the height and width between subplots (as a fraction of subplot size).
 
----
 
-### 3. **Full Grid with `plt.subplots`**
+## 3. **Full Grid with `plt.subplots`**
 
-- Quickly create a grid of subplots and get them as a NumPy array for easy access.
+-   Quickly create a grid of subplots and get them as a NumPy array for easy access.
 
-```python
+```{python} 
+#| echo: true
 fig, ax = plt.subplots(2, 3, sharex='col', sharey='row')
 for i in range(2):
     for j in range(3):
@@ -1139,16 +1077,16 @@ for i in range(2):
 fig
 ```
 
-- `sharex` and `sharey` allow axes to share x or y axis labels/scales.
-- Axes are accessed with standard array indexing: `ax[row, col]`.
+-   `sharex` and `sharey` allow axes to share x or y axis labels/scales.
+-   Axes are accessed with standard array indexing: `ax[row, col]`.
 
----
 
-### 4. **Flexible Layouts with `plt.GridSpec`**
+## 4. **Flexible Layouts with `plt.GridSpec`**
 
-- For more complex arrangements (e.g., subplots spanning multiple rows/columns).
+-   For more complex arrangements (e.g., subplots spanning multiple rows/columns).
 
-```python
+```{python} 
+#| echo: true
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -1158,12 +1096,13 @@ plt.subplot(grid[0, 1:])
 plt.subplot(grid[1, :2])
 plt.subplot(grid[1, 2])
 ```
+## 4. **Flexible Layouts with `plt.GridSpec`**
+-   Use slicing to specify subplot positions and extents.
 
-- Use slicing to specify subplot positions and extents.
+-   Example: Scatter plot with marginal histograms
 
-- Example: Scatter plot with marginal histograms
-
-```python
+```{python} 
+#| echo: true
 mean = [0, 0]
 cov = [[1, 1], [1, 2]]
 x, y = np.random.multivariate_normal(mean, cov, 3000).T
@@ -1181,47 +1120,45 @@ y_hist.hist(y, 40, histtype='stepfilled', orientation='horizontal', color='gray'
 y_hist.invert_xaxis()
 ```
 
----
 
 ## Summary Table
 
-| Method                  | Use Case                                   | Access Pattern          |
-|-------------------------|--------------------------------------------|------------------------|
-| `plt.axes`              | Manual, precise placement                  | Variable names         |
-| `plt.subplot`           | Simple grid, small number of subplots      | Index (1-based)        |
-| `plt.subplots`          | Full grid, easy access, larger layouts     | Array indexing         |
-| `plt.GridSpec`          | Complex, flexible layouts                  | Slicing, subplots      |
+| Method         | Use Case                               | Access Pattern    |
+|--------------------|----------------------------------|-------------------|
+| `plt.axes`     | Manual, precise placement              | Variable names    |
+| `plt.subplot`  | Simple grid, small number of subplots  | Index (1-based)   |
+| `plt.subplots` | Full grid, easy access, larger layouts | Array indexing    |
+| `plt.GridSpec` | Complex, flexible layouts              | Slicing, subplots |
 
----
+------------------------------------------------------------------------
 
 ## Tips
 
-- Use `plt.subplots()` for most grid layouts—it's concise and Pythonic.
-- Use `plt.GridSpec` for advanced arrangements (e.g., subplots spanning multiple rows/columns).
-- Adjust subplot spacing with `plt.subplots_adjust()` or `GridSpec` parameters.
-- Sharing axes (`sharex`, `sharey`) makes multi-panel plots cleaner.
+-   Use `plt.subplots()` for most grid layouts—it's concise and Pythonic.
+-   Use `plt.GridSpec` for advanced arrangements (e.g., subplots spanning multiple rows/columns).
+-   Adjust subplot spacing with `plt.subplots_adjust()` or `GridSpec` parameters.
+-   Sharing axes (`sharex`, `sharey`) makes multi-panel plots cleaner.
 
 # Text and Annotation in Matplotlib
 
----
 
 ## Why Use Text and Annotations?
 
-- Text and annotations help guide the viewer and highlight important features in your visualizations.
-- They can clarify, label, or call attention to specific data points or trends, making your plots more informative and easier to interpret[12][1].
-
----
+-   Text and annotations help guide the viewer and highlight important features in your visualizations.
+-   They can clarify, label, or call attention to specific data points or trends, making your plots more informative and easier to interpret\[12\]\[1\].
 
 ## Adding Basic Text with `ax.text`
 
-- The `ax.text()` method places text at a specified position on the plot.
-- Syntax: `ax.text(x, y, s, **kwargs)`
-  - `x`, `y`: Coordinates for the text position.
-  - `s`: The string to display.
-  - Additional keyword arguments control appearance (size, color, alignment, etc.).
+-   The `ax.text()` method places text at a specified position on the plot.
+-   Syntax: `ax.text(x, y, s, **kwargs)`
+    -   `x`, `y`: Coordinates for the text position.
+    -   `s`: The string to display.
+    -   Additional keyword arguments control appearance (size, color, alignment, etc.).
 
-**Example:**
-```python
+## Adding Basic Text with `ax.text`
+
+```{python} 
+#| echo: true
 fig, ax = plt.subplots(figsize=(12, 4))
 births_by_date.plot(ax=ax)
 style = dict(size=10, color='gray')
@@ -1232,47 +1169,55 @@ ax.text('2012-10-31', 4600, "Halloween", ha='right', **style)
 ax.text('2012-11-25', 4450, "Thanksgiving", ha='center', **style)
 ax.text('2012-12-25', 3850, "Christmas", ha='right', **style)
 ```
-- `ha` stands for *horizontal alignment* and can be `'left'`, `'center'`, or `'right'`[12][1].
 
----
+-   `ha` stands for *horizontal alignment* and can be `'left'`, `'center'`, or `'right'`
 
 ## Coordinate Systems and Transforms
 
-- By default, text is placed using data coordinates.
-- You can also use axes or figure-relative coordinates for fixed positioning, regardless of data scaling:
-  - `ax.transData`: Data coordinates (default).
-  - `ax.transAxes`: Axes coordinates (0,0 bottom-left; 1,1 top-right of axes).
-  - `fig.transFigure`: Figure coordinates (0,0 bottom-left; 1,1 top-right of figure).
+-   By default, text is placed using data coordinates.
+-   You can also use axes or figure-relative coordinates for fixed positioning, regardless of data scaling:
+    -   `ax.transData`: Data coordinates (default).
+    -   `ax.transAxes`: Axes coordinates (0,0 bottom-left; 1,1 top-right of axes).
+    -   `fig.transFigure`: Figure coordinates (0,0 bottom-left; 1,1 top-right of figure).
 
-**Example:**
-```python
+## Coordinate Systems and Transforms
+
+```{python} 
+#| echo: true
 fig, ax = plt.subplots(facecolor='lightgray')
 ax.axis([0, 10, 0, 10])
 ax.text(1, 5, ". Data: (1, 5)", transform=ax.transData)
 ax.text(0.5, 0.1, ". Axes: (0.5, 0.1)", transform=ax.transAxes)
 ax.text(0.2, 0.2, ". Figure: (0.2, 0.2)", transform=fig.transFigure)
 ```
-- Changing axis limits only affects text placed in data coordinates[12][1].
 
----
+-   Changing axis limits only affects text placed in data coordinates\[12\]\[1\].
+
 
 ## Annotating with Arrows: `ax.annotate`
 
-- Use `ax.annotate()` to add text with optional arrows pointing to data points.
-- This is more flexible and robust than `plt.arrow()` for most annotation needs.
+-   Use `ax.annotate()` to add text with optional arrows pointing to data points.
+-   This is more flexible and robust than `plt.arrow()` for most annotation needs.
 
 **Syntax:**
-```python
+
+```{python} 
+#| echo: true
 ax.annotate(text, xy, xytext=None, xycoords='data', textcoords=None, arrowprops=None, **kwargs)
 ```
-- `text`: Annotation string.
-- `xy`: Point to annotate (x, y).
-- `xytext`: Position for the text (optional).
-- `xycoords`, `textcoords`: Coordinate systems for `xy` and `xytext`.
-- `arrowprops`: Dictionary of arrow style properties[12][1].
 
-**Example:**
-```python
+## Annotating with Arrows: `ax.annotate`
+
+-   `text`: Annotation string.
+-   `xy`: Point to annotate (x, y).
+-   `xytext`: Position for the text (optional).
+-   `xycoords`, `textcoords`: Coordinate systems for `xy` and `xytext`.
+-   `arrowprops`: Dictionary of arrow style properties\[12\]\[1\].
+
+## Annotating with Arrows: `ax.annotate`
+
+```{python} 
+#| echo: true
 fig, ax = plt.subplots()
 x = np.linspace(0, 20, 1000)
 ax.plot(x, np.cos(x))
@@ -1283,182 +1228,59 @@ ax.annotate('local minimum', xy=(5 * np.pi, -1), xytext=(2, -6),
             arrowprops=dict(arrowstyle="->", connectionstyle="angle3,angleA=0,angleB=-90"))
 ```
 
----
 
 ## Advanced Annotation Options
 
-- `arrowprops` can control arrow style, color, width, connection style, and more.
-- `bbox` can add a box around the annotation text for emphasis.
+-   `arrowprops` can control arrow style, color, width, connection style, and more.
+-   `bbox` can add a box around the annotation text for emphasis.
 
 **Example with custom arrows and boxes:**
-```python
+
+```{python} 
+#| echo: true
 ax.annotate("Independence Day", xy=('2012-7-4', 4250), xycoords='data',
             bbox=dict(boxstyle="round", fc="none", ec="gray"),
             xytext=(10, -40), textcoords='offset points', ha='center',
             arrowprops=dict(arrowstyle="->"))
 ```
-- Use `arrowstyle`, `connectionstyle`, and other parameters to create a wide range of annotation effects.
 
----
+-   Use `arrowstyle`, `connectionstyle`, and other parameters to create a wide range of annotation effects.
+
 
 ## Summary Table: Key Annotation Methods
 
-| Method         | Use Case                          |
-|----------------|-----------------------------------|
-| `ax.text`      | Place simple text at (x, y)       |
-| `ax.annotate`  | Annotate a point with text & arrow|
+| Method        | Use Case                           |
+|---------------|------------------------------------|
+| `ax.text`     | Place simple text at (x, y)        |
+| `ax.annotate` | Annotate a point with text & arrow |
 
----
 
 ## Tips
 
-- Use `ax.text` for simple labels and `ax.annotate` for arrows and advanced annotations.
-- Use coordinate transforms for fixed positioning relative to axes or figure.
-- Explore `arrowprops` and `bbox` for advanced visual styling.
-
-# Customizing Ticks in Matplotlib
-
----
-
-## Understanding Ticks in Matplotlib
-
-- **Ticks** are the markers on the axes that denote specific data points.
-- Each axis in Matplotlib (x and y) has both **major** and **minor** ticks:
-  - *Major ticks* are more prominent and usually labeled.
-  - *Minor ticks* are smaller and often unlabeled by default.
-- Ticks and their labels can be customized for better clarity and presentation[13][15].
-
----
-
-## Accessing and Customizing Ticks
-
-- Each `Axes` object contains `xaxis` and `yaxis` attributes, which in turn have properties for managing ticks, lines, and labels.
-- You can control tick locations and formatting using **locators** and **formatters**.
-
----
-
-## Hiding Ticks or Labels
-
-- Use `NullLocator` and `NullFormatter` to hide ticks or labels:
-
-```python
-import matplotlib.pyplot as plt
-import numpy as np
-
-ax = plt.axes()
-ax.plot(np.random.rand(50))
-
-# Hide all y-axis ticks (and labels)
-ax.yaxis.set_major_locator(plt.NullLocator())
-
-# Hide all x-axis labels (but keep ticks/gridlines)
-ax.xaxis.set_major_formatter(plt.NullFormatter())
-```
-
-- Useful for image grids or when ticks are not informative[13].
-
----
-
-## Controlling the Number of Ticks
-
-- Subplots can become crowded with default ticks.
-- Use `MaxNLocator` to limit the number of ticks:
-
-```python
-fig, ax = plt.subplots(4, 4, sharex=True, sharey=True)
-for axi in ax.flat:
-    axi.xaxis.set_major_locator(plt.MaxNLocator(3))
-    axi.yaxis.set_major_locator(plt.MaxNLocator(3))
-```
-- For regular spacing, use `MultipleLocator`:
-
-```python
-ax.xaxis.set_major_locator(plt.MultipleLocator(np.pi / 2))
-ax.xaxis.set_minor_locator(plt.MultipleLocator(np.pi / 4))
-```
-- This is especially useful for mathematical plots (e.g., multiples of π)[13].
-
----
-
-## Custom Tick Formats
-
-- For custom tick labels, use `FuncFormatter` with your own formatting function:
-
-```python
-from matplotlib.ticker import FuncFormatter
-import numpy as np
-
-def format_func(value, tick_number):
-    N = int(np.round(2 * value / np.pi))
-    if N == 0:
-        return "0"
-    elif N == 1:
-        return r"$\pi/2$"
-    elif N == 2:
-        return r"$\pi$"
-    elif N % 2 > 0:
-        return r"${0}\pi/2$".format(N)
-    else:
-        return r"${0}\pi$".format(N // 2)
-
-ax.xaxis.set_major_formatter(FuncFormatter(format_func))
-```
-- This allows for LaTeX-style math labels and highly customized tick text[13][15].
-
----
-
-## Summary of Common Locators and Formatters
-
-| Locator Class         | Description                                      |
-|----------------------|--------------------------------------------------|
-| `NullLocator`        | No ticks                                         |
-| `FixedLocator`       | Fixed tick locations                             |
-| `IndexLocator`       | For index plots (e.g., x = range(len(y)))        |
-| `LinearLocator`      | Evenly spaced ticks                              |
-| `LogLocator`         | Logarithmic ticks                                |
-| `MultipleLocator`    | Ticks at multiples of a base                     |
-| `MaxNLocator`        | Up to a maximum number of ticks at nice locations|
-| `AutoLocator`        | (Default) auto ticks                             |
-| `AutoMinorLocator`   | Auto minor ticks                                 |
-
-| Formatter Class      | Description                                      |
-|----------------------|--------------------------------------------------|
-| `NullFormatter`      | No labels                                        |
-| `IndexFormatter`     | Labels from a list                               |
-| `FixedFormatter`     | Manually set labels                              |
-| `FuncFormatter`      | User-defined function for labels                 |
-| `FormatStrFormatter` | Format string for each value                     |
-| `ScalarFormatter`    | (Default) scalar values                          |
-| `LogFormatter`       | For log axes                                     |
-
----
-
-## Practical Tips
-
-- Use `MaxNLocator` to avoid overcrowded ticks, especially in subplots.
-- Use `MultipleLocator` and `FuncFormatter` for mathematical or custom tick intervals and labels.
-- Hide ticks or labels with `NullLocator` and `NullFormatter` when they do not add value.
-- For advanced formatting, leverage LaTeX support in tick labels for mathematical notation[13][15].
+-   Use `ax.text` for simple labels and `ax.annotate` for arrows and advanced annotations.
+-   Use coordinate transforms for fixed positioning relative to axes or figure.
+-   Explore `arrowprops` and `bbox` for advanced visual styling.
 
 
-# Customizing Matplotlib: Configurations and Stylesheets
 
----
+# Configurations and Stylesheets
+
 
 ## Why Customize Matplotlib?
 
-- The default Matplotlib styles are functional, but often not visually appealing or suitable for all purposes.
-- Customizing styles allows you to create more attractive, readable, or publication-ready plots that match your preferences or requirements[9][13].
+-   The default Matplotlib styles are functional, but often not visually appealing or suitable for all purposes.
+-   Customizing styles allows you to create more attractive, readable, or publication-ready plots that match your preferences or requirements
 
----
 
 ## Changing Defaults with `rcParams`
 
-- Matplotlib maintains a runtime configuration (rc) dictionary called `rcParams` that controls the default styles for all plot elements.
-- You can modify these settings globally during a session using `plt.rc` or by updating `plt.rcParams` directly.
+-   Matplotlib maintains a runtime configuration (rc) dictionary called `rcParams` that controls the default styles for all plot elements.
+-   You can modify these settings globally during a session using `plt.rc` or by updating `plt.rcParams` directly.
 
-**Example:**
-```python
+## Changing Defaults with `rcParams`
+
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 from matplotlib import cycler
 
@@ -1474,143 +1296,156 @@ plt.rc('ytick', direction='out', color='gray')
 plt.rc('patch', edgecolor='#E6E6E6')
 plt.rc('lines', linewidth=2)
 ```
-- These settings affect all subsequent plots in the session.
-- To reset to defaults, use:
-```python
+
+## Changing Defaults with `rcParams`
+
+-   These settings affect all subsequent plots in the session.
+-   To reset to defaults, use:
+
+```{python} 
+#| echo: true
 plt.rcParams.update(IPython_default)
 ```
 
----
 
 ## Stylesheets: Fast and Convenient Customization
 
-- Since Matplotlib 1.4, the `style` module allows you to quickly apply a set of predefined or custom styles.
-- Stylesheets are `.mplstyle` files, similar to `.matplotlibrc` files, but easier to use and share[9][12][13].
+-   Since Matplotlib 1.4, the `style` module allows you to quickly apply a set of predefined or custom styles.
+-   Stylesheets are `.mplstyle` files, similar to `.matplotlibrc` files, but easier to use and share
 
 **List Available Styles:**
-```python
+
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 print(plt.style.available[:5])
 # Example output: ['fivethirtyeight', 'seaborn-pastel', 'seaborn-whitegrid', 'ggplot', 'grayscale']
 ```
 
 **Apply a Style Globally:**
-```python
+
+```{python} 
+#| echo: true
 plt.style.use('ggplot')
 ```
 
 **Apply a Style Temporarily:**
-```python
+
+```{python} 
+#| echo: true
 with plt.style.context('fivethirtyeight'):
     # Your plotting code here
     plt.plot([1, 2, 3], [4, 5, 6])
 ```
-- The context manager ensures the style only applies within the `with` block.
 
----
+-   The context manager ensures the style only applies within the `with` block.
+
 
 ## Popular Built-in Styles
 
-- **fivethirtyeight**: Bold colors, thick lines, transparent axes.
-- **ggplot**: Mimics R's ggplot2 default style.
-- **bmh**: Inspired by "Bayesian Methods for Hackers" book.
-- **dark_background**: For presentations or dark themes.
-- **grayscale**: For black-and-white or print publications.
-- **seaborn-\***: Styles inspired by the Seaborn library.
+-   **fivethirtyeight**: Bold colors, thick lines, transparent axes.
+-   **ggplot**: Mimics R's ggplot2 default style.
+-   **bmh**: Inspired by "Bayesian Methods for Hackers" book.
+-   **dark_background**: For presentations or dark themes.
+-   **grayscale**: For black-and-white or print publications.
+-   **seaborn-\***: Styles inspired by the Seaborn library.
 
-**Example:**
-```python
+
+```{python} 
+#| echo: true
 with plt.style.context('dark_background'):
     plt.plot([1, 2, 3], [1, 4, 9])
 ```
 
----
 
 ## Creating and Using Custom Stylesheets
 
-- You can create your own `.mplstyle` file to define custom styles.
-- Place your file in a known directory and load it with:
-```python
+-   You can create your own `.mplstyle` file to define custom styles.
+-   Place your file in a known directory and load it with:
+
+```{python} 
+#| echo: true
 plt.style.use('/path/to/yourstyle.mplstyle')
 ```
-- Or combine multiple styles:
-```python
+
+-   Or combine multiple styles:
+
+```{python} 
+#| echo: true
 plt.style.use(['dark_background', '/path/to/presentation.mplstyle'])
 ```
-- Later styles in the list override earlier ones if they set the same properties[12][15].
 
----
+-   Later styles in the list override earlier ones if they set the same properties
+
 
 ## Summary Table: Customization Methods
 
-| Method                        | Scope                | Example                                  |
-|-------------------------------|----------------------|-------------------------------------------|
-| `plt.rc` / `plt.rcParams`     | Global (session)     | `plt.rc('lines', linewidth=2)`           |
-| `.matplotlibrc` file          | Global (user/system) | Edit `~/.config/matplotlib/matplotlibrc`  |
-| Stylesheet (`.mplstyle`)      | Global or temporary  | `plt.style.use('ggplot')`                |
-| Style context manager         | Temporary (block)    | `with plt.style.context('bmh'):`         |
+| Method | Scope | Example |
+|-----------------------|------------------|-------------------------------|
+| `plt.rc` / `plt.rcParams` | Global (session) | `plt.rc('lines', linewidth=2)` |
+| `.matplotlibrc` file | Global (user/system) | Edit `~/.config/matplotlib/matplotlibrc` |
+| Stylesheet (`.mplstyle`) | Global or temporary | `plt.style.use('ggplot')` |
+| Style context manager | Temporary (block) | `with plt.style.context('bmh'):` |
 
----
 
 ## Key Takeaways
 
-- Use `rcParams` for fine-grained, session-wide control.
-- Use stylesheets for quick, consistent, and shareable visual themes.
-- Combine or create your own styles for maximum flexibility.
-- Use the style context manager to limit style changes to specific plots or code blocks.
+-   Use `rcParams` for fine-grained, session-wide control.
+-   Use stylesheets for quick, consistent, and shareable visual themes.
+-   Combine or create your own styles for maximum flexibility.
+-   Use the style context manager to limit style changes to specific plots or code blocks.
 
 # Geographic Data Visualization with Basemap
 
----
-
 ## Introduction to Basemap
 
-- **Basemap** is a toolkit for Matplotlib that enables the visualization of geographic (map-based) data in Python.
-- It allows you to plot data points, lines, and shapes onto a variety of map projections, adding geographic context to your visualizations.
-- While Basemap is somewhat dated and can be slow for complex maps, it remains a powerful tool for many geographic visualization tasks in Python[1][12].
-
----
+-   **Basemap** is a toolkit for Matplotlib that enables the visualization of geographic (map-based) data in Python.
+-   It allows you to plot data points, lines, and shapes onto a variety of map projections, adding geographic context to your visualizations.
+-   While Basemap is somewhat dated and can be slow for complex maps, it remains a powerful tool for many geographic visualization tasks in Python
 
 ## Installing and Importing Basemap
 
-- Basemap is not included with standard Matplotlib and must be installed separately (e.g., via `conda install basemap`).
-- Basic imports for a Basemap workflow:
+-   Basemap is not included with standard Matplotlib and must be installed separately (e.g., via `conda install basemap`).
+-   Basic imports for a Basemap workflow:
 
-```python
+```{python} 
+#| echo: true
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 ```
-- For some backgrounds, you may also need the `pillow` package (for image handling)[1][12].
 
----
+-   For some backgrounds, you may also need the `pillow` package (for image handling)
+
 
 ## Creating Your First Map
 
-- Basemap provides a variety of map projections. Here’s a simple example using the orthographic projection:
+-   Basemap provides a variety of map projections. Here’s a simple example using the orthographic projection:
 
-```python
+```{python} 
+#| echo: true
 plt.figure(figsize=(8, 8))
 m = Basemap(projection='ortho', resolution=None, lat_0=50, lon_0=-100)
 m.bluemarble(scale=0.5)
 plt.show()
 ```
-- The map is not just an image, but a Matplotlib axes that understands spherical coordinates, allowing you to plot data directly on top[1][12].
 
----
+-   The map is not just an image, but a Matplotlib axes that understands spherical coordinates, allowing you to plot data directly on top\[1\]\[12\].
+
 
 ## Map Projections
 
-- Basemap supports dozens of map projections, each suited for different use cases and regions.
-- Common projections include:
-  - **Cylindrical** (`'cyl'`, `'merc'`, `'cea'`)
-  - **Pseudo-cylindrical** (`'moll'`, `'sinu'`, `'robin'`)
-  - **Perspective** (`'ortho'`, `'gnom'`, `'stere'`)
-  - **Conic** (`'lcc'`, `'eqdc'`, `'aea'`)
-- Example: Cylindrical projection
+-   Basemap supports dozens of map projections, each suited for different use cases and regions.
+-   Common projections include:
+    -   **Cylindrical** (`'cyl'`, `'merc'`, `'cea'`)
+    -   **Pseudo-cylindrical** (`'moll'`, `'sinu'`, `'robin'`)
+    -   **Perspective** (`'ortho'`, `'gnom'`, `'stere'`)
+    -   **Conic** (`'lcc'`, `'eqdc'`, `'aea'`)
+-   Example: Cylindrical projection
 
-```python
+```{python} 
+#| echo: true
 fig = plt.figure(figsize=(8, 6))
 m = Basemap(projection='cyl', resolution=None,
             llcrnrlat=-90, urcrnrlat=90,
@@ -1618,31 +1453,32 @@ m = Basemap(projection='cyl', resolution=None,
 m.drawcoastlines()
 plt.show()
 ```
-- Each projection requires specific parameters (e.g., center latitude/longitude, width/height)[1].
 
----
+-   Each projection requires specific parameters (e.g., center latitude/longitude, width/height)
 
 ## Drawing Map Features
 
-- Basemap provides methods to add physical and political features:
+-   Basemap provides methods to add physical and political features:
 
-| Method                | Description                        |
-|-----------------------|------------------------------------|
-| `drawcoastlines()`    | Draws continental coastlines       |
-| `drawcountries()`     | Draws country boundaries           |
-| `drawstates()`        | Draws US state boundaries          |
-| `drawrivers()`        | Draws rivers                       |
-| `fillcontinents()`    | Fills continents with color        |
-| `drawmapboundary()`   | Draws/fills map boundary           |
-| `drawparallels()`     | Draws lines of constant latitude   |
-| `drawmeridians()`     | Draws lines of constant longitude  |
-| `shadedrelief()`      | Shaded relief background           |
-| `bluemarble()`        | NASA Blue Marble image             |
-| `etopo()`             | Topographic relief                 |
+| Method              | Description                       |
+|---------------------|-----------------------------------|
+| `drawcoastlines()`  | Draws continental coastlines      |
+| `drawcountries()`   | Draws country boundaries          |
+| `drawstates()`      | Draws US state boundaries         |
+| `drawrivers()`      | Draws rivers                      |
+| `fillcontinents()`  | Fills continents with color       |
+| `drawmapboundary()` | Draws/fills map boundary          |
+| `drawparallels()`   | Draws lines of constant latitude  |
+| `drawmeridians()`   | Draws lines of constant longitude |
+| `shadedrelief()`    | Shaded relief background          |
+| `bluemarble()`      | NASA Blue Marble image            |
+| `etopo()`           | Topographic relief                |
 
-- Example: Adding features and plotting a city
+## Drawing Map Features
+-   Example: Adding features and plotting a city
 
-```python
+```{python} 
+#| echo: true
 fig = plt.figure(figsize=(8, 8))
 m = Basemap(projection='lcc', resolution=None, width=8E6, height=8E6, lat_0=45, lon_0=-100)
 m.etopo(scale=0.5, alpha=0.5)
@@ -1653,26 +1489,26 @@ plt.show()
 ```
 
 
----
-
 ## Plotting Data on Maps
 
-- Basemap allows you to overlay your own data (points, lines, images, etc.) using its coordinate transformation capabilities.
-- To plot geographic data, convert latitude and longitude to map coordinates using the Basemap instance:
+-   Basemap allows you to overlay your own data (points, lines, images, etc.) using its coordinate transformation capabilities.
+-   To plot geographic data, convert latitude and longitude to map coordinates using the Basemap instance:
 
-```python
+```{python} 
+#| echo: true
 x, y = m(lon, lat)
 plt.plot(x, y, 'o')
 ```
-- Many plotting methods (e.g., `scatter`, `plot`, `contour`, `pcolormesh`) support a `latlon=True` argument for direct use of lat/lon data[1].
 
----
+-   Many plotting methods (e.g., `scatter`, `plot`, `contour`, `pcolormesh`) support a `latlon=True` argument for direct use of lat/lon data\[1\].
+
 
 ## Example: California Cities
 
-- Visualize city locations, population, and area on a map:
+-   Visualize city locations, population, and area on a map:
 
-```python
+```{python} 
+#| echo: true
 import pandas as pd
 
 cities = pd.read_csv('data/california_cities.csv')
@@ -1700,15 +1536,16 @@ for a in [100, 300, 500]:
 plt.legend(scatterpoints=1, frameon=False, labelspacing=1, loc='lower left')
 plt.show()
 ```
-- This map shows population (color) and area (size) of cities, with geographic context[9][1].
 
----
+-   This map shows population (color) and area (size) of cities, with geographic context
+
 
 ## Example: Visualizing Climate Data
 
-- Basemap can plot gridded or continuous data (e.g., temperature anomalies):
+-   Basemap can plot gridded or continuous data (e.g., temperature anomalies):
 
-```python
+```{python} 
+#| echo: true
 from netCDF4 import Dataset, date2index
 from datetime import datetime
 
@@ -1729,46 +1566,42 @@ plt.title('January 2014 Temperature Anomaly')
 plt.colorbar(label='temperature anomaly (°C)')
 plt.show()
 ```
-- This example uses a divergent colormap to show positive and negative temperature anomalies[1].
 
----
+This example uses a divergent colormap to show positive and negative temperature anomalies
+
 
 ## Tips and Best Practices
 
-- **Choose the right projection** for your region and data type.
-- **Set the resolution** parameter appropriately: `'c'` (crude), `'l'` (low), `'i'` (intermediate), `'h'` (high), `'f'` (full), or `None` for no boundaries. Higher resolutions are slower but more detailed.
-- **Overlay data** using standard Matplotlib plotting functions after transforming coordinates.
-- **Use map features** (coastlines, boundaries, relief backgrounds) to provide context.
-- **Legends and colorbars** are essential for interpreting size, color, and other encodings on your map[1][9].
-
----
+-   **Choose the right projection** for your region and data type.
+-   **Set the resolution** parameter appropriately: `'c'` (crude), `'l'` (low), `'i'` (intermediate), `'h'` (high), `'f'` (full), or `None` for no boundaries. Higher resolutions are slower but more detailed.
+-   **Overlay data** using standard Matplotlib plotting functions after transforming coordinates.
+-   **Use map features** (coastlines, boundaries, relief backgrounds) to provide context.
+-   **Legends and colorbars** are essential for interpreting size, color, and other encodings on your map
 
 ## Summary
 
-- Basemap extends Matplotlib for geographic visualization, supporting many projections and map features.
-- You can plot points, lines, images, and continuous data on maps, with full control over projection, resolution, and appearance.
-- While Basemap is powerful, consider newer libraries (like Cartopy or GeoPandas) for modern projects, but Basemap remains a valuable tool for many applications[1][12].
+-   Basemap extends Matplotlib for geographic visualization, supporting many projections and map features.
+-   You can plot points, lines, images, and continuous data on maps, with full control over projection, resolution, and appearance.
+-   While Basemap is powerful, consider newer libraries (like Cartopy or GeoPandas) for modern projects, but Basemap remains a valuable tool for many applications\[1\]\[12\].
 
 # Visualization with Seaborn
 
----
-
 ## Why Use Seaborn?
 
-- **Seaborn** is a high-level Python data visualization library built on top of Matplotlib.
-- It addresses several Matplotlib limitations:
-  - More attractive and modern default styles.
-  - High-level commands for common statistical plots.
-  - Direct integration with Pandas DataFrames, using column names for labels and grouping.
-- Seaborn makes statistical visualization easier, more concise, and more visually appealing[1].
+-   **Seaborn** is a high-level Python data visualization library built on top of Matplotlib.
+-   It addresses several Matplotlib limitations:
+    -   More attractive and modern default styles.
+    -   High-level commands for common statistical plots.
+    -   Direct integration with Pandas DataFrames, using column names for labels and grouping.
+-   Seaborn makes statistical visualization easier, more concise, and more visually appealing
 
----
 
 ## Seaborn vs. Matplotlib: A Simple Example
 
-- Matplotlib requires more setup for attractive plots:
+-   Matplotlib requires more setup for attractive plots:
 
-```python
+```{python} 
+#| echo: true
 import matplotlib.pyplot as plt
 plt.style.use('classic')
 import numpy as np
@@ -1782,9 +1615,10 @@ plt.plot(x, y)
 plt.legend('ABCDEF', ncol=2, loc='upper left');
 ```
 
-- With Seaborn, you can improve style and aesthetics instantly:
+-   With Seaborn, you can improve style and aesthetics instantly:
 
-```python
+```{python} 
+#| echo: true
 import seaborn as sns
 sns.set()
 
@@ -1792,15 +1626,15 @@ plt.plot(x, y)
 plt.legend('ABCDEF', ncol=2, loc='upper left');
 ```
 
----
 
 ## High-Level Statistical Plotting with Seaborn
 
 Seaborn provides concise, powerful functions for a variety of statistical visualizations:
 
-### 1. **Histograms and KDEs**
+## 1. **Histograms and KDEs**
 
-```python
+```{python} 
+#| echo: true
 import pandas as pd
 data = np.random.multivariate_normal([0, 0], [[5, 2], [2, 2]], size=2000)
 data = pd.DataFrame(data, columns=['x', 'y'])
@@ -1812,87 +1646,91 @@ sns.distplot(data['x'])
 sns.distplot(data['y'])
 ```
 
-- For 2D distributions:
-```python
+-   For 2D distributions:
+
+```{python} 
+#| echo: true
 sns.kdeplot(data)
 ```
 
-### 2. **Joint and Pair Plots**
+## 2. **Joint and Pair Plots**
 
-- **Jointplot**: Shows joint and marginal distributions.
+-   **Jointplot**: Shows joint and marginal distributions.
 
-```python
+```{python} 
+#| echo: true
 with sns.axes_style('white'):
     sns.jointplot("x", "y", data, kind='kde')
     sns.jointplot("x", "y", data, kind='hex')
 ```
 
-- **Pairplot**: Plots all pairs of variables in a dataset.
+-   **Pairplot**: Plots all pairs of variables in a dataset.
 
-```python
+```{python} 
+#| echo: true
 iris = sns.load_dataset("iris")
 sns.pairplot(iris, hue='species', size=2.5)
 ```
 
-### 3. **Faceted Histograms and Factor Plots**
+## 3. **Faceted Histograms and Factor Plots**
 
-- **FacetGrid**: Easily create grids of histograms or other plots for subsets of data.
+-   **FacetGrid**: Easily create grids of histograms or other plots for subsets of data.
 
-```python
+```{python} 
+#| echo: true
 tips = sns.load_dataset('tips')
 tips['tip_pct'] = 100 * tips['tip'] / tips['total_bill']
 grid = sns.FacetGrid(tips, row="sex", col="time", margin_titles=True)
 grid.map(plt.hist, "tip_pct", bins=np.linspace(0, 40, 15))
 ```
 
-- **Factorplot**: Visualize distributions across categories.
+-   **Factorplot**: Visualize distributions across categories.
 
-```python
+```{python} 
+#| echo: true
 with sns.axes_style(style='ticks'):
     g = sns.factorplot("day", "total_bill", "sex", data=tips, kind="box")
     g.set_axis_labels("Day", "Total Bill")
 ```
 
-### 4. **Violin, Regression, and Bar Plots**
+## 4. **Violin, Regression, and Bar Plots**
 
-- **Violin Plot**: Compare distributions between groups.
+-   **Violin Plot**: Compare distributions between groups.
 
-```python
+```{python} 
+#| echo: true
 sns.violinplot("gender", "split_frac", data=data, palette=["lightblue", "lightpink"])
 ```
 
-- **Regression Plot**: Show linear relationships with confidence intervals.
+-   **Regression Plot**: Show linear relationships with confidence intervals.
 
-```python
+```{python} 
+#| echo: true
 g = sns.lmplot('final_sec', 'split_frac', col='gender', data=data,
                markers=".", scatter_kws=dict(color='c'))
 g.map(plt.axhline, y=0.1, color="k", ls=":")
 ```
 
-- **Bar Plot**: Show counts or summary statistics by category.
+-   **Bar Plot**: Show counts or summary statistics by category.
 
-```python
+```{python} 
+#| echo: true
 planets = sns.load_dataset('planets')
 with sns.axes_style('white'):
     g = sns.factorplot("year", data=planets, aspect=2, kind="count", color='steelblue')
     g.set_xticklabels(step=5)
 ```
 
----
 
 ## Key Features of Seaborn
 
-- **High-level interface:** Simple commands for complex plots.
-- **Integration with Pandas:** Uses DataFrame columns for labels and grouping.
-- **Built-in themes:** Attractive default color palettes and styles.
-- **Statistical plots:** Includes KDE, violin, box, regression, joint, pair, and more.
-- **Faceting:** Easily create grids of subplots by category.
-
----
+-   **High-level interface:** Simple commands for complex plots.
+-   **Integration with Pandas:** Uses DataFrame columns for labels and grouping.
+-   **Built-in themes:** Attractive default color palettes and styles.
+-   **Statistical plots:** Includes KDE, violin, box, regression, joint, pair, and more.
+-   **Faceting:** Easily create grids of subplots by category.
 
 ## Summary
 
-- Seaborn streamlines statistical data visualization in Python, making it easier to create beautiful, informative graphics with minimal code.
-- It is especially powerful for exploring and presenting relationships in complex datasets, and is a valuable addition to every data scientist’s toolkit[1].
-
-
+-   Seaborn streamlines statistical data visualization in Python, making it easier to create beautiful, informative graphics with minimal code.
+-   It is especially powerful for exploring and presenting relationships in complex datasets, and is a valuable addition to every data scientist’s toolkit\[1\].
