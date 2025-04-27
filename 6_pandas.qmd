@@ -897,7 +897,7 @@ pop = pd.Series(populations, index=index)
 print(pop)
 ```
 
-## The Better Way: MultiIndex (1/2)
+## The Better Way: MultiIndex (1/3)
 
 A more efficient approach is to use Pandas' MultiIndex. 
 
@@ -910,7 +910,7 @@ index = pd.MultiIndex.from_tuples([('New York', 2000), ('New York', 2010),
          ('Texas', 2000), ('Texas', 2010)])
 print(index)
 ```
-
+## The Better Way: MultiIndex (2/3)
 
 Use `.index = new index` to assign new index
 ```{python}
@@ -919,7 +919,7 @@ pop.index = index
 print(pop)
 ```
 
-## MultiIndex Construction Methods (2/2)
+## MultiIndex Construction Methods (3/3)
 2. From arrays `pd.MultiIndex.from_arrays()`
 
 ```{python}
@@ -1080,6 +1080,18 @@ Select columns and rows, multi-level
 
 `df.loc[(row selection lv1, lv2), (column selection lv1 ,lv2)]`
 
+```{python}
+#| echo: true
+print(health_data.loc[(2013,1),('Bob','HR')])
+```
+
+## Indexing and Slicing - multi-indexed 
+
+```{python}
+#| echo: true
+print(health_data)
+```
+
 instead of using `:`, use `slice(None)` for selecting all contents
 ```{python}
 #| echo: true
@@ -1110,7 +1122,7 @@ print(pop_sort)
 print(pop)
 ```
 
-Convert **Series** to **DataFrame** `.unstack()`
+Convert multi-indexed **Series** to **DataFrame** `.unstack()`
 
 ```{python}
 #| echo: true
@@ -1121,13 +1133,13 @@ print(pop_df)
 
 
 
-## Data Aggregations
+## Data Aggregations - multi-indexed 
 
 ```{python}
 #| echo: true
 print(health_data)
 ```
-Default: collapse row
+**Default**: collapse `row`
 ```{python}
 #| echo: true
 data_mean = health_data.mean()
@@ -1147,34 +1159,6 @@ Average by year with `.groupby()`
 #| echo: true
 data_mean = health_data.groupby('year').mean()
 print(data_mean)
-```
-
-## Data Aggregations
-
-```{python}
-#| echo: true
-print(health_data)
-```
-
-Transpose for collapsing on row 
-
-```{python}
-#| echo: true
-data_mean.T.mean() # just for demo
-```
-
-## Data Aggregations
-
-```{python}
-#| echo: true
-print(health_data)
-```
-
-Average by measurement type across columns `.groupby()`
-
-```{python}
-#| echo: true
-print(data_mean.T.groupby('type').mean())
 ```
 
 ## Hands-on - Hierarchical Indexing
@@ -1268,8 +1252,7 @@ class display(object):
 #| echo: true
 df1 = make_df('AB', [1, 2]) 
 df2 = make_df('AB', [3, 4])  
-df12 = pd.concat([df1, df2])
-display('df1', 'df2', 'df12')
+display('df1', 'df2', 'pd.concat([df1, df2])')
 ```
 
 ## Concatenation - Axis Selection
@@ -1280,7 +1263,7 @@ You can concatenate column-wise by `axis=1`
 #| echo: true
 df3 = make_df('AB', [0, 1])
 df4 = make_df('CD', [0, 1])
-df5 = pd.concat([df3, df4], axis=1) 
+df5 = pd.concat([df3, df4], axis=1)
 display('df3', 'df4', 'df5')
 ```
 
@@ -1842,64 +1825,6 @@ print(print(agg_df))
 :::
 :::::
 
-## GroupBy Operations - Transformation
-
-**Transformation**: Apply a transformation that preserves the input shape
-
-
-`df.groupby().transform(function)`
-
-```{python}
-#| echo: true
-trans_df = df.groupby('key').transform(lambda x: x - x.mean())
-```
-
-::::: columns
-::: column
-```{python}
-print('df')
-print(print(df))
-```
-:::
-
-::: column
-```{python}
-print('trans_df')
-print(print(trans_df))
-```
-:::
-:::::
-
-## GroupBy Operations - Apply
-
-**Apply**: Apply arbitrary functions to each group
-
-`df.groupby().apply(function)`
-
-```{python}
-#| echo: true
-def norm_by_data2(x):
-    # x is a DataFrame of group values
-    x['data1'] /= x['data2'].sum()
-    return x
-app_df = df.groupby('key').apply(norm_by_data2)
-```
-
-::::: columns
-::: column
-```{python}
-print('df')
-print(print(df))
-```
-:::
-
-::: column
-```{python}
-print('app_df')
-print(print(app_df))
-```
-:::
-:::::
 
 ## Practical Example - Groupby
 
