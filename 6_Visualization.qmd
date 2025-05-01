@@ -10,11 +10,10 @@ editor: visual
 
 ## Load Libraries
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{python}
-#!pip install numpy matplotlib pandas sklearn seaborn calmap squarify plotly
-#!pip install calmap
+!pip install numpy matplotlib pandas sklearn seaborn calmap squarify plotly
+!pip install calmap
 ```
 
 ```{python}
@@ -28,17 +27,16 @@ import pandas as pd
 import numpy as np
 ```
 
-```{python}
-!pip install wget
-!python -m wget -o taipei_sans_tc_beta.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&export=download
-```
+
 
 ```{python}
+import matplotlib
+import matplotlib.pyplot as plt
 # colab顯示繁體中文 問題：matplotlib繪圖，會發生中文無法顯示的問題
 # 先下載台北黑體字型
-!wget -O taipei_sans_tc_beta.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&export=download
+!gdown '1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_' --output TaipeiSansTCBeta-Regular.ttf
 # 新增字體
-matplotlib.font_manager.fontManager.addfont('taipei_sans_tc_beta.ttf')
+matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
 # 將 font-family 設為 Taipei Sans TC Beta
 # 設定完後，之後的圖表都可以顯示中文了
 matplotlib.rc('font', family='Taipei Sans TC Beta')
@@ -48,18 +46,18 @@ matplotlib.rc('font', family='Taipei Sans TC Beta')
 # 空氣品質監測日平均值(一般污染物)
 # https://data.moenv.gov.tw/dataset/detail/AQX_P_19
 # https://drive.google.com/drive/folders/1OrMlB4hP8nnW_0bYwoHRO6DRXWNk1qvy?usp=sharing
-!gdown --id '1P3qrYrynZhXDC13dVo5KhDXmld5OGZz1' --output Data/202310.csv
-!gdown --id '1P1Kv1ZmPOYyi83DJKUIPoksM31vJJiS5' --output Data/202311.csv
-!gdown --id '1P0mojOXgvVbXImnRTPQemm7dCkLDLKAC' --output Data/202312.csv
-!gdown --id '1OwAf366l-iItXV4foJemw5QdMuD3JgMc' --output Data/202401.csv
+!gdown '1P3qrYrynZhXDC13dVo5KhDXmld5OGZz1' --output 202310.csv
+!gdown '1P1Kv1ZmPOYyi83DJKUIPoksM31vJJiS5' --output 202311.csv
+!gdown '1P0mojOXgvVbXImnRTPQemm7dCkLDLKAC' --output 202312.csv
+!gdown '1OwAf366l-iItXV4foJemw5QdMuD3JgMc' --output 202401.csv
 ```
 
 ```{python}
 # 讀檔
-df202401 = pd.read_csv('Data/202401.csv') 
-df202312 = pd.read_csv('Data/202312.csv') 
-df202311 = pd.read_csv('Data/202311.csv') 
-df202310 = pd.read_csv('Data/202310.csv') 
+df202401 = pd.read_csv('202401.csv') 
+df202312 = pd.read_csv('202312.csv') 
+df202311 = pd.read_csv('202311.csv') 
+df202310 = pd.read_csv('202310.csv') 
 df = pd.concat([df202401,df202312,df202311,df202310],axis=0)
 df.head()
 ```
