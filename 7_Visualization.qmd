@@ -61,7 +61,9 @@ plt.style.use('seaborn-v0_8-whitegrid')
 
 ## Figure
 
-The **figure** (an instance of the class plt.Figure) = container that contains all the objects representing axes, graphics, text, and labels.
+The **figure** (an instance of the class `plt.Figure`) = container that contains all the objects representing axes, graphics, text, and labels.
+
+`plt` is from `import matplotlib.pyplot as plt`
 
 ```{python} 
 #| echo: true
@@ -71,14 +73,15 @@ fig = plt.figure()
 ## How to View Your Plots - (1/3)
 
 -   **From a Python script:**\
-    Use `plt.show()` at the end to display figures.
--   `plt.plot(x,y)`
+    Use `plt.show()` at the end to display figures.\
+    `plt` is from `import matplotlib.pyplot as plt`
+-   `plt.plot(x,y)` for x and y axis
 ```{python} 
 #| echo: true
-x = np.linspace(0, 10, 100)
-fig = plt.figure()
-plt.plot(x, np.sin(x))
-plt.show()
+x = np.linspace(0, 10, 100) #(start, stop, num)
+fig = plt.figure() # new instance
+plt.plot(x, np.sin(x)) # plot
+plt.show() # display figure
 ```
 ## How to View Your Plots - (1/3)
 
@@ -97,7 +100,8 @@ plt.show()
 
 ## How to View Your Plots - (3/3)
 -   **From a Jupyter (IPython) notebook:**\
-    Use `%matplotlib inline` for static images or `%matplotlib notebook` for interactive plots.
+    Use `%matplotlib inline` for static images or \
+    `%matplotlib notebook` for interactive plots
 
 ```{python} 
 #| echo: true
@@ -125,6 +129,16 @@ fig.savefig('my_figure.png')
 fig.canvas.get_supported_filetypes()
 ```
 
+## Visualization
+
+-   Visualization with Matplotlib
+-   **Simple Line Plots** 
+-   Simple Scatter Plots 
+-   Visualizing Errors 
+-   Density and Contour Plots 
+-   Histograms, Binnings, and Density
+-   Customizing Plot Legends and Colorbars
+-   Multiple Subplots 
 
 
 # Simple Line Plots 
@@ -132,7 +146,7 @@ fig.canvas.get_supported_filetypes()
 
 ## Plotting a Simple Function
 
-Example: Plotting a sine curve with `plt.plot(x,y)`
+Plotting a sine curve with `plt.plot(x,y)`, `plt` is from `import matplotlib.pyplot as plt`
 
 ```{python} 
 #| echo: true
@@ -152,7 +166,7 @@ plt.plot(x, np.cos(x))
 
 
 ## Customizing Line Color
-with `color` parameter
+`plt.plot()` with `color` parameter
 ```{python} 
 #| echo: true
 plt.plot(x, np.sin(x - 0), color='blue')        # by name
@@ -164,7 +178,7 @@ plt.plot(x, np.sin(x - 5), color='chartreuse')  # HTML color name
 ```
 
 ## Customizing Line Style
-with `linestyle` parameter
+`plt.plot()` with `linestyle` parameter
 ```{python} 
 #| echo: true
 plt.plot(x, x + 0, linestyle='solid')
@@ -191,7 +205,7 @@ plt.plot(x, x + 3, ':r')  # dotted red
 
 ## Adjusting Axes Limits
 
-`plt.axis([xmin, xmax, ymin, ymax])`
+`plt.axis([xmin, xmax, ymin, ymax])`, limits are arranged into a list
 
 ```{python} 
 #| echo: true
@@ -213,23 +227,25 @@ plt.ylabel("sin(x)")
 
 ## Adding Titles, Labels, and Legends
 
-Add a legend for multiple lines with `label` parameter and `plt.legend()`
+Add a legend for multiple lines with `plt.plot()` + `label` parameter and call `plt.legend()`
 
 ```{python} 
 #| echo: true
 plt.plot(x, np.sin(x), '-g', label='sin(x)')
 plt.plot(x, np.cos(x), ':b', label='cos(x)')
-plt.axis('equal')
 plt.legend()
 ```
 
 ## Hands-on - Line Plot
-Setting
+Setting:
+
+1. Load library
 ```{python}
 #| echo: true
 import matplotlib
 import matplotlib.pyplot as plt
 ```
+2. 中文問題....
 ```{python}
 #| echo: true
 #| eval: false
@@ -247,11 +263,10 @@ matplotlib.rc('font', family='Taipei Sans TC Beta')
 ```
 
 ## Hands-on - Line Plot
-Data
+Data: 空氣品質監測日平均值(一般污染物)
 ```{python}
 #| echo: true
 #| eval: false
-# 空氣品質監測日平均值(一般污染物)
 # https://data.moenv.gov.tw/dataset/detail/AQX_P_19
 # https://drive.google.com/drive/folders/1OrMlB4hP8nnW_0bYwoHRO6DRXWNk1qvy?usp=sharing
 !gdown '1P3qrYrynZhXDC13dVo5KhDXmld5OGZz1' --output 202310.csv
@@ -272,7 +287,7 @@ print(df_air.head())
 ```
 
 ## Hands-on - Line Plot
-Data Clean
+Data Clean: Remove the quotes of column headers
 ```{python}
 #| echo: true
 new_headers = []
@@ -284,22 +299,35 @@ print(df_air.head())
 ```
 
 ## Hands-on - Line Plot
-Data Clean
+Data Clean: Data type
 
 ```{python}
 #| echo: true
-df_air.dtypes
+df_air['concentration'].dtypes
+```
+```{python}
+#| echo: true
+df_air['concentration'][0:5]
+```
+`pd.to_numeric(List or Series, errors={‘ignore’, ‘raise’, ‘coerce’})`
+```{python}
+#| echo: true
+df_air['concentration'] = pd.to_numeric(df_air['concentration'], 
+                                        errors="coerce")
 ```
 
 ```{python}
 #| echo: true
-df_air['concentration'] = pd.to_numeric(df_air['concentration'].replace("x",np.nan))
+df_air['concentration'].dtypes
 ```
-
 
 ## Hands-on - Line Plot
-Data Clean
-
+Data Clean: Data type
+```{python}
+#| echo: true
+df_air['monitordate'].dtypes
+```
+`pd.to_datetime(List or Series, errors={‘ignore’, ‘raise’, ‘coerce’},format=)`
 ```{python}
 #| echo: true
 # Parse String To DateTime
@@ -316,6 +344,11 @@ df_air.dtypes
 
 請試著呈現林口測站在2024/1/1\~2024/1/15的PM2.5濃度
 
+Hint: 
+
+-   Subset, Boolean masking
+-   `pd.to_datetime(List or Series, errors={‘ignore’, ‘raise’, ‘coerce’},format=)`
+-   `df.sort_values(by=column)` (`df` can be any DataFrame)
 ```{python}
 pm25 = df_air[df_air['itemengname']=="PM2.5"]
 pm25Linkou = pm25[pm25['sitename']=="林口"]
@@ -325,21 +358,34 @@ print(pm25Linkou2024)
 ```
 ## Hands-on - Line Plot
 
-請試著呈現林口測站在2024/1/1\~2024/1/15的PM2.5濃度
+請試著呈現林口測站在2024/1/1\~2024/1/15的PM2.5濃度，要呈現figure legend，也要呈現x y 軸的名字
 
+Ref:
 ```{python}
-plt.plot(pm25Linkou2024['DateTime'], pm25Linkou2024['concentration'],label="林口PM2.5")
+plt.plot(pm25Linkou2024['DateTime'], pm25Linkou2024['concentration'],label="林口")
 plt.legend()
+plt.xlabel("Date")
+plt.ylabel("PM2.5")
 plt.show()
 ```
-## Hands-on - Line Plot - Seaborn
+## Line Plot - Seaborn
 
-`sns.lineplot(x,y)`
+`sns.lineplot(x,y)`, x and y are data for each axis
 
 ```{python}
 #| echo: true
 import seaborn as sns
-sns.lineplot(x=pm25Linkou2024['DateTime'], y=pm25Linkou2024['concentration'])
+sns.lineplot(x=pm25Linkou2024['DateTime'], 
+              y=pm25Linkou2024['concentration'])
+```
+
+## Line Plot - Seaborn
+
+`sns.lineplot(data, x, y)`, x and y are column names for each axis
+
+```{python}
+#| echo: true
+sns.lineplot(data = pm25Linkou2024, x='DateTime', y='concentration')
 ```
 
 # Simple Scatter Plots 
@@ -352,7 +398,7 @@ sns.lineplot(x=pm25Linkou2024['DateTime'], y=pm25Linkou2024['concentration'])
 
 ## Scatter Plots with `plt.plot()`
 
-`plt.plot(x,y,marker,color)` 
+`plt.plot(x,y,marker,color)`, `marker` for shapes, `color` for color
 
 ```{python} 
 #| echo: true
@@ -396,14 +442,14 @@ plt.plot(x, y, '-p', color='gray', # solid, pentagon
 
 ## Scatter Plots with `plt.scatter`
 
-`plt.scatter()` allowing individual control over each point's **size**, **color**, and other properties.
+`plt.scatter(x, y)` allowing individual control over each point's **size**, **color**, and other properties.
 
 ```{python}
 #| echo: true
 plt.scatter(x, y, marker='o')
 ```
 
-## with varying color and size - Bubble chart
+## Varying color and size - Bubble chart
 Data:
 ```{python} 
 #| echo: true
@@ -430,7 +476,7 @@ plt.colorbar()  # Show color scale
 
 ## Visualizing Multidimensional Data
 
-Example: Iris dataset, visualizing four features at once.
+Iris dataset, visualizing four features at once.
 
 Data:
 ```{python} 
@@ -441,6 +487,7 @@ iris = load_iris()
 features = iris.data.T
 print(features)
 ```
+
 ## Visualizing Multidimensional Data
 x/y positions, size, and color all encode different data dimensions.
 ```{python} 
@@ -468,6 +515,9 @@ plt.ylabel(iris.feature_names[1])
 ## Hands-on - Scatter Plot
 試著看看空氣污染資料中，NO2濃度與SO2濃度有沒有相關？
 
+Hint: multiple records on the same date - `df.groupby()`
+
+Ref:
 ```{python}
 air_mean = df_air.groupby(['DateTime', 'sitename', 'itemengname']).concentration.mean().to_frame()
 air_wide = air_mean.unstack()
@@ -483,7 +533,7 @@ plt.show()
 ```{python}
 fig = plt.figure()
 plt.scatter(air_wide["concentration","NO2"],air_wide["concentration","SO2"], alpha=0.2,
-            s = 100*air_wide["concentration","WIND_SPEED"],marker='o')
+            s = 80*air_wide["concentration","WIND_SPEED"],marker='o')
 plt.show()
 ```
 
@@ -498,7 +548,7 @@ plt.show()
 
 ## Basic Error Bars with `plt.errorbar`
 
-`plt.errorbar`: add error bars to your plots
+`plt.errorbar(x, y, yerr=error size, fmt = style)`: add error bars to your plots
 
 -   `yerr` specifies the **vertical** error bar size
 -   `fmt` controls the marker and line style (same as in `plt.plot`)
@@ -506,7 +556,7 @@ plt.show()
 Data:
 ```{python} 
 #| echo: true
-x = np.linspace(0, 10, 50)
+x = np.linspace(0, 10, 50) #(start,end,num)
 dy = 0.8
 y = np.sin(x) + dy * np.random.randn(50)
 ```
@@ -522,7 +572,7 @@ plt.show()
 
 ## Customizing Error Bars
 
-You can adjust the appearance for clarity, especially in crowded plots:
+You can adjust the appearance for clarity, especially in crowded plots in `plt.errorbar()`:
 
 -   `ecolor`: color of the error bars
 -   `elinewidth`: width of error bar lines
@@ -542,7 +592,7 @@ plt.show()
 
 ## Horizontal and One-Sided Error Bars
 
-Add **horizontal** error bars using `xerr`
+Add **horizontal** error bars using `xerr` in `plt.errorbar()`
 
 ```{python} 
 #| echo: true

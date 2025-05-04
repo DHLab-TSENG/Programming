@@ -432,14 +432,14 @@ Yi-Ju Tseng
 </section>
 <section id="importing-matplotlib" class="slide level2">
 <h2>Importing Matplotlib</h2>
-<div id="c8558027" class="cell" data-execution_count="1">
+<div id="29ef7ab2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># !pip3 install matplotlib</span></span>
 <span id="cb1-2"><a href=""></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
 <span id="cb1-3"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>plt</code> interface is most commonly used</p>
 <p>Load other important library</p>
-<div id="27e99e9b" class="cell" data-execution_count="2">
+<div id="8c6b4caa" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -447,15 +447,16 @@ Yi-Ju Tseng
 <section id="setting-plot-styles" class="slide level2">
 <h2>Setting Plot Styles</h2>
 <p>Use <code>plt.style.use('style')</code> to set the visual style of your plots</p>
-<div id="32654f15" class="cell" data-execution_count="3">
+<div id="8ba185c8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html">Stylesheets</a></p>
 </section>
 <section id="figure" class="slide level2">
 <h2>Figure</h2>
-<p>The <strong>figure</strong> (an instance of the class plt.Figure) = container that contains all the objects representing axes, graphics, text, and labels.</p>
-<div id="730b39d6" class="cell" data-execution_count="4">
+<p>The <strong>figure</strong> (an instance of the class <code>plt.Figure</code>) = container that contains all the objects representing axes, graphics, text, and labels.</p>
+<p><code>plt</code> is from <code>import matplotlib.pyplot as plt</code></p>
+<div id="18a4cbeb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>fig <span class="op">=</span> plt.figure()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x480 with 0 Axes&gt;</code></pre>
@@ -466,14 +467,15 @@ Yi-Ju Tseng
 <h2>How to View Your Plots - (1/3)</h2>
 <ul>
 <li><strong>From a Python script:</strong><br>
-Use <code>plt.show()</code> at the end to display figures.</li>
-<li><code>plt.plot(x,y)</code></li>
+Use <code>plt.show()</code> at the end to display figures.<br>
+<code>plt</code> is from <code>import matplotlib.pyplot as plt</code></li>
+<li><code>plt.plot(x,y)</code> for x and y axis</li>
 </ul>
-<div id="aa361b9f" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb6-2"><a href=""></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb6-3"><a href=""></a>plt.plot(x, np.sin(x))</span>
-<span id="cb6-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fb717da8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>) <span class="co">#(start, stop, num)</span></span>
+<span id="cb6-2"><a href=""></a>fig <span class="op">=</span> plt.figure() <span class="co"># new instance</span></span>
+<span id="cb6-3"><a href=""></a>plt.plot(x, np.sin(x)) <span class="co"># plot</span></span>
+<span id="cb6-4"><a href=""></a>plt.show() <span class="co"># display figure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -485,7 +487,7 @@ Use <code>plt.show()</code> at the end to display figures.</li>
 </section>
 <section id="how-to-view-your-plots---13-1" class="slide level2">
 <h2>How to View Your Plots - (1/3)</h2>
-<div id="55b1d4c7" class="cell" data-execution_count="6">
+<div id="0aae695f" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -507,9 +509,10 @@ Use <code>%matplotlib</code> magic command to enable interactive plotting.<br>
 <h2>How to View Your Plots - (3/3)</h2>
 <ul>
 <li><strong>From a Jupyter (IPython) notebook:</strong><br>
-Use <code>%matplotlib inline</code> for static images or <code>%matplotlib notebook</code> for interactive plots.</li>
+Use <code>%matplotlib inline</code> for static images or<br>
+<code>%matplotlib notebook</code> for interactive plots</li>
 </ul>
-<div id="29d117d6" class="cell" data-execution_count="7">
+<div id="fbd636ec" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="co"># %matplotlib inline</span></span>
 <span id="cb7-2"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
 <span id="cb7-3"><a href=""></a>plt.plot(x, np.sin(x), <span class="st">'-'</span>)</span>
@@ -526,16 +529,16 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 <section id="saving-figures" class="slide level2">
 <h2>Saving Figures</h2>
 <p>Save figures using <code>fig.savefig()</code>:</p>
-<div id="3008cd62" class="cell" data-execution_count="8">
+<div id="e6113602" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>File format is inferred from the file extension.</li>
 <li>Supported formats include: PNG, JPG, PDF, TIFF, and more.</li>
 </ul>
-<div id="e1b60b4e" class="cell" data-execution_count="9">
+<div id="62fbb344" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>fig.canvas.get_supported_filetypes()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="584">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>{'eps': 'Encapsulated Postscript',
  'jpg': 'Joint Photographic Experts Group',
  'jpeg': 'Joint Photographic Experts Group',
@@ -552,6 +555,19 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
  'webp': 'WebP Image Format'}</code></pre>
 </div>
 </div>
+</section>
+<section id="visualization-1" class="slide level2">
+<h2>Visualization</h2>
+<ul>
+<li>Visualization with Matplotlib</li>
+<li><strong>Simple Line Plots</strong></li>
+<li>Simple Scatter Plots</li>
+<li>Visualizing Errors</li>
+<li>Density and Contour Plots</li>
+<li>Histograms, Binnings, and Density</li>
+<li>Customizing Plot Legends and Colorbars</li>
+<li>Multiple Subplots</li>
+</ul>
 </section></section>
 <section>
 <section id="simple-line-plots" class="title-slide slide level1 center">
@@ -560,8 +576,8 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="plotting-a-simple-function" class="slide level2">
 <h2>Plotting a Simple Function</h2>
-<p>Example: Plotting a sine curve with <code>plt.plot(x,y)</code></p>
-<div id="93226889" class="cell" data-execution_count="10">
+<p>Plotting a sine curve with <code>plt.plot(x,y)</code>, <code>plt</code> is from <code>import matplotlib.pyplot as plt</code></p>
+<div id="4f279323" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>plt.plot(x, np.sin(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -575,7 +591,7 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 <section id="multiple-lines-in-one-plot" class="slide level2">
 <h2>Multiple Lines in One Plot</h2>
 <p>Call <code>plt.plot</code> multiple times to overlay lines:</p>
-<div id="554a611a" class="cell" data-execution_count="11">
+<div id="f123507c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a>plt.plot(x, np.sin(x))</span>
 <span id="cb12-2"><a href=""></a>plt.plot(x, np.cos(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -589,8 +605,8 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="customizing-line-color" class="slide level2">
 <h2>Customizing Line Color</h2>
-<p>with <code>color</code> parameter</p>
-<div id="022997bc" class="cell" data-execution_count="12">
+<p><code>plt.plot()</code> with <code>color</code> parameter</p>
+<div id="e4aeb725" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">0</span>), color<span class="op">=</span><span class="st">'blue'</span>)        <span class="co"># by name</span></span>
 <span id="cb13-2"><a href=""></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">1</span>), color<span class="op">=</span><span class="st">'g'</span>)           <span class="co"># short code (r, g, b, c, m, y, k)</span></span>
 <span id="cb13-3"><a href=""></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">2</span>), color<span class="op">=</span><span class="st">'0.75'</span>)        <span class="co"># grayscale</span></span>
@@ -608,8 +624,8 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="customizing-line-style" class="slide level2">
 <h2>Customizing Line Style</h2>
-<p>with <code>linestyle</code> parameter</p>
-<div id="f2c75403" class="cell" data-execution_count="13">
+<p><code>plt.plot()</code> with <code>linestyle</code> parameter</p>
+<div id="cbbf2587" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>plt.plot(x, x <span class="op">+</span> <span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">'solid'</span>)</span>
 <span id="cb14-2"><a href=""></a>plt.plot(x, x <span class="op">+</span> <span class="dv">1</span>, linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
 <span id="cb14-3"><a href=""></a>plt.plot(x, x <span class="op">+</span> <span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'dashdot'</span>)</span>
@@ -630,7 +646,7 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="customizing-line-color-and-style" class="slide level2">
 <h2>Customizing Line Color and Style</h2>
-<div id="73ed0c36" class="cell" data-execution_count="14">
+<div id="86de4978" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>plt.plot(x, x <span class="op">+</span> <span class="dv">0</span>, <span class="st">'-g'</span>)  <span class="co"># solid green</span></span>
 <span id="cb15-2"><a href=""></a>plt.plot(x, x <span class="op">+</span> <span class="dv">1</span>, <span class="st">'--c'</span>) <span class="co"># dashed cyan</span></span>
 <span id="cb15-3"><a href=""></a>plt.plot(x, x <span class="op">+</span> <span class="dv">2</span>, <span class="st">'-.k'</span>) <span class="co"># dashdot black</span></span>
@@ -646,8 +662,8 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="adjusting-axes-limits" class="slide level2">
 <h2>Adjusting Axes Limits</h2>
-<p><code>plt.axis([xmin, xmax, ymin, ymax])</code></p>
-<div id="a7e271a4" class="cell" data-execution_count="15">
+<p><code>plt.axis([xmin, xmax, ymin, ymax])</code>, limits are arranged into a list</p>
+<div id="be94cfd1" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a>plt.axis([<span class="op">-</span><span class="dv">1</span>, <span class="dv">11</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -661,12 +677,12 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 <section id="adding-titles-labels-and-legends" class="slide level2">
 <h2>Adding Titles, Labels, and Legends</h2>
 <p><code>plt.title()</code>, <code>plt.xlabel()</code>, <code>plt.ylabel()</code></p>
-<div id="c25141b8" class="cell" data-execution_count="16">
+<div id="0c1ed188" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>plt.plot(x, np.sin(x))</span>
 <span id="cb17-2"><a href=""></a>plt.title(<span class="st">"A Sine Curve"</span>)</span>
 <span id="cb17-3"><a href=""></a>plt.xlabel(<span class="st">"x"</span>)</span>
 <span id="cb17-4"><a href=""></a>plt.ylabel(<span class="st">"sin(x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="591">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>Text(0, 0.5, 'sin(x)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -680,16 +696,15 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="adding-titles-labels-and-legends-1" class="slide level2">
 <h2>Adding Titles, Labels, and Legends</h2>
-<p>Add a legend for multiple lines with <code>label</code> parameter and <code>plt.legend()</code></p>
-<div id="36f1e905" class="cell" data-execution_count="17">
+<p>Add a legend for multiple lines with <code>plt.plot()</code> + <code>label</code> parameter and call <code>plt.legend()</code></p>
+<div id="b4c6d82d" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a>plt.plot(x, np.sin(x), <span class="st">'-g'</span>, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
 <span id="cb19-2"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">':b'</span>, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
-<span id="cb19-3"><a href=""></a>plt.axis(<span class="st">'equal'</span>)</span>
-<span id="cb19-4"><a href=""></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a href=""></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-18-output-1.png" width="783" height="405"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-18-output-1.png" width="802" height="405"></p>
 </figure>
 </div>
 </div>
@@ -697,17 +712,23 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="hands-on---line-plot" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
-<p>Setting</p>
-<div id="7a34a5b7" class="cell" data-execution_count="18">
+<p>Setting:</p>
+<ol type="1">
+<li>Load library</li>
+</ol>
+<div id="e72b1fde" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="im">import</span> matplotlib</span>
 <span id="cb20-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6828aad1" class="cell" data-execution_count="19">
+<ol start="2" type="1">
+<li>中文問題….</li>
+</ol>
+<div id="994f5ae3" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a><span class="co"># colab顯示繁體中文 問題：matplotlib繪圖，會發生中文無法顯示的問題</span></span>
 <span id="cb21-2"><a href=""></a><span class="co"># 先下載台北黑體字型</span></span>
 <span id="cb21-3"><a href=""></a><span class="op">!</span>gdown <span class="st">'1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_'</span> <span class="op">--</span>output TaipeiSansTCBeta<span class="op">-</span>Regular.ttf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="89c3377a" class="cell" data-execution_count="20">
+<div id="4fb23a28" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a><span class="co"># 新增字體</span></span>
 <span id="cb22-2"><a href=""></a>matplotlib.font_manager.fontManager.addfont(<span class="st">'TaipeiSansTCBeta-Regular.ttf'</span>)</span>
 <span id="cb22-3"><a href=""></a><span class="co"># 將 font-family 設為 Taipei Sans TC Beta</span></span>
@@ -717,21 +738,20 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="hands-on---line-plot-1" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
-<p>Data</p>
-<div id="6e0e2f47" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a><span class="co"># 空氣品質監測日平均值(一般污染物)</span></span>
-<span id="cb23-2"><a href=""></a><span class="co"># https://data.moenv.gov.tw/dataset/detail/AQX_P_19</span></span>
-<span id="cb23-3"><a href=""></a><span class="co"># https://drive.google.com/drive/folders/1OrMlB4hP8nnW_0bYwoHRO6DRXWNk1qvy?usp=sharing</span></span>
-<span id="cb23-4"><a href=""></a><span class="op">!</span>gdown <span class="st">'1P3qrYrynZhXDC13dVo5KhDXmld5OGZz1'</span> <span class="op">--</span>output <span class="fl">202310.</span><span class="er">csv</span></span>
-<span id="cb23-5"><a href=""></a><span class="op">!</span>gdown <span class="st">'1P1Kv1ZmPOYyi83DJKUIPoksM31vJJiS5'</span> <span class="op">--</span>output <span class="fl">202311.</span><span class="er">csv</span></span>
-<span id="cb23-6"><a href=""></a><span class="op">!</span>gdown <span class="st">'1P0mojOXgvVbXImnRTPQemm7dCkLDLKAC'</span> <span class="op">--</span>output <span class="fl">202312.</span><span class="er">csv</span></span>
-<span id="cb23-7"><a href=""></a><span class="op">!</span>gdown <span class="st">'1OwAf366l-iItXV4foJemw5QdMuD3JgMc'</span> <span class="op">--</span>output <span class="fl">202401.</span><span class="er">csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Data: 空氣品質監測日平均值(一般污染物)</p>
+<div id="479c092a" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a><span class="co"># https://data.moenv.gov.tw/dataset/detail/AQX_P_19</span></span>
+<span id="cb23-2"><a href=""></a><span class="co"># https://drive.google.com/drive/folders/1OrMlB4hP8nnW_0bYwoHRO6DRXWNk1qvy?usp=sharing</span></span>
+<span id="cb23-3"><a href=""></a><span class="op">!</span>gdown <span class="st">'1P3qrYrynZhXDC13dVo5KhDXmld5OGZz1'</span> <span class="op">--</span>output <span class="fl">202310.</span><span class="er">csv</span></span>
+<span id="cb23-4"><a href=""></a><span class="op">!</span>gdown <span class="st">'1P1Kv1ZmPOYyi83DJKUIPoksM31vJJiS5'</span> <span class="op">--</span>output <span class="fl">202311.</span><span class="er">csv</span></span>
+<span id="cb23-5"><a href=""></a><span class="op">!</span>gdown <span class="st">'1P0mojOXgvVbXImnRTPQemm7dCkLDLKAC'</span> <span class="op">--</span>output <span class="fl">202312.</span><span class="er">csv</span></span>
+<span id="cb23-6"><a href=""></a><span class="op">!</span>gdown <span class="st">'1OwAf366l-iItXV4foJemw5QdMuD3JgMc'</span> <span class="op">--</span>output <span class="fl">202401.</span><span class="er">csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="hands-on---line-plot-2" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
 <p>Data</p>
-<div id="0aed2c3f" class="cell" data-execution_count="22">
+<div id="dfa6cea0" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a>df202401 <span class="op">=</span> pd.read_csv(<span class="st">'202401.csv'</span>) </span>
 <span id="cb24-2"><a href=""></a>df202312 <span class="op">=</span> pd.read_csv(<span class="st">'202312.csv'</span>) </span>
 <span id="cb24-3"><a href=""></a>df202311 <span class="op">=</span> pd.read_csv(<span class="st">'202311.csv'</span>) </span>
@@ -757,8 +777,8 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="hands-on---line-plot-3" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
-<p>Data Clean</p>
-<div id="bce712dd" class="cell" data-execution_count="23">
+<p>Data Clean: Remove the quotes of column headers</p>
+<div id="869c6622" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a>new_headers <span class="op">=</span> []</span>
 <span id="cb26-2"><a href=""></a><span class="cf">for</span> header <span class="kw">in</span> df_air.columns: <span class="co"># data.columns is your list of headers</span></span>
 <span id="cb26-3"><a href=""></a>    header <span class="op">=</span> header.strip(<span class="st">'"'</span>) <span class="co"># Remove the quotes off each header</span></span>
@@ -784,36 +804,54 @@ Use <code>%matplotlib inline</code> for static images or <code>%matplotlib noteb
 </section>
 <section id="hands-on---line-plot-4" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
-<p>Data Clean</p>
-<div id="f7eda6e7" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a>df_air.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="597">
-<pre><code>siteid            int64
-sitename         object
-itemid            int64
-itemname         object
-itemengname      object
-itemunit         object
-monitordate      object
-concentration    object
-dtype: object</code></pre>
+<p>Data Clean: Data type</p>
+<div id="198e8306" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a>df_air[<span class="st">'concentration'</span>].dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>dtype('O')</code></pre>
 </div>
 </div>
-<div id="398bd03b" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a>df_air[<span class="st">'concentration'</span>] <span class="op">=</span> pd.to_numeric(df_air[<span class="st">'concentration'</span>].replace(<span class="st">"x"</span>,np.nan))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="41728f16" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a>df_air[<span class="st">'concentration'</span>][<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>0     33
+1    3.8
+2    0.5
+3    3.2
+4    2.2
+Name: concentration, dtype: object</code></pre>
+</div>
+</div>
+<p><code>pd.to_numeric(List or Series, errors={‘ignore’, ‘raise’, ‘coerce’})</code></p>
+<div id="63aa573f" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a>df_air[<span class="st">'concentration'</span>] <span class="op">=</span> pd.to_numeric(df_air[<span class="st">'concentration'</span>], </span>
+<span id="cb32-2"><a href=""></a>                                        errors<span class="op">=</span><span class="st">"coerce"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4f468da2" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a>df_air[<span class="st">'concentration'</span>].dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>dtype('float64')</code></pre>
+</div>
 </div>
 </section>
 <section id="hands-on---line-plot-5" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
-<p>Data Clean</p>
-<div id="72817d5e" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a><span class="co"># Parse String To DateTime</span></span>
-<span id="cb31-2"><a href=""></a>df_air[<span class="st">'DateTime'</span>]<span class="op">=</span>pd.to_datetime(df_air[<span class="st">'monitordate'</span>],</span>
-<span id="cb31-3"><a href=""></a>                              <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Data Clean: Data type</p>
+<div id="aacda866" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>df_air[<span class="st">'monitordate'</span>].dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>dtype('O')</code></pre>
 </div>
-<div id="6af0f845" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a>df_air.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="600">
+</div>
+<p><code>pd.to_datetime(List or Series, errors={‘ignore’, ‘raise’, ‘coerce’},format=)</code></p>
+<div id="868e6775" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a><span class="co"># Parse String To DateTime</span></span>
+<span id="cb37-2"><a href=""></a>df_air[<span class="st">'DateTime'</span>]<span class="op">=</span>pd.to_datetime(df_air[<span class="st">'monitordate'</span>],</span>
+<span id="cb37-3"><a href=""></a>                              <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="12e1ff02" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>df_air.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>siteid                    int64
 sitename                 object
 itemid                    int64
@@ -830,7 +868,13 @@ dtype: object</code></pre>
 <section id="hands-on---line-plot-6" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
 <p>請試著呈現林口測站在2024/1/1~2024/1/15的PM2.5濃度</p>
-<div id="3bde2146" class="cell" data-execution_count="28">
+<p>Hint:</p>
+<ul>
+<li>Subset, Boolean masking</li>
+<li><code>pd.to_datetime(List or Series, errors={‘ignore’, ‘raise’, ‘coerce’},format=)</code></li>
+<li><code>df.sort_values(by=column)</code> (<code>df</code> can be any DataFrame)</li>
+</ul>
+<div id="bd397270" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-stdout">
 <pre><code>       siteid sitename  itemid itemname itemengname itemunit monitordate  \
 978         9       林口      33    細懸浮微粒       PM2.5    μg/m3  2024-01-01   
@@ -870,27 +914,43 @@ dtype: object</code></pre>
 </section>
 <section id="hands-on---line-plot-7" class="slide level2">
 <h2>Hands-on - Line Plot</h2>
-<p>請試著呈現林口測站在2024/1/1~2024/1/15的PM2.5濃度</p>
-<div id="f75e0825" class="cell" data-execution_count="29">
+<p>請試著呈現林口測站在2024/1/1~2024/1/15的PM2.5濃度，要呈現figure legend，也要呈現x y 軸的名字</p>
+<p>Ref:</p>
+<div id="7530e22f" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-30-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-33-output-1.png" width="802" height="426"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="hands-on---line-plot---seaborn" class="slide level2">
-<h2>Hands-on - Line Plot - Seaborn</h2>
-<p><code>sns.lineplot(x,y)</code></p>
-<div id="485ed966" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb35-2"><a href=""></a>sns.lineplot(x<span class="op">=</span>pm25Linkou2024[<span class="st">'DateTime'</span>], y<span class="op">=</span>pm25Linkou2024[<span class="st">'concentration'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="line-plot---seaborn" class="slide level2">
+<h2>Line Plot - Seaborn</h2>
+<p><code>sns.lineplot(x,y)</code>, x and y are data for each axis</p>
+<div id="7610be7e" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb41-2"><a href=""></a>sns.lineplot(x<span class="op">=</span>pm25Linkou2024[<span class="st">'DateTime'</span>], </span>
+<span id="cb41-3"><a href=""></a>              y<span class="op">=</span>pm25Linkou2024[<span class="st">'concentration'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-31-output-1.png" width="802" height="426"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-34-output-1.png" width="802" height="426"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="line-plot---seaborn-1" class="slide level2">
+<h2>Line Plot - Seaborn</h2>
+<p><code>sns.lineplot(data, x, y)</code>, x and y are column names for each axis</p>
+<div id="fc40100c" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>sns.lineplot(data <span class="op">=</span> pm25Linkou2024, x<span class="op">=</span><span class="st">'DateTime'</span>, y<span class="op">=</span><span class="st">'concentration'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-35-output-1.png" width="802" height="426"></p>
 </figure>
 </div>
 </div>
@@ -910,74 +970,11 @@ dtype: object</code></pre>
 </section>
 <section id="scatter-plots-with-plt.plot" class="slide level2">
 <h2>Scatter Plots with <code>plt.plot()</code></h2>
-<p><code>plt.plot(x,y,marker,color)</code></p>
-<div id="6d063d54" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
-<span id="cb36-2"><a href=""></a>y <span class="op">=</span> np.sin(x)</span>
-<span id="cb36-3"><a href=""></a>plt.plot(x, y, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-32-output-1.png" width="807" height="407"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="scatter-plots---marker-shape" class="slide level2">
-<h2>Scatter Plots - marker shape</h2>
-<p><code>'o'</code>, <code>'.'</code>, <code>','</code>, <code>'x'</code>, <code>'+'</code>, <code>'v'</code>, <code>'^'</code>, <code>''</code>, <code>'s'</code>, <code>'d'</code> …</p>
-<div id="49d06b8e" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">0</span>)</span>
-<span id="cb37-2"><a href=""></a><span class="cf">for</span> marker <span class="kw">in</span> [<span class="st">'o'</span>, <span class="st">'.'</span>, <span class="st">','</span>, <span class="st">'x'</span>, <span class="st">'+'</span>, <span class="st">'v'</span>, <span class="st">'^'</span>, <span class="st">''</span>, <span class="st">'s'</span>, <span class="st">'d'</span>]:</span>
-<span id="cb37-3"><a href=""></a>    plt.plot(rng.rand(<span class="dv">5</span>), rng.rand(<span class="dv">5</span>), marker, label<span class="op">=</span><span class="ss">f"marker='</span><span class="sc">{</span>marker<span class="sc">}</span><span class="ss">'"</span>)</span>
-<span id="cb37-4"><a href=""></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-33-output-1.png" width="786" height="408"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="line-styles-and-marker-shape" class="slide level2">
-<h2>Line styles and marker shape</h2>
-<p>Combine marker and line styles for more complex plots</p>
-<div id="c372c7af" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>plt.plot(x, y, <span class="st">'-ok'</span>) <span class="co"># solid, circle, black</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-34-output-1.png" width="807" height="407"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="line-styles-and-marker-shape-1" class="slide level2">
-<h2>Line styles and marker shape</h2>
-<p>Customize markers and lines with additional arguments</p>
-<div id="b4f9a627" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a>plt.plot(x, y, <span class="st">'-p'</span>, color<span class="op">=</span><span class="st">'gray'</span>, <span class="co"># solid, pentagon</span></span>
-<span id="cb39-2"><a href=""></a>         markersize<span class="op">=</span><span class="dv">15</span>, linewidth<span class="op">=</span><span class="dv">4</span>,</span>
-<span id="cb39-3"><a href=""></a>         markerfacecolor<span class="op">=</span><span class="st">'white'</span>,</span>
-<span id="cb39-4"><a href=""></a>         markeredgecolor<span class="op">=</span><span class="st">'gray'</span>,</span>
-<span id="cb39-5"><a href=""></a>         markeredgewidth<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-35-output-1.png" width="807" height="407"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="scatter-plots-with-plt.scatter" class="slide level2">
-<h2>Scatter Plots with <code>plt.scatter</code></h2>
-<p><code>plt.scatter()</code> allowing individual control over each point’s <strong>size</strong>, <strong>color</strong>, and other properties.</p>
-<div id="0391fa84" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a>plt.scatter(x, y, marker<span class="op">=</span><span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>plt.plot(x,y,marker,color)</code>, <code>marker</code> for shapes, <code>color</code> for color</p>
+<div id="c036d9cd" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
+<span id="cb43-2"><a href=""></a>y <span class="op">=</span> np.sin(x)</span>
+<span id="cb43-3"><a href=""></a>plt.plot(x, y, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -987,15 +984,78 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="with-varying-color-and-size---bubble-chart" class="slide level2">
-<h2>with varying color and size - Bubble chart</h2>
+<section id="scatter-plots---marker-shape" class="slide level2">
+<h2>Scatter Plots - marker shape</h2>
+<p><code>'o'</code>, <code>'.'</code>, <code>','</code>, <code>'x'</code>, <code>'+'</code>, <code>'v'</code>, <code>'^'</code>, <code>''</code>, <code>'s'</code>, <code>'d'</code> …</p>
+<div id="dd2aefb0" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">0</span>)</span>
+<span id="cb44-2"><a href=""></a><span class="cf">for</span> marker <span class="kw">in</span> [<span class="st">'o'</span>, <span class="st">'.'</span>, <span class="st">','</span>, <span class="st">'x'</span>, <span class="st">'+'</span>, <span class="st">'v'</span>, <span class="st">'^'</span>, <span class="st">''</span>, <span class="st">'s'</span>, <span class="st">'d'</span>]:</span>
+<span id="cb44-3"><a href=""></a>    plt.plot(rng.rand(<span class="dv">5</span>), rng.rand(<span class="dv">5</span>), marker, label<span class="op">=</span><span class="ss">f"marker='</span><span class="sc">{</span>marker<span class="sc">}</span><span class="ss">'"</span>)</span>
+<span id="cb44-4"><a href=""></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-37-output-1.png" width="786" height="408"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="line-styles-and-marker-shape" class="slide level2">
+<h2>Line styles and marker shape</h2>
+<p>Combine marker and line styles for more complex plots</p>
+<div id="367f2d9e" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a>plt.plot(x, y, <span class="st">'-ok'</span>) <span class="co"># solid, circle, black</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-38-output-1.png" width="807" height="407"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="line-styles-and-marker-shape-1" class="slide level2">
+<h2>Line styles and marker shape</h2>
+<p>Customize markers and lines with additional arguments</p>
+<div id="153ebed5" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a>plt.plot(x, y, <span class="st">'-p'</span>, color<span class="op">=</span><span class="st">'gray'</span>, <span class="co"># solid, pentagon</span></span>
+<span id="cb46-2"><a href=""></a>         markersize<span class="op">=</span><span class="dv">15</span>, linewidth<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb46-3"><a href=""></a>         markerfacecolor<span class="op">=</span><span class="st">'white'</span>,</span>
+<span id="cb46-4"><a href=""></a>         markeredgecolor<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb46-5"><a href=""></a>         markeredgewidth<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-39-output-1.png" width="807" height="407"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatter-plots-with-plt.scatter" class="slide level2">
+<h2>Scatter Plots with <code>plt.scatter</code></h2>
+<p><code>plt.scatter(x, y)</code> allowing individual control over each point’s <strong>size</strong>, <strong>color</strong>, and other properties.</p>
+<div id="7cc583dc" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href=""></a>plt.scatter(x, y, marker<span class="op">=</span><span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-40-output-1.png" width="807" height="407"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="varying-color-and-size---bubble-chart" class="slide level2">
+<h2>Varying color and size - Bubble chart</h2>
 <p>Data:</p>
-<div id="045d6da3" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">0</span>)</span>
-<span id="cb41-2"><a href=""></a>x <span class="op">=</span> rng.randn(<span class="dv">100</span>)</span>
-<span id="cb41-3"><a href=""></a>y <span class="op">=</span> rng.randn(<span class="dv">100</span>)</span>
-<span id="cb41-4"><a href=""></a>colors <span class="op">=</span> rng.rand(<span class="dv">100</span>)</span>
-<span id="cb41-5"><a href=""></a>sizes <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> rng.rand(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="faba8238" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">0</span>)</span>
+<span id="cb48-2"><a href=""></a>x <span class="op">=</span> rng.randn(<span class="dv">100</span>)</span>
+<span id="cb48-3"><a href=""></a>y <span class="op">=</span> rng.randn(<span class="dv">100</span>)</span>
+<span id="cb48-4"><a href=""></a>colors <span class="op">=</span> rng.rand(<span class="dv">100</span>)</span>
+<span id="cb48-5"><a href=""></a>sizes <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> rng.rand(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Parameters:</p>
 <ul>
@@ -1005,15 +1065,15 @@ dtype: object</code></pre>
 <li><code>cmap</code> colormap (more details later)</li>
 </ul>
 </section>
-<section id="with-varying-color-and-size---bubble-chart-1" class="slide level2">
+<section id="with-varying-color-and-size---bubble-chart" class="slide level2">
 <h2>with varying color and size - Bubble chart</h2>
-<div id="599309b8" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.3</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb42-2"><a href=""></a>plt.colorbar()  <span class="co"># Show color scale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6d9e601e" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href=""></a>plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.3</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb49-2"><a href=""></a>plt.colorbar()  <span class="co"># Show color scale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-38-output-1.png" width="719" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-42-output-1.png" width="719" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1021,14 +1081,14 @@ dtype: object</code></pre>
 </section>
 <section id="visualizing-multidimensional-data" class="slide level2">
 <h2>Visualizing Multidimensional Data</h2>
-<p>Example: Iris dataset, visualizing four features at once.</p>
+<p>Iris dataset, visualizing four features at once.</p>
 <p>Data:</p>
-<div id="cae5eb35" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a><span class="co"># !pip3 install scikit-learn</span></span>
-<span id="cb43-2"><a href=""></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb43-3"><a href=""></a>iris <span class="op">=</span> load_iris()</span>
-<span id="cb43-4"><a href=""></a>features <span class="op">=</span> iris.data.T</span>
-<span id="cb43-5"><a href=""></a><span class="bu">print</span>(features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c69989e9" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a><span class="co"># !pip3 install scikit-learn</span></span>
+<span id="cb50-2"><a href=""></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb50-3"><a href=""></a>iris <span class="op">=</span> load_iris()</span>
+<span id="cb50-4"><a href=""></a>features <span class="op">=</span> iris.data.T</span>
+<span id="cb50-5"><a href=""></a><span class="bu">print</span>(features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[5.1 4.9 4.7 4.6 5.  5.4 4.6 5.  4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
   5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.  5.  5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.
@@ -1072,18 +1132,18 @@ dtype: object</code></pre>
 <section id="visualizing-multidimensional-data-1" class="slide level2">
 <h2>Visualizing Multidimensional Data</h2>
 <p>x/y positions, size, and color all encode different data dimensions.</p>
-<div id="c54c1cb7" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a>plt.scatter(features[<span class="dv">0</span>], features[<span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb45-2"><a href=""></a>            s<span class="op">=</span><span class="dv">100</span><span class="op">*</span>features[<span class="dv">3</span>], c<span class="op">=</span>iris.target, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb45-3"><a href=""></a>plt.xlabel(iris.feature_names[<span class="dv">0</span>])</span>
-<span id="cb45-4"><a href=""></a>plt.ylabel(iris.feature_names[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="612">
+<div id="9d0809ac" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a>plt.scatter(features[<span class="dv">0</span>], features[<span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb52-2"><a href=""></a>            s<span class="op">=</span><span class="dv">100</span><span class="op">*</span>features[<span class="dv">3</span>], c<span class="op">=</span>iris.target, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb52-3"><a href=""></a>plt.xlabel(iris.feature_names[<span class="dv">0</span>])</span>
+<span id="cb52-4"><a href=""></a>plt.ylabel(iris.feature_names[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>Text(0, 0.5, 'sepal width (cm)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-40-output-2.png" width="806" height="429"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-44-output-2.png" width="806" height="429"></p>
 </figure>
 </div>
 </div>
@@ -1091,14 +1151,14 @@ dtype: object</code></pre>
 </section>
 <section id="visualizing-multidimensional-data-2" class="slide level2">
 <h2>Visualizing Multidimensional Data</h2>
-<div id="75d3c281" class="cell" data-execution_count="40">
-<div class="cell-output cell-output-display" data-execution_count="613">
+<div id="7d818bd1" class="cell" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>Text(0, 0.5, 'sepal width (cm)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-41-output-2.png" width="806" height="429"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-45-output-2.png" width="806" height="429"></p>
 </figure>
 </div>
 </div>
@@ -1115,11 +1175,13 @@ dtype: object</code></pre>
 <section id="hands-on---scatter-plot" class="slide level2">
 <h2>Hands-on - Scatter Plot</h2>
 <p>試著看看空氣污染資料中，NO2濃度與SO2濃度有沒有相關？</p>
-<div id="78fed92e" class="cell" data-execution_count="41">
+<p>Hint: multiple records on the same date - <code>df.groupby()</code></p>
+<p>Ref:</p>
+<div id="9fe695d1" class="cell" data-execution_count="45">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-42-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-46-output-1.png" width="783" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1128,11 +1190,11 @@ dtype: object</code></pre>
 <section id="hands-on---scatter-plot-1" class="slide level2">
 <h2>Hands-on - Scatter Plot</h2>
 <p>使用泡泡圖呈現NO2與SO2的關係，並用風速（WIND_SPEED）當作泡泡大小，觀察這些資料是否有相關</p>
-<div id="34e88063" class="cell" data-execution_count="42">
+<div id="e02d3f5c" class="cell" data-execution_count="46">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-43-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-47-output-1.png" width="783" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1153,28 +1215,28 @@ dtype: object</code></pre>
 </section>
 <section id="basic-error-bars-with-plt.errorbar" class="slide level2">
 <h2>Basic Error Bars with <code>plt.errorbar</code></h2>
-<p><code>plt.errorbar</code>: add error bars to your plots</p>
+<p><code>plt.errorbar(x, y, yerr=error size, fmt = style)</code>: add error bars to your plots</p>
 <ul>
 <li><code>yerr</code> specifies the <strong>vertical</strong> error bar size</li>
 <li><code>fmt</code> controls the marker and line style (same as in <code>plt.plot</code>)</li>
 </ul>
 <p>Data:</p>
-<div id="012ab2fc" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
-<span id="cb48-2"><a href=""></a>dy <span class="op">=</span> <span class="fl">0.8</span></span>
-<span id="cb48-3"><a href=""></a>y <span class="op">=</span> np.sin(x) <span class="op">+</span> dy <span class="op">*</span> np.random.randn(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4cd6a330" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>) <span class="co">#(start,end,num)</span></span>
+<span id="cb55-2"><a href=""></a>dy <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb55-3"><a href=""></a>y <span class="op">=</span> np.sin(x) <span class="op">+</span> dy <span class="op">*</span> np.random.randn(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="basic-error-bars-with-plt.errorbar-1" class="slide level2">
 <h2>Basic Error Bars with <code>plt.errorbar</code></h2>
 <p>Plot: <code>plt.errorbar(x, y, yerr=error size, fmt = style)</code></p>
-<div id="8cb63bd6" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href=""></a>plt.errorbar(x, y, yerr<span class="op">=</span>dy, fmt<span class="op">=</span><span class="st">'.k'</span>)</span>
-<span id="cb49-2"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b94402e7" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href=""></a>plt.errorbar(x, y, yerr<span class="op">=</span>dy, fmt<span class="op">=</span><span class="st">'.k'</span>)</span>
+<span id="cb56-2"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-45-output-1.png" width="789" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-49-output-1.png" width="789" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1182,7 +1244,7 @@ dtype: object</code></pre>
 </section>
 <section id="customizing-error-bars" class="slide level2">
 <h2>Customizing Error Bars</h2>
-<p>You can adjust the appearance for clarity, especially in crowded plots:</p>
+<p>You can adjust the appearance for clarity, especially in crowded plots in <code>plt.errorbar()</code>:</p>
 <ul>
 <li><code>ecolor</code>: color of the error bars</li>
 <li><code>elinewidth</code>: width of error bar lines</li>
@@ -1191,16 +1253,16 @@ dtype: object</code></pre>
 </section>
 <section id="customizing-error-bars-1" class="slide level2">
 <h2>Customizing Error Bars</h2>
-<div id="e0f928f6" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a>plt.errorbar(</span>
-<span id="cb50-2"><a href=""></a>    x, y, yerr<span class="op">=</span>dy, fmt<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>,</span>
-<span id="cb50-3"><a href=""></a>    ecolor<span class="op">=</span><span class="st">'lightgray'</span>, elinewidth<span class="op">=</span><span class="dv">3</span>, capsize<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb50-4"><a href=""></a>)</span>
-<span id="cb50-5"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4e570d5f" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href=""></a>plt.errorbar(</span>
+<span id="cb57-2"><a href=""></a>    x, y, yerr<span class="op">=</span>dy, fmt<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb57-3"><a href=""></a>    ecolor<span class="op">=</span><span class="st">'lightgray'</span>, elinewidth<span class="op">=</span><span class="dv">3</span>, capsize<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb57-4"><a href=""></a>)</span>
+<span id="cb57-5"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-46-output-1.png" width="789" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-50-output-1.png" width="789" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1208,13 +1270,13 @@ dtype: object</code></pre>
 </section>
 <section id="horizontal-and-one-sided-error-bars" class="slide level2">
 <h2>Horizontal and One-Sided Error Bars</h2>
-<p>Add <strong>horizontal</strong> error bars using <code>xerr</code></p>
-<div id="ebb0a7ec" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href=""></a>plt.errorbar(x, y, xerr<span class="op">=</span><span class="fl">0.5</span>, fmt<span class="op">=</span><span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add <strong>horizontal</strong> error bars using <code>xerr</code> in <code>plt.errorbar()</code></p>
+<div id="334cff77" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href=""></a>plt.errorbar(x, y, xerr<span class="op">=</span><span class="fl">0.5</span>, fmt<span class="op">=</span><span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-47-output-1.png" width="789" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-51-output-1.png" width="789" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1288,14 +1350,14 @@ dtype: object</code></pre>
 <li>Contour plots require a function <span class="math display">\[ z = f(x, y) \]</span> evaluated on a grid.</li>
 <li>Use <code>np.meshgrid</code> to create the grid:</li>
 </ul>
-<div id="3c10c4d0" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a><span class="kw">def</span> f(x, y):</span>
-<span id="cb52-2"><a href=""></a>    <span class="cf">return</span> np.sin(x) <span class="op">**</span> <span class="dv">10</span> <span class="op">+</span> np.cos(<span class="dv">10</span> <span class="op">+</span> y <span class="op">*</span> x) <span class="op">*</span> np.cos(x)</span>
-<span id="cb52-3"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">50</span>)</span>
-<span id="cb52-4"><a href=""></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">40</span>)</span>
-<span id="cb52-5"><a href=""></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
-<span id="cb52-6"><a href=""></a>Z <span class="op">=</span> f(X, Y)</span>
-<span id="cb52-7"><a href=""></a><span class="bu">print</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7586d0b9" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href=""></a><span class="kw">def</span> f(x, y):</span>
+<span id="cb59-2"><a href=""></a>    <span class="cf">return</span> np.sin(x) <span class="op">**</span> <span class="dv">10</span> <span class="op">+</span> np.cos(<span class="dv">10</span> <span class="op">+</span> y <span class="op">*</span> x) <span class="op">*</span> np.cos(x)</span>
+<span id="cb59-3"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">50</span>)</span>
+<span id="cb59-4"><a href=""></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">40</span>)</span>
+<span id="cb59-5"><a href=""></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
+<span id="cb59-6"><a href=""></a>Z <span class="op">=</span> f(X, Y)</span>
+<span id="cb59-7"><a href=""></a><span class="bu">print</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[-0.83907153 -0.83470697 -0.8216586  ...  0.8956708   0.68617261
    0.41940746]
@@ -1316,12 +1378,12 @@ dtype: object</code></pre>
 <section id="basic-contour-plot" class="slide level2">
 <h2>Basic contour plot</h2>
 <p><code>plt.contour(X, Y, Z, colors)</code></p>
-<div id="bba89363" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href=""></a>plt.contour(X, Y, Z, colors<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9adc2a69" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href=""></a>plt.contour(X, Y, Z, colors<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-49-output-1.png" width="779" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-53-output-1.png" width="779" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1334,12 +1396,12 @@ dtype: object</code></pre>
 <li><code>cmap</code>: to specify a colormap</li>
 <li>set the number of contour levels <code>20</code></li>
 </ul>
-<div id="07c07719" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a>plt.contour(X, Y, Z, <span class="dv">20</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b645083c" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href=""></a>plt.contour(X, Y, Z, <span class="dv">20</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-50-output-1.png" width="779" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-54-output-1.png" width="779" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1351,13 +1413,13 @@ dtype: object</code></pre>
 <li><code>plt.contourf()</code> for <strong>filled</strong> contours</li>
 <li>add a colorbar <code>plt.colorbar()</code> for reference:</li>
 </ul>
-<div id="8db43dc7" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href=""></a>plt.contourf(X, Y, Z, <span class="dv">20</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>)</span>
-<span id="cb56-2"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="911ebc91" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href=""></a>plt.contourf(X, Y, Z, <span class="dv">20</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>)</span>
+<span id="cb63-2"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-51-output-1.png" width="719" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-55-output-1.png" width="719" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1372,13 +1434,13 @@ dtype: object</code></pre>
 <li>The default origin for <code>imshow</code> is the upper left; set <code>origin='lower'</code> for consistency with contour plots.</li>
 </ul></li>
 </ul>
-<div id="a714dece" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href=""></a>plt.imshow(Z, extent<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>], origin<span class="op">=</span><span class="st">'lower'</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>)</span>
-<span id="cb57-2"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bff31533" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href=""></a>plt.imshow(Z, extent<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>], origin<span class="op">=</span><span class="st">'lower'</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>)</span>
+<span id="cb64-2"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-52-output-1.png" width="500" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-56-output-1.png" width="500" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1387,15 +1449,15 @@ dtype: object</code></pre>
 <section id="combining-contour-and-image-plots" class="slide level2">
 <h2>Combining Contour and Image Plots</h2>
 <p>Overlay contours on an image for richer visualization: <code>plt.clabel()</code>- label contour lines</p>
-<div id="57901ef1" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href=""></a>contours <span class="op">=</span> plt.contour(X, Y, Z, <span class="dv">3</span>, colors<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb58-2"><a href=""></a>plt.clabel(contours, inline<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb58-3"><a href=""></a>plt.imshow(Z, extent<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>], origin<span class="op">=</span><span class="st">'lower'</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb58-4"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e8399168" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href=""></a>contours <span class="op">=</span> plt.contour(X, Y, Z, <span class="dv">3</span>, colors<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb65-2"><a href=""></a>plt.clabel(contours, inline<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb65-3"><a href=""></a>plt.imshow(Z, extent<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>], origin<span class="op">=</span><span class="st">'lower'</span>, cmap<span class="op">=</span><span class="st">'RdGy'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb65-4"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-53-output-1.png" width="500" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-57-output-1.png" width="500" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1450,14 +1512,14 @@ dtype: object</code></pre>
 <section id="creating-a-simple-histogram" class="slide level2">
 <h2>Creating a Simple Histogram</h2>
 <p><code>plt.hist(data)</code> displays the distribution of <code>data</code> in default bins</p>
-<div id="ece712d6" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href=""></a>data <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
-<span id="cb59-2"><a href=""></a>plt.hist(data)</span>
-<span id="cb59-3"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bb74502c" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href=""></a>data <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb66-2"><a href=""></a>plt.hist(data)</span>
+<span id="cb66-3"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-54-output-1.png" width="790" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-58-output-1.png" width="790" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1472,15 +1534,15 @@ dtype: object</code></pre>
 <li><code>histtype</code>: Type of histogram (e.g., <code>'stepfilled'</code>)</li>
 <li><code>color</code>, <code>edgecolor</code>: Color settings</li>
 </ul>
-<div id="3e327ce4" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href=""></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span id="cb60-2"><a href=""></a>         histtype<span class="op">=</span><span class="st">'stepfilled'</span>, color<span class="op">=</span><span class="st">'steelblue'</span>,</span>
-<span id="cb60-3"><a href=""></a>         edgecolor<span class="op">=</span><span class="st">'none'</span>)</span>
-<span id="cb60-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="76428b36" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href=""></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb67-2"><a href=""></a>         histtype<span class="op">=</span><span class="st">'stepfilled'</span>, color<span class="op">=</span><span class="st">'steelblue'</span>,</span>
+<span id="cb67-3"><a href=""></a>         edgecolor<span class="op">=</span><span class="st">'none'</span>)</span>
+<span id="cb67-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-55-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-59-output-1.png" width="783" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1488,15 +1550,15 @@ dtype: object</code></pre>
 </section>
 <section id="customizing-histograms-1" class="slide level2">
 <h2>Customizing Histograms</h2>
-<div id="69352d53" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href=""></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span id="cb61-2"><a href=""></a>         histtype<span class="op">=</span><span class="st">'stepfilled'</span>, color<span class="op">=</span><span class="st">'steelblue'</span>,</span>
-<span id="cb61-3"><a href=""></a>         edgecolor<span class="op">=</span><span class="st">'none'</span>)</span>
-<span id="cb61-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f602872d" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href=""></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb68-2"><a href=""></a>         histtype<span class="op">=</span><span class="st">'stepfilled'</span>, color<span class="op">=</span><span class="st">'steelblue'</span>,</span>
+<span id="cb68-3"><a href=""></a>         edgecolor<span class="op">=</span><span class="st">'none'</span>)</span>
+<span id="cb68-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-56-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-60-output-1.png" width="783" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1506,25 +1568,25 @@ dtype: object</code></pre>
 <h2>Comparing Multiple Distributions</h2>
 <p>Overlay several histograms using transparency for comparison.</p>
 <p>Data:</p>
-<div id="5e8e1e7c" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href=""></a>x1 <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="dv">1000</span>)</span>
-<span id="cb62-2"><a href=""></a>x2 <span class="op">=</span> np.random.normal(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1000</span>)</span>
-<span id="cb62-3"><a href=""></a>x3 <span class="op">=</span> np.random.normal(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="af2d5634" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href=""></a>x1 <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="dv">1000</span>)</span>
+<span id="cb69-2"><a href=""></a>x2 <span class="op">=</span> np.random.normal(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1000</span>)</span>
+<span id="cb69-3"><a href=""></a>x3 <span class="op">=</span> np.random.normal(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="comparing-multiple-distributions-1" class="slide level2">
 <h2>Comparing Multiple Distributions</h2>
 <p>Use <code>dict(parameters)</code> to set parameters</p>
-<div id="7adcf499" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href=""></a>kwargs <span class="op">=</span> <span class="bu">dict</span>(histtype<span class="op">=</span><span class="st">'stepfilled'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, bins<span class="op">=</span><span class="dv">40</span>)</span>
-<span id="cb63-2"><a href=""></a>plt.hist(x1, <span class="op">**</span>kwargs)</span>
-<span id="cb63-3"><a href=""></a>plt.hist(x2, <span class="op">**</span>kwargs)</span>
-<span id="cb63-4"><a href=""></a>plt.hist(x3, <span class="op">**</span>kwargs)</span>
-<span id="cb63-5"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c0c4bc53" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href=""></a>kwargs <span class="op">=</span> <span class="bu">dict</span>(histtype<span class="op">=</span><span class="st">'stepfilled'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, bins<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb70-2"><a href=""></a>plt.hist(x1, <span class="op">**</span>kwargs)</span>
+<span id="cb70-3"><a href=""></a>plt.hist(x2, <span class="op">**</span>kwargs)</span>
+<span id="cb70-4"><a href=""></a>plt.hist(x3, <span class="op">**</span>kwargs)</span>
+<span id="cb70-5"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-58-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-62-output-1.png" width="783" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1534,21 +1596,21 @@ dtype: object</code></pre>
 <h2>Two-Dimensional Histograms</h2>
 <p><code>plt.hist2d(x, y)</code></p>
 <p>Data</p>
-<div id="d22604fc" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href=""></a>mean <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
-<span id="cb64-2"><a href=""></a>cov <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">2</span>]]</span>
-<span id="cb64-3"><a href=""></a>x, y <span class="op">=</span> np.random.multivariate_normal(mean, cov, <span class="dv">10000</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e37b0a7f" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href=""></a>mean <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb71-2"><a href=""></a>cov <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">2</span>]]</span>
+<span id="cb71-3"><a href=""></a>x, y <span class="op">=</span> np.random.multivariate_normal(mean, cov, <span class="dv">10000</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Figure</p>
-<div id="0442cbc3" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href=""></a>plt.hist2d(x, y, bins<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
-<span id="cb65-2"><a href=""></a>cb <span class="op">=</span> plt.colorbar()</span>
-<span id="cb65-3"><a href=""></a>cb.set_label(<span class="st">'counts in bin'</span>)</span>
-<span id="cb65-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2bb96774" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href=""></a>plt.hist2d(x, y, bins<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
+<span id="cb72-2"><a href=""></a>cb <span class="op">=</span> plt.colorbar()</span>
+<span id="cb72-3"><a href=""></a>cb.set_label(<span class="st">'counts in bin'</span>)</span>
+<span id="cb72-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-60-output-1.png" width="741" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-64-output-1.png" width="741" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1556,11 +1618,11 @@ dtype: object</code></pre>
 </section>
 <section id="two-dimensional-histograms-1" class="slide level2">
 <h2>Two-Dimensional Histograms</h2>
-<div id="ba599faf" class="cell" data-execution_count="60">
+<div id="5c9f690c" class="cell" data-execution_count="64">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-61-output-1.png" width="741" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-65-output-1.png" width="741" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1569,14 +1631,14 @@ dtype: object</code></pre>
 <section id="hexagonal-binning" class="slide level2">
 <h2>Hexagonal Binning</h2>
 <p><code>plt.hexbin(x,y)</code> use hexagons for 2D binning</p>
-<div id="a500592a" class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href=""></a>plt.hexbin(x, y, gridsize<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
-<span id="cb66-2"><a href=""></a>cb <span class="op">=</span> plt.colorbar(label<span class="op">=</span><span class="st">'count in bin'</span>)</span>
-<span id="cb66-3"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c08683f3" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href=""></a>plt.hexbin(x, y, gridsize<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
+<span id="cb73-2"><a href=""></a>cb <span class="op">=</span> plt.colorbar(label<span class="op">=</span><span class="st">'count in bin'</span>)</span>
+<span id="cb73-3"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-62-output-1.png" width="741" height="410"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-66-output-1.png" width="741" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1614,11 +1676,11 @@ dtype: object</code></pre>
 <section id="hands-on---histogram" class="slide level2">
 <h2>Hands-on - Histogram</h2>
 <p>看看新竹與前鎮一氧化碳(CO)的資料分布是否有差異（疊在一張圖中）</p>
-<div id="c9d7afdb" class="cell" data-execution_count="62">
+<div id="cb6cb1c9" class="cell" data-execution_count="66">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-63-output-1.png" width="783" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-67-output-1.png" width="783" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1639,17 +1701,17 @@ dtype: object</code></pre>
 </section>
 <section id="creating-a-simple-legend-1" class="slide level2">
 <h2>Creating a Simple Legend</h2>
-<div id="efbe79af" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
-<span id="cb67-2"><a href=""></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb67-3"><a href=""></a>plt.plot(x, np.sin(x), <span class="st">'-b'</span>, label<span class="op">=</span><span class="st">'Sine'</span>)</span>
-<span id="cb67-4"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'Cosine'</span>)</span>
-<span id="cb67-5"><a href=""></a>plt.axis(<span class="st">'equal'</span>)</span>
-<span id="cb67-6"><a href=""></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="511945fa" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb74-2"><a href=""></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb74-3"><a href=""></a>plt.plot(x, np.sin(x), <span class="st">'-b'</span>, label<span class="op">=</span><span class="st">'Sine'</span>)</span>
+<span id="cb74-4"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'Cosine'</span>)</span>
+<span id="cb74-5"><a href=""></a>plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb74-6"><a href=""></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-64-output-1.png" width="789" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-68-output-1.png" width="789" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1670,13 +1732,13 @@ dtype: object</code></pre>
 <section id="legend-placement-and-appearance" class="slide level2">
 <h2>Legend Placement and Appearance</h2>
 <p>For more options, see the <code>plt.legend</code> docstring.</p>
-<div id="38585936" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'Cosine'</span>)</span>
-<span id="cb68-2"><a href=""></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f11bf14c" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'Cosine'</span>)</span>
+<span id="cb75-2"><a href=""></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-65-output-1.png" width="807" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-69-output-1.png" width="807" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1684,14 +1746,14 @@ dtype: object</code></pre>
 </section>
 <section id="legend-placement-and-appearance-1" class="slide level2">
 <h2>Legend Placement and Appearance</h2>
-<div id="3333a31d" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'Cosine'</span>)</span>
-<span id="cb69-2"><a href=""></a>plt.plot(x, np.sin(x), <span class="st">'-b'</span>, label<span class="op">=</span><span class="st">'Sine'</span>)</span>
-<span id="cb69-3"><a href=""></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>, loc<span class="op">=</span><span class="st">'lower center'</span>, ncol<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fd81dd0e" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href=""></a>plt.plot(x, np.cos(x), <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'Cosine'</span>)</span>
+<span id="cb76-2"><a href=""></a>plt.plot(x, np.sin(x), <span class="st">'-b'</span>, label<span class="op">=</span><span class="st">'Sine'</span>)</span>
+<span id="cb76-3"><a href=""></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>, loc<span class="op">=</span><span class="st">'lower center'</span>, ncol<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-66-output-1.png" width="807" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-70-output-1.png" width="807" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1700,14 +1762,14 @@ dtype: object</code></pre>
 <section id="choosing-elements-for-the-legend" class="slide level2">
 <h2>Choosing Elements for the Legend</h2>
 <p>To control which elements appear, pass specific plot objects and labels to <code>legend()</code></p>
-<div id="d75a04ee" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href=""></a>y <span class="op">=</span> np.sin(x[:, np.newaxis] <span class="op">+</span> np.pi <span class="op">*</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))</span>
-<span id="cb70-2"><a href=""></a>lines <span class="op">=</span> plt.plot(x, y)</span>
-<span id="cb70-3"><a href=""></a>plt.legend(lines[:<span class="dv">2</span>], [<span class="st">'first'</span>, <span class="st">'second'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dfb31d33" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href=""></a>y <span class="op">=</span> np.sin(x[:, np.newaxis] <span class="op">+</span> np.pi <span class="op">*</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))</span>
+<span id="cb77-2"><a href=""></a>lines <span class="op">=</span> plt.plot(x, y)</span>
+<span id="cb77-3"><a href=""></a>plt.legend(lines[:<span class="dv">2</span>], [<span class="st">'first'</span>, <span class="st">'second'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-67-output-1.png" width="807" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-71-output-1.png" width="807" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1716,15 +1778,15 @@ dtype: object</code></pre>
 <section id="choosing-elements-for-the-legend-1" class="slide level2">
 <h2>Choosing Elements for the Legend</h2>
 <p>Or only <code>label</code> the elements you want in the legend</p>
-<div id="91331b70" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href=""></a>plt.plot(x, y[:, <span class="dv">0</span>], label<span class="op">=</span><span class="st">'first'</span>)</span>
-<span id="cb71-2"><a href=""></a>plt.plot(x, y[:, <span class="dv">1</span>], label<span class="op">=</span><span class="st">'second'</span>)</span>
-<span id="cb71-3"><a href=""></a>plt.plot(x, y[:, <span class="dv">2</span>:])</span>
-<span id="cb71-4"><a href=""></a>plt.legend(framealpha<span class="op">=</span><span class="dv">1</span>, frameon<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d1ffa807" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href=""></a>plt.plot(x, y[:, <span class="dv">0</span>], label<span class="op">=</span><span class="st">'first'</span>)</span>
+<span id="cb78-2"><a href=""></a>plt.plot(x, y[:, <span class="dv">1</span>], label<span class="op">=</span><span class="st">'second'</span>)</span>
+<span id="cb78-3"><a href=""></a>plt.plot(x, y[:, <span class="dv">2</span>:])</span>
+<span id="cb78-4"><a href=""></a>plt.legend(framealpha<span class="op">=</span><span class="dv">1</span>, frameon<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-68-output-1.png" width="807" height="407"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-72-output-1.png" width="807" height="407"></p>
 </figure>
 </div>
 </div>
@@ -1748,10 +1810,10 @@ dtype: object</code></pre>
 <section id="creating-a-basic-colorbar" class="slide level2">
 <h2>Creating a Basic Colorbar</h2>
 <p>Data:</p>
-<div id="afbdb310" class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
-<span id="cb72-2"><a href=""></a>I <span class="op">=</span> np.sin(x) <span class="op">*</span> np.cos(x[:, np.newaxis])</span>
-<span id="cb72-3"><a href=""></a><span class="bu">print</span>(I)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="feaf777a" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb79-2"><a href=""></a>I <span class="op">=</span> np.sin(x) <span class="op">*</span> np.cos(x[:, np.newaxis])</span>
+<span id="cb79-3"><a href=""></a><span class="bu">print</span>(I)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 0.          0.01000984  0.02001868 ... -0.52711499 -0.53559488
   -0.54402111]
@@ -1772,13 +1834,13 @@ dtype: object</code></pre>
 <section id="creating-a-basic-colorbar-1" class="slide level2">
 <h2>Creating a Basic Colorbar</h2>
 <p>Add <code>plt.colorbar()</code> after using color mapping:</p>
-<div id="287adcf8" class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href=""></a>plt.imshow(I)</span>
-<span id="cb74-2"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="76709e8c" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href=""></a>plt.imshow(I)</span>
+<span id="cb81-2"><a href=""></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-70-output-1.png" width="515" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-74-output-1.png" width="515" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1787,12 +1849,12 @@ dtype: object</code></pre>
 <section id="customizing-colormaps" class="slide level2">
 <h2>Customizing Colormaps</h2>
 <p>Specify a colormap with the <code>cmap</code> argument (check <code>plt.cm</code> namespace (e.g., <code>plt.cm.viridis</code>, <code>plt.cm.RdBu</code>))</p>
-<div id="aa58effd" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href=""></a>plt.imshow(I, cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="db00b817" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href=""></a>plt.imshow(I, cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-71-output-1.png" width="415" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-75-output-1.png" width="415" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1812,14 +1874,14 @@ dtype: object</code></pre>
 <li>Manually set color limits with <code>plt.clim()</code> (to focus on a specific data range)</li>
 <li>Indicate out-of-bounds values using the <code>extend</code> in <code>plt.colorbar()</code></li>
 </ul>
-<div id="55bc998e" class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href=""></a>plt.imshow(I, cmap<span class="op">=</span><span class="st">'RdBu'</span>)</span>
-<span id="cb76-2"><a href=""></a>plt.colorbar(extend<span class="op">=</span><span class="st">'both'</span>)</span>
-<span id="cb76-3"><a href=""></a>plt.clim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="99fa2fca" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href=""></a>plt.imshow(I, cmap<span class="op">=</span><span class="st">'RdBu'</span>)</span>
+<span id="cb83-2"><a href=""></a>plt.colorbar(extend<span class="op">=</span><span class="st">'both'</span>)</span>
+<span id="cb83-3"><a href=""></a>plt.clim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-72-output-1.png" width="515" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-76-output-1.png" width="515" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1827,11 +1889,11 @@ dtype: object</code></pre>
 </section>
 <section id="setting-color-limits-and-extensions-1" class="slide level2">
 <h2>Setting Color Limits and Extensions</h2>
-<div id="77c876c1" class="cell" data-execution_count="72">
+<div id="8c05dfa6" class="cell" data-execution_count="76">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-73-output-1.png" width="515" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-77-output-1.png" width="515" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1840,14 +1902,14 @@ dtype: object</code></pre>
 <section id="discrete-colorbars" class="slide level2">
 <h2>Discrete Colorbars</h2>
 <p>Represent discrete values: <code>plt.cm.get_cmap()</code> with number of bins</p>
-<div id="c41e38e2" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href=""></a>plt.imshow(I, cmap<span class="op">=</span>plt.cm.get_cmap(<span class="st">'Blues'</span>, <span class="dv">6</span>))</span>
-<span id="cb77-2"><a href=""></a>plt.colorbar()</span>
-<span id="cb77-3"><a href=""></a>plt.clim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eb513907" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href=""></a>plt.imshow(I, cmap<span class="op">=</span>plt.cm.get_cmap(<span class="st">'Blues'</span>, <span class="dv">6</span>))</span>
+<span id="cb84-2"><a href=""></a>plt.colorbar()</span>
+<span id="cb84-3"><a href=""></a>plt.clim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-74-output-1.png" width="515" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-78-output-1.png" width="515" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1877,13 +1939,13 @@ dtype: object</code></pre>
 <section id="manual-placement-with-plt.axes" class="slide level2">
 <h2>1. <strong>Manual Placement with</strong> <code>plt.axes</code></h2>
 <p>Create axes anywhere in the figure by specifying <code>[left, bottom, width, height]</code> in figure coordinates (0 to 1).</p>
-<div id="d77aef89" class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href=""></a>ax1 <span class="op">=</span> plt.axes()  <span class="co"># Standard axes</span></span>
-<span id="cb78-2"><a href=""></a>ax2 <span class="op">=</span> plt.axes([<span class="fl">0.65</span>, <span class="fl">0.65</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>])  <span class="co"># Inset axes at top-right</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="06a7b663" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href=""></a>ax1 <span class="op">=</span> plt.axes()  <span class="co"># Standard axes</span></span>
+<span id="cb85-2"><a href=""></a>ax2 <span class="op">=</span> plt.axes([<span class="fl">0.65</span>, <span class="fl">0.65</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>])  <span class="co"># Inset axes at top-right</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-75-output-1.png" width="796" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-79-output-1.png" width="796" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1892,14 +1954,14 @@ dtype: object</code></pre>
 <section id="simple-grids-with-plt.subplot" class="slide level2">
 <h2>2. <strong>Simple Grids with</strong> <code>plt.subplot</code></h2>
 <p>Create a grid of subplots by specifying rows, columns, and plot index (starts at 1, goes left-to-right, top-to-bottom). <code>plt.subplot(row, col, plot index)</code></p>
-<div id="4517d149" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>):</span>
-<span id="cb79-2"><a href=""></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, i)</span>
-<span id="cb79-3"><a href=""></a>    plt.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="bu">str</span>((<span class="dv">2</span>, <span class="dv">3</span>, i)), fontsize<span class="op">=</span><span class="dv">18</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b90ae1ce" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>):</span>
+<span id="cb86-2"><a href=""></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, i)</span>
+<span id="cb86-3"><a href=""></a>    plt.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="bu">str</span>((<span class="dv">2</span>, <span class="dv">3</span>, i)), fontsize<span class="op">=</span><span class="dv">18</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-76-output-1.png" width="796" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-80-output-1.png" width="796" height="412"></p>
 </figure>
 </div>
 </div>
@@ -1908,16 +1970,16 @@ dtype: object</code></pre>
 <section id="flexible-layouts-with-plt.gridspec" class="slide level2">
 <h2>3. <strong>Flexible Layouts with</strong> <code>plt.GridSpec</code></h2>
 <p>For more complex arrangements</p>
-<div id="8dc1c0ab" class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href=""></a>grid <span class="op">=</span> plt.GridSpec(<span class="dv">2</span>, <span class="dv">3</span>, wspace<span class="op">=</span><span class="fl">0.4</span>, hspace<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb80-2"><a href=""></a>plt.subplot(grid[<span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb80-3"><a href=""></a>plt.subplot(grid[<span class="dv">0</span>, <span class="dv">1</span>:])</span>
-<span id="cb80-4"><a href=""></a>plt.subplot(grid[<span class="dv">1</span>, :<span class="dv">2</span>])</span>
-<span id="cb80-5"><a href=""></a>plt.subplot(grid[<span class="dv">1</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="13365c62" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href=""></a>grid <span class="op">=</span> plt.GridSpec(<span class="dv">2</span>, <span class="dv">3</span>, wspace<span class="op">=</span><span class="fl">0.4</span>, hspace<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb87-2"><a href=""></a>plt.subplot(grid[<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb87-3"><a href=""></a>plt.subplot(grid[<span class="dv">0</span>, <span class="dv">1</span>:])</span>
+<span id="cb87-4"><a href=""></a>plt.subplot(grid[<span class="dv">1</span>, :<span class="dv">2</span>])</span>
+<span id="cb87-5"><a href=""></a>plt.subplot(grid[<span class="dv">1</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="7_Visualization_files/figure-revealjs/cell-77-output-1.png" width="799" height="412"></p>
+<p><img data-src="7_Visualization_files/figure-revealjs/cell-81-output-1.png" width="799" height="412"></p>
 </figure>
 </div>
 </div>
